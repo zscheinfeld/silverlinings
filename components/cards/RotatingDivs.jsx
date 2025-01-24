@@ -14,7 +14,7 @@ const RotatingDivs = ({ backgroundColor, startTransitionAt }) => {
         style={{ backgroundColor }} // Apply backgroundColor dynamically
       >
         <div className={styles.rcardimage}>
-          <img src="Brain.png" alt="Brain" />
+          <img src="brain.png" alt="Brain" />
         </div>
         <div className={styles.rcardinformation}>
           <div className={styles.rcardheader}>
