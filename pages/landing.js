@@ -2,7 +2,6 @@ import styles from "@/components/Landing.module.css"
 import Interactivewoman from "@/components/Interactivewoman";
 import Head from "next/head";
 import WorldMap from "@/components/WorldMap";
-import Rotatingwoman from "@/components/rotatingwoman";
 import Landing1 from "@/components/Landing1";
 
 export default function Landing() {
