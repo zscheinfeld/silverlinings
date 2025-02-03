@@ -1,10 +1,10 @@
 import Population from "./charts/population"
 import Population2 from "./charts/population2"
 
-const Chapter1=
+const Chapter2=
 
     {
-        title:"COUNTERFACTUAL FUTURES",
+        title:"Counterfactual Futures",
         number: 2,
         subchapters:[
             {
@@ -51,6 +51,31 @@ const Chapter1=
                                 "The attentive reader may notice that beyond a certain point, improvements in physical health or other non-cognitive functions have diminishing returns on productivity. A 1-year shift backwards in brain aging adds nearly as much to GDP as a 1-year shift in general biological aging in the near term, because returns from improving the aging profile of other organs (e.g. kidneys or ovaries) are not immediate, and sometimes even reduce GDP temporarily. Improving the cognitive healthspan translates into significant and immediate productivity gains. (+$1080 in GDP per capita terms."
                             ]
                         }
+                    },
+
+                    {
+                        type:"accordion",
+                        data:{
+                            title:"List of sample underfunded R&D approaches",
+                            questions: [
+                            "Better biomarkers of brain aging", 
+                            "Understanding neuroinflammation", 
+                            "Measuring global brain activity",
+                            "Sensory stimulation",
+                            "Optogenetic neurotherapy",
+                        ],
+                            answers:[
+                            "answer1", 
+                            "answer2", 
+                            "answer3", 
+                            "answer4", 
+                            "answer5"]
+                        }
+                    },
+
+                    {
+                        type:"bottompadding",
+       
                     }
 
                 ]
@@ -224,4 +249,4 @@ const Chapter1=
     }
 
 
-export default Chapter1
+export default Chapter2

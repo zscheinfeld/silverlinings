@@ -1,0 +1,91 @@
+.book {
+    display: flex;
+    width: 100%;
+  
+    .chapter {
+      overflow: hidden;
+      transition: flex-grow 600ms ease-in-out, flex-basis 600ms ease-in-out;
+  
+      &.previous {
+        flex-basis: 60px;
+        flex-grow: 0;
+      }
+
+      &.archived {
+        flex-basis: 0px;
+        flex-grow: 0;
+        transition: flex-grow 300ms ease-in-out, flex-basis 300ms ease-in-out;
+      }
+  
+  
+      &.current {
+        flex-grow: 1;
+        flex-basis: 70%;
+      ;
+      }
+  
+      &.upcoming {
+        flex-basis: 0px;
+        flex-grow: 0;
+        transition: flex-grow 300ms ease-in-out, flex-basis 300ms ease-in-out;
+      }
+
+      &.next {
+        flex-basis: 60px;
+        flex-grow: 0;
+      }
+  
+      .chapter-bar {
+        height: 100vh;
+        width: 60px;
+        flex-shrink: 0;
+        border: solid 0px;
+
+        &.chap-next{
+          // background-color: #FBE0F3;
+          border-left: solid black 1px ;
+        }
+  
+        &.chap-upcoming {
+          // background-color: #FBE0F3;
+          border-left: solid black 1px ;
+        }
+  
+        &.chap-1 {
+          background-color: yellow;
+        }
+  
+        &.chap-2 {
+          background-color: #FBE0F3;
+        }
+  
+        &.chap-3 {
+          background-color: #CAE9FF;
+        }
+
+        &.chap-current {
+          background-color: #FFF5E5;
+          border-right: solid black 1px ;
+        }
+  
+        &.chap-previous {
+          background-color: #E1E0E0;
+          border-right: solid black 1px ;
+        }
+
+        &.chap-archived {
+          background-color: #E1E0E0;
+          border-right: solid black 1px ;
+        }
+      }
+    }
+  }
+  
+  body {
+    margin: 0;
+  }
+  
+  #root {
+    width: 100%;
+  }
+  

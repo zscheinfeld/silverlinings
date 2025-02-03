@@ -26,6 +26,8 @@ const Chart = ({data}) => {
       },
     },
     responsive: true,
+    maintainAspectRatio: false,
+    // maintainAspectRatio: true,
     scales: {
       y: {
         grid: {

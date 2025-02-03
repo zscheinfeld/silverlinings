@@ -1,11 +1,11 @@
 import Population from "./charts/population"
 import Population2 from "./charts/population2"
 
-const Chapter1=
+const Chapter3=
 
     {
-        title:"PRESENT",
-        number: 1,
+        title:"Simulation Tool",
+        number: 3,
         subchapters:[
             {
                 slug:"1-1",
@@ -149,4 +149,4 @@ const Chapter1=
     }
 
 
-export default Chapter1
+export default Chapter3

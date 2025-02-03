@@ -1,12 +1,28 @@
+import { useInView } from "react-intersection-observer"
 import Chart from "./Chart"
+import Newaccordion from "./Newaccordion"
 import Textblock from "./Textblock"
 import styles from "@/components/Chapter.module.css"
+import { useEffect } from "react"
 
 const Subchapter =({subchapter})=>{
     const {header, number, content, slug} = subchapter 
+    const {ref, inView}= useInView()
+ 
+    useEffect(()=>{
+        
+        if (inView==true){
+console.log(subchapter.header)
+        }
+        else{
+
+        }
+        
+    }, [inView])
+
 
     return(
-        <div id={slug} className={styles.subchaptermodules}>
+        <div ref={ref} id={slug} className={styles.subchaptermodules}>
         
         <div className={styles.subchaptername}>
             {header}
@@ -32,7 +48,12 @@ const Subchapter =({subchapter})=>{
                         <img src= {data.source}/>
                     </div>
                 ) 
+            }
 
+            if (type =="accordion"){
+                return(
+                    <Newaccordion atitle={data.title} questions={data.questions} answers={data.answers}/>
+                ) 
             }
 
             if (type =="bottompadding"){

@@ -1,13 +1,14 @@
 .maincontent{
+    min-width: 950px;
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 64px;
     align-items: center;
-    /* justify-content: center; */
     margin: auto;
-    padding-top: 120px;
+    padding-top: 176px;
     height: 100vh;
+    overflow-x: hidden;
     overflow-y: scroll;
     scrollbar-color: rgba(0, 0, 0, 0) rgba(255, 255, 255, 0);
     scrollbar-width: 0px;
@@ -17,9 +18,11 @@
 
 .chart{
     /* max-width: 620px; */
-    max-height: 500px;
+    /* max-height: 500px; */
     width: 100%;
     max-width: 950px;
+    height: 420px;
+    transition: max-width 300ms;
 }
 
 .paragraph{
@@ -48,6 +51,7 @@
     text-align: center;
     /* width: 100%; */
     max-width: 950px;
+    text-transform: uppercase;
 }
 
 .subchaptername{
@@ -106,13 +110,14 @@
 
 .previousSubChapterContainer{
     height: 240px;
-    width: 100%;
+    width: 60px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
 }
 
 .previousSubChapter{
+    width: 60px;
     width: 100%;
     height: 17px;
     padding-left: 12px;
@@ -129,7 +134,7 @@
     display: flex;
     align-items: flex-end;
     border-bottom: solid 1px black;
-    width: 100%;
+    width: 60px;
     padding-left: 12px;
 
 }
@@ -169,8 +174,29 @@
     /* height: 500px; */
     width: 100%;
     max-width: 950px;
+    transition: max-width 300ms;
 }
 
 .chartcontainer img{
     width: 100%;
 }
+
+@media only screen and (max-width: 1130px) {
+
+    .chart{
+        width: 100%;
+        max-width: 620px;
+        transition: max-width 300ms;
+    }
+
+    .chartcontainer{
+        width: 100%;
+        max-width: 620px;
+        transition: max-width 300ms;
+    }
+
+
+
+    
+    
+  }
