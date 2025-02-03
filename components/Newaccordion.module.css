@@ -1,0 +1,89 @@
+.title{
+    font-family: "Spectral", serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 100%;
+    text-transform: uppercase;
+    padding-bottom: 14px;
+}
+
+.item{
+    display: flex;
+    flex-direction: column;
+    border-top: solid 1px black;
+    width: 100%;
+    /* margin-top: 14px; */
+}
+
+.questioncontainer{
+    padding-top: 14px;
+    padding-bottom: 14px;
+    display: flex;
+    gap: 16px;
+    width: 100%;
+}
+
+.questioncontainer:hover{
+    background-color: rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+.button{
+    height: 16px;
+    width: 16px;
+}
+
+.question{
+    width: 100%;
+    font-family: "Spectral", serif;
+    font-size: 16px;
+    line-height: 120%;
+
+}
+
+.answerpadding{
+    height: 14px;
+    width: 100%;
+}
+
+.answer{
+    padding-left: 32px;
+    font-family: "Spectral", serif;
+    font-size: 16px;
+    line-height: 160%;
+ 
+
+}
+
+.accordioncontainer{
+    max-width: 620px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently                               supported by Chrome, Edge, Opera and Firefox */
+  }
+
+  .closed {
+    max-height: 0;
+    transition: max-height 0.4s ease-in-out;
+    overflow: hidden;
+  }
+  
+  .open {
+    max-height: 1000px; /* A high value to ensure content fits */
+    transition: max-height 0.4s ease-in-out;
+    overflow: hidden;
+  }
+  
+
+
+

@@ -4,7 +4,7 @@ import Population2 from "./charts/population2"
 const Chapter1=
 
     {
-        title:"PRESENT",
+        title:"Present",
         number: 1,
         subchapters:[
             {

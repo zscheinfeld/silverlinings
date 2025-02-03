@@ -2,9 +2,10 @@ import styles from "@/components/Chapter.module.css"
 import useHash from "@/hooks/useHash"
 import Link from "next/link"
 
-const SubchapterNav = ({subchapters, number, currentSubchapterNumber})=>{
+const SubchapterNav = ({subchapters, number})=>{
 const hash = useHash() 
-    
+
+const currentSubchapterNumber = hash.split("-")[1] || 1
 
     return(
         <div className={styles.subchapterInnerNav}>
@@ -16,14 +17,11 @@ const hash = useHash()
             <div className={styles.previousSubChapter}>
             </div>
           </div> */}
-        <h1 suppressHydrationWarning>{hash}</h1>
+         <h1 suppressHydrationWarning>{hash}</h1>
          <div className={styles.previousSubChapterContainer}>
          {subchapters.map(subchapter=>{
             if(subchapter.number<currentSubchapterNumber){
-
-             return(
-
-            
+             return(           
             <Link href={`#${subchapter.slug}`} className={styles.previousSubChapter}>
             </Link>
             )   
@@ -33,8 +31,6 @@ const hash = useHash()
 
          </div>
           {subchapters.map(subchapter=>{
-
-
             
             if (subchapter.number == currentSubchapterNumber){
                 return (

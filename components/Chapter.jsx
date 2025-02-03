@@ -7,9 +7,12 @@ import Textblock from "@/components/Textblock";
 import content from "@/data/content.json";
 import Subchapter from "./Subchapter";
 import SubchapterNav from "./SubchapterNav";
+import React, { useRef, useEffect } from "react";
 
 
 const Chapter = ({chapter}) =>{
+
+  const mainContentRef = useRef(null);
 
   const {title,number,subchapters} = chapter
 
@@ -22,50 +25,23 @@ const Chapter = ({chapter}) =>{
     return(
 
     <>
-
-
-
-      <div className={styles.subchapterNav}>
-          <div className={styles.subchapterNavText}>
-            01 / Present
-          </div>
-        </div>
-
-      <SubchapterNav subchapters={subchapters} number={number} currentSubchapterNumber={2}></SubchapterNav>   
     
-      <div className={styles.maincontent}>
+
+
+
+      <SubchapterNav subchapters={subchapters} number={number}></SubchapterNav>   
+    
+      <div ref={mainContentRef} className={styles.maincontent}>
         
       <div className={styles.chaptername}>
         {title}
       </div>
       {subchapters.map(subchapter => (<Subchapter subchapter={subchapter}></Subchapter>))}
-      {/* <div className={styles.subchaptername}>
-      <i>More</i> humans, <i>fewer</i> problems
-      </div>
-      <Textblock callouts={content.textblocks[0].callouts} paragraphs={content.textblocks[0].paragraphs} />
-      <Chart  data={Population}></Chart>
-      <Textblock callouts={content.textblocks[1].callouts} paragraphs={content.textblocks[1].paragraphs} />
-      <Chart  data={Population2}></Chart>
-      <Accordion items={accordionItems}></Accordion>
-
-      <div className={styles.subchaptername}>
-      What is aging?
-      </div>
-      <Textblock callouts={content.textblocks[2].callouts} paragraphs={content.textblocks[2].paragraphs} />
-      <Textblock callouts={content.textblocks[3].callouts} paragraphs={content.textblocks[3].paragraphs} />
       
-      <div className={styles.subchaptername}>
-      Mortality, productivity, and fertility in the U.S.
-      </div> */}
-
-      
-
-
       </div>
       
     </>
     )
-
 
 
 }
