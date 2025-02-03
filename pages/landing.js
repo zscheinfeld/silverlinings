@@ -26,16 +26,7 @@ export default function Landing() {
         <Landing1></Landing1>
         
 
-        {/* <div className = {styles.container}>    
-        <Rotatingwoman></Rotatingwoman>
-        </div>
-
-        <WorldMap></WorldMap>
-
-        <div className = {styles.container}> 
-        <Interactivewoman message={hello}>
-        </Interactivewoman>
-        </div> */}
+       
 
 
         
