@@ -36,7 +36,7 @@ const Chapter = ({chapter}) =>{
       <div className={styles.chaptername}>
         {title}
       </div>
-      {subchapters.map(subchapter => (<Subchapter subchapter={subchapter}></Subchapter>))}
+      {subchapters.map(subchapter => (<Subchapter subchapter={subchapter} chapterNumber={number}></Subchapter>))}
       
       </div>
       

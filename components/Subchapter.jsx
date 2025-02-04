@@ -4,15 +4,22 @@ import Newaccordion from "./Newaccordion"
 import Textblock from "./Textblock"
 import styles from "@/components/Chapter.module.css"
 import { useEffect } from "react"
+import { useRouter } from "next/router"
 
-const Subchapter =({subchapter})=>{
+
+const Subchapter =({subchapter, chapterNumber})=>{
     const {header, number, content, slug} = subchapter 
     const {ref, inView}= useInView()
+
+    const router= useRouter()
  
+
+
     useEffect(()=>{
-        
+
+    const hash = `#${chapterNumber}-${number}`
         if (inView==true){
-console.log(subchapter.header)
+        router.replace(`${router.pathname}${hash}`, undefined, { scroll: false });
         }
         else{
 
