@@ -1,68 +1,56 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Chapter from "./Chapter";
-import Chapter1 from "@/data/chapter1";
-import Chapter2 from "@/data/chapter2";
-import Chapter3 from "@/data/chapter3";
 import styles from "./Chapter.module.css";
-
-// import "./Book.scss";
-
-
-const Chapters = [
-  Chapter1,
-  Chapter2,
-  Chapter3
-  // { name: 'chap4', number: 4 },
-  // { name: 'chap5', number: 5 },
-];
+import { Chapters } from "@/data/book";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import Topnav from "@/components/Topnav";
 
 const Book = () => {
-  // const [value, fnToUpdateTheValue] = useState(defaultValue)
   const [activeChapter, setActiveChapter] = useState(1);
+  const router = useRouter();
 
-  const handleClick = (number) => {
-    setActiveChapter(number);
-    // console.log("new chapter")
-  };
+  useEffect(() => {
+    const { chapter } = router.query;
+    if (!chapter) return;
+    const currentChapter = Chapters.find((c) => c.slug === chapter);
+    if (currentChapter) {
+      setActiveChapter(currentChapter.number);
+    }
+  }, [router.query]);
 
   return (
-
     <div className="book">
+      <Topnav />
       {Chapters.map((chapter) => {
-        const { number, name } = chapter;
+        const { number } = chapter;
         let state = "current";
 
-        if (number == activeChapter - 1 ) {
+        if (number == activeChapter - 1) {
           state = "previous";
-        } 
-
-        else if (number < activeChapter - 1){
+        } else if (number < activeChapter - 1) {
           state = "archived";
-        }
-  
-        else if (number == activeChapter + 1) {
+        } else if (number == activeChapter + 1) {
           state = "next";
-        }
-
-        else if (number > activeChapter + 1) {
+        } else if (number > activeChapter + 1) {
           state = "upcoming";
         }
-      
+
+        console.log(chapter.title, state);
+
         return (
           <div className={`chapter ${state}`} style={{ display: "flex" }}>
-            <button onClick={() => handleClick(number)} className={`${styles.subchapterNav} chapter-bar  chap-${chapter.number} chap-${state} `}>
-            <div className={styles.subchapterNavText}>
-            0{chapter.number} / {chapter.title}
-            </div>
-            </button>
-            
-            {/* <button
-              onClick={() => handleClick(number)}
-              className={`chapter-bar ${name}`}
+            <Link
+              href={{
+                pathname: router.pathname,
+                query: { ...router.query, chapter: chapter.slug },
+              }}
+              className={`${styles.subchapterNav} chapter-bar  chap-${chapter.number} chap-${state} `}
             >
-              {number}
-            </button> */}
-            {/* Use -1 here because arrays are 0-indexed */}
+              <div className={styles.subchapterNavText}>
+                0{chapter.number} / {chapter.title}
+              </div>
+            </Link>
             <Chapter chapter={chapter} />
           </div>
         );

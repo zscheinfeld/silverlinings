@@ -9,7 +9,7 @@ import Brainhotspot from "./cards/Brainhotspot";
 import Hearthotspot from "./cards/Hearthotspot";
 import Uterushotspot from "./cards/Uterushotspot";
 
-const Landing1 = () => {
+const Landing = ({ onReachedBottom }) => {
   const [scrollY, setScrollY] = useState(0);
   const [isClient, setIsClient] = useState(false); // Track if we're in the browser
   const [fadeEnd, setFadeEnd] = useState(0); // Dynamically set fadeEnd
@@ -42,7 +42,8 @@ const Landing1 = () => {
     const end = (sectionMultiples[index] + 1) * window.innerHeight;
 
     // If a disappear index is provided, use that for the end position
-    const disappearEnd = disappearIndex > -1 ? disappearIndex * window.innerHeight : end;
+    const disappearEnd =
+      disappearIndex > -1 ? disappearIndex * window.innerHeight : end;
 
     return scrollY >= start && scrollY < disappearEnd;
   };
@@ -51,7 +52,7 @@ const Landing1 = () => {
     if (!isClient) return 1; // Default to fully visible
 
     // Calculate the scroll position for .1vh (small fraction of the viewport height)
-    const faceAppearAt = window.innerHeight * 0.1 / 100; // Convert .1vh to pixels
+    const faceAppearAt = (window.innerHeight * 0.1) / 100; // Convert .1vh to pixels
 
     // If the scroll is below the appearance point, keep it fully visible
     if (scrollY < faceAppearAt) {
@@ -106,43 +107,32 @@ const Landing1 = () => {
 
   return (
     <div
-      className={styles.scrollContainerLanding}
+      className={`${styles.scrollContainerLanding}`}
       style={{ backgroundColor: getBackgroundColor() }}
     >
+      <div
+        className={`${styles.hotspotcontainer} ${styles.sectionLanding} ${
+          getVisibility(2, interactiveWomanDisappearMultiplier)
+            ? styles.sectionLandingVisible
+            : ""
+        }`}
+      >
+        <Uterushotspot></Uterushotspot>
+        <Hearthotspot></Hearthotspot>
+        <Brainhotspot></Brainhotspot>
 
-      <div className={`${styles.hotspotcontainer} ${styles.sectionLanding} ${
-          getVisibility(2, interactiveWomanDisappearMultiplier) ? styles.sectionLandingVisible : ""
-        }`}>
-          <Uterushotspot></Uterushotspot>
-          <Hearthotspot></Hearthotspot>
-          <Brainhotspot></Brainhotspot> 
-
-
-          <div className={`${styles.hotspot} ${styles.organ4}`}>
+        <div className={`${styles.hotspot} ${styles.organ4}`}>
           <div className={styles.hoverDivbg}>
-            <div
-              className={styles.hoverDiv}
-            ></div>
+            <div className={styles.hoverDiv}></div>
           </div>
-          </div>
+        </div>
 
-          <div className={`${styles.hotspot} ${styles.organ5}`}>
+        <div className={`${styles.hotspot} ${styles.organ5}`}>
           <div className={styles.hoverDivbg}>
-            <div
-              className={styles.hoverDiv}
-            ></div>
+            <div className={styles.hoverDiv}></div>
           </div>
-          </div>
-      
-
-
-
-
-
-
+        </div>
       </div>
-
-
 
       {/* Conditionally render Face component based on visibility */}
       {getFaceVisibility() && <Face opacity={getFaceOpacity()} />}
@@ -163,7 +153,9 @@ const Landing1 = () => {
       {/* Section 2: WorldMap */}
       <div
         className={`${styles.sectionLanding} ${
-          getVisibility(1, worldMapDisappearMultiplier) ? styles.sectionLandingVisible : ""
+          getVisibility(1, worldMapDisappearMultiplier)
+            ? styles.sectionLandingVisible
+            : ""
         }`}
       >
         <WorldMap />
@@ -172,13 +164,18 @@ const Landing1 = () => {
       {/* Section 3: Interactivewoman */}
       <div
         className={`${styles.sectionLanding} ${
-          getVisibility(2, interactiveWomanDisappearMultiplier) ? styles.sectionLandingVisible : ""
+          getVisibility(2, interactiveWomanDisappearMultiplier)
+            ? styles.sectionLandingVisible
+            : ""
         }`}
       >
         <Interactivewoman message="Hello from Parent" />
       </div>
+
+      {/*TODO: Replace with scroll trigger*/}
+      <button onClick={onReachedBottom}>Scroll Trigger</button>
     </div>
   );
 };
 
-export default Landing1;
+export default Landing;
