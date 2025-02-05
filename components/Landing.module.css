@@ -1,756 +1,739 @@
 .container {
-    background-color: #121212;
-    height: 100vh;
-    width: 100vw;
-    color: white;
+  background-color: #121212;
+  height: 100vh;
+  width: 100vw;
+  color: white;
 }
 
-.hoverDivbg{
-    width: 50px;
-    height: 50px;
-    background-color: rgba(255, 255, 255, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 100%;
+.hoverDivbg {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
 }
 
 .hoverDiv {
-    width: 20px;
-    height: 20px;
-    background-color: rgb(255, 255, 255);
-    margin: 0 auto;
-    cursor: pointer;
-    outline: 5px solid rgba(255, 255, 255, 0.5);
-    border-radius: 100%;
-    transition: all .2s ease-in-out
+  width: 20px;
+  height: 20px;
+  background-color: rgb(255, 255, 255);
+  margin: 0 auto;
+  cursor: pointer;
+  outline: 5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 100%;
+  transition: all 0.2s ease-in-out;
 }
 
 .hoverDivyellow:hover {
-    background-color: #FFF3A8;
-    transition: all .2s ease-in-out
+  background-color: #fff3a8;
+  transition: all 0.2s ease-in-out;
 }
-
 
 .hoverDiv:hover {
-    background-color: rgba(255, 255, 255, 0.25);
-    transition: all .2s ease-in-out
+  background-color: rgba(255, 255, 255, 0.25);
+  transition: all 0.2s ease-in-out;
 }
 
-
-
 .hoverDivpink:hover {
-    background-color: #F492FF;
-    transition: all .2s ease-in-out
+  background-color: #f492ff;
+  transition: all 0.2s ease-in-out;
 }
 
 .hoverDivred:hover {
-    background-color: #F0696B;
-    transition: all .2s ease-in-out
+  background-color: #f0696b;
+  transition: all 0.2s ease-in-out;
 }
 
-.hoverDivyellow{
-    width: 20px;
-    height: 20px;
-    background-color: rgb(255, 255, 255);
-    margin: 0 auto;
-    cursor: pointer;
-    outline: 5px solid rgba(255, 255, 255, 0.5);
-    border-radius: 100%;
-    transition: all .2s ease-in-out
+.hoverDivyellow {
+  width: 20px;
+  height: 20px;
+  background-color: rgb(255, 255, 255);
+  margin: 0 auto;
+  cursor: pointer;
+  outline: 5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 100%;
+  transition: all 0.2s ease-in-out;
 }
-
 
 .fadeDiv {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out; /* Smooth transition for opacity */
-    width: 750px;
-    background-color:  #191818;
-    border: solid 1px white;
-    line-height: 100px;
-    text-align: center;
-    position: absolute;
-    top: 0px;
-    right: 100px;
-    padding: 36px;
-    display: flex;
-    flex-direction: column;
-    gap:30px;
-    z-index: 800; 
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out; /* Smooth transition for opacity */
+  width: 750px;
+  background-color: #191818;
+  border: solid 1px white;
+  line-height: 100px;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  right: 100px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  z-index: 800;
 }
 
-.uterusfadeDiv{
-    top: -200px;  
+.uterusfadeDiv {
+  top: -200px;
 }
 
 .visible {
-    opacity: 1;
-    
+  opacity: 1;
 }
 
 .hidden {
-    opacity: 0;
+  opacity: 0;
 }
 
-.womanContainer{
-    /* position: fixed; */
-    position: fixed;
-    height: 100vh;
-    width: 100vw;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    /* position: fixed; */
-    top: 0px;
-    left: 0px;
-    z-index: 250;
-    /* top: 0px;
+.womanContainer {
+  /* position: fixed; */
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  z-index: 250;
+  /* top: 0px;
     left: 0px; */
 }
 
-.womanInnerContainer{
-    position: absolute;
-    right: -150px;
-    top: -150px;
-    height: 100vh;
-    /* width: 100vw; */
+.womanInnerContainer {
+  position: absolute;
+  right: -150px;
+  top: -150px;
+  height: 100vh;
+  /* width: 100vw; */
 }
 
-.womanInnerContainer img{
-    
-    height: 1000px
-    /* width: 100; */
+.womanInnerContainer img {
+  height: 1000px;
+  /* width: 100; */
 }
 
-.hotspot{
-    position: absolute;
-    height: 50px;
-    width: 50px;
-    z-index: 250;
+.hotspot {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  z-index: 250;
 }
 
-.brain{
-    top: 40px;
-    right: 325px;
+.brain {
+  top: 40px;
+  right: 325px;
 }
 
-.uterus{
-    top: 390px;
-    right: 320px;
+.uterus {
+  top: 390px;
+  right: 320px;
 }
 
-.organ4{
-    top: 265px;
-    right: 340px;
+.organ4 {
+  top: 265px;
+  right: 340px;
 }
 
-.organ5{
-    top: 320px;
-    right: 300px;
+.organ5 {
+  top: 320px;
+  right: 300px;
 }
 
-
-.heart{
-    top: 180px;
-    right: 290px;
+.heart {
+  top: 180px;
+  right: 290px;
 }
 
-.descriptiontext{
-    font-size: 16px;
-    line-height: 120%;
-    color: white;
-    font-family: "spectral";
-    text-align: left;
+.descriptiontext {
+  font-size: 16px;
+  line-height: 120%;
+  color: white;
+  font-family: "spectral";
+  text-align: left;
 }
 
-.cardtop{
-    display: flex;
-    width: 100%;
+.cardtop {
+  display: flex;
+  width: 100%;
 }
 
-.cardorgan{
-    width: 50%;
-    height: 250px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.cardorgan {
+  width: 50%;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    /* height: 100%; */
+  /* height: 100%; */
 }
 
-.cardtitle{
-    font-size: 28px;
-    line-height: 90%;
-    color: white;
-    font-family: "spectral";
-    text-align: left;
-    padding-bottom: 24px;
+.cardtitle {
+  font-size: 28px;
+  line-height: 90%;
+  color: white;
+  font-family: "spectral";
+  text-align: left;
+  padding-bottom: 24px;
 }
 
-.cardorgan img{
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
+.cardorgan img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }
 
-.carddescription{
-    width: 50%;
+.carddescription {
+  width: 50%;
 }
 
-.cardnumber{
-    font-size: 28px;
-    line-height: 90%;
-    color: white;
-    font-family: "spectral";
+.cardnumber {
+  font-size: 28px;
+  line-height: 90%;
+  color: white;
+  font-family: "spectral";
 }
 
-.cardnumberdescription{
-    font-size: 14px;
-    line-height: 120%;
-    color: white;
-    font-family: "spectral";
-    text-align: left;
+.cardnumberdescription {
+  font-size: 14px;
+  line-height: 120%;
+  color: white;
+  font-family: "spectral";
+  text-align: left;
 }
 
-.carddatapoint{
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    align-items: flex-start;
-    gap: 8px;
-    width: 120px;
+.carddatapoint {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: flex-start;
+  gap: 8px;
+  width: 120px;
 }
 
-.carddatacontainer{
-    display: flex;
-    gap: 36px;
+.carddatacontainer {
+  display: flex;
+  gap: 36px;
 }
 
-.cardbottom{
-    display: flex;
-    justify-content: center;
+.cardbottom {
+  display: flex;
+  justify-content: center;
 }
 
-.cardlabel{
-    font-size: 14px;
-    line-height: 120%;
-    color: white;
-    font-family: "spectral";
-    text-align: left;
-    padding-bottom: 2px;
+.cardlabel {
+  font-size: 14px;
+  line-height: 120%;
+  color: white;
+  font-family: "spectral";
+  text-align: left;
+  padding-bottom: 2px;
 }
 
-.cardhairline{
-    width: 100%;
-    border-top: solid 1px rgba(255, 255, 255, 0.25);
+.cardhairline {
+  width: 100%;
+  border-top: solid 1px rgba(255, 255, 255, 0.25);
 }
 
-.tooltipcustom{
-    font-family: "spectral";
-    background-color: #191818;
-    max-width: 250px;
-    border: solid 1px white;
-    white-space: normal; /* Ensures text wraps */
-    word-wrap: break-word; /* Handles long words */
-    line-height: 1.5; /* Adds spacing between lines */
-    padding: 10px; /* Optional, for better readability */
-    font-size: 14px; /* Adjust font size for clarity */
-    padding-top: 24px;
-    padding-bottom: 24px;
-    padding-left: 12px;
-    padding-right: 12px;
+.tooltipcustom {
+  font-family: "spectral";
+  background-color: #191818;
+  max-width: 250px;
+  border: solid 1px white;
+  white-space: normal; /* Ensures text wraps */
+  word-wrap: break-word; /* Handles long words */
+  line-height: 1.5; /* Adds spacing between lines */
+  padding: 10px; /* Optional, for better readability */
+  font-size: 14px; /* Adjust font size for clarity */
+  padding-top: 24px;
+  padding-bottom: 24px;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 
-.tooltiphead{
-    font-family: "Spectral", serif;
-    font-weight: 600;
-    line-height: 140%;
-    font-size: 16px;
-    padding-bottom: 12px;
+.tooltiphead {
+  font-family: "Spectral", serif;
+  font-weight: 600;
+  line-height: 140%;
+  font-size: 16px;
+  padding-bottom: 12px;
 }
 
-.mapoutercountainer{
-    height: 100vh;
-    width: 100vw;
-    background-color: #191818;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-
+.mapoutercountainer {
+  height: 100vh;
+  width: 100vw;
+  background-color: #191818;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
-.fade{
-    opacity: 50%;
-    transition: all 1s ease-in-out;
+.fade {
+  opacity: 50%;
+  transition: all 1s ease-in-out;
 }
 
-.mapbackground{
-    position:absolute;
-    width: 100vw;
-    height: 100vh;
-    background-color: #191818;
+.mapbackground {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: #191818;
 }
 
-.verticallinesbg{
-
-    position:absolute;
-    top: 0px;
-    left: 0px;
-    width: 100vw;
-    height: 100vh;
-    /* background-color: rgb(0, 0, 0); */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.verticallinesbg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* background-color: rgb(0, 0, 0); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.horizontallinesbg{
-    
-    position:absolute;
-    top: 0px;
-    left: 0px;
-    width: 100vw;
-    height: 100vh;
-    /* background-color: rgb(0, 0, 0); */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.horizontallinesbg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* background-color: rgb(0, 0, 0); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
-.verticallines{
-    position:absolute;
-    width: 1280px;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
+.verticallines {
+  position: absolute;
+  width: 1280px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.vline{
-    height: 90%;
-    width: 1px;
-    background-color: #313131;
+.vline {
+  height: 90%;
+  width: 1px;
+  background-color: #313131;
 }
 
-.horizontallines{
-    position:absolute;
-    width: 100%;
-    height: 90%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
+.horizontallines {
+  position: absolute;
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.hline{
-    height: 1px;
-    width: 1280px;
-    background-color: #313131;
+.hline {
+  height: 1px;
+  width: 1280px;
+  background-color: #313131;
 }
 
-.gradientOverlay{
-    position: absolute;
-    right: 275px;
-    top: 0px;
-    background-image: linear-gradient(to right, #191818, #19181800);
-    height: 100vh;
-    width: 600px;
-    pointer-events: none;
+.gradientOverlay {
+  position: absolute;
+  right: 275px;
+  top: 0;
+  background-image: linear-gradient(to right, #191818, #19181800);
+  height: 100vh;
+  width: 600px;
+  pointer-events: none;
 }
 
 .rcontainer {
-    position: relative;
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-    z-index: 12;
-    
-  }
-  
-  .rdiv {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity .8s ease-in-out;
-    z-index: 12;
-  }
-  
-  .rvisible {
-    opacity: 1;
-  }
-  
-  .rhidden {
-    opacity: 0;
-  }
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  z-index: 12;
+}
 
-  .rhotspot{
-    position: absolute;
-    height: 50px;
-    width: 50px;
-    z-index: 10;
-    /* background-color: rgba(255, 255, 255, 0.15); */
-    border-radius: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.rdiv {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  z-index: 12;
+}
 
-  
-  .rhotspotcontainer{
-    position: absolute;
-    height: 50px;
-    width: 50px;
-    z-index: 10;
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.rvisible {
+  opacity: 1;
+}
 
-  .rhotspotinnercontainer{
-    width: 20px;
-    height: 20px;
-    background-color: rgba(255, 255, 255, 0.15);
-    outline: 5px solid rgba(255, 255, 255, 0.05);
-    border-radius: 100%;
-  }
+.rhidden {
+  opacity: 0;
+}
 
-  .rcard{
-    position: absolute;
-    background-color: #191818;
-    border: solid white 1px;
-    width: 440px;
-    /* height: 540px; */
-    padding: 36px;
-    display: flex;
-    flex-direction: column;
-    gap: 46px;
-  }
-  
-  .brainrcard{
-    top: 0px;
-    right: 64px;
-  }
+.rhotspot {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  z-index: 10;
+  /* background-color: rgba(255, 255, 255, 0.15); */
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .uterisrcard{
-    top: -250px;
-    right: 64px;
-  }
+.rhotspotcontainer {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .heartrcard{
-    top: -100px;
-    right: 64px;
-  }
+.rhotspotinnercontainer {
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.15);
+  outline: 5px solid rgba(255, 255, 255, 0.05);
+  border-radius: 100%;
+}
 
-  .rcardheader{
-    font-family: "spectral";
-    font-size: 24px;
-    line-height: 100%;
-    color: white;
-    padding-bottom: 16px;
-  }
-  .rcardtext{
-    font-family: "spectral";
-    font-size: 16px;
-    line-height: 120%;
-    color: white;
-  }
+.rcard {
+  position: absolute;
+  background-color: #191818;
+  border: solid white 1px;
+  width: 440px;
+  /* height: 540px; */
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 46px;
+}
 
-  .rcardimage{
-    width: 100%;
-    /* background-color: white; */
-    height: 270px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.brainrcard {
+  top: 0;
+  right: 64px;
+}
 
-  .rcardimage img{
-    width: 100%;
-    max-height: 120%;
-    object-fit: contain;
-  }
+.uterisrcard {
+  top: -250px;
+  right: 64px;
+}
 
-  .productivity{
-    background-color: #FFF3A8;
-  }
+.heartrcard {
+  top: -100px;
+  right: 64px;
+}
 
-  .textproductivity{
-    color: #FFF3A8;
-  }
+.rcardheader {
+  font-family: "spectral";
+  font-size: 24px;
+  line-height: 100%;
+  color: white;
+  padding-bottom: 16px;
+}
+.rcardtext {
+  font-family: "spectral";
+  font-size: 16px;
+  line-height: 120%;
+  color: white;
+}
 
-  .fertility{
-    background-color: #F492FF;
-  }
+.rcardimage {
+  width: 100%;
+  /* background-color: white; */
+  height: 270px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .textfertility{
-    color: #F492FF;
-  }
+.rcardimage img {
+  width: 100%;
+  max-height: 120%;
+  object-fit: contain;
+}
 
-  .mortality{
-    background-color: #F0696B;
-  }
+.productivity {
+  background-color: #fff3a8;
+}
 
-  .textmortality{
-    color: #F0696B;
-  }
+.textproductivity {
+  color: #fff3a8;
+}
 
-  .misc{
-    background-color: white;
-  }
+.fertility {
+  background-color: #f492ff;
+}
 
-  .abovefold{
-    height: 100vh;
-    width: 100vh;
-    background-color: #191818;
-  }
+.textfertility {
+  color: #f492ff;
+}
 
-  .scrollContainerLanding {
-    height: 1200vh; /* Total height to enable scrolling */
-    position: relative;
-    background-color: #191818;
-  }
-  
-  .sectionLanding {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    opacity: 0;
-    transition: opacity 1.4s ease-in-out;
-    pointer-events: none; /* Prevent interaction when not visible */
-    
-  }
-  
-  .sectionLandingVisible {
-    opacity: 1;
-    pointer-events: auto; /* Allow interaction when visible */
-  }
-  
-  .landingoutertext{
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 200;
-    pointer-events: none;
-    width: 50vw;
-    gap:36px;
-    
-  }
+.mortality {
+  background-color: #f0696b;
+}
 
-  .landinginnertext{
-    width: 100%;
-    max-width: 550px;
-    font-family: "spectral";
-    font-size: 44px;
-    line-height: 120%;
-    display: flex;
-    align-items: flex-start;
-  }
+.textmortality {
+  color: #f0696b;
+}
 
+.misc {
+  background-color: white;
+}
 
-  .landingmedium{
-    font-size: 36px;
-    line-height: 106%;
-  }
+.abovefold {
+  height: 100vh;
+  width: 100vh;
+  background-color: #191818;
+}
 
-  .landingsmall{
-    font-family: "spectral";
-    font-size: 24px;
-    line-height: 106%;
-  }
+.scrollContainerLanding {
+  height: 1200vh; /* Total height to enable scrolling */
+  position: relative;
+  background-color: #191818;
+  overflow-x: hidden;
+}
 
-  .landingsmall2{
-    font-family: "spectral";
-    font-size: 20px;
-    line-height: 130%;
-  }
+.sectionLanding {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  opacity: 0;
+  transition: opacity 1.4s ease-in-out;
+  pointer-events: none; /* Prevent interaction when not visible */
+  flex-grow: 0;
+}
 
-  .light{
-    color: white;
-  }
+.sectionLandingVisible {
+  opacity: 1;
+  pointer-events: auto; /* Allow interaction when visible */
+}
 
-  .space{
-    height: 100vh;
-    width: 100vw;
-    background-color: transparent;
-    pointer-events: none;
-     position: relative;
-  }
+.landingoutertext {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 200;
+  pointer-events: none;
+  width: 50vw;
+  gap: 36px;
+}
 
-  .halfspace{
-    height: 50vh;
-    width: 100vw;
-    background-color: transparent;
-    pointer-events: none;
-  }
+.landinginnertext {
+  width: 100%;
+  max-width: 550px;
+  font-family: "spectral";
+  font-size: 44px;
+  line-height: 120%;
+  display: flex;
+  align-items: flex-start;
+}
 
-  .quarterspace{
-    height: 25vh;
-    width: 100vw;
-    background-color: transparent;
-    pointer-events: none;
-  }
+.landingmedium {
+  font-size: 36px;
+  line-height: 106%;
+}
 
-  .landingtextlight{
-    font-family: "spectral";
-    font-size: 46px;
-    line-height: 130%;
-    width: 50vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* background-color: transparent; */
-    color:white;
-    position: relative;
-    z-index: 200;
-    pointer-events: none;
-  }
+.landingsmall {
+  font-family: "spectral";
+  font-size: 24px;
+  line-height: 106%;
+}
 
+.landingsmall2 {
+  font-family: "spectral";
+  font-size: 20px;
+  line-height: 130%;
+}
 
-  .landingtextlightinnercontainer{
-    max-width: 1200px;
-    width: 100vw;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    color:white;
-    position: relative;
-    z-index: 200;
-    pointer-events: none;
-    margin: auto;
-    background-color: #191818;
-    padding: 36px;
-    border: solid 1px white;
-    gap: 24px;
-  }
+.light {
+  color: white;
+}
 
-  .landingtextlightinnercontainer2{
-    max-width: 1200px;
-    width: 50vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color:white;
-    position: relative;
-    z-index: 200;
-    pointer-events: none;
-    /* margin: auto; */
-    background-color: transparent;
-    /* padding: 36px; */
-    /* max-width: 550px; */
-    /* border: solid 1px white; */
-    gap: 24px;
-  }
+.space {
+  height: 100vh;
+  width: 100vw;
+  background-color: transparent;
+  pointer-events: none;
+  position: relative;
+}
 
-  .landingtextlightcontainer2{
-    display: flex;
-    height: 100vh;
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
+.halfspace {
+  height: 50vh;
+  width: 100vw;
+  background-color: transparent;
+  pointer-events: none;
+}
 
+.quarterspace {
+  height: 25vh;
+  width: 100vw;
+  background-color: transparent;
+  pointer-events: none;
+}
 
-  .landingtextlightcontainer{
-    display: flex;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-  }
+.landingtextlight {
+  font-family: "spectral";
+  font-size: 46px;
+  line-height: 130%;
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: transparent; */
+  color: white;
+  position: relative;
+  z-index: 200;
+  pointer-events: none;
+}
 
-  .landingtextleft{
-    flex:1;
-    max-width: 520px;
-  }
+.landingtextlightinnercontainer {
+  max-width: 1200px;
+  width: 100vw;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  color: white;
+  position: relative;
+  z-index: 200;
+  pointer-events: none;
+  margin: auto;
+  background-color: #191818;
+  padding: 36px;
+  border: solid 1px white;
+  gap: 24px;
+}
 
-  .landingtextright{
-    flex:1;
-    max-width: 520px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
+.landingtextlightinnercontainer2 {
+  max-width: 1200px;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: relative;
+  z-index: 200;
+  pointer-events: none;
+  /* margin: auto; */
+  background-color: transparent;
+  /* padding: 36px; */
+  /* max-width: 550px; */
+  /* border: solid 1px white; */
+  gap: 24px;
+}
 
-  .landingtextleft2{
-    max-width: 550px;
-  }
+.landingtextlightcontainer2 {
+  display: flex;
+  height: 100vh;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
 
-  .landingtextright2{
-    max-width: 550px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
+.landingtextlightcontainer {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
 
-  .landingtextlarge{
-    font-family: "spectral";
-    font-size: 36px;
-    line-height: 106%;
-    text-align: left;
-  }
+.landingtextleft {
+  flex: 1;
+  max-width: 520px;
+}
 
-  .landingtextsmall{
-    font-family: "spectral";
-    font-size: 16px;
-    line-height: 140%;
-  }
+.landingtextright {
+  flex: 1;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 
-  .maxwidth400{
-    max-width: 400px;
-  }
+.landingtextleft2 {
+  max-width: 550px;
+}
 
-  .maxwidth400{
-    max-width: 500px;
-  }
+.landingtextright2 {
+  max-width: 550px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 
-  .faceoutercontainer{
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    display: flex;
-    justify-content: flex-end;
-  }
+.landingtextlarge {
+  font-family: "spectral";
+  font-size: 36px;
+  line-height: 106%;
+  text-align: left;
+}
 
-  .faceinnercontainer{
-    width: 50vw;
-    height: 100vh;
-  }
+.landingtextsmall {
+  font-family: "spectral";
+  font-size: 16px;
+  line-height: 140%;
+}
 
+.maxwidth400 {
+  max-width: 400px;
+}
 
-  .faceimage{
-    width: 100%;
-    height: 100%;
-    max-width: 600px;
-  }
+.maxwidth400 {
+  max-width: 500px;
+}
 
-  .faceimage img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover
-  }
+.faceoutercontainer {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  justify-content: flex-end;
+}
 
-  .hotspotcontainer{
-    width: 100vw;
-    height: 100vh;
-    z-index: 500;
-  }
+.faceinnercontainer {
+  width: 50vw;
+  height: 100vh;
+}
+
+.faceimage {
+  width: 100%;
+  height: 100%;
+  max-width: 600px;
+}
+
+.faceimage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hotspotcontainer {
+  width: 100vw;
+  height: 100vh;
+  z-index: 500;
+}
