@@ -40,6 +40,7 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  padding: 24px;
 }
 
 .chaptername {
@@ -107,18 +108,44 @@
 }
 
 .previousSubChapterContainer {
-  height: 240px;
+  height: 202px;
   width: 60px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  border-bottom: solid black 1px;
+  margin-bottom: 38px;
+  
+}
+
+@keyframes previous{
+  0%{
+    height: 0px;
+  }
+
+  100%{
+    height: 17px;
+  }
+
+}
+
+@keyframes upcoming{
+  0%{
+    height: 0px;
+  }
+
+  100%{
+    height: 72px;
+  }
+
 }
 
 .previousSubChapter {
   width: 100%;
-  height: 17px;
+  /* height: 17px; */
   padding-left: 12px;
   border-top: solid 1px rgba(0, 0, 0, 0.3);
+  animation: previous ease-in-out .6s 1 forwards;
 }
 
 .upcomingSubChapter {
@@ -132,6 +159,7 @@
   border-bottom: solid 1px black;
   width: 60px;
   padding-left: 12px;
+  animation: upcoming ease-in-out .6s 1 forwards;
 }
 
 .upcomingSubChapter:hover {
@@ -171,10 +199,84 @@
   width: 100%;
   max-width: 950px;
   transition: max-width 300ms;
+  position: relative;
+  display: inline-block;
+}
+
+.chartcontainer {
+  position: relative;
+  display: inline-block;
+}
+
+/* Common Overlay Styles */
+.overlay, .textOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.6s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Image Overlay */
+.overlay {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+/* Text Overlay */
+.textOverlay {
+    background: rgba(255, 255, 255, 0.8);
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Visibility Class */
+.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Visibility Class */
+.visible {
+  opacity: 1;
+  /* transform: scale(1); */
 }
 
 .chartcontainer img {
   width: 100%;
+}
+
+.sideNoteHeader{
+  font-family: "Spectral", serif;
+  font-size: 20px;
+  line-height: 100%;
+  
+}
+
+.sidenoteText{
+  font-family: "Spectral", serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 120%;
+}
+
+.sidenoteInnterContainer{
+  display: flex;
+  border: solid 1px black;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding:24px;
 }
 
 @media only screen and (max-width: 1130px) {

@@ -8,7 +8,7 @@ const Uterushotspot = () => {
 
   return (
     <div className={`${styles.hotspot} ${styles.uterus}`}>
-      <div className={styles.hoverDivbg}>
+      <div className={`${styles.hoverDivbg} ${styles.hoverDivbgpink}`}>
         <div
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}

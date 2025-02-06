@@ -1,8 +1,12 @@
+import Callout from "./Callout";
 import Chart from "./Chart";
 import Newaccordion from "./Newaccordion";
 import Textblock from "./Textblock";
 import styles from "@/components/Chapter.module.css";
 import { forwardRef } from "react";
+import Sidenote from "./Sidenote";
+import Multiplecards from "./Multiplecards";
+import Svgchart from "./Svgchart";
 
 const Subchapter = forwardRef(({ subchapter, chapterNumber }, ref) => {
   const { header, content, slug } = subchapter;
@@ -24,11 +28,21 @@ const Subchapter = forwardRef(({ subchapter, chapterNumber }, ref) => {
           return <Chart data={data}></Chart>;
         }
 
+        if (type == "sidenote") {
+          return (
+            <Sidenote sidenotetext={data.text}></Sidenote>
+            );
+        }
+
+        if (type == "multiplecards") {
+          return (
+            <Multiplecards></Multiplecards>
+            )
+        }
+
         if (type == "svgchart") {
           return (
-            <div className={styles.chartcontainer}>
-              <img src={data.source} />
-            </div>
+            <Svgchart source={data.source}></Svgchart>
           );
         }
 

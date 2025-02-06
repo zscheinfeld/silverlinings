@@ -14,9 +14,9 @@ const Landing = ({ onReachedBottom }) => {
   const [isClient, setIsClient] = useState(false); // Track if we're in the browser
   const [fadeEnd, setFadeEnd] = useState(0); // Dynamically set fadeEnd
 
-  const sectionMultiples = [1, 3, 7]; // Define sections for transitions
-  const worldMapDisappearMultiplier = 5; // Set a parameter for when the World Map should disappear
-  const interactiveWomanDisappearMultiplier = 9; // Set a parameter for when the Interactivewoman should disappear
+  const sectionMultiples = [1, 3, 8]; // Define sections for transitions
+  const worldMapDisappearMultiplier = 6; // Set a parameter for when the World Map should disappear
+  const interactiveWomanDisappearMultiplier = 10; // Set a parameter for when the Interactivewoman should disappear
   const faceAppearMultiplier = 0.1; // The range where Face appears in vh (from 0 to 0.1vh)
   const fadeStart = 300; // Start fading background color
 

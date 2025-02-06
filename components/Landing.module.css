@@ -5,30 +5,56 @@
   color: white;
 }
 
-.hoverDivbg {
-  width: 50px;
-  height: 50px;
-  background-color: rgba(255, 255, 255, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 100%;
+
+
+@keyframes hotspot{
+
+  0%{
+    background-color: rgb(139, 139, 139);
+  }
+
+  50%{
+    background-color: white;
+  }
+
+  100%{
+    background-color: rgb(139, 139, 139);
+  }
+
+}
+
+@keyframes hotspotbg{
+
+  0%{
+    background-color: rgba(255, 255, 255, .05);
+  }
+
+  50%{
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  100%{
+    background-color: rgba(255, 255, 255, .05);
+  }
+
 }
 
 .hoverDiv {
   width: 20px;
   height: 20px;
-  background-color: rgb(255, 255, 255);
+  /* background-color: rgb(255, 255, 255); */
   margin: 0 auto;
   cursor: pointer;
-  outline: 5px solid rgba(255, 255, 255, 0.5);
+  outline: 5px solid rgb(139, 139, 139);
   border-radius: 100%;
   transition: all 0.2s ease-in-out;
+  animation: hotspot 2.5s ease-in-out infinite;
 }
 
 .hoverDivyellow:hover {
   background-color: #fff3a8;
   transition: all 0.2s ease-in-out;
+  animation: none;
 }
 
 .hoverDiv:hover {
@@ -39,11 +65,63 @@
 .hoverDivpink:hover {
   background-color: #f492ff;
   transition: all 0.2s ease-in-out;
+  animation: none;
+}
+
+.hoverDivbg {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  animation: hotspotbg 2.5s ease-in-out infinite;
+}
+
+
+
+.hoverDivpink{
+  animation-delay: .25s;
+}
+
+.hoverDivred{
+  animation-delay: .5s;
+}
+
+/* .hoverDivyellow{
+  
+} */
+
+
+.hoverDivbgpink {
+  animation-delay: .25s;
+}
+
+.hoverDivbgpink:hover {
+  /* animation:none; */
+}
+
+.hoverDivbgred {
+  animation-delay: .5s;
+}
+
+.hoverDivbgred:hover {
+  /* animation:none; */
+}
+
+.hoverDivbgyellow:hover {
+  /* animation:none; */
+}
+
+.hoverDivbgyellow {
+  animation-delay: .3s;
 }
 
 .hoverDivred:hover {
   background-color: #f0696b;
   transition: all 0.2s ease-in-out;
+  animation: none;
 }
 
 .hoverDivyellow {
@@ -55,6 +133,8 @@
   outline: 5px solid rgba(255, 255, 255, 0.5);
   border-radius: 100%;
   transition: all 0.2s ease-in-out;
+  animation: hotspot 2.5s ease-in-out infinite;
+  animation-delay: .75s;
 }
 
 .fadeDiv {
@@ -507,7 +587,7 @@
 }
 
 .scrollContainerLanding {
-  height: 1200vh; /* Total height to enable scrolling */
+  height: 1300vh; /* Total height to enable scrolling */
   position: relative;
   background-color: #191818;
   overflow-x: hidden;
@@ -736,4 +816,9 @@
   width: 100vw;
   height: 100vh;
   z-index: 500;
+}
+
+.jvectormap-tip {
+  display: block !important;
+  opacity: 1 !important;
 }

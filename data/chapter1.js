@@ -30,6 +30,13 @@ const Chapter1 = {
         },
 
         {
+          type: "multiplecards",
+        },
+
+
+        
+
+        {
           type: "text",
           data: {
             callout:

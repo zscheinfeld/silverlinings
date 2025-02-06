@@ -12,7 +12,7 @@ const Brainhotspot = () => {
       
      
       <div className ={`${styles.hotspot} ${styles.brain}`}>
-        <div className={styles.hoverDivbg}>
+        <div className={`${styles.hoverDivbg}`}>
             <div
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}

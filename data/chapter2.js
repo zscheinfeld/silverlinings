@@ -84,6 +84,22 @@ const Chapter2 = {
             callout: "To start with, aging isn’t time.",
             paragraphs: [
               "Evolution optimizes for reproductive health, when possible. From this, it follows that menopause is a relative rarity in the animal kingdom. Animals that experience no decline in fertility throughout their lives — like the naked-mole rat — are on one extreme end of the spectrum. Homo Sapiens is on the other extreme end. By some measures, humans are one of only five species in the animal kingdom who undergo menopause. American Lobsters, for instance, become stronger and more fertile with age, and not seldom live to be 100 in good overall health. Most non-human primates also continue to reproduce well into advanced age. In humans, however, the ovaries are the first organ to age — and men’s reproductive healthspan, too, declines more quickly than most assume. This short fertility window (pictured on the right for women) is responsible for several physical and mental health issues. In smaller part, it also contributes to the emerging shortage of working-age adults worldwide. ",
+            ],
+          },
+        },
+
+        {
+          type: "sidenote",
+          data: {
+            text: "Increased birth rates are unique in at least one aspect. New humans engender more new humans. In the very long run, newborns are likely to themselves produce more newborns, who then produce more newborns. This means increased fertility rates have compounding effects we do not get by simply extending the cognitive healthspan of a living human. Yet there are diminishing returns to how many more children women would have even if, like the American Lobster, female humans could safely reproduce through age 90."
+          },
+        },
+
+        {
+          type: "text",
+          data: {
+            paragraphs: [
+              
 
               "Not all couples would choose to have children in their 40s if they could healthily do so. Yet at least 11% of females seek fertility treatments at some point in their lives, mostly due to age-related infertility.  In Australia, for instance, assisted reproductive technologies have so far been documented to increase total birth rates by 5% — a small but meaningful amount.",
 

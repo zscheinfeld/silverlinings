@@ -8,7 +8,7 @@ const Hearthotspot = () => {
 
   return (
     <div className={`${styles.hotspot} ${styles.heart}`}>
-      <div className={styles.hoverDivbg}>
+      <div className={`${styles.hoverDivbg} ${styles.hoverDivbgred}`}>
         <div
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}

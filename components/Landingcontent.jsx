@@ -50,7 +50,7 @@ const Landingcontent=()=>{
       </div>
       {/* <div className={styles.halfspace}></div> */}
       <div className={styles.space}></div>
-
+      <div className={styles.space}></div>
       <div className={styles.landingtextlightcontainer2}>
         <div className={styles.landingtextlightinnercontainer2}>
             <div className={styles.landingtextleft2}>
