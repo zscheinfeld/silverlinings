@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 import Script from "next/script"; // Import Next.js Script component
 
 
-
 export default function Home() {
   const [isLanding, setIsLanding] = useState(true);
   const router = useRouter();

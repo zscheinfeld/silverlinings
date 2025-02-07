@@ -11,6 +11,9 @@ const Chapter3 = {
       header: "We can slow brain aging",
       number: 1,
       content: [
+        {
+          type:"simulation"
+        }
    
       ],
     }

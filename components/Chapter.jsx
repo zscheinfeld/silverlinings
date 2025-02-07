@@ -4,7 +4,7 @@ import SubchapterNav from "./SubchapterNav";
 import React, { useRef, useEffect, useState } from "react";
 import { throttle } from "lodash";
 
-const Chapter = ({ chapter }) => {
+const Chapter = ({ chapter, type="default" }) => {
   const [activeSubchapter, setActiveSubchapter] = useState(1);
   const { title, number, subchapters } = chapter;
 
@@ -46,9 +46,10 @@ const Chapter = ({ chapter }) => {
       <div
         ref={chapterRef}
         id={`chapter-${number}`}
-        className={styles.maincontent}
+        className={type === "simulation" ? styles.simulatorcontent : styles.maincontent}
       >
-        <div className={styles.chaptername}>{title}</div>
+        {type === "default" ? <div className={styles.chaptername}>{title}</div> : null}
+        
         {subchapters.map((subchapter, i) => (
           <Subchapter
             ref={(ref) => (subchapterRefs.current[i] = ref)}

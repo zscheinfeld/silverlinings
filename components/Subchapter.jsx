@@ -7,6 +7,7 @@ import { forwardRef } from "react";
 import Sidenote from "./Sidenote";
 import Multiplecards from "./Multiplecards";
 import Svgchart from "./Svgchart";
+import Tensor from "./Tensor";
 
 const Subchapter = forwardRef(({ subchapter, chapterNumber }, ref) => {
   const { header, content, slug } = subchapter;
@@ -53,6 +54,12 @@ const Subchapter = forwardRef(({ subchapter, chapterNumber }, ref) => {
               questions={data.questions}
               answers={data.answers}
             />
+          );
+        }
+
+        if (type == "simulation") {
+          return (
+            <Tensor/>
           );
         }
 

@@ -51,7 +51,7 @@ const Book = () => {
                 0{chapter.number} / {chapter.title}
               </div>
             </Link>
-            <Chapter chapter={chapter} />
+            <Chapter chapter={chapter} type={chapter.number === 3 ? "simulation" : undefined} />
           </div>
         );
       })}

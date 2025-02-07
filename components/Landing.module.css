@@ -351,6 +351,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 5;
 }
 
 .fade {
@@ -818,7 +819,8 @@
   z-index: 500;
 }
 
-.jvectormap-tip {
-  display: block !important;
-  opacity: 1 !important;
+.jvm-tooltip {
+  z-index: 500;
 }
+
+

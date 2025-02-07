@@ -35,7 +35,13 @@ const WorldMap = () => {
             zoomOnScroll: false, // Disable zooming with the scroll wheel
             zoomButtons: false,  // Disable zoom buttons
             onRegionTooltipShow: function (event, tooltip, region) {
-              tooltip.css({ backgroundColor: 'transparent'})
+              tooltip.css({ 
+                backgroundColor: 'transparent',
+                zIndex:"5"
+      
+            })
+              console.log("Hovered over:", region); // Debugging log
+
               // List of regions where the tooltip should be enabled
               const enabledRegions = ["US", "BR", "MA", "JP", "IN", "CN", "SA"]; // Add region codes here
           

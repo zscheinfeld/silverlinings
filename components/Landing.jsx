@@ -20,19 +20,39 @@ const Landing = ({ onReachedBottom }) => {
   const faceAppearMultiplier = 0.1; // The range where Face appears in vh (from 0 to 0.1vh)
   const fadeStart = 300; // Start fading background color
 
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     setIsClient(true); // Now we know we're on the client-side
+  //     setFadeEnd(window.innerHeight); // Dynamically set fadeEnd to match window height
+
+  //     const handleScroll = () => {
+  //       setScrollY(window.scrollY); // Update scroll position
+  //     };
+
+  //     window.addEventListener("scroll", handleScroll);
+  //     return () => window.removeEventListener("scroll", handleScroll); // Cleanup the event listener
+  //   }
+  // }, []);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setIsClient(true); // Now we know we're on the client-side
-      setFadeEnd(window.innerHeight); // Dynamically set fadeEnd to match window height
-
+      setIsClient(true);
+      setFadeEnd(window.innerHeight);
+  
       const handleScroll = () => {
-        setScrollY(window.scrollY); // Update scroll position
+        setScrollY(window.scrollY);
+  
+        // Check if user has scrolled to the bottom
+        const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (window.scrollY >= scrollableHeight - 10) { // Add a small buffer
+          onReachedBottom(); // Trigger the event
+        }
       };
-
+  
       window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll); // Cleanup the event listener
+      return () => window.removeEventListener("scroll", handleScroll);
     }
-  }, []);
+  }, [onReachedBottom]);
 
   const getVisibility = (index, disappearIndex = -1) => {
     if (!isClient) return false;
@@ -173,7 +193,7 @@ const Landing = ({ onReachedBottom }) => {
       </div>
 
       {/*TODO: Replace with scroll trigger*/}
-      <button onClick={onReachedBottom}>Scroll Trigger</button>
+      {/* <button onClick={onReachedBottom}>Scroll Trigger</button> */}
     </div>
   );
 };
