@@ -41,15 +41,30 @@
 }
 
 .output{
-    background-color: yellow;
+    /* background-color: yellow; */
     height: 475px;
     min-width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.output img{
+    width: 80%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .explanation{
     width: 295px;
     height: 300px;
-    background-color: hotpink;
+    /* background-color: hotpink; */
+}
+
+.explanationText{
+    font-family: "Spectral", serif;
+    font-size: 12px;
+    line-height: 120%;
 }
 
 .sectionHeader{

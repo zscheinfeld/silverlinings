@@ -54,3 +54,7 @@
     letter-spacing: 5%;
     gap: 32px;
 }
+
+.output img{
+    width: 100%;
+}

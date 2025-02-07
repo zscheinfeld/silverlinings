@@ -300,7 +300,12 @@ const toggleSecondaryInputs = () => {
 
       </div>
       <div className={styles.outerOutputContainer}>
-      <div className={styles.output}></div>
+      <div className={styles.output}>
+
+        <img src="/brainsimulation.png"></img>
+
+
+      </div>
       <div className={styles.outputContainer}>
       <div className={styles.sectionHeader}>OUTPUTS</div>
 
@@ -354,7 +359,17 @@ const toggleSecondaryInputs = () => {
 
     </div>
     </div>
-      <div className={styles.explanation}></div>
+      <div className={styles.explanation}>
+
+      <div className={styles.sectionHeader}>
+        EXPLANATION
+      </div>
+
+      <div className={styles.explanationText}>
+
+        These returns would be primarily driven by a larger working population from increases in fertility, with smaller contributions from lower mortality and higher productivity. The effects of reproductive aging on labor supply and mortality are impossible to quantify precisely with existing data. We consulted with several reproductive aging scientists, and arrived at the assumption that for every year reproductive aging is delayed, productivity rates would increase slightly, accompanied by smaller shifts in mortality rates. There was nearly unanimous agreement on how productivity would be affected more strongly than mortality, though not by how much. We used 0.01 and 0.02 for mortality and productivity respectively, as symbolic assumptions on an existing but unknown relationship between the reproductive healthspan and overall health/lifespan. 
+      </div>
+      </div>
       </div>
 
 
