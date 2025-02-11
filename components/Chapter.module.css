@@ -365,11 +365,53 @@
   border-bottom: solid rgba(0, 0, 0, 0.25) 1px;
 }
 
-.fineprinta{
+.fineprinta {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 56px;
+
+  max-height: 0;
+  overflow: hidden; /* Hides content when collapsed */
+  /* transition: max-height 0.8s ease-in-out, padding 0.8s ease-in-out; */
+  padding: 0; /* Ensures padding doesn't affect collapsing */
+}
+
+.fineprintqtype{
+  font-size: 24px;
+  font-family: "spectral";
+  line-height: 112%;
+  cursor: default;
+  user-select: none;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.fineprintqtype:hover{
+  color: rgba(0, 0, 0, 0.50);
+  cursor: default;
+  user-select: none; 
+}
+
+.fineprinta.open {
+  max-height: 5000px; /* Adjust if needed */
+  padding: 20px; /* Add padding back when expanded */
+}
+
+.Fineprintaccordionitem{
+
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  /* gap: 24px; */
+}
+
+.fineprintharline{
+  border-bottom: solid rgba(0, 0, 0, 0.20) 1px;
+  width: 100%;
+  max-width: 700px;
+
 }
 
 

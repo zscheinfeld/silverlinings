@@ -9,6 +9,10 @@ const Chapter2 = {
       number: 1,
       content: [
         {
+          type: "subchaptertitle"
+        },
+        {
+          
           type: "text",
           data: {
             // callout:"It’s a forgotten truth that — more than oil, gold, or data — working-age adults are the most valuable resource of our time.",
@@ -25,6 +29,8 @@ const Chapter2 = {
         {
           type: "svgchart",
           data: {
+            imageoverlay:false,
+            textoverlay:false,
             // callout:"It’s a forgotten truth that — more than oil, gold, or data — working-age adults are the most valuable resource of our time.",
             source: ["/graph1.svg"],
           },
@@ -54,8 +60,27 @@ const Chapter2 = {
               "Measuring global brain activity",
               "Sensory stimulation",
               "Optogenetic neurotherapy",
+              "Managing synaptic creation and pruning",
+              "Remodeling the extracellular matrix",
+              "Improvement of drug delivery pathways into the brain",
+              "Stimulation of endogenous neurogenesis via stem-cell activation",
+              "Exogenous transplantation of brain cells and tissues",
+              "Endogenous neurogenesis via stem-cell activation"
             ],
-            answers: ["answer1", "answer2", "answer3", "answer4", "answer5"],
+            answers: [
+              "Existing measures of brain aging are archaic. Tests on cognitive function rely on doctors’ acumen and self-reported function. Better biomarkers of brain aging (e.g. knowing which proteins to look for and where) could unlock more preventative treatments for brain aging.  ", 
+              "Neuroinflammation is a hallmark of brain aging and related neurodegenerative diseases, and is shown in at least some cases to directly contribute to pathological processes. Blocking detrimental inflammation and/or promoting beneficial immune pathways may slow brain aging.", 
+              "Cell-resolved interrogation of long range connectivity and activity in the brain remains a significant challenge. Optical and electrical techniques to measure these parameters may be critical to sustain and, when necessary, revive brain function.", 
+              "Animal studies suggest that precisely delivered light and sound may slow cognitive decline due to neurodegenerative disease. Human studies could prove that brain aging can be partly moderated through sensory stimulation.", 
+              "Gamma brain waves tend to become deregulated as humans age. A technique called optogenetics can activate microglia (the brain's immune cells) to help clear harmful proteins. Studies in mammalian models show promising results, and human trials could prove a reduction in the pace of brain aging.126", 
+              "Synaptic communication between neurons is the basis of cognitive function, and specialized cells stimulate the creation of new synapses while pruning away excess ones. This process can be disrupted in disease, which raises the potential of interventions to restore healthy synaptic management function.", 
+              "The extracellular matrix regulates an array of brain cell functions including migration, proliferation, and differentiation. It is also critically involved in brain plasticity, memory, and inflammation. Remodeling the extracellular matrix may serve as a therapeutic modality in itself, or it may play a critical role in ensuring the success of other strategies that slow brain aging.127", 
+              "The brain is a highly regulated environment with multiple protective mechanisms. This impedes the delivery of therapeutics directly into brain cells or parts. Improved drug delivery mechanisms could maximize efficacy and minimize the off-target effects of drugs.", 
+              "Stem cell reservoirs within the brain could be used as sources of differentiated brain cells. This may ensure better immune compatibility than exogenously generated cells, with possible rejuvenating effects.", 
+              "Neurodegenerative diseases like Parkinson’s cause the death of specific cell types. Precursor cells grown in a lab from pluripotent stem cells can be used to help redevelop disrupted neural circuits, restoring function. Some therapeutic value has been proven among patients with neurodegeneration via the transplantation of young cells grown in vitro or from fetal tissue into the aging brain.128 Additional efforts could make these interventions less invasive, more scalable, and possible for a wider range of cell types.", 
+              "Stem cell reservoirs within the brain could be used as sources of differentiated brain cells. This may ensure better immune compatibility than exogenously generated cells, with possible rejuvenating effects."
+            
+            ],
           },
         },
 
@@ -71,8 +96,13 @@ const Chapter2 = {
       number: 2,
       content: [
         {
+          type: "subchaptertitle"
+        },
+        {
           type: "svgchart",
           data: {
+            imageoverlay:false,
+            textoverlay:false,
             // callout:"It’s a forgotten truth that — more than oil, gold, or data — working-age adults are the most valuable resource of our time.",
             source: ["/graph2.svg"],
           },
@@ -111,8 +141,17 @@ const Chapter2 = {
         {
           type: "svgchart",
           data: {
+            imageoverlay:false,
+            textoverlay:false,
             // callout:"It’s a forgotten truth that — more than oil, gold, or data — working-age adults are the most valuable resource of our time.",
             source: ["/graph3.svg"],
+          },
+        },
+
+        {
+          type: "sidenote",
+          data: {
+            text: "This simulation shows some of the limits of  GDP as a metric, since the joy of having children is not reflected in it. We discuss this in “The Fine Print.” Our goal has been to show that even in R&D in aging biology areas where GDP is not the ideal measuring stick, direct returns to the economy remain positive."
           },
         },
 
@@ -131,6 +170,9 @@ const Chapter2 = {
             ],
           },
         },
+        {
+          type: "bottompadding",
+        },
       ],
     },
 
@@ -140,8 +182,13 @@ const Chapter2 = {
       number: 3,
       content: [
         {
+          type: "subchaptertitle"
+        },
+        {
           type: "svgchart",
           data: {
+            imageoverlay:false,
+            textoverlay:false,
             // callout:"It’s a forgotten truth that — more than oil, gold, or data — working-age adults are the most valuable resource of our time.",
             source: ["/graph4.svg"],
           },
@@ -167,12 +214,29 @@ const Chapter2 = {
               "A simulation of organ abundance for still-healthy humans may have been more consistent with this project’s arguments — and this will ideally be the far-future result of investments in this R&D area. Yet given the horrific organ shortages of today, we chose to simulate the effects of first meeting this unmet demand — not least because once it is met, the same biotechnologies can be used to supply seemingly healthy humans, in prevention rather than late-stage treatment of organ or body-part failure.",
 
               "To see our assumptions for this simulation in detail, see the book. Briefly, we  focused on a decrease in mortality rates only, since many transplant patients will live longer but not necessarily in better health. It is very likely, however, that advancements in this area will also result in increases in productivity in the long run. (Otherwise, they would not be improving biological aging.)",
+            ],
+          },
+        },
 
+        {
+          type: "sidenote",
+          data: {
+            text: "In 2023, roughly 64% of all U.S. patients who received an organ were aged 50 or older. In the coming decades, it is possible that interventions like partial reprogramming will fully replace the messy, piecemeal approach of replacing organs, tissues, cells, and blood. But in the near term, advancements in this area will be needed to extend health and lifespan."
+          },
+        },
+
+        {
+          type:"text",
+          data:{
+            paragraphs:[
               "We refer to a Nature paper by Giwa et al. to consider two possibilities: a 2x and a 4x increase in life-saving organ transplants. The first (2x) results in a 0.22-year decrease in mortality rates by age for all U.S. adults aged 40 and older. The second (4x) leads to a 0.44-year decrease in mortality rates by age. These effects would be mostly driven by a greater number of working-age adults alive at any given time, even if these adults would not enjoy 100% perfect health. The reader is also free to assume that organ, cell, and tissue transplant techniques will be refined in the coming decades to also extend healthspan and increase productivity rates by age. ",
 
               "If the reader considers only what is likely in the near term  — namely, life-saving organ transplants for terminally ill patients — the impact of a 4x increase in organ supply on GDP per capita would be negative, at -$317. This is consistent with the existing sick-care system. If, however, the reader assumes this R&D area could eventually prevent age-related decline in still-healthy adults (for instance through cell engineering), the impact on GDP per capita would be overwhelmingly positive.",
-            ],
-          },
+            ]
+          }
+        },
+        {
+          type: "bottompadding",
         },
       ],
     },
@@ -183,8 +247,13 @@ const Chapter2 = {
       number: 4,
       content: [
         {
+          type: "subchaptertitle"
+        },
+        {
           type: "svgchart",
           data: {
+            imageoverlay:false,
+            textoverlay:false,
             // callout:"It’s a forgotten truth that — more than oil, gold, or data — working-age adults are the most valuable resource of our time.",
             source: ["/cell.png"],
           },
@@ -192,13 +261,76 @@ const Chapter2 = {
         {
           type: "text",
           data: {
+            callout: "How do we measure aging? In 2024, the depressing answer is nobody knows. ",
             paragraphs: [
-              "If the idea of “replacing aging” sounds messy, it’s because it is. But it may be one we cannot afford to ignore. Moonshot approaches like vaccines for aging or partial reprogramming may result in exciting, but limited gains. To fully map out the biology of aging, we may need several decades of fundamental research. But even if aging cannot be fully understood in the near term, its parts can be replaced — as shown by the replacement of cells, organs, blood, and tissues since the 1950’s.",
-
-              "The decline of organ function is a common symptom of aging, and many people need their organs replaced as they age. In the near future, it’s unlikely that a single therapeutic will slow down the biological age of all organs, cells, and tissues in the human body at once. Instead, a combination of biotechnologies will likely be needed. And the good news is that the commercial incentives for replacement are somewhat aligned to social needs: there is no shortage of companies attempting to engineer organs, cells, or tissues. CAR-T cell therapies, for instance, are a form of immune system replacement; organ transplants are a way of replacing malfunctioning parts; and hormone-replacement therapies (like insulin) are often used to treat late-stage diseases.",
-
-              "In a future where the horrific organ shortages of today can be overcome, seemingly healthy patients, having accumulated non-trivial age-related molecular damage, may begin to have their cells and tissues gradually replaced if the benefits of doing so outweigh the risks. Replacing different body parts — large and small — is not just safely done within the context of today’s medicine; it may be necessary to holistically improve human aging in the coming decade.",
+              "Or at least not precisely. Apps designed to track one’s biological age, while commercially viable, are often misleading. In the early 1950s, we had no effective therapeutic for heart disease for somewhat the same reason: LDL cholesterol was not yet approved as a surrogate marker of heart health, which meant the effects of statins and other lipid-lowering drugs could not have been precisely measured in clinical trials. The aging field suffers from a similar measuring problem today. Birthday candles measure our chronological age, but there’s no universally accepted way to measure how old we are biologically. ",
+              "This means that even if an existing drug compound can improve aging with minimal side effects, proving this remains difficult. Because trials also typically measure gains in single diseases, the aging field suffers from the undervaluing of existing therapeutics which may improve overall biological aging if administered earlier. Here, we consider the value of two drug classes: existing, but imperfect therapeutics that may marginally slow aging — but have not yet been tested — and second-generation therapeutics that could be developed to delay aging in healthy, working-age adults who have no preexisting condition but will still go on to suffer from one of the diseases of aging. Then, we consider the delta in terms of lives saved and GDP increases between the current  (first-generation) way of treating late-stage diseases versus early prevention (second-generation).",
+            
             ],
+          },
+        },
+
+        {
+          type: "sidenote",
+          data: {
+            text: "In 2022, the FDA Modernization Act 2.0 approved the use of these methodologies to reduce or replace animal studies, especially “where no pharmacologically relevant animal species exists.” This may be the case for human aging, where no single animal model reflects the complex biology of our aging process. "
+          },
+        },
+
+        {
+          type: "text",
+          data: {
+            callout: "The aging field is particularly vulnerable to the oft-cited problem that chocolate, if tested on dogs, would be deemed toxic. ",
+            paragraphs: [
+              "No animal model captures the complex biology of human aging — and this means that for aging science to succeed, the advancement of breakthrough tools to test, measure, and model the biology of human aging may be critical. Another way to quantify the value of measuring aging is to consider the economic value of compressing the timeline of drug development. New technologies like organs-on-chips and virtual cells may help deliver on this. Organs-on-chips have the potential to mimic the structure and function of human organs in a microscale format, enabling clinical trials to measure the age of human organs with results perhaps more likely to translate to full-sized human bodies. For in vitro and in silico models to reproduce key aspects of aging biology, a better understanding of how human aging works (and what markers to include to represent it either virtually or in vitro) will be needed.  In 2024, tools like organs-on-chips are only sometimes useful, and especially so in aging science, since it’s challenging to code “human aging” into them. Yet in the coming decade, a convergence of technologies could change this.",
+              "Previous studies estimate up to a 20% reduction in development time from using human-relevant methodologies like organs-on-chips or virtual cells in preclinical development. To simulate the economic effects of advancements in human-relevant methodologies, we consider the value of our second-generation therapeutic simulation, boosted by a 20% reduction in development timeline. We narrowly measure these effects  on one counterfactual trial; yet this technology could be applied horizontally to hundreds of trials.  ",
+              "This delta alone translates into a $18 billion yearly increase in U.S. GDP the short term, adding up to $1 trillion in the long run. This simulation is especially conservative because in the long run, these methodologies could not only reduce R&D costs and compress trial timelines, but also translate into therapeutics that safely improve human aging and prevent disease, as simulated in Future 5. "
+            ],
+          },
+        },
+
+        {
+          type: "bottompadding",
+          data: "",
+        },
+      ],
+    },
+
+    {
+      slug: "2-5",
+      header: "We can make 41 the new 40  (or 61 the new 60!)",
+      number: 5,
+      content: [
+        {
+          type: "subchaptertitle"
+        },
+        {
+          type: "svgchart",
+          data: {
+            imageoverlay:false,
+            textoverlay:false,
+            // callout:"It’s a forgotten truth that — more than oil, gold, or data — working-age adults are the most valuable resource of our time.",
+            source: ["/charts/1_5_1.svg"],
+          },
+        },
+        {
+          type: "text",
+          data: {
+            
+            paragraphs: [
+              "The holy grail of aging science — and arguably of medicine — is to extend health at roughly the same pace that it extends life. At its most compelling, aging science would unlock not just functional gains for discrete organs or tissues, but whole-body benefits. At their best, aging therapies would mean that not only the human reproductive window or the brain’s healthspan would be extended, but the onset of age-related conditions like osteoporosis, frailty, or Parkinson’s would also be delayed or reversed." ,
+              "Treatments like GLP-1 agonists, for instance — even if they can successfully target multiple age-related conditions at once — have diminishing returns, since they were designed mostly for unhealthy patients. Improvements in biological aging, by contrast, may have less-diminishing returns, since the goal is prevention of age-related decline for still-healthy adults. Research suggests there may not be a limit to how many times the molecular damage that leads to the diseases of aging can be improved — but more research and translation are needed to produce these results in normally aging humans.",
+              "Here, we assume that the aging profile of different cells, tissues, and organs in the body could be therapeutically targeted, resulting in a 1-year improvement in biological aging. This is a very marginal improvement in the biology of aging. Yet its effects are large. Think of a world where 41 is the new 40, such that all adults over the age of 40 in the U.S. live, work, give birth, and die at the rates of adults 1 year younger. We call this 1-year shift “41 is the new 40,” but because we consider all adults over the age of 40 in the U.S, this shift would equally affect older adults, so that 61 would be the new 60, 71 the new 70, and so forth. Most scientists we interviewed are confident this marginal shift can be engineered with existing therapeutics that just haven’t yet been tested for biological aging in clinical trials.",
+              "This simulation is different from extending life expectancy by 1 year. Increases in life expectancy have been engineered many times before — for instance, by the introduction of refrigeration, with the ability to safely store food. Improvements in the biology of aging are different because they can simultaneously improve how we live, work, give birth, and die. In other words, improving the biology of aging means shifting healthy survival rates.",
+              "For more conservative results, the reader is free to assume that this 1-year shift backwards in biological aging would only affect older populations (e.g. 65+) already suffering from age-related diseases — in which case the returns would be smaller, in line with the existing sick-care system."
+            ],
+          },
+        },
+
+        {
+          type: "sidenote",
+          data: {
+            text: "Our baseline simulation for this 1-year shift in mortality, productivity, and fertility rates increases GDP per capita by +$426. This is less than the GDP per capita results for a 1-year shift in brain aging, in part because the accompanying shift in fertility rates in this section temporarily reduces GDP."
           },
         },
 
@@ -206,13 +338,8 @@ const Chapter2 = {
           type: "text",
           data: {
             paragraphs: [
-              "A simulation of organ abundance for still-healthy humans may have been more consistent with this project’s arguments — and this will ideally be the far-future result of investments in this R&D area. Yet given the horrific organ shortages of today, we chose to simulate the effects of first meeting this unmet demand — not least because once it is met, the same biotechnologies can be used to supply seemingly healthy humans, in prevention rather than late-stage treatment of organ or body-part failure.",
-
-              "To see our assumptions for this simulation in detail, see the book. Briefly, we  focused on a decrease in mortality rates only, since many transplant patients will live longer but not necessarily in better health. It is very likely, however, that advancements in this area will also result in increases in productivity in the long run. (Otherwise, they would not be improving biological aging.)",
-
-              "We refer to a Nature paper by Giwa et al. to consider two possibilities: a 2x and a 4x increase in life-saving organ transplants. The first (2x) results in a 0.22-year decrease in mortality rates by age for all U.S. adults aged 40 and older. The second (4x) leads to a 0.44-year decrease in mortality rates by age. These effects would be mostly driven by a greater number of working-age adults alive at any given time, even if these adults would not enjoy 100% perfect health. The reader is also free to assume that organ, cell, and tissue transplant techniques will be refined in the coming decades to also extend healthspan and increase productivity rates by age. ",
-
-              "If the reader considers only what is likely in the near term  — namely, life-saving organ transplants for terminally ill patients — the impact of a 4x increase in organ supply on GDP per capita would be negative, at -$317. This is consistent with the existing sick-care system. If, however, the reader assumes this R&D area could eventually prevent age-related decline in still-healthy adults (for instance through cell engineering), the impact on GDP per capita would be overwhelmingly positive.",
+              "It is technically possible that a therapeutic may target the key causal node linked to aging across the human body. Cellular reprogramming, for instance, shows significant promise. Yet advancements in organ, cell, and tissue transplants may be needed to unlock a holistic improvement in biological aging, as simulated in this section. The human body is made up of complex adaptive systems comprising interacting networks of parts, and interventions like genome engineering for polygenic conditions may be decades away from safety and precision. This means a combination of interventions could be necessary to slow aging  — including small-molecule drugs and refined technologies like tissue engineering.",
+              "The social net present value from our baseline simulation for this 1-year shift, adding up to $22.5 trillion over several decades, suggests roughly a 1.1% increase in U.S. GDP."
             ],
           },
         },
