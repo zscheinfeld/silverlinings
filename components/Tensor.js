@@ -151,6 +151,8 @@ const toggleSecondaryInputs = () => {
   if (loading) return <span>Loading...</span>;
 
   return (
+    <>
+    <div className={styles.simulationhead}>We can <i>slow</i> brain aging</div>
     <div>
       <div className={styles.middleContainer}>
       <div className={styles.inputContainer}>
@@ -375,6 +377,7 @@ const toggleSecondaryInputs = () => {
 
     
     </div>
+    </>
 
   );
 };

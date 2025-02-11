@@ -55,6 +55,7 @@ const Chapter = ({ chapter, type="default" }) => {
             ref={(ref) => (subchapterRefs.current[i] = ref)}
             subchapter={subchapter}
             chapterNumber={number}
+            
           />
         ))}
       </div>

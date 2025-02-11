@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "@/components/Chapter.module.css";
 
-const Svgchart = ({ source, imageoverlay = true, textoverlay = true }) => {
+const Svgchart = ({ source, imageoverlay = true, textoverlay = true, textcontent, overlaycontent }) => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -16,14 +16,16 @@ const Svgchart = ({ source, imageoverlay = true, textoverlay = true }) => {
             {/* Image Overlay */}
             {imageoverlay && (
                 <div className={`${styles.overlay} ${isHovered ? styles.visible : ""}`}>
-                    Hover Image Overlay Content
+                    <img src ={overlaycontent}></img>
                 </div>
             )}
 
             {/* Text Overlay */}
             {textoverlay && (
                 <div className={`${styles.textOverlay} ${isHovered ? styles.visible : ""}`}>
-                    Hover Text Overlay Content
+                    <div className={styles.textOverlayInner}>
+                    {textcontent} 
+                    </div>
                 </div>
             )}
         </div>

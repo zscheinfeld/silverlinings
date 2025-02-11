@@ -1,6 +1,8 @@
 import styles from "@/components/Newaccordion.module.css";
 import Accordionitem from "./Accordionitem";
 
+
+
 const Newaccordion = ({atitle, questions, answers}) =>{
     return(
 

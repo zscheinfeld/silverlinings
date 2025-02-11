@@ -153,3 +153,9 @@
   .secondaryInputsHeader:hover{
     color: rgba(0, 0, 0, 0.50);
   }
+
+  .simulationhead{
+    font-size: 36px;
+    line-height: 106%;
+    font-family: "Spectral", serif;
+  }

@@ -8,8 +8,6 @@ import Script from "next/script"; // Import Next.js Script component
 import WorldMap from "@/components/WorldMap";
 
 
-
-  
   export default function LandingPage() {
     return (
       <>

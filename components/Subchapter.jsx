@@ -8,14 +8,20 @@ import Sidenote from "./Sidenote";
 import Multiplecards from "./Multiplecards";
 import Svgchart from "./Svgchart";
 import Tensor from "./Tensor";
+import Fineprintaccordion from "./Fineprintaccordion";
 
-const Subchapter = forwardRef(({ subchapter, chapterNumber }, ref) => {
+const Subchapter = forwardRef(({ subchapter, chapterNumber}, ref) => {
   const { header, content, slug } = subchapter;
 
   return (
     <div ref={ref} id={slug} className={styles.subchaptermodules}>
-      <div className={styles.subchaptername}>{header}</div>
       {content.map(({ type, data }) => {
+        if (type == "subchaptertitle"){
+          return(
+          <div className={styles.subchaptername}>{header}</div>
+          )
+          ;
+        }
         if (type == "text") {
           return (
             <Textblock
@@ -43,7 +49,7 @@ const Subchapter = forwardRef(({ subchapter, chapterNumber }, ref) => {
 
         if (type == "svgchart") {
           return (
-            <Svgchart source={data.source}></Svgchart>
+            <Svgchart source={data.source} imageoverlay={data.imageoverlay} overlaycontent={data.imageoverlay} textoverlay={data.textoverlay} textcontent={data.text}></Svgchart>
           );
         }
 
@@ -52,7 +58,9 @@ const Subchapter = forwardRef(({ subchapter, chapterNumber }, ref) => {
             <Newaccordion
               atitle={data.title}
               questions={data.questions}
-              answers={data.answers}
+              answers={data.answers.map(answer =>
+                answer.split("\n\n").map((paragraph, index) => <div className={styles.answerparagraph} key={index}>{paragraph}</div>)
+              )}
             />
           );
         }
@@ -66,6 +74,13 @@ const Subchapter = forwardRef(({ subchapter, chapterNumber }, ref) => {
         if (type == "bottompadding") {
           return <div className={styles.bottompadding}></div>;
         }
+
+        if (type == "fineprint") {
+          return (
+            <Fineprintaccordion></Fineprintaccordion>
+          )
+        }
+
 
         // render accordian
       })}
