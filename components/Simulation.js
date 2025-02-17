@@ -36,7 +36,7 @@ const Simulation = ({ data }) => {
   const [showSecondaryInputs, setShowSecondaryInputs] = useState(false);
 
   const handleReset = () => {
-    setInputs(defaultInputs);
+    setInputs({ ...defaultInputs });
   };
 
   const toggleSecondaryInputs = () => {
@@ -44,7 +44,7 @@ const Simulation = ({ data }) => {
   };
 
   useEffect(() => {
-    setInputs(defaultInputs);
+    setInputs({ ...defaultInputs });
   }, [sectionIndex]);
 
   useEffect(() => {
@@ -66,17 +66,14 @@ const Simulation = ({ data }) => {
 
   useEffect(() => {
     if (!loading) {
-      updateInputs();
+      doSurrogate();
     }
-  }, [loading]);
+  }, [loading, inputs]);
 
   const updateInputs = (event) => {
-    if (event) {
-      setInputs((inputs) => {
-        return { ...inputs, [event.target.id]: parseFloat(event.target.value) };
-      });
-    }
-    doSurrogate();
+    setInputs((inputs) => {
+      return { ...inputs, [event.target.id]: parseFloat(event.target.value) };
+    });
   };
 
   // Normalization function
