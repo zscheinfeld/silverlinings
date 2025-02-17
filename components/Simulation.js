@@ -35,6 +35,10 @@ const Simulation = ({ data }) => {
 
   const [showSecondaryInputs, setShowSecondaryInputs] = useState(false);
 
+  const handleReset = () => {
+    setInputs(defaultInputs);
+  };
+
   const toggleSecondaryInputs = () => {
     setShowSecondaryInputs((prev) => !prev);
   };
@@ -181,6 +185,7 @@ const Simulation = ({ data }) => {
         className={styles.simulationhead}
         dangerouslySetInnerHTML={{ __html: data.title }}
       />
+      <button onClick={handleReset}>Reset</button>
       <div key={`${sectionIndex}`}>
         <div className={styles.middleContainer}>
           <div className={styles.inputContainer}>
