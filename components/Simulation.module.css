@@ -1,0 +1,129 @@
+.middleContainer {
+  display: flex;
+}
+
+.inputContainer {
+  /* background-color: rgb(255, 7, 7); */
+  /* width: 295px; */
+
+  min-width: 200px;
+  max-width: 275px;
+}
+
+.outerOutputContainer {
+}
+
+.outputContainer {
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.outputInnerContainer {
+  display: flex;
+  flex-direction: row;
+  max-width: 610px;
+  justify-content: center;
+}
+
+.outputLabel {
+  font-family: "Spectral", serif;
+  font-size: 16px;
+  line-height: 110%;
+  letter-spacing: -3%;
+  text-align: center;
+  max-width: 170px;
+}
+
+.output {
+  /* background-color: yellow; */
+  height: 475px;
+  min-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.output img {
+  width: 80%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.explanation {
+  width: 295px;
+  height: 300px;
+  /* background-color: hotpink; */
+}
+
+.explanationText {
+  font-family: "Spectral", serif;
+  font-size: 12px;
+  line-height: 120%;
+}
+
+.sectionHeader {
+  font-family: "Spectral", serif;
+  font-size: 16px;
+  letter-spacing: 5%;
+  font-weight: bold;
+  padding-bottom: 16px;
+  /* color:white; */
+}
+
+.outputStat {
+  background-color: transparent;
+  border: 0;
+  text-align: center;
+  font-family: "Spectral", serif;
+  font-size: 42px;
+  font-weight: bold;
+  line-height: 106%;
+  width: fit-content;
+  pointer-events: none;
+}
+
+.Item {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  width: 190px;
+}
+
+.secondaryInputs {
+  background-color: transparent;
+  max-height: 0;
+
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.show {
+  max-height: 500px; /* Adjust based on content */
+  opacity: 1;
+}
+
+.hide {
+  max-height: 0;
+  opacity: 0;
+}
+
+.secondaryInputsHeader {
+  background-color: transparent;
+  border: 0;
+  padding-top: 36px;
+}
+
+.secondaryInputsHeader:hover {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.simulationhead {
+  font-size: 36px;
+  line-height: 106%;
+  font-family: "Spectral", serif;
+}

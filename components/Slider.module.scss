@@ -1,0 +1,149 @@
+$thumb-color: white;
+$thumb-border: 1px solid black;
+$thumb-hover: white;
+$track-bg: black;
+$track-height: 1px;
+$thumb-size: 16px;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.label{
+  font-family: "Spectral", serif;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.input_wrapper {
+  width: 100%;
+  display: flex;
+  position: relative;
+  align-items: center;
+  height: $thumb-size;
+}
+
+.track {
+  position: absolute;
+  width: 100%;
+  height: $track-height;
+  background-color: var(--track-bg, $track-bg);
+  z-index: 1;
+}
+
+
+.default_wrapper {
+  position: absolute;
+  width: calc(100% - $thumb-size);
+  top: 0;
+}
+
+.default_value {
+  position: absolute;
+  background-color: grey;
+  border: var(--thumb-border, $thumb-border);
+  height: $thumb-size;
+  width: $thumb-size;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.input_and_value {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.value_wrapper {
+  position: relative;
+  width: calc(100% - $thumb-size);
+  height: 20px;
+}
+
+.value {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-50%);
+}
+
+.slider {
+  position: relative;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: $thumb-size;
+  background: transparent;
+  outline: none;
+  z-index: 3;
+
+  &::-webkit-slider-runnable-track {
+    width: 100%;
+    height: $track-height;
+    background: transparent;
+  }
+
+  &::-moz-range-track {
+    width: 100%;
+    height: $track-height;
+    background: transparent;
+  }
+
+  &::-ms-track {
+    width: 100%;
+    height: $track-height;
+    background: transparent;
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: $thumb-size;
+    height: $thumb-size;
+    background: var(--thumb-color, $thumb-color);
+    border: var(--thumb-border, $thumb-border);
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: calc(($track-height - $thumb-size) / 2);
+
+    &:hover {
+      background: $thumb-hover;
+    }
+  }
+
+  &::-moz-range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: $thumb-size;
+    height: $thumb-size;
+    background: var(--thumb-color, $thumb-color);
+    border: var(--thumb-border, $thumb-border);
+    border-radius: 50%;
+    cursor: pointer;
+    transform: translateY(calc(($track-height - $thumb-size) / 2));
+
+    &:hover {
+      background: $thumb-hover;
+    }
+  }
+
+  &::-ms-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: $thumb-size;
+    height: $thumb-size;
+    background: var(--thumb-color, $thumb-color);
+    border: var(--thumb-border, $thumb-border);
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: calc(($track-height - $thumb-size) / 2);
+
+    &:hover {
+      background: $thumb-hover;
+    }
+  }
+}
