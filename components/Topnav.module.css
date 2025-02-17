@@ -1,57 +1,52 @@
-
-.nav{
-    position: fixed;
-    width: 100vw;
-    border-bottom: solid black 1px;
-    z-index: 5;
+.nav {
+  position: fixed;
+  width: 100vw;
+  border-bottom: solid black 1px;
+  z-index: 5;
 }
 
-.navtop{ 
-    background-color: #FFF5E5;
-    height: 56px;
-    display: flex;
-    justify-content: space-between;
-    padding-left: 30px;
-    padding-right: 30px;
-    align-items: center;
+.navtop {
+  background-color: #fff5e5;
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 30px;
+  align-items: center;
 }
 
-.navbottom{
-    
+.navbottom {
+  overflow: hidden;
 }
 
-.hide{
-    height: 0px;
-    transition: height 600ms ease-in-out;
-    background-color: #FFF5E5;
+.hide {
+  height: 0px;
+  transition: height 600ms ease-in-out;
+  background-color: #fff5e5;
 }
 
-.show{
-    
-    height: calc(100vh - 56px);
-    transition: height 600ms ease-in-out;
-    background-color: #FFF5E5;
+.show {
+  height: calc(100vh - 56px);
+  transition: height 600ms ease-in-out;
+  background-color: #fff5e5;
 }
 
-
-
-.left{
-    font-family: "spectral";
-    font-size: 12px;
-    letter-spacing: 5%;
-    background-color: transparent;
-    border: 0px;
+.left {
+  font-family: "spectral";
+  font-size: 12px;
+  letter-spacing: 5%;
+  background-color: transparent;
+  border: 0px;
 }
 
-.left:hover{
-    color: rgba(0, 0, 0, 0.50);
+.left:hover {
+  color: rgba(0, 0, 0, 0.5);
 }
 
-.right{
-    display: flex;
-    font-family: "spectral";
-    font-size: 12px;
-    letter-spacing: 5%;
-    gap: 32px;
+.right {
+  display: flex;
+  font-family: "spectral";
+  font-size: 12px;
+  letter-spacing: 5%;
+  gap: 32px;
 }
-
