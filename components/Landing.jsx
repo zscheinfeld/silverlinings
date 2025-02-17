@@ -38,17 +38,19 @@ const Landing = ({ onReachedBottom }) => {
     if (typeof window !== "undefined") {
       setIsClient(true);
       setFadeEnd(window.innerHeight);
-  
+
       const handleScroll = () => {
         setScrollY(window.scrollY);
-  
+
         // Check if user has scrolled to the bottom
-        const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
-        if (window.scrollY >= scrollableHeight - 10) { // Add a small buffer
+        const scrollableHeight =
+          document.documentElement.scrollHeight - window.innerHeight;
+        if (window.scrollY >= scrollableHeight - 10) {
+          // Add a small buffer
           onReachedBottom(); // Trigger the event
         }
       };
-  
+
       window.addEventListener("scroll", handleScroll);
       return () => window.removeEventListener("scroll", handleScroll);
     }
@@ -189,11 +191,8 @@ const Landing = ({ onReachedBottom }) => {
             : ""
         }`}
       >
-        <Interactivewoman message="Hello from Parent" />
+        <Interactivewoman />
       </div>
-
-      {/*TODO: Replace with scroll trigger*/}
-      {/* <button onClick={onReachedBottom}>Scroll Trigger</button> */}
     </div>
   );
 };

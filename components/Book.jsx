@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Chapter from "./Chapter";
-import styles from "./Chapter.module.css";
 import { Chapters } from "@/data/book";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import Topnav from "@/components/Topnav";
+import styles from "./Book.module.css";
 
-const Book = () => {
+const Book = ({ active }) => {
   const [activeChapter, setActiveChapter] = useState(1);
   const router = useRouter();
 
@@ -19,42 +18,73 @@ const Book = () => {
     }
   }, [router.query]);
 
+  useEffect(() => {
+    // Hide the body scroll when the book is active.
+    if (active) {
+      document.body.style.overflowY = "hidden";
+    }
+  }, [active]);
+
+  const style = useMemo(() => {
+    return {
+      left: active ? 0 : "100%",
+    };
+  }, [active]);
+
+  const onScrollToBottom = () => {
+    const nextChapter = Chapters[activeChapter];
+    if (nextChapter) {
+      void router.push({
+        pathname: router.pathname,
+        query: { ...router.query, chapter: nextChapter.slug },
+      });
+    }
+  };
+
+  const onScrollToTop = () => {
+    const previousChapter = Chapters[activeChapter - 2];
+    if (previousChapter) {
+      void router.push({
+        pathname: router.pathname,
+        query: { ...router.query, chapter: previousChapter.slug },
+      });
+    }
+  };
+
   return (
-    <div className="book">
-      <Topnav />
-      {Chapters.map((chapter) => {
-        const { number } = chapter;
-        let state = "current";
+    <div className={styles.book} style={style}>
+      <div className={styles.bookContent}>
+        <Topnav />
+        {Chapters.map((chapter) => {
+          const { number } = chapter;
+          const hasPrevious = number !== 1;
+          const hasNext = number !== Chapters.length;
 
-        if (number == activeChapter - 1) {
-          state = "previous";
-        } else if (number < activeChapter - 1) {
-          state = "archived";
-        } else if (number == activeChapter + 1) {
-          state = "next";
-        } else if (number > activeChapter + 1) {
-          state = "upcoming";
-        }
+          let state = "current";
 
-        console.log(chapter.title, state);
+          if (number === activeChapter - 1) {
+            state = "previous";
+          } else if (number < activeChapter - 1) {
+            state = "archived";
+          } else if (number === activeChapter + 1) {
+            state = "next";
+          } else if (number > activeChapter + 1) {
+            state = "upcoming";
+          }
 
-        return (
-          <div className={`chapter ${state}`} style={{ display: "flex" }}>
-            <Link
-              href={{
-                pathname: router.pathname,
-                query: { ...router.query, chapter: chapter.slug },
-              }}
-              className={`${styles.subchapterNav} chapter-bar  chap-${chapter.number} chap-${state} `}
-            >
-              <div className={styles.subchapterNavText}>
-                0{chapter.number} / {chapter.title}
-              </div>
-            </Link>
-            <Chapter chapter={chapter} type={chapter.number === 3 ? "simulation" : undefined} />
-          </div>
-        );
-      })}
+          return (
+            <Chapter
+              chapter={chapter}
+              type={chapter.number === 3 ? "simulation" : undefined}
+              state={state}
+              hasPrevious={hasPrevious}
+              hasNext={hasNext}
+              onScrollToTop={onScrollToTop}
+              onScrollToBottom={onScrollToBottom}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };

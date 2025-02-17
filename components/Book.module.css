@@ -1,0 +1,11 @@
+.book {
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+  transition: left 600ms ease-in-out;
+}
+
+.bookContent {
+  position: relative;
+  width: 100%;
+}
