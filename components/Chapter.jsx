@@ -89,6 +89,7 @@ const Chapter = ({
   const style = useMemo(() => {
     let style = {
       left: hasPrevious ? `${BAR_WIDTH}px` : 0,
+      zIndex: number,
     };
 
     if (hasPrevious && hasNext) {
@@ -133,7 +134,7 @@ const Chapter = ({
         ref={chapterRef}
         id={`chapter-${number}`}
         className={
-          type === "simulation" ? styles.simulatorcontent : styles.maincontent
+          type === "simulation" ? styles.maincontent : styles.maincontent
         }
       >
         {type === "default" ? (
