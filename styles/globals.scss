@@ -1,7 +1,5 @@
-@import "Book.scss";
-
 :root {
-  --background: #ffffff;
+  --background: #fff5e5;
   --foreground: #171717;
 }
 
@@ -16,7 +14,7 @@ body {
   overflow-y: scroll; */
 }
 
-p{
+p {
   // margin-bottom: 16px;
 }
 
@@ -59,29 +57,4 @@ a {
 .main {
   display: flex;
   width: 100%;
-
-  .content {
-    transition: width 1200ms ease-in-out;
-    position: relative;
-    overflow: hidden;
-
-    &.book {
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      z-index: 2;
-    }
-
-    &.landing {
-      z-index: 1;
-    }
-
-    &.active {
-      width: 100%;
-    }
-
-    &.inactive {
-      width: 0;
-    }
-  }
 }
