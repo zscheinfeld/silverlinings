@@ -2,7 +2,7 @@
   position: fixed;
   width: 100vw;
   border-bottom: solid black 1px;
-  z-index: 5;
+  z-index: 10;
 }
 
 .navtop {
