@@ -25,7 +25,7 @@ const Chapter3 = {
                     defaultValue: 50,
                     step: 1,
                     label: "Percentage of the population who will benefit",
-                    tooltip: "",
+                    tooltip: "example of tooltip text",
                   },
                   age: {
                     min: 40,
@@ -89,7 +89,7 @@ const Chapter3 = {
                     min: 0,
                     max: 478.4,
                   },
-                  GDP: {
+                  yGDP: {
                     min: 0,
                     max: 4667,
                   },
@@ -190,7 +190,7 @@ const Chapter3 = {
                     min: 2.5,
                     max: 206.3,
                   },
-                  GDP: {
+                  yGDP: {
                     min: 620,
                     max: 4010,
                   },
@@ -291,7 +291,7 @@ const Chapter3 = {
                     min: 2.5,
                     max: 206.3,
                   },
-                  GDP: {
+                  yGDP: {
                     min: 620,
                     max: 4010,
                   },
@@ -375,7 +375,7 @@ const Chapter3 = {
                     min: 2.5,
                     max: 206.3,
                   },
-                  GDP: {
+                  yGDP: {
                     min: 620,
                     max: 4010,
                   },
@@ -476,7 +476,7 @@ const Chapter3 = {
                     min: 2.5,
                     max: 206.3,
                   },
-                  GDP: {
+                  yGDP: {
                     min: 620,
                     max: 4010,
                   },
@@ -560,7 +560,7 @@ const Chapter3 = {
                     min: 2.5,
                     max: 206.3,
                   },
-                  GDP: {
+                  yGDP: {
                     min: 620,
                     max: 4010,
                   },
@@ -644,7 +644,7 @@ const Chapter3 = {
                     min: 2.5,
                     max: 206.3,
                   },
-                  GDP: {
+                  yGDP: {
                     min: 620,
                     max: 4010,
                   },
@@ -728,7 +728,7 @@ const Chapter3 = {
                     min: 2.5,
                     max: 206.3,
                   },
-                  GDP: {
+                  yGDP: {
                     min: 620,
                     max: 4010,
                   },
@@ -829,7 +829,7 @@ const Chapter3 = {
                     min: 0,
                     max: 478.4,
                   },
-                  GDP: {
+                  yGDP: {
                     min: 0,
                     max: 4667,
                   },

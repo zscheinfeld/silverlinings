@@ -289,9 +289,12 @@ const toggleOverlay = () => {
           min={section.inputs.return.min}
           max={section.inputs.return.max}
           current={outputs.outputNPV || 0}
-          min2={section.inputs.GDP.min}
-          max2={section.inputs.GDP.max}
+          min2={section.inputs.yGDP.min}
+          max2={section.inputs.yGDP.max}
           current2={outputs.outputGDP20 || 0}
+          min3={section.inputs.lives.min}
+          max3={section.inputs.lives.max}
+          current3={outputs.outputPop || 0}
         />
       )}
       <img src={`/${section.image}`} alt="" />

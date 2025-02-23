@@ -47,3 +47,30 @@
     mix-blend-mode: lighten;
 }
 
+.maskcolumn{
+    justify-content: center;
+    align-items: center;
+}
+
+.maskedimage{
+    height: 100%;
+    width: 140px;
+    background-color: rgba(0, 0, 255, 0);
+    display: flex;
+    align-items: center;
+    
+    /* padding-left: 24px;
+    padding-right: 24px; */
+}
+
+.pattern{
+    height: 380px;
+    width: 140px;
+    mix-blend-mode: multiply;
+}
+
+.pattern img{
+    height: 100%;
+    width: 100%;
+}
+
