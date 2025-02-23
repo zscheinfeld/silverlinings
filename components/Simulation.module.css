@@ -8,6 +8,7 @@
 
   min-width: 200px;
   max-width: 275px;
+  position: relative;
 }
 
 .outerOutputContainer {
@@ -40,16 +41,17 @@
 
 .output {
   /* background-color: yellow; */
-  height: 475px;
+  height: 400px;
   min-width: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .output img {
   width: 80%;
-  height: 100%;
+  height: 85%;
   object-fit: contain;
 }
 
@@ -71,6 +73,7 @@
   letter-spacing: 5%;
   font-weight: bold;
   padding-bottom: 16px;
+  display: flex;
   /* color:white; */
 }
 
@@ -124,6 +127,97 @@
 
 .simulationhead {
   font-size: 36px;
-  line-height: 106%;
+  line-height: 92%;
   font-family: "Spectral", serif;
+  text-align: center;
+
+}
+
+.resetContainer{
+  background-color: transparent;
+  border: 0px;
+  font-family: "spectral";
+  opacity: 50%;
+  position: absolute;
+  top: -30px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.svg{
+  height: 20px;
+  width: 20px;
+  margin-right: 2px;
+  margin-bottom: 4px;
+}
+
+.svg img{
+
+  height: 100%;
+  width : 100%;
+}
+
+
+
+.resetContainer:hover{
+  opacity: 100%;
+}
+
+.sectionButtonContainer{
+  width: 100%;
+  height: 34px;
+  display: flex;
+  padding-left: 36px;
+  padding-right: 36px;
+}
+
+.sectionButton{
+  background-color: transparent;
+  border: none;
+  font-family: "spectral";
+  font-size: 12px;
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 100%;
+  flex: 1;
+  border-bottom: solid black 1px;
+}
+
+.sectionButtonDeselected{
+  background-color: transparent;
+  border: none;
+  font-family: "spectral";
+  font-size: 12px;
+  background-color: transparent;
+  height: 100%;
+  flex: 1;
+  color: rgba(0, 0, 0, 0.25);
+  border-bottom: solid rgba(0, 0, 0, 0.25) 1px;
+}
+
+.sectionButtonDeselected:hover{
+  color: rgba(0, 0, 0, 1);
+  border-bottom: solid rgba(0, 0, 0, 1) 1px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.sectionButton:hover{
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.overlaybutton{
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border: 0px;
+  opacity: 50%;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+
+.overlaybutton img{
+  height: 100%;
+  width: 100%;
 }

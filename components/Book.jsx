@@ -32,6 +32,8 @@ const Book = ({ active }) => {
   }, [active]);
 
   const onScrollToBottom = () => {
+    if (activeChapter === 3) return; // Prevent transition if it's Chapter 3
+  
     const nextChapter = Chapters[activeChapter];
     if (nextChapter) {
       void router.push({
@@ -40,8 +42,10 @@ const Book = ({ active }) => {
       });
     }
   };
-
+  
   const onScrollToTop = () => {
+    if (activeChapter === 3) return; // Prevent transition if it's Chapter 3
+  
     const previousChapter = Chapters[activeChapter - 2];
     if (previousChapter) {
       void router.push({
@@ -50,6 +54,7 @@ const Book = ({ active }) => {
       });
     }
   };
+  
 
   return (
     <div className={styles.book} style={style}>

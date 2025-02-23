@@ -134,7 +134,7 @@ const Chapter = ({
         ref={chapterRef}
         id={`chapter-${number}`}
         className={
-          type === "simulation" ? styles.maincontent : styles.maincontent
+          type === "simulation" ? styles.simulatorcontent : styles.maincontent
         }
       >
         {type === "default" ? (

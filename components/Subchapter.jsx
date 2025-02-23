@@ -13,7 +13,9 @@ const Subchapter = forwardRef(({ subchapter, chapterNumber }, ref) => {
   const { header, content, slug } = subchapter;
 
   return (
-    <div ref={ref} id={slug} className={styles.subchaptermodules}>
+    <div ref={ref} id={slug} className={slug.startsWith("3")
+    ? styles.simulationsubachaptermodules
+    : styles.subchaptermodules}>
       {content.map(({ type, data }) => {
         if (type === "subchaptertitle") {
           return <div className={styles.subchaptername}>{header}</div>;

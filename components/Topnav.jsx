@@ -31,20 +31,29 @@ const Topnav = () => {
       <div
         className={`${styles.navbottom} ${activeNav === 1 ? styles.show : styles.hide}`}
       >
+        <div className={styles.navbottomTitle}>
+          Index
+        </div>
         {Chapters.map((chapter) => {
           const href = {
             pathname: router.pathname,
             query: { ...router.query, chapter: chapter.slug },
           };
           return (
-            <div key={chapter.number}>
+            <div className={styles.navitemscontainer} key={chapter.number}>
+              <div className= {styles.navchapteritem}>
+                <div className={styles.chapnumber}>
+              {chapter.number + ".0"}
+              </div>
               <Link onClick={handleClick} href={href}>
                 {chapter.title}
               </Link>
+              </div>
               <ul>
                 {chapter.subchapters.map((subchapter) => {
                   return (
-                    <li key={subchapter.slug}>
+                    <ol className={styles.navitem} key={subchapter.slug}>
+                      <div className={styles.subchapnumber}>{subchapter.slug.replace("-", ".")}</div>
                       <Link
                         onClick={handleClick}
                         href={{
@@ -54,7 +63,7 @@ const Topnav = () => {
                       >
                         {subchapter.header}
                       </Link>
-                    </li>
+                    </ol>
                   );
                 })}
               </ul>
