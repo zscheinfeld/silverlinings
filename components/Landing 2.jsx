@@ -138,9 +138,7 @@ const Landing = ({ onReachedBottom }) => {
             : ""
         }`}
       >
-        <Uterushotspot></Uterushotspot>
-        <Hearthotspot></Hearthotspot>
-        <Brainhotspot></Brainhotspot>
+        
 
         <div className={`${styles.hotspot} ${styles.organ4}`}>
           <div className={styles.hoverDivbg}>
