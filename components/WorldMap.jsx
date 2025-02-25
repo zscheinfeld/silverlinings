@@ -141,8 +141,13 @@ const WorldMap = () => {
 
   return (
     <div className= {styles.mapoutercountainer} >
-      <div className={styles.mapbackground}>
 
+      
+
+
+
+      <div className={styles.mapbackground}>
+       
         <div className={styles.verticallinesbg}>
           <div className={styles.verticallines}>
             <div className={styles.vline}>
@@ -211,6 +216,9 @@ const WorldMap = () => {
 
         <div className={styles.horizontallinesbg}>
           <div className={styles.horizontallines}>
+          {/* <div className={styles.legend}>
+        
+          </div> */}
             <div className={styles.hline}>
             </div>
             <div className={styles.hline}>
@@ -233,6 +241,7 @@ const WorldMap = () => {
 
 
       </div>
+
       <div  style={{ width: '100%', height: '65%' }}>
         <div id="map" style={{ width: '100%', height: '100%' }}></div>
       </div>

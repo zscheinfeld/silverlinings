@@ -823,4 +823,15 @@
   z-index: 500;
 }
 
+.legend{
+  width: 230px;
+  background-color: #191818;
+  border: solid white 1px;
+  position: absolute;
+  bottom: 0px;
+  right: 200px;
+  z-index: 500;
+  height: 100px;
+}
+
 
