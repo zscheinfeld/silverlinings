@@ -3,7 +3,6 @@ import Head from "next/head";
 import styles from "@/components/Gsaplanding.module.css";
 import AnimatedMapFade from "@/components/AnimatedMapFade";
 import WorldMap from "@/components/WorldMap";
-import LandingText from "@/components/LandingText";
 import Animatedlandingelementfade from "@/components/Animatedlandingelementfade.jsx"
 import LottieAnimation from "@/components/LottieAnimation";
 import Rotatingwoman from "@/components/Rotatingwoman";
@@ -11,6 +10,7 @@ import Interactivewoman from "@/components/Interactivewoman";
 import Brainhotspot from "@/components/cards/Brainhotspot";
 import Hearthotspot from "@/components/cards/Hearthotspot";
 import Uterushotspot from "@/components/cards/Uterushotspot";
+import LandingText from "@/components/LandingText";
 
 
 const Gsaplanding = () => {
