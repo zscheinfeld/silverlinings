@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import styles from "@/components/Gsaplanding.module.css";
 import Link from "next/link";
 
-const LandingText = ({ fadeOutPoint }) => {
+
+const LandingTextIntro = ({ fadeOutPoint }) => {
   const [isFixed, setIsFixed] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -126,8 +127,8 @@ const LandingText = ({ fadeOutPoint }) => {
 };
 
 // Prop type validation
-LandingText.propTypes = {
+LandingTextIntro.propTypes = {
   fadeOutPoint: PropTypes.number.isRequired,
 };
 
-export default LandingText;
+export default LandingTextIntro;

@@ -10,7 +10,7 @@ import Interactivewoman from "@/components/Interactivewoman";
 import Brainhotspot from "@/components/cards/Brainhotspot";
 import Hearthotspot from "@/components/cards/Hearthotspot";
 import Uterushotspot from "@/components/cards/Uterushotspot";
-import LandingText from "@/components/LandingText";
+import LandingTextIntro from "@/components/LandingTextIntro";
 
 
 const Gsaplanding = () => {
@@ -55,7 +55,7 @@ const Gsaplanding = () => {
         </Animatedlandingelementfade>
 
         
-        <LandingText fadeOutPoint={fadeOutPoint} />
+        <LandingTextIntro fadeOutPoint={fadeOutPoint} />
 
         <div className={styles.space}></div>
 
