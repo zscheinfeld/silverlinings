@@ -17,6 +17,7 @@
     "jsvectormap": "^1.6.0",
     "jvectormap-next": "^3.1.1",
     "lodash": "^4.17.21",
+    "lottie-react": "^2.4.1",
     "motion": "^11.15.0",
     "next": "15.1.2",
     "react": "^18.3.1",
