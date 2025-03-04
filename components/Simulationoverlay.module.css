@@ -1,76 +1,74 @@
-.overlaycontainer{
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    /* background-color: red; */
-    display: flex;
+.overlaycontainer {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  /* background-color: red; */
+  display: flex;
 }
 
-.circle{
-    background-color: #E4F4FF;
-    height: 50px;
-    width: 50px;
-    border-radius: 100%;
-    mix-blend-mode: multiply;
-    position: absolute;
-    top: 50%;
-    left: 60%;
-    transform: translate(-50%, -50%);
+.circle {
+  background-color: #e4f4ff;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  mix-blend-mode: multiply;
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
 }
 
-.column{
-    flex-basis: calc(100% / 3);
-    flex: 1;
-    display: flex;
-    /* background-color: turquoise; */
+.column {
+  flex: 1;
+  display: flex;
+  /* background-color: turquoise; */
 }
 
-.circlecolumn{
-    position: relative;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-    /* flex-shrink: 0;
+.circlecolumn {
+  position: relative;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  /* flex-shrink: 0;
     flex-grow: 0; */
-    /* background-color: turquoise; */
+  /* background-color: turquoise; */
 }
 
-.rectanglecolumn{
-    justify-content: center;
-    align-items: end;
+.rectanglecolumn {
+  justify-content: center;
+  align-items: end;
 }
 
-.rectangle{
-    background-color: #D18EBA;
-    height: 100%;
-    width: 140px;
-    mix-blend-mode: lighten;
+.rectangle {
+  background-color: #d18eba;
+  height: 100%;
+  width: 140px;
+  mix-blend-mode: lighten;
 }
 
-.maskcolumn{
-    justify-content: center;
-    align-items: center;
+.maskcolumn {
+  justify-content: center;
+  align-items: center;
 }
 
-.maskedimage{
-    height: 100%;
-    width: 140px;
-    background-color: rgba(0, 0, 255, 0);
-    display: flex;
-    align-items: center;
-    
-    /* padding-left: 24px;
+.maskedimage {
+  height: 100%;
+  width: 140px;
+  background-color: rgba(0, 0, 255, 0);
+  display: flex;
+  align-items: center;
+
+  /* padding-left: 24px;
     padding-right: 24px; */
 }
 
-.pattern{
-    height: 380px;
-    width: 140px;
-    mix-blend-mode: multiply;
+.pattern {
+  height: 380px;
+  width: 140px;
+  mix-blend-mode: multiply;
 }
 
-.pattern img{
-    height: 100%;
-    width: 100%;
+.pattern img {
+  height: 100%;
+  width: 100%;
 }
-

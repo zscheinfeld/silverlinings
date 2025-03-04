@@ -112,7 +112,8 @@ const Chapter3 = {
         {
           type: "simulation",
           data: {
-            title: "We can <i>slow</i> reproductive aging <br> by just one year",
+            title:
+              "We can <i>slow</i> reproductive aging <br> by just one year",
             explanation:
               "These returns would be primarily driven by a larger working population from increases in fertility, with smaller contributions from lower mortality and higher productivity. The effects of reproductive aging on labor supply and mortality are impossible to quantify precisely with existing data. We consulted with several reproductive aging scientists, and arrived at the assumption that for every year reproductive aging is delayed, productivity rates would increase slightly, accompanied by smaller shifts in mortality rates. There was nearly unanimous agreement on how productivity would be affected more strongly than mortality, though not by how much. We used 0.01 and 0.02 for mortality and productivity respectively, as symbolic assumptions on an existing but unknown relationship between the reproductive healthspan and overall health/lifespan.",
             sections: [
@@ -382,7 +383,7 @@ const Chapter3 = {
                   lives: {
                     min: 1430,
                     max: 15330,
-                  }
+                  },
                 },
               },
             ],

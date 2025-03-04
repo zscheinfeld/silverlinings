@@ -1,17 +1,32 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend } from "chart.js";
+import {
+  Chart as ChartJS,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
 import { Bar } from "react-chartjs-2";
-import Population from "@/data/charts/population";
-import styles from "@/components/Chapter.module.css"
+import styles from "@/components/Chapter.module.css";
 
-ChartJS.register(BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend);
+ChartJS.register(
+  BarElement,
+  CategoryScale,
+  LinearScale,
+  Title,
+  Tooltip,
+  Legend,
+);
 
-const Chart = ({data}) => {
-// console.log(data)
+const Chart = ({ data }) => {
   const chartRef = useRef(null);
   const [chartData, setChartData] = useState({
     labels: data.labels,
-    datasets: data.datasets.map(dataset => {return {...dataset, borderColor: "rgba(0, 0, 0, 1)", borderWidth: 1,}}),
+    datasets: data.datasets.map((dataset) => {
+      return { ...dataset, borderColor: "rgba(0, 0, 0, 1)", borderWidth: 1 };
+    }),
   });
 
   const options = {
@@ -34,7 +49,12 @@ const Chart = ({data}) => {
           color: "rgba(0, 0, 0, .2)",
         },
         ticks: {
-          font: { family: "Spectral", size: 12, weight: "400", style: "italic" },
+          font: {
+            family: "Spectral",
+            size: 12,
+            weight: "400",
+            style: "italic",
+          },
           color: "rgba(0, 0, 0, 1)",
         },
       },
@@ -103,7 +123,7 @@ const Chart = ({data}) => {
         root: null,
         rootMargin: "0% 0%",
         threshold: 1,
-      }
+      },
     );
 
     if (chartRef.current) {

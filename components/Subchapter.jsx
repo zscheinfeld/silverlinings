@@ -13,49 +13,62 @@ const Subchapter = forwardRef(({ subchapter, chapterNumber }, ref) => {
   const { header, content, slug } = subchapter;
 
   return (
-    <div ref={ref} id={slug} className={slug.startsWith("3")
-    ? styles.simulationsubachaptermodules
-    : styles.subchaptermodules}>
-      {content.map(({ type, data }) => {
+    <div
+      ref={ref}
+      id={slug}
+      className={
+        slug.startsWith("3")
+          ? styles.simulationsubachaptermodules
+          : styles.subchaptermodules
+      }
+    >
+      {content.map(({ type, data }, index) => {
         if (type === "subchaptertitle") {
-          return <div className={styles.subchaptername}>{header}</div>;
+          return (
+            <div key={index} className={styles.subchaptername}>
+              {header}
+            </div>
+          );
         }
         if (type === "text") {
           return (
             <Textblock
+              key={index}
               callouts={[data.callout]}
               paragraphs={data.paragraphs}
-            ></Textblock>
+            />
           );
         }
 
         if (type === "chart") {
-          return <Chart data={data}></Chart>;
+          return <Chart key={index} data={data}></Chart>;
         }
 
         if (type === "sidenote") {
-          return <Sidenote sidenotetext={data.text}></Sidenote>;
+          return <Sidenote key={index} sidenotetext={data.text}></Sidenote>;
         }
 
         if (type === "multiplecards") {
-          return <Multiplecards></Multiplecards>;
+          return <Multiplecards key={index} />;
         }
 
         if (type === "svgchart") {
           return (
             <Svgchart
+              key={index}
               source={data.source}
               imageoverlay={data.imageoverlay}
               overlaycontent={data.imageoverlay}
               textoverlay={data.textoverlay}
               textcontent={data.text}
-            ></Svgchart>
+            />
           );
         }
 
         if (type === "accordion") {
           return (
             <Newaccordion
+              key={index}
               atitle={data.title}
               questions={data.questions}
               answers={data.answers.map((answer) =>
@@ -70,15 +83,15 @@ const Subchapter = forwardRef(({ subchapter, chapterNumber }, ref) => {
         }
 
         if (type === "simulation") {
-          return <Simulation data={data} />;
+          return <Simulation key={index} data={data} />;
         }
 
         if (type === "bottompadding") {
-          return <div className={styles.bottompadding}></div>;
+          return <div key={index} className={styles.bottompadding}></div>;
         }
 
         if (type === "fineprint") {
-          return <Fineprintaccordion></Fineprintaccordion>;
+          return <Fineprintaccordion key={index} />;
         }
 
         // render accordian

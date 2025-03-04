@@ -14,15 +14,12 @@ import { useEffect, useState } from "react";
 import Slider from "@/components/Slider";
 import Simulationoverlay from "./Simulationoverlay";
 
-
-
 const Simulation = ({ data }) => {
-
   const [showOverlay, setShowOverlay] = useState(false);
 
-const toggleOverlay = () => {
-  setShowOverlay((prev) => !prev);
-};
+  const toggleOverlay = () => {
+    setShowOverlay((prev) => !prev);
+  };
   const [sectionIndex, setSectionIndex] = useState(0);
   const section = data.sections[sectionIndex];
 
@@ -191,13 +188,13 @@ const toggleOverlay = () => {
         className={styles.simulationhead}
         dangerouslySetInnerHTML={{ __html: data.title }}
       />
-      
+
       <div key={`${sectionIndex}`}>
         <div className={styles.middleContainer}>
           <div className={styles.inputContainer}>
             <button className={styles.resetContainer} onClick={handleReset}>
               <div className={styles.svg}>
-              <img src="restart.svg"></img>
+                <img src="restart.svg" alt="" />
               </div>
               Reset
             </button>
@@ -266,92 +263,96 @@ const toggleOverlay = () => {
             </div>
           </div>
           <div className={styles.outerOutputContainer}>
-    {data.sections.length > 1 && (
-      <div className={styles.sectionButtonContainer}>
-        {data.sections.map((section, index) => (
-          <button
-            className={
-              index === sectionIndex
-                ? styles.sectionButton
-                : styles.sectionButtonDeselected
-            }
-            onClick={() => setSectionIndex(index)}
-            key={index}
-          >
-            {section.title}
-          </button>
-        ))}
-      </div>
-    )}
-    <div className={styles.output}>
-      {showOverlay && (
-        <Simulationoverlay
-          min={section.inputs.return.min}
-          max={section.inputs.return.max}
-          current={outputs.outputNPV || 0}
-          min2={section.inputs.yGDP.min}
-          max2={section.inputs.yGDP.max}
-          current2={outputs.outputGDP20 || 0}
-          min3={section.inputs.lives.min}
-          max3={section.inputs.lives.max}
-          current3={outputs.outputPop || 0}
-        />
-      )}
-      <img src={`/${section.image}`} alt="" />
-    </div>
-    <div className={styles.outputContainer}>
-      <div className={styles.sectionHeader}>
-        OUTPUTS
-        <button className={styles.overlaybutton} onClick={toggleOverlay}>
-          <img src={showOverlay ? "on.svg" : "off.svg"}></img>
-        </button>
-      </div>
-      <div className={styles.outputInnerContainer}>
-        <div className={styles.Item}>
-          <label htmlFor="outputNPV"></label>
-          <input
-            type="text"
-            id="outputNPV"
-            name="outputNPV"
-            className={styles.outputStat}
-            value={outputs.outputNPV || 0}
-            readOnly
-          />
-          <div className={styles.outputLabel}>
-            Long-term return, (Net Present Value over decades)
+            {data.sections.length > 1 && (
+              <div className={styles.sectionButtonContainer}>
+                {data.sections.map((section, index) => (
+                  <button
+                    className={
+                      index === sectionIndex
+                        ? styles.sectionButton
+                        : styles.sectionButtonDeselected
+                    }
+                    onClick={() => setSectionIndex(index)}
+                    key={index}
+                  >
+                    {section.title}
+                  </button>
+                ))}
+              </div>
+            )}
+            <div className={styles.output}>
+              {showOverlay && (
+                <Simulationoverlay
+                  min={section.inputs.return.min}
+                  max={section.inputs.return.max}
+                  current={outputs.outputNPV || 0}
+                  min2={section.inputs.yGDP.min}
+                  max2={section.inputs.yGDP.max}
+                  current2={outputs.outputGDP20 || 0}
+                  min3={section.inputs.lives.min}
+                  max3={section.inputs.lives.max}
+                  current3={outputs.outputPop || 0}
+                />
+              )}
+              <img src={`/${section.image}`} alt="" />
+            </div>
+            <div className={styles.outputContainer}>
+              <div className={styles.sectionHeader}>
+                OUTPUTS
+                <button
+                  className={styles.overlaybutton}
+                  onClick={toggleOverlay}
+                >
+                  <img src={showOverlay ? "on.svg" : "off.svg"} alt="" />
+                </button>
+              </div>
+              <div className={styles.outputInnerContainer}>
+                <div className={styles.Item}>
+                  <label htmlFor="outputNPV"></label>
+                  <input
+                    type="text"
+                    id="outputNPV"
+                    name="outputNPV"
+                    className={styles.outputStat}
+                    value={outputs.outputNPV || 0}
+                    readOnly
+                  />
+                  <div className={styles.outputLabel}>
+                    Long-term return, (Net Present Value over decades)
+                  </div>
+                </div>
+                <div className={styles.Item}>
+                  <label htmlFor="outputGDP20"></label>
+                  <input
+                    type="text"
+                    id="outputGDP20"
+                    name="outputGDP20"
+                    className={styles.outputStat}
+                    value={outputs.outputGDP20 || 0}
+                    readOnly
+                  />
+                  <div className={styles.outputLabel}>
+                    Yearly GDP change, Billions of 2025$ (average over
+                    2045-2065)
+                  </div>
+                </div>
+                <div className={styles.Item}>
+                  <label htmlFor="outputPop"></label>
+                  <input
+                    type="text"
+                    id="outputPop"
+                    className={styles.outputStat}
+                    name="outputPop"
+                    value={outputs.outputPop || 0}
+                    readOnly
+                  />
+                  <div className={styles.outputLabel}>
+                    Lives saved by 2050 (thousands of people)
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className={styles.Item}>
-          <label htmlFor="outputGDP20"></label>
-          <input
-            type="text"
-            id="outputGDP20"
-            name="outputGDP20"
-            className={styles.outputStat}
-            value={outputs.outputGDP20 || 0}
-            readOnly
-          />
-          <div className={styles.outputLabel}>
-            Yearly GDP change, Billions of 2025$ (average over 2045-2065)
-          </div>
-        </div>
-        <div className={styles.Item}>
-          <label htmlFor="outputPop"></label>
-          <input
-            type="text"
-            id="outputPop"
-            className={styles.outputStat}
-            name="outputPop"
-            value={outputs.outputPop || 0}
-            readOnly
-          />
-          <div className={styles.outputLabel}>
-            Lives saved by 2050 (thousands of people)
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
           <div className={styles.explanation}>
             <div className={styles.sectionHeader}>EXPLANATION</div>
@@ -359,12 +360,8 @@ const toggleOverlay = () => {
           </div>
         </div>
       </div>
-      {console.log(section.inputs.return.min)}
     </>
-    
   );
-  
 };
-
 
 export default Simulation;

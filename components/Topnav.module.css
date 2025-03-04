@@ -2,7 +2,7 @@
   position: fixed;
   width: 100vw;
   border-bottom: solid black 1px;
-  z-index: 5;
+  z-index: 10;
 }
 
 .navtop {
@@ -20,7 +20,7 @@
 }
 
 .hide {
-  height: 0px;
+  height: 0;
   transition: height 600ms ease-in-out;
   background-color: #fff5e5;
 }
@@ -32,11 +32,10 @@
 }
 
 .left {
-  font-family: "spectral";
+  font-family: "Spectral", serif;
   font-size: 12px;
-  letter-spacing: 5%;
   background-color: transparent;
-  border: 0px;
+  border: 0;
 }
 
 .left:hover {
@@ -45,65 +44,61 @@
 
 .right {
   display: flex;
-  font-family: "spectral";
+  font-family: "Spectral", serif;
   font-size: 12px;
-  letter-spacing: 5%;
   gap: 32px;
 }
 
-.navitem{
+.navitem {
   padding-bottom: 4px;
   padding-top: 4px;
-  font-family: "spectral";
+  font-family: "Spectral", serif;
   color: rgba(0, 0, 0);
   display: flex;
   font-weight: 200;
 }
 
-.subchapnumber{
+.subchapnumber {
   width: 36px;
   color: rgba(0, 0, 0);
 }
 
-.chapnumber{
+.chapnumber {
   width: 36px;
   color: rgba(0, 0, 0);
-  
 }
 
-.navitem:hover{
+.navitem:hover {
   opacity: 50%;
 }
 
-.navchapteritem{
+.navchapteritem {
   padding-bottom: 2px;
   margin-bottom: 6px;
   padding-top: 18px;
-  border-bottom: solid 1px rgba(0, 0, 0, 0.20);
-  font-family: "spectral";
+  border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+  font-family: "Spectral", serif;
   display: flex;
   font-weight: 600;
-  
-  
 }
 
-.navchapteritem:hover{
+.navchapteritem:hover {
   opacity: 50%;
 }
 
-.navitemscontainer{
+.navitemscontainer {
   width: 540px;
   margin: auto;
 }
 
-.navbottomTitle{
+.navbottomTitle {
   padding-top: 18px;
   text-align: center;
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 2px;
   font-size: 36px;
-  font-family: "spectral";
+  font-family: "Spectral", serif;
   /* width: 100%;
   margin: auto; */
   /* background-color: blue; */

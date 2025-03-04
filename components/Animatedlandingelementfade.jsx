@@ -1,14 +1,13 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import PropTypes from "prop-types";
 
-export default function Animatedlandingelementfade({ 
-  fadeInStart, 
-  fadeInEnd, 
-  fadeOutStart, 
-  fadeOutEnd, 
-  children 
+export default function Animatedlandingelementfade({
+  fadeInStart,
+  fadeInEnd,
+  fadeOutStart,
+  fadeOutEnd,
+  children,
 }) {
   const elementRef = useRef(null);
 
@@ -38,7 +37,10 @@ export default function Animatedlandingelementfade({
       .fromTo(
         elementRef.current,
         { opacity: 0 }, // Start at 0% opacity
-        { opacity: 1, duration: (fadeInEnd - fadeInStart) / (fadeOutEnd - fadeInStart) } // Fade to 100%
+        {
+          opacity: 1,
+          duration: (fadeInEnd - fadeInStart) / (fadeOutEnd - fadeInStart),
+        }, // Fade to 100%
       )
       .to(elementRef.current, {
         opacity: 1,
@@ -57,21 +59,8 @@ export default function Animatedlandingelementfade({
 
   return (
     // Apply animation to the child component directly
-    <div ref={elementRef}
-    style={{ zIndex: 500, position: "relative" }}>
+    <div ref={elementRef} style={{ zIndex: 500, position: "relative" }}>
       {children}
     </div>
   );
 }
-
-Animatedlandingelementfade.propTypes = {
-  fadeInStart: PropTypes.number.isRequired,
-  fadeInEnd: PropTypes.number.isRequired,
-  fadeOutStart: PropTypes.number.isRequired,
-  fadeOutEnd: PropTypes.number.isRequired,
-  children: PropTypes.node,
-};
-
-Animatedlandingelementfade.defaultProps = {
-  children: null,
-};

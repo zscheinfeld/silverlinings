@@ -8,7 +8,9 @@ const RotatingDivs = ({ startTransitionAt }) => {
 
   const divs = [
     <div className={`${styles.rhotspot} ${styles.brain}`}>
-      <div className={`${styles.rhotspotinnercontainer} ${styles.productivity}`}></div>
+      <div
+        className={`${styles.rhotspotinnercontainer} ${styles.productivity}`}
+      ></div>
       <div className={`${styles.rcard} ${styles.brainrcard}`}>
         <div className={styles.rcardimage}>
           <img src="brain.png" alt="Brain" />
@@ -18,44 +20,55 @@ const RotatingDivs = ({ startTransitionAt }) => {
             The brain predictably <br /> fails with age.
           </div>
           <div className={styles.rcardtext}>
-            At age 65, less than 5% of the population has an Alzheimer’s diagnosis. This number increases to roughly 50% beyond age 85.
+            At age 65, less than 5% of the population has an Alzheimer’s
+            diagnosis. This number increases to roughly 50% beyond age 85.
           </div>
         </div>
       </div>
     </div>,
 
-<div className={`${styles.rhotspot} ${styles.uterus}`}>
-<div className={`${styles.rhotspotinnercontainer} ${styles.fertility}`}></div>
-<div className={`${styles.rcard} ${styles.uterusrcard}`}>
-  <div className={styles.rcardimage}>
-    <img src="Uterus.png" alt="Uterus" />
-  </div>
-  <div className={styles.rcardinformation}>
-    <div className={styles.rcardheader}>Egg reserve disappears by age ~40.</div>
-    <div className={styles.rcardtext}>
-      Most women in the U.S. have children after 30. This increases miscarriages, maternal deaths, and infertility. Reproductive aging is also seen as a driver of diseases like Alzheimer’s.
-    </div>
-  </div>
-</div>
-</div>,
-    
+    <div className={`${styles.rhotspot} ${styles.uterus}`}>
+      <div
+        className={`${styles.rhotspotinnercontainer} ${styles.fertility}`}
+      ></div>
+      <div className={`${styles.rcard} ${styles.uterusrcard}`}>
+        <div className={styles.rcardimage}>
+          <img src="Uterus.png" alt="Uterus" />
+        </div>
+        <div className={styles.rcardinformation}>
+          <div className={styles.rcardheader}>
+            Egg reserve disappears by age ~40.
+          </div>
+          <div className={styles.rcardtext}>
+            Most women in the U.S. have children after 30. This increases
+            miscarriages, maternal deaths, and infertility. Reproductive aging
+            is also seen as a driver of diseases like Alzheimer’s.
+          </div>
+        </div>
+      </div>
+    </div>,
+
     <div className={`${styles.rhotspot} ${styles.heart}`}>
-      <div className={`${styles.rhotspotinnercontainer} ${styles.mortality}`}></div>
+      <div
+        className={`${styles.rhotspotinnercontainer} ${styles.mortality}`}
+      ></div>
       <div className={`${styles.rcard} ${styles.heartrcard}`}>
         <div className={styles.rcardimage}>
           <img src="Heart.png" alt="Heart" />
         </div>
         <div className={styles.rcardinformation}>
           <div className={styles.rcardheader}>
-            Many people need their<br /> organs replaced as they age.
+            Many people need their
+            <br /> organs replaced as they age.
           </div>
           <div className={styles.rcardtext}>
-            The decline of organ function is a common symptom of aging. But current cell, tissue, and organ transplant methods are in short supply and invasive.
+            The decline of organ function is a common symptom of aging. But
+            current cell, tissue, and organ transplant methods are in short
+            supply and invasive.
           </div>
         </div>
       </div>
     </div>,
-    
   ];
 
   // Track scroll position

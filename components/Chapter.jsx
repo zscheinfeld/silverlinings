@@ -143,6 +143,7 @@ const Chapter = ({
 
         {subchapters.map((subchapter, i) => (
           <Subchapter
+            key={subchapter.slug}
             ref={(ref) => (subchapterRefs.current[i] = ref)}
             subchapter={subchapter}
             chapterNumber={number}

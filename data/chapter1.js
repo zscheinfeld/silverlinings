@@ -1,6 +1,3 @@
-import Population from "./charts/population";
-import Population2 from "./charts/population2";
-
 const Chapter1 = {
   title: "Present",
   slug: "present",
@@ -11,7 +8,7 @@ const Chapter1 = {
       header: "More humans, fewer problems",
       number: 1,
       content: [
-        {type: "subchaptertitle"},
+        { type: "subchaptertitle" },
         {
           type: "text",
           data: {
@@ -29,20 +26,17 @@ const Chapter1 = {
           type: "svgchart",
           data: {
             // callout:"It’s a forgotten truth that — more than oil, gold, or data — working-age adults are the most valuable resource of our time.",
-            imageoverlay:false,
-            textoverlay:true,
+            imageoverlay: false,
+            textoverlay: true,
             source: ["charts/1_1_1.svg"],
             overlay: "text",
-            text:"Population growth is not often discussed in the context of increased longevity. Yet as Nobel laureate in economics Gary Becker has shown, healthy longevity is not merely a nice-to-have, but a major determinant in different countries’ ability to reach economic health. And as economist William Nordhaus later demonstrated, “the economic value of increases in longevity in the last hundred years is about as large as the value of measured growth [in every other part of the economy].”"
+            text: "Population growth is not often discussed in the context of increased longevity. Yet as Nobel laureate in economics Gary Becker has shown, healthy longevity is not merely a nice-to-have, but a major determinant in different countries’ ability to reach economic health. And as economist William Nordhaus later demonstrated, “the economic value of increases in longevity in the last hundred years is about as large as the value of measured growth [in every other part of the economy].”",
           },
         },
 
         {
           type: "multiplecards",
         },
-
-
-        
 
         {
           type: "text",
@@ -62,11 +56,10 @@ const Chapter1 = {
           type: "svgchart",
           data: {
             // callout:"It’s a forgotten truth that — more than oil, gold, or data — working-age adults are the most valuable resource of our time.",
-            imageoverlay:true,
-            textoverlay:false,
+            textoverlay: false,
             source: ["charts/1_1_2.svg"],
             overlay: "text",
-            imageoverlay:["charts/1_1_2_overlay.svg"],
+            imageoverlay: ["charts/1_1_2_overlay.svg"],
           },
         },
 
@@ -75,12 +68,13 @@ const Chapter1 = {
           data: {
             title: "List of sample underfunded R&D approaches",
             questions: [
-              "What if automation replaces the economic value of working-age adults?", 
-              "Why do we need therapeutics to improve aging? Can’t we just exercise and eat a healthy diet?"
+              "What if automation replaces the economic value of working-age adults?",
+              "Why do we need therapeutics to improve aging? Can’t we just exercise and eat a healthy diet?",
             ],
             answers: [
-              "Historically, working-age adults have been largely responsible for increases in GDP, whether through scientific discoveries or essential jobs like city and hospital sanitation. Output per worker has historically increased with technology. We  may live in an unprecedented time in history, when technology ends up not increasing worker output, but making it less valuable. As researcher Maxwell Tabarrok writes, there is a chance that advancements in robotics and AI may “upend the million-year-old relationship between population and technological progress.” Readers can run what is called a sensitivity analysis in economics, assuming that working-age adults will become half as valuable to the U.S. economy in the far future. Conversely, the reader may wish to assume that historical trends will not only continue but be supercharged, leading productivity per worker to increase at an unprecedented pace over the coming decades. This reader may wish to multiply our results by their desired amount. We do not claim to know which future will be built, but instead hope to offer a baseline from which further assumptions can be made \n\necessary We ask the reader to bracket the possibility that working-age adults may be fully replaced by automation in the coming decade, and instead entertain counterfactual scenarios where advancements in robotics and AI — at least in the short term — will accelerate the deployment of biotechnologies which improve productivity, mortality, and fertility rates. Our aim, again, has not been to simulate sure futures, nor have we tried to exclude the possibility of black swans entirely shifting the course of economies. The question we can answer is, “assuming working-age adults maintain their economic value, what happens if these scientific breakthroughs take place?” It’s an imperfect question, since the one future we build is unlikely to assign value to working-age adults at historical trends. In the very far future, it may come to be a luckier truth that working-age adults are no longer commoditized as the most valuable resource around. Still, we trust this will have been a set of fruitful glimpses into possible futures where tractable, important, and historically overlooked problems have been solved. If the reader believes working-age adults will be worth nothing to the U.S. economy decades from now, the idea that age-related medical conditions (like dementia and most severe cases of COVID-19) should be prevented would still hold true, but in ways not quantifiable by GDP as a metric. (More on this in “Why focus on GDP?”)", 
-              "Imagine the healthiest 90-year-old on planet Earth. Say his name is Dwarkesh, and Dwarkesh has adopted a perfect diet and exercise routine throughout his life. We know, intuitively, that he is still hundreds of times likelier to die from an infection, chronic disease, or broken rib than his son, just 30 years younger. Dwarkesh is frail, slow, unable to do most cognitive and physical work, and if he breaks a rib, chances are he will wind up in the hospital and quite probably die. Now consider that in 2024, Japan’s average life expectancy is already 85 — and it’s projected to go up to 94 by 2100 without any mind-boggling scientific breakthrough. By the same year, life expectancy will have gone up to 85 in India. Today, already, over 70% of all deaths globally owe to the diseases of aging: from cancer to heart disease to Alzheimer’s. How does the end of this century look like if we achieve the momentous feat of getting everyone on the planet to exercise and eat a healthy diet, but make no progress on therapeutics that directly target the biology of aging? The answer is, not very bright. \n\n A clear precedent where advanced biotechnologies have offered superior results to natural solutions is birth control. After centuries of female oppression, the pill offered women near-definitive control over their reproductive system in a way natural solutions could not. Though the pill isn’t yet fully safe or available to women throughout the world,  new R&D advancements continue to improve side effects and to lower the price of drug development. The pill fundamentally redesigned how women live, work, give birth, and die. Advancements in aging biology can do the same, to a greater extent, and for both sexes"],
+              "Historically, working-age adults have been largely responsible for increases in GDP, whether through scientific discoveries or essential jobs like city and hospital sanitation. Output per worker has historically increased with technology. We  may live in an unprecedented time in history, when technology ends up not increasing worker output, but making it less valuable. As researcher Maxwell Tabarrok writes, there is a chance that advancements in robotics and AI may “upend the million-year-old relationship between population and technological progress.” Readers can run what is called a sensitivity analysis in economics, assuming that working-age adults will become half as valuable to the U.S. economy in the far future. Conversely, the reader may wish to assume that historical trends will not only continue but be supercharged, leading productivity per worker to increase at an unprecedented pace over the coming decades. This reader may wish to multiply our results by their desired amount. We do not claim to know which future will be built, but instead hope to offer a baseline from which further assumptions can be made \n\necessary We ask the reader to bracket the possibility that working-age adults may be fully replaced by automation in the coming decade, and instead entertain counterfactual scenarios where advancements in robotics and AI — at least in the short term — will accelerate the deployment of biotechnologies which improve productivity, mortality, and fertility rates. Our aim, again, has not been to simulate sure futures, nor have we tried to exclude the possibility of black swans entirely shifting the course of economies. The question we can answer is, “assuming working-age adults maintain their economic value, what happens if these scientific breakthroughs take place?” It’s an imperfect question, since the one future we build is unlikely to assign value to working-age adults at historical trends. In the very far future, it may come to be a luckier truth that working-age adults are no longer commoditized as the most valuable resource around. Still, we trust this will have been a set of fruitful glimpses into possible futures where tractable, important, and historically overlooked problems have been solved. If the reader believes working-age adults will be worth nothing to the U.S. economy decades from now, the idea that age-related medical conditions (like dementia and most severe cases of COVID-19) should be prevented would still hold true, but in ways not quantifiable by GDP as a metric. (More on this in “Why focus on GDP?”)",
+              "Imagine the healthiest 90-year-old on planet Earth. Say his name is Dwarkesh, and Dwarkesh has adopted a perfect diet and exercise routine throughout his life. We know, intuitively, that he is still hundreds of times likelier to die from an infection, chronic disease, or broken rib than his son, just 30 years younger. Dwarkesh is frail, slow, unable to do most cognitive and physical work, and if he breaks a rib, chances are he will wind up in the hospital and quite probably die. Now consider that in 2024, Japan’s average life expectancy is already 85 — and it’s projected to go up to 94 by 2100 without any mind-boggling scientific breakthrough. By the same year, life expectancy will have gone up to 85 in India. Today, already, over 70% of all deaths globally owe to the diseases of aging: from cancer to heart disease to Alzheimer’s. How does the end of this century look like if we achieve the momentous feat of getting everyone on the planet to exercise and eat a healthy diet, but make no progress on therapeutics that directly target the biology of aging? The answer is, not very bright. \n\n A clear precedent where advanced biotechnologies have offered superior results to natural solutions is birth control. After centuries of female oppression, the pill offered women near-definitive control over their reproductive system in a way natural solutions could not. Though the pill isn’t yet fully safe or available to women throughout the world,  new R&D advancements continue to improve side effects and to lower the price of drug development. The pill fundamentally redesigned how women live, work, give birth, and die. Advancements in aging biology can do the same, to a greater extent, and for both sexes",
+            ],
           },
         },
 
@@ -99,14 +93,14 @@ const Chapter1 = {
         {
           type: "svgchart",
           data: {
-            imageoverlay:false,
-            textoverlay:false,
+            imageoverlay: false,
+            textoverlay: false,
             source: ["charts/1_2.png"],
             // overlay: "text",
             // imageoverlay:["charts/1_1_2_overlay.svg"],
           },
         },
-        {type: "subchaptertitle"},
+        { type: "subchaptertitle" },
         {
           type: "text",
           data: {
@@ -122,11 +116,10 @@ const Chapter1 = {
         {
           type: "svgchart",
           data: {
-            imageoverlay:true,
-            textoverlay:false,
+            textoverlay: false,
             source: ["charts/1_2_2.png"],
             // overlay: "text",
-            imageoverlay:["charts/1_2_2_overlay.svg"],
+            imageoverlay: ["charts/1_2_2_overlay.svg"],
           },
         },
 
@@ -155,7 +148,7 @@ const Chapter1 = {
       header: "Mortality, productivity, and fertility in the U.S.",
       number: 3,
       content: [
-        {type: "subchaptertitle"},
+        { type: "subchaptertitle" },
         {
           type: "text",
           data: {
@@ -179,11 +172,10 @@ const Chapter1 = {
         {
           type: "svgchart",
           data: {
-            imageoverlay:true,
-            textoverlay:false,
+            textoverlay: false,
             source: ["charts/1_3_1.svg"],
             // overlay: "text",
-            imageoverlay:["charts/1_3_1_overlay.svg"],
+            imageoverlay: ["charts/1_3_1_overlay.svg"],
           },
         },
 
@@ -206,11 +198,10 @@ const Chapter1 = {
         {
           type: "svgchart",
           data: {
-            imageoverlay:true,
-            textoverlay:false,
+            textoverlay: false,
             source: ["charts/1_3_2.svg"],
             // overlay: "text",
-            imageoverlay:["charts/1_3_2_overlay.svg"],
+            imageoverlay: ["charts/1_3_2_overlay.svg"],
           },
         },
 

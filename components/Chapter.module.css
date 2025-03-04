@@ -10,7 +10,7 @@
   overflow-x: hidden;
   overflow-y: scroll;
   scrollbar-color: rgba(0, 0, 0, 0) rgba(255, 255, 255, 0);
-  scrollbar-width: 0px;
+  scrollbar-width: none;
   scroll-behavior: smooth;
 }
 
@@ -102,7 +102,7 @@
 .paragraph {
   font-size: 16px;
   line-height: 160%;
-  font-family: "spectral";
+  font-family: "Spectral", serif;
 }
 
 .answerparagraph {
@@ -112,7 +112,7 @@
 .callout {
   font-size: 24px;
   line-height: 112%;
-  font-family: "spectral";
+  font-family: "Spectral", serif;
 }
 
 .textblock {
@@ -126,7 +126,7 @@
 .chaptername {
   font-size: 86px;
   line-height: 93%;
-  font-family: "spectral";
+  font-family: "Spectral", serif;
   text-align: center;
   /* width: 100%; */
   max-width: 950px;
@@ -137,7 +137,7 @@
   max-width: 620px;
   font-size: 36px;
   line-height: 100%;
-  font-family: "spectral";
+  font-family: "Spectral", serif;
   text-decoration: underline;
   text-decoration-thickness: 1.5px;
   text-underline-offset: 4px;
@@ -199,7 +199,7 @@
 
 @keyframes previous {
   0% {
-    height: 0px;
+    height: 0;
   }
 
   100% {
@@ -209,7 +209,7 @@
 
 @keyframes upcoming {
   0% {
-    height: 0px;
+    height: 0;
   }
 
   100% {
@@ -270,7 +270,7 @@
   padding-top: 64px;
 }
 
-.simulationsubachaptermodules{
+.simulationsubachaptermodules {
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -351,14 +351,7 @@
 /* Visibility Class */
 .visible {
   opacity: 1;
-  transform: scale(1);
   transform: translateY(0px);
-}
-
-/* Visibility Class */
-.visible {
-  opacity: 1;
-  /* transform: scale(1); */
 }
 
 .chartcontainer img {
@@ -382,7 +375,6 @@
   display: flex;
   border: solid 1px black;
   width: 400px;
-  display: flex;
   flex-direction: column;
   gap: 10px;
   justify-content: center;
@@ -390,14 +382,13 @@
   padding: 24px;
 }
 
-.multipleSidenoteInnterContainer {
+.multipleSidenoteInnerContainer {
   display: flex;
   border: solid 1px black;
-  display: flex;
   flex-direction: column;
   gap: 10px;
   justify-content: left;
-  align-items: left;
+  align-items: flex-start;
   padding: 24px;
   height: auto;
   flex: 1 1 300px;
@@ -417,7 +408,6 @@
 
 .desktopLabelXL {
   font-family: "Spectral", serif;
-  font-weight: 400;
   font-size: 20px;
   line-height: 100%;
   font-weight: bold;
@@ -448,7 +438,7 @@
 
 .fineprintqtype {
   font-size: 24px;
-  font-family: "spectral";
+  font-family: "Spectral", serif;
   line-height: 112%;
   cursor: default;
   user-select: none;

@@ -5,10 +5,8 @@ const Face = ({ opacity }) => {
     <div className={styles.faceoutercontainer} style={{ opacity }}>
       <div className={styles.faceinnercontainer}>
         <div className={styles.faceimage}>
-            <img src="face.png">
-            </img>
+          <img src="face.png" alt="" />
         </div>
-
       </div>
     </div>
   );

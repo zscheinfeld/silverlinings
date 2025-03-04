@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  
+
   experimental: {
     esmExternals: false, // Ensures external packages are properly processed
   },

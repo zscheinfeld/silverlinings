@@ -1,7 +1,7 @@
 import styles from "@/components/Newaccordion.module.css";
 import { useRef, useState } from "react";
 
-const Accordionitem = ({question, answer}) => {
+const Accordionitem = ({ question, answer }) => {
   const [expand, setExpand] = useState(false);
   const contentRef = useRef(null); // Ref to access the .answer element
 
@@ -28,7 +28,11 @@ const Accordionitem = ({question, answer}) => {
       <div
         ref={contentRef} // Attach the ref here
         className={`${styles.answer} ${styles.noselect} ${expand ? styles.open : styles.closed}`}
-        style={{ maxHeight: "0px", overflow: "hidden", transition: "max-height 0.4s ease-in-out" }}
+        style={{
+          maxHeight: "0px",
+          overflow: "hidden",
+          transition: "max-height 0.4s ease-in-out",
+        }}
       >
         {answer}
         <div className={styles.answerpadding}></div>

@@ -9,17 +9,19 @@ const SubchapterNav = ({ subchapters, number, activeSubchapter }) => {
           if (subchapter.number < activeSubchapter) {
             return (
               <Link
+                key={subchapter.slug}
                 href={`#${subchapter.slug}`}
                 className={styles.previousSubChapter}
-              ></Link>
+              />
             );
           }
         })}
       </div>
       {subchapters.map((subchapter) => {
-        if (subchapter.number == activeSubchapter) {
+        if (subchapter.number === activeSubchapter) {
           return (
             <Link
+              key={subchapter.slug}
               href={`#${subchapter.slug}`}
               className={styles.subchapterInnernavText}
             >
@@ -30,6 +32,7 @@ const SubchapterNav = ({ subchapters, number, activeSubchapter }) => {
         } else if (subchapter.number > activeSubchapter) {
           return (
             <Link
+              key={subchapter.slug}
               href={`#${subchapter.slug}`}
               className={styles.upcomingSubChapter}
             >

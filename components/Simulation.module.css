@@ -34,7 +34,6 @@
   font-family: "Spectral", serif;
   font-size: 16px;
   line-height: 110%;
-  letter-spacing: -3%;
   text-align: center;
   max-width: 170px;
 }
@@ -70,7 +69,6 @@
 .sectionHeader {
   font-family: "Spectral", serif;
   font-size: 16px;
-  letter-spacing: 5%;
   font-weight: bold;
   padding-bottom: 16px;
   display: flex;
@@ -130,13 +128,12 @@
   line-height: 92%;
   font-family: "Spectral", serif;
   text-align: center;
-
 }
 
-.resetContainer{
+.resetContainer {
   background-color: transparent;
-  border: 0px;
-  font-family: "spectral";
+  border: 0;
+  font-family: "Spectral", serif;
   opacity: 50%;
   position: absolute;
   top: -30px;
@@ -146,26 +143,23 @@
   justify-content: flex-start;
 }
 
-.svg{
+.svg {
   height: 20px;
   width: 20px;
   margin-right: 2px;
   margin-bottom: 4px;
 }
 
-.svg img{
-
+.svg img {
   height: 100%;
-  width : 100%;
+  width: 100%;
 }
 
-
-
-.resetContainer:hover{
+.resetContainer:hover {
   opacity: 100%;
 }
 
-.sectionButtonContainer{
+.sectionButtonContainer {
   width: 100%;
   height: 34px;
   display: flex;
@@ -173,10 +167,9 @@
   padding-right: 36px;
 }
 
-.sectionButton{
-  background-color: transparent;
+.sectionButton {
   border: none;
-  font-family: "spectral";
+  font-family: "Spectral", serif;
   font-size: 12px;
   background-color: rgba(255, 255, 255, 0.5);
   height: 100%;
@@ -184,40 +177,38 @@
   border-bottom: solid black 1px;
 }
 
-.sectionButtonDeselected{
+.sectionButtonDeselected {
   background-color: transparent;
   border: none;
-  font-family: "spectral";
+  font-family: "Spectral", serif;
   font-size: 12px;
-  background-color: transparent;
   height: 100%;
   flex: 1;
   color: rgba(0, 0, 0, 0.25);
   border-bottom: solid rgba(0, 0, 0, 0.25) 1px;
 }
 
-.sectionButtonDeselected:hover{
+.sectionButtonDeselected:hover {
   color: rgba(0, 0, 0, 1);
   border-bottom: solid rgba(0, 0, 0, 1) 1px;
   background-color: rgba(255, 255, 255, 1);
 }
 
-.sectionButton:hover{
+.sectionButton:hover {
   background-color: rgba(255, 255, 255, 1);
 }
 
-.overlaybutton{
+.overlaybutton {
   height: 20px;
   width: 20px;
   background-color: transparent;
-  border: 0px;
+  border: 0;
   opacity: 50%;
   margin-left: 8px;
   cursor: pointer;
 }
 
-
-.overlaybutton img{
+.overlaybutton img {
   height: 100%;
   width: 100%;
 }

@@ -26,9 +26,17 @@ const Uterushotspot = () => {
           </div>
           <div className={styles.carddescription}>
             <div className={styles.cardlabel}>INTERVENTION</div>
-            <div className={styles.cardtitle}>Slow reproductive <br></br>aging by 1 year</div>
+            <div className={styles.cardtitle}>
+              Slow reproductive <br></br>aging by 1 year
+            </div>
             <div className={styles.descriptiontext}>
-            Most women in the U.S. reproduce after age 30. This increases miscarriages, maternal deaths, and infertility. Our model takes into account the short- and long-term effects of better reproductive aging on labor supply, wages, and new lives. We also consider the less studied relationship between menopause and lifespan/healthspan, as reproductive aging is increasingly understood as a driver of diseases like Alzheimer’s. 
+              Most women in the U.S. reproduce after age 30. This increases
+              miscarriages, maternal deaths, and infertility. Our model takes
+              into account the short- and long-term effects of better
+              reproductive aging on labor supply, wages, and new lives. We also
+              consider the less studied relationship between menopause and
+              lifespan/healthspan, as reproductive aging is increasingly
+              understood as a driver of diseases like Alzheimer’s.
             </div>
           </div>
         </div>

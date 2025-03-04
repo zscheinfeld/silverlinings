@@ -7,16 +7,14 @@ const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 import animationData from "/public/lottie/Hair.json";
 
 const LottieAnimation = () => {
-    return (
-      
-        <Lottie
-            className={styles.landingimage}
-            animationData={animationData}
-            loop
-            autoplay
-        />
-       
-    );
+  return (
+    <Lottie
+      className={styles.landingimage}
+      animationData={animationData}
+      loop
+      autoplay
+    />
+  );
 };
 
 export default LottieAnimation;

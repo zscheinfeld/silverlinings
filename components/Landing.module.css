@@ -5,38 +5,32 @@
   color: white;
 }
 
-
-
-@keyframes hotspot{
-
-  0%{
+@keyframes hotspot {
+  0% {
     background-color: rgb(139, 139, 139);
   }
 
-  50%{
+  50% {
     background-color: white;
   }
 
-  100%{
+  100% {
     background-color: rgb(139, 139, 139);
   }
-
 }
 
-@keyframes hotspotbg{
-
-  0%{
-    background-color: rgba(255, 255, 255, .05);
+@keyframes hotspotbg {
+  0% {
+    background-color: rgba(255, 255, 255, 0.05);
   }
 
-  50%{
+  50% {
     background-color: rgba(255, 255, 255, 0.15);
   }
 
-  100%{
-    background-color: rgba(255, 255, 255, .05);
+  100% {
+    background-color: rgba(255, 255, 255, 0.05);
   }
-
 }
 
 .hoverDiv {
@@ -79,23 +73,20 @@
   animation: hotspotbg 2.5s ease-in-out infinite;
 }
 
-
-
-.hoverDivpink{
-  animation-delay: .25s;
+.hoverDivpink {
+  animation-delay: 0.25s;
 }
 
-.hoverDivred{
-  animation-delay: .5s;
+.hoverDivred {
+  animation-delay: 0.5s;
 }
 
 /* .hoverDivyellow{
   
 } */
 
-
 .hoverDivbgpink {
-  animation-delay: .25s;
+  animation-delay: 0.25s;
 }
 
 .hoverDivbgpink:hover {
@@ -103,7 +94,7 @@
 }
 
 .hoverDivbgred {
-  animation-delay: .5s;
+  animation-delay: 0.5s;
 }
 
 .hoverDivbgred:hover {
@@ -115,7 +106,7 @@
 }
 
 .hoverDivbgyellow {
-  animation-delay: .3s;
+  animation-delay: 0.3s;
 }
 
 .hoverDivred:hover {
@@ -134,7 +125,7 @@
   border-radius: 100%;
   transition: all 0.2s ease-in-out;
   animation: hotspot 2.5s ease-in-out infinite;
-  animation-delay: .75s;
+  animation-delay: 0.75s;
 }
 
 .fadeDiv {
@@ -231,7 +222,7 @@
   font-size: 16px;
   line-height: 120%;
   color: white;
-  font-family: "spectral";
+  font-family: "Spectral", serif;
   text-align: left;
 }
 
@@ -254,7 +245,7 @@
   font-size: 28px;
   line-height: 90%;
   color: white;
-  font-family: "spectral";
+  font-family: "Spectral", serif;
   text-align: left;
   padding-bottom: 24px;
 }
@@ -273,14 +264,14 @@
   font-size: 28px;
   line-height: 90%;
   color: white;
-  font-family: "spectral";
+  font-family: "Spectral", serif;
 }
 
 .cardnumberdescription {
   font-size: 14px;
   line-height: 120%;
   color: white;
-  font-family: "spectral";
+  font-family: "Spectral", serif;
   text-align: left;
 }
 
@@ -307,7 +298,7 @@
   font-size: 14px;
   line-height: 120%;
   color: white;
-  font-family: "spectral";
+  font-family: "Spectral", serif;
   text-align: left;
   padding-bottom: 2px;
 }
@@ -318,7 +309,7 @@
 }
 
 .tooltipcustom {
-  font-family: "spectral";
+  font-family: "Spectral", serif;
   background-color: #191818;
   max-width: 250px;
   border: solid 1px white;
@@ -525,14 +516,14 @@
 }
 
 .rcardheader {
-  font-family: "spectral";
+  font-family: "Spectral", serif;
   font-size: 24px;
   line-height: 100%;
   color: white;
   padding-bottom: 16px;
 }
 .rcardtext {
-  font-family: "spectral";
+  font-family: "Spectral", serif;
   font-size: 16px;
   line-height: 120%;
   color: white;
@@ -627,7 +618,7 @@
 .landinginnertext {
   width: 100%;
   max-width: 550px;
-  font-family: "spectral";
+  font-family: "Spectral", serif;
   font-size: 44px;
   line-height: 120%;
   display: flex;
@@ -640,13 +631,13 @@
 }
 
 .landingsmall {
-  font-family: "spectral";
+  font-family: "Spectral", serif;
   font-size: 24px;
   line-height: 106%;
 }
 
 .landingsmall2 {
-  font-family: "spectral";
+  font-family: "Spectral", serif;
   font-size: 20px;
   line-height: 130%;
 }
@@ -678,7 +669,7 @@
 }
 
 .landingtextlight {
-  font-family: "spectral";
+  font-family: "Spectral", serif;
   font-size: 46px;
   line-height: 130%;
   width: 50vw;
@@ -768,14 +759,14 @@
 }
 
 .landingtextlarge {
-  font-family: "spectral";
+  font-family: "Spectral", serif;
   font-size: 36px;
   line-height: 106%;
   text-align: left;
 }
 
 .landingtextsmall {
-  font-family: "spectral";
+  font-family: "Spectral", serif;
   font-size: 16px;
   line-height: 140%;
 }
@@ -823,15 +814,13 @@
   z-index: 500;
 }
 
-.legend{
+.legend {
   width: 230px;
   background-color: #191818;
   border: solid white 1px;
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   right: 200px;
   z-index: 500;
   height: 100px;
 }
-
-

@@ -5,9 +5,6 @@ import WorldMap from "@/components/WorldMap";
 import Interactivewoman from "@/components/Interactivewoman";
 import Landingcontent from "./Landingcontent";
 import Face from "./Face";
-import Brainhotspot from "./cards/Brainhotspot";
-import Hearthotspot from "./cards/Hearthotspot";
-import Uterushotspot from "./cards/Uterushotspot";
 
 const Landing = ({ onReachedBottom }) => {
   const [scrollY, setScrollY] = useState(0);
@@ -138,8 +135,6 @@ const Landing = ({ onReachedBottom }) => {
             : ""
         }`}
       >
-        
-
         <div className={`${styles.hotspot} ${styles.organ4}`}>
           <div className={styles.hoverDivbg}>
             <div className={styles.hoverDiv}></div>

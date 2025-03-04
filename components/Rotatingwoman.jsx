@@ -2,7 +2,7 @@ import React from "react";
 import styles from "@/components/Landing.module.css";
 import RotatingDivs from "./cards/RotatingDivs";
 
-const Rotatingwoman = ({windowTransition}) => {
+const Rotatingwoman = ({ windowTransition }) => {
   // Convert the rgb backgroundColor to rgba
   // const rgbToRgba = (rgbColor, alpha = 0) => {
   //   const match = rgbColor.match(/\d+/g); // Extracts the r, g, b values
@@ -18,11 +18,7 @@ const Rotatingwoman = ({windowTransition}) => {
 
   return (
     <div className={styles.womanContainer}>
-      <RotatingDivs 
-       
-        startTransitionAt={windowTransition} 
-        />
-
+      <RotatingDivs startTransitionAt={windowTransition} />
       <div className={styles.womanInnerContainer}>
         <img src="/woman4.png" alt="Woman" />
       </div>
@@ -31,7 +27,8 @@ const Rotatingwoman = ({windowTransition}) => {
         style={{
           backgroundImage: `linear-gradient(to right, #191818,rgba(0,0,10,0))`,
         }}
-      ></div> {/* Updated gradient dynamically */}
+      ></div>{" "}
+      {/* Updated gradient dynamically */}
     </div>
   );
 };
