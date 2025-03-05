@@ -5,13 +5,13 @@ import React, { useRef, useEffect, useState, useMemo } from "react";
 import { throttle } from "lodash";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Textblock from "@/components/Textblock";
 
 const BAR_WIDTH = 60;
 const RESISTANCE_THRESHOLD = 600;
 
 const Chapter = ({
   chapter,
-  type = "default",
   state,
   hasPrevious,
   hasNext,
@@ -21,7 +21,8 @@ const Chapter = ({
   const [activeSubchapter, setActiveSubchapter] = useState(1);
   const router = useRouter();
   const [overscroll, setOverscroll] = useState(0);
-  const { title, number, subchapters } = chapter;
+  const { title, number, subchapters, intro, options } = chapter;
+  const { hideSubchapterNav, type = "default" } = options || {};
 
   const chapterRef = useRef(null);
   const subchapterRefs = useRef([]);
@@ -124,22 +125,28 @@ const Chapter = ({
         </div>
       </Link>
 
-      <SubchapterNav
-        subchapters={subchapters}
-        number={number}
-        activeSubchapter={activeSubchapter}
-      />
+      {!hideSubchapterNav && (
+        <SubchapterNav
+          subchapters={subchapters}
+          number={number}
+          activeSubchapter={activeSubchapter}
+        />
+      )}
 
       <div
         ref={chapterRef}
         id={`chapter-${number}`}
-        className={
-          type === "simulation" ? styles.simulatorcontent : styles.maincontent
-        }
+        className={`${styles.maincontent} ${type === "simulation" && styles.simulatorcontent}`}
       >
         {type === "default" ? (
           <div className={styles.chaptername}>{title}</div>
         ) : null}
+
+        {intro && (
+          <div className={styles.chapterintro}>
+            <Textblock paragraphs={[intro]} />
+          </div>
+        )}
 
         {subchapters.map((subchapter, i) => (
           <Subchapter

@@ -1,7 +1,7 @@
 import styles from "@/components/Newaccordion.module.css";
 import { useRef, useState } from "react";
 
-const Accordionitem = ({ question, answer }) => {
+const Accordionitem = ({ number, question, answer }) => {
   const [expand, setExpand] = useState(false);
   const contentRef = useRef(null); // Ref to access the .answer element
 
@@ -20,7 +20,11 @@ const Accordionitem = ({ question, answer }) => {
   return (
     <div className={styles.item}>
       <div onClick={toggleAccordion} className={`${styles.questioncontainer}`}>
-        <div className={styles.button}>+</div>
+        {number ? (
+          <div className={styles.button}>{number}.</div>
+        ) : (
+          <div className={styles.button}>+</div>
+        )}
         <div className={`${styles.question} ${styles.noselect}`}>
           {question}
         </div>

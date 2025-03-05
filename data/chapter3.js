@@ -2,11 +2,17 @@ const Chapter3 = {
   title: "Simulation Tool",
   slug: "simulation-tool",
   number: 3,
+  options: {
+    type: "simulation",
+  },
   subchapters: [
     {
       slug: "3-1",
       header: "We can slow brain aging",
       number: 1,
+      options: {
+        type: "simulation",
+      },
       content: [
         {
           type: "simulation",
@@ -108,6 +114,9 @@ const Chapter3 = {
       slug: "3-2",
       header: "We can slow reproductive aging",
       number: 2,
+      options: {
+        type: "simulation",
+      },
       content: [
         {
           type: "simulation",
@@ -210,6 +219,9 @@ const Chapter3 = {
       slug: "3-3",
       header: "We can replace aging",
       number: 3,
+      options: {
+        type: "simulation",
+      },
       content: [
         {
           type: "simulation",
@@ -395,6 +407,9 @@ const Chapter3 = {
       slug: "3-4",
       header: "We can measure & marginally slow aging",
       number: 4,
+      options: {
+        type: "simulation",
+      },
       content: [
         {
           type: "simulation",
@@ -748,6 +763,9 @@ const Chapter3 = {
       slug: "3-5",
       header: "We can make 41 the new 40 (or 61 the new 60!)",
       number: 5,
+      options: {
+        type: "simulation",
+      },
       content: [
         {
           type: "simulation",

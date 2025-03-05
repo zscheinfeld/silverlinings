@@ -6,7 +6,7 @@ const Textblock = ({ callouts, paragraphs }) => {
   return (
     <div className={styles.textblock}>
       {/* Render callouts only if there are any */}
-      {callouts.length > 0 &&
+      {callouts?.length > 0 &&
         callouts.map((callout, index) => (
           <Callout key={`callout-${index}`} content={callout} />
         ))}

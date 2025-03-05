@@ -1,20 +1,19 @@
 import styles from "@/components/Newaccordion.module.css";
 import Accordionitem from "./Accordionitem";
 
-const Newaccordion = ({ atitle, questions, answers }) => {
+const Newaccordion = ({ title, numbered, questions, answers }) => {
   return (
     <div className={styles.accordioncontainer}>
-      <div className={styles.title}>{atitle}</div>
+      {title && <div className={styles.title}>{title}</div>}
 
       {questions.map((item, index) => (
         <Accordionitem
           key={`accordion-${index}`}
+          number={numbered ? index + 1 : undefined}
           question={item}
           answer={answers[index]}
         />
       ))}
-      {/* <Accordionitem question= "zach" answer="answer1"/>
-        <Accordionitem question= "zach" answer="answer2"/> */}
     </div>
   );
 };
