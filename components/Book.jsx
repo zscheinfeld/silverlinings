@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import Chapter from "./Chapter";
 import { Chapters } from "@/data/book";
 import { useRouter } from "next/router";
-import Topnav from "@/components/Topnav";
+import TopNav from "@/components/TopNav";
 import styles from "./Book.module.css";
 
 const Book = ({ active }) => {
@@ -54,7 +54,7 @@ const Book = ({ active }) => {
   return (
     <div className={styles.book} style={style}>
       <div className={styles.bookContent}>
-        <Topnav />
+        <TopNav />
         {Chapters.map((chapter) => {
           const { number } = chapter;
           const hasPrevious = number !== 1;

@@ -1,0 +1,132 @@
+.maincontent {
+  min-width: 950px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  padding-top: 176px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scrollbar-color: rgba(0, 0, 0, 0) rgba(255, 255, 255, 0);
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.chapter.black {
+  color: white;
+  background-color: black;
+}
+
+.chapter {
+  display: flex;
+  position: absolute;
+  background-color: #fff5e5;
+
+  overflow: hidden;
+  transition: left 600ms ease-in-out;
+}
+
+.chap-next {
+  /* background-color: #FBE0F3; */
+  border-left: solid black 1px;
+}
+
+.chap-next:hover {
+  background-color: #191818;
+}
+
+.chap-upcoming {
+  /* background-color: #FBE0F3; */
+  border-left: solid black 1px;
+}
+
+.chap-1 {
+  background-color: yellow;
+}
+
+.chap-2 {
+  background-color: #fbe0f3;
+}
+
+.chap-3 {
+  background-color: #f4e9fe;
+}
+
+.chap-4 {
+  background-color: #dfeee6;
+}
+
+.chap-5 {
+  background-color: #e4f4ff;
+}
+
+.chap-current {
+  background-color: #fff5e5;
+  border-right: solid black 1px;
+}
+
+.chap-current:hover {
+  background-color: #191818;
+}
+
+.chap-previous {
+  background-color: #e1e0e0;
+  border-right: solid black 1px;
+}
+
+.chap-previous:hover {
+  background-color: #191818;
+}
+
+.chap-archived {
+  background-color: #e1e0e0;
+  border-right: solid black 1px;
+}
+
+.simulatorcontent {
+  padding-top: 60px;
+}
+
+.chaptername {
+  font-size: 86px;
+  line-height: 93%;
+  font-family: "Spectral", serif;
+  text-align: center;
+  /* width: 100%; */
+  max-width: 950px;
+  text-transform: uppercase;
+}
+
+.chapterintro {
+  padding: 64px 0;
+}
+
+.subchapterNav {
+  /* position: fixed;
+    top: 0px;
+    left: 0px; */
+  height: 100vh;
+  width: 60px;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  padding-top: 240px;
+}
+
+.subchapterNavText {
+  font-family: "Spectral", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 26px;
+  line-height: 100%;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.subchapterNav:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}

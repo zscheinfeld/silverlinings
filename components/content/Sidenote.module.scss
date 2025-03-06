@@ -1,0 +1,23 @@
+.sideNoteHeader {
+  font-family: "Spectral", serif;
+  font-size: 20px;
+  line-height: 100%;
+}
+
+.sidenoteText {
+  font-family: "Spectral", serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 120%;
+}
+
+.sidenoteInnterContainer {
+  display: flex;
+  border: solid 1px black;
+  width: 400px;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}

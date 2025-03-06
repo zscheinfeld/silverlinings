@@ -83,7 +83,7 @@ const Chapter2 = {
         },
 
         {
-          type: "bottompadding",
+          type: "spacer",
         },
       ],
     },
@@ -167,7 +167,7 @@ const Chapter2 = {
           },
         },
         {
-          type: "bottompadding",
+          type: "spacer",
         },
       ],
     },
@@ -232,7 +232,7 @@ const Chapter2 = {
           },
         },
         {
-          type: "bottompadding",
+          type: "spacer",
         },
       ],
     },
@@ -287,7 +287,7 @@ const Chapter2 = {
         },
 
         {
-          type: "bottompadding",
+          type: "spacer",
           data: "",
         },
       ],
@@ -341,7 +341,7 @@ const Chapter2 = {
         },
 
         {
-          type: "bottompadding",
+          type: "spacer",
           data: "",
         },
       ],

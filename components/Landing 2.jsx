@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styles from "@/components/Landing.module.css";
-import Rotatingwoman from "@/components/Rotatingwoman";
-import WorldMap from "@/components/WorldMap";
-import Interactivewoman from "@/components/Interactivewoman";
-import Landingcontent from "./Landingcontent";
-import Face from "./Face";
+import RotatingWoman from "@/components/landing/RotatingWoman";
+import WorldMap from "@/components/landing/WorldMap";
+import InteractiveWoman from "@/components/landing/InteractiveWoman";
+import LandingContent from "./landing/LandingContent";
+import Face from "./landing/Face";
 
 const Landing = ({ onReachedBottom }) => {
   const [scrollY, setScrollY] = useState(0);
@@ -151,14 +151,14 @@ const Landing = ({ onReachedBottom }) => {
       {/* Conditionally render Face component based on visibility */}
       {getFaceVisibility() && <Face opacity={getFaceOpacity()} />}
 
-      <Landingcontent />
+      <LandingContent />
       {/* Section 1: Rotatingwoman */}
       <div
         className={`${styles.sectionLanding} ${
           getVisibility(0) ? styles.sectionLandingVisible : ""
         }`}
       >
-        <Rotatingwoman
+        <RotatingWoman
           backgroundColor={getBackgroundColor()}
           windowTransition={sectionMultiples[0] * (1.55 * window.innerHeight)}
         />
@@ -183,7 +183,7 @@ const Landing = ({ onReachedBottom }) => {
             : ""
         }`}
       >
-        <Interactivewoman />
+        <InteractiveWoman />
       </div>
     </div>
   );

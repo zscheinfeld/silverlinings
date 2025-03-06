@@ -1,11 +1,12 @@
-import styles from "@/components/Chapter.module.css";
-import Subchapter from "./Subchapter";
-import SubchapterNav from "./SubchapterNav";
+import styles from "@/components/Chapter.module.scss";
+import Subchapter from "./subchapter/Subchapter";
+import SubchapterNav from "./subchapter/SubchapterNav";
 import React, { useRef, useEffect, useState, useMemo } from "react";
 import { throttle } from "lodash";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Textblock from "@/components/Textblock";
+import Textblock from "@/components/content/Textblock";
+import Spacer from "@/components/content/Spacer";
 
 const BAR_WIDTH = 60;
 const RESISTANCE_THRESHOLD = 600;
@@ -22,7 +23,7 @@ const Chapter = ({
   const router = useRouter();
   const [overscroll, setOverscroll] = useState(0);
   const { title, number, subchapters, intro, options } = chapter;
-  const { hideSubchapterNav, type = "default" } = options || {};
+  const { type = "default", color, spacer, hideSubchapterNav } = options || {};
 
   const chapterRef = useRef(null);
   const subchapterRefs = useRef([]);
@@ -112,7 +113,10 @@ const Chapter = ({
   }, [state, hasPrevious, hasNext]);
 
   return (
-    <div className={`${styles.chapter} ${state}`} style={style}>
+    <div
+      className={`${styles.chapter} ${state} ${color === "black" && styles.black}`}
+      style={style}
+    >
       <Link
         href={{
           pathname: router.pathname,
@@ -148,6 +152,8 @@ const Chapter = ({
           </div>
         )}
 
+        {spacer && <Spacer border={false} />}
+
         {subchapters.map((subchapter, i) => (
           <Subchapter
             key={subchapter.slug}
@@ -156,6 +162,8 @@ const Chapter = ({
             chapterNumber={number}
           />
         ))}
+
+        <Spacer border={false} />
       </div>
     </div>
   );

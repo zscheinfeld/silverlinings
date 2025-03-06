@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import Gsaplanding from "./Gsaplanding";
+import GsapLanding from "./GsapLanding";
 
 const Landing = ({ onReachedBottom }) => {
   const [scrollY, setScrollY] = useState(0);
@@ -48,7 +48,7 @@ const Landing = ({ onReachedBottom }) => {
   }
 
   return (
-    <Gsaplanding></Gsaplanding>
+    <GsapLanding></GsapLanding>
     // <div
     //   className={`${styles.scrollContainerLanding}`}
     //   style={{ backgroundColor: getBackgroundColor() }}

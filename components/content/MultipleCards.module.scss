@@ -1,0 +1,41 @@
+.multipleSidenoteInnerContainer {
+  display: flex;
+  border: solid 1px black;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: left;
+  align-items: flex-start;
+  padding: 24px;
+  height: auto;
+  flex: 1 1 300px;
+}
+
+.multipleCardsContainer {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.multipleSideNoteHeader {
+  font-family: "Spectral", serif;
+  font-weight: 400;
+  font-size: 36px;
+}
+
+.desktopLabelXL {
+  font-family: "Spectral", serif;
+  font-size: 20px;
+  line-height: 100%;
+  font-weight: bold;
+}
+
+.multipleCardsModule {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding-top: 64px;
+  padding-bottom: 64px;
+  border-top: solid rgba(0, 0, 0, 0.25) 1px;
+  border-bottom: solid rgba(0, 0, 0, 0.25) 1px;
+}

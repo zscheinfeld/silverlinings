@@ -1,0 +1,41 @@
+.subchaptername {
+  max-width: 620px;
+  font-size: 36px;
+  line-height: 100%;
+  font-family: "Spectral", serif;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+  text-align: center;
+}
+
+.subchaptermodules {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  align-items: center;
+  width: 100%;
+  max-width: 950px;
+  padding-top: 64px;
+}
+
+.simulationsubachaptermodules {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  width: 100%;
+  max-width: 950px;
+  padding-top: 64px;
+  margin-bottom: 240px;
+}
+
+.accordionsubachaptermodules {
+  width: 100%;
+  max-width: 950px;
+}
+
+.bordered {
+  padding: 64px 0;
+  border-top: 1px solid currentColor;
+}

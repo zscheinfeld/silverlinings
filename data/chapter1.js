@@ -79,7 +79,7 @@ const Chapter1 = {
         },
 
         {
-          type: "bottompadding",
+          type: "spacer",
           data: "",
         },
       ],
@@ -137,7 +137,7 @@ const Chapter1 = {
         },
 
         {
-          type: "bottompadding",
+          type: "spacer",
           data: "",
         },
       ],
@@ -204,9 +204,8 @@ const Chapter1 = {
             imageoverlay: ["charts/1_3_2_overlay.svg"],
           },
         },
-
         {
-          type: "bottompadding",
+          type: "spacer",
           data: "",
         },
       ],

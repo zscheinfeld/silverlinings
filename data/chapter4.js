@@ -9,11 +9,11 @@ const Chapter4 = {
   },
   subchapters: [
     {
-      slug: "funding",
+      slug: "4-1",
       header: "How much funding will each future require?",
       number: 1,
       options: {
-        type: "accordion",
+        type: "toggle",
       },
       content: [
         {
@@ -58,11 +58,38 @@ const Chapter4 = {
       ],
     },
     {
-      slug: "consequences",
+      slug: "4-2",
+      header: "Comparison to other investments",
+      number: 2,
+      options: {
+        type: "toggle",
+      },
+      content: [],
+    },
+    {
+      slug: "4-3",
+      header: "Policy consideration",
+      number: 3,
+      options: {
+        type: "toggle",
+      },
+      content: [],
+    },
+    {
+      slug: "4-4",
+      header: "Why focus on GDP?",
+      number: 4,
+      options: {
+        type: "toggle",
+      },
+      content: [],
+    },
+    {
+      slug: "4-5",
       header: "Unintended consequences",
       number: 5,
       options: {
-        type: "accordion",
+        type: "toggle",
       },
       content: [
         {
@@ -77,7 +104,30 @@ const Chapter4 = {
               "What if aging cannot be improved?",
               "Will innovation slow down?",
             ],
-            answers: ["Lorem", "Lorem", "Lorem", "Lorem", "Lorem", "Lorem"],
+            answers: [
+              [
+                {
+                  type: "text",
+                  data: {
+                    callout: "Testing",
+                    paragraphs: ["Hello!"],
+                  },
+                },
+                {
+                  type: "svgchart",
+                  data: {
+                    source: ["/charts/1_1_1.svg"],
+                    imageoverlay: false,
+                    textoverlay: false,
+                  },
+                },
+              ],
+              "Lorem",
+              "Lorem",
+              "Lorem",
+              "Lorem",
+              "Lorem",
+            ],
           },
         },
       ],
