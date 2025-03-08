@@ -15,7 +15,7 @@ import Slider from "@/components/simulation/Slider";
 import SimulationOverlay from "./SimulationOverlay";
 
 const Simulation = ({ data }) => {
-  const [showOverlay, setShowOverlay] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(true);
 
   const toggleOverlay = () => {
     setShowOverlay((prev) => !prev);
