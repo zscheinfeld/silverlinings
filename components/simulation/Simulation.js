@@ -16,10 +16,17 @@ import SimulationOverlay from "./SimulationOverlay";
 
 const Simulation = ({ data }) => {
   const [showOverlay, setShowOverlay] = useState(true);
+  const [showDescription, setShowDescription] = useState(false); // State to toggle the description visibility
 
   const toggleOverlay = () => {
     setShowOverlay((prev) => !prev);
   };
+
+  const toggleDescription = () => {
+    setShowDescription((prev) => !prev); // Toggle the description visibility
+  };
+
+
   const [sectionIndex, setSectionIndex] = useState(0);
   const section = data.sections[sectionIndex];
 
@@ -184,6 +191,8 @@ const Simulation = ({ data }) => {
 
   return (
     <>
+    
+
       <div
         className={styles.simulationhead}
         dangerouslySetInnerHTML={{ __html: data.title }}
@@ -192,12 +201,32 @@ const Simulation = ({ data }) => {
       <div key={`${sectionIndex}`}>
         <div className={styles.middleContainer}>
           <div className={styles.inputContainer}>
-            <button className={styles.resetContainer} onClick={handleReset}>
-              <div className={styles.svg}>
-                <img src="restart.svg" alt="" />
-              </div>
-              Reset
-            </button>
+
+          <div className={`${styles.explanation} ${showDescription ? styles.visible : ''}`}>
+            <div className={styles.sectionHeader}>EXPLANATION</div>
+            <div className={styles.explanationText}>{data.explanation}</div>
+          </div>
+
+
+
+
+            <div className={styles.simbuttonContainer}>
+              <button className={styles.resetContainer} onClick={handleReset}>
+                <div className={styles.svg}>
+                  <img src="restart.svg" alt="" />
+                </div>
+                Reset
+              </button>
+              <button
+                  className={`${styles.descriptionContainer} ${showDescription ? styles.visible : ''}`}
+                  onClick={toggleDescription}
+                >
+                  <div className={styles.svg}>
+                    <img src="info.svg" alt="Info" />
+                  </div>
+                  Description
+                </button>
+            </div>
             <div className={styles.sectionHeader}>PRIMARY INPUTS</div>
             <Slider
               id="inputAdoption"
@@ -354,10 +383,10 @@ const Simulation = ({ data }) => {
             </div>
           </div>
 
-          <div className={styles.explanation}>
+          {/* <div className={styles.explanation}>
             <div className={styles.sectionHeader}>EXPLANATION</div>
             <div className={styles.explanationText}>{data.explanation}</div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

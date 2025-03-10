@@ -9,6 +9,8 @@ import ImageGrid from "@/components/content/ImageGrid";
 import NameGrid from "@/components/content/NameGrid";
 import List from "@/components/content/List";
 import Spacer from "@/components/content/Spacer";
+import Virtruvianwomannavigation from "./Virtruvianwomannavigation";
+
 
 const Content = ({ type, data }) => {
   if (type === "text") {
@@ -68,6 +70,12 @@ const Content = ({ type, data }) => {
 
   if (type === "spacer") {
     return <Spacer {...data} />;
+  }
+
+  if (type === "virtruvianwomannavigation") {
+    return <Virtruvianwomannavigation>
+      
+    </Virtruvianwomannavigation>;
   }
 };
 

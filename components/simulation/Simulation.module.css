@@ -54,11 +54,27 @@
   object-fit: contain;
 }
 
+/* Explanation container */
 .explanation {
   width: 295px;
-  height: 300px;
-  /* background-color: hotpink; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+  z-index: 20;
+  padding: 24px;
+  border: solid 1px black;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.5s ease-in-out; /* Transition for fading */
+  pointer-events: none;
 }
+
+/* When description is visible, fade in */
+.explanation.visible {
+  opacity: 1;
+}
+
+
 
 .explanationText {
   font-family: "Spectral", serif;
@@ -130,17 +146,46 @@
   text-align: center;
 }
 
+.simbuttonContainer{
+  position: absolute;
+  top: -40px;
+  display: flex;
+  gap: 12px;
+}
+
 .resetContainer {
   background-color: transparent;
   border: 0;
   font-family: "Spectral", serif;
   opacity: 50%;
-  position: absolute;
-  top: -30px;
   font-size: 14px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+}
+
+.descriptionContainer {
+  background-color: transparent;
+  border: 0;
+  font-family: "Spectral", serif;
+  opacity: 50%;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+
+.descriptionContainer.visible {
+  opacity: 100%; /* Full opacity when description is visible */
+}
+
+.descriptionContainer.visible:hover {
+  opacity: 50%; /* Full opacity when description is visible */
+}
+
+.descriptionContainer:hover {
+  opacity: 100%;
 }
 
 .svg {
