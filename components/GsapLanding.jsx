@@ -24,7 +24,6 @@ const GsapLanding = () => {
   return (
     <div className={styles.background}>
       <div className={styles.space}></div>
-
       <AnimatedLandingElementFade
         fadeInStart={0}
         fadeInEnd={fadeOutPoint}

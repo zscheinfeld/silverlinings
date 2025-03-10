@@ -1,4 +1,4 @@
-const Chapter5 = {
+const Chapter4 = {
   title: "Information",
   slug: "information",
   number: 4,
@@ -8,7 +8,7 @@ const Chapter5 = {
   },
   subchapters: [
     {
-      slug: "5-1",
+      slug: "4-1",
       header: "People",
       number: 1,
       options: {
@@ -68,7 +68,7 @@ const Chapter5 = {
       ],
     },
     {
-      slug: "5-2",
+      slug: "4-2",
       header: "Acknowledgements",
       number: 2,
       options: {
@@ -128,7 +128,7 @@ const Chapter5 = {
       ],
     },
     {
-      slug: "5-3",
+      slug: "4-3",
       header: "Scientists Interviewed",
       options: {
         type: "header",
@@ -154,7 +154,7 @@ const Chapter5 = {
       ],
     },
     {
-      slug: "5-4",
+      slug: "4-4",
       header: "PUBLICATIONS",
       number: 4,
       options: {
@@ -202,7 +202,7 @@ const Chapter5 = {
       ],
     },
     {
-      slug: "5-5",
+      slug: "4-5",
       header: "Call to Action",
       number: 5,
       options: {
@@ -228,4 +228,4 @@ const Chapter5 = {
   ],
 };
 
-export default Chapter5;
+export default Chapter4;

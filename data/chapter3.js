@@ -20,14 +20,6 @@ const Chapter3 = {
           type: "text",
           data: {
             paragraphs: [
-              "Intro text to the fine print enean sapien odio, dignissim non lacinia ut, vestibulum eu turpis.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed mauris nec ante sollicitudin vestibulum. Quisque nec sem nunc. Pellentesque pulvinar placerat tortor vitae congue. Aenean non magna id est varius porttitor. Donec laoreet ullamcorper enim a lobortis. Donec non tempus nibh. Duis pellentesque orci ut lorem porttitor molestie. Suspendisse enim velit, congue id interdum eget, ullamcorper a metus.",
-            ],
-          },
-        },
-        {
-          type: "text",
-          data: {
-            paragraphs: [
               "Because science is unpredictable, and because large R&D investments do not always result in large returns, we built an interactive  tool where you simulate what you believe is feasible in the near and far future. As a rule, we have focused on ​the returns to successful investments resulting in small improvements to the biology of aging. Most scientists we consulted believe these R&D “breakthroughs” (e.g. reversing brain aging by 1 year) are already possible — even with low-tech solutions like exercise or existing therapeutics — but they haven’t yet been rigorously tested in clinical trials. (More on this in Future 4.)",
             ],
           },
@@ -50,9 +42,10 @@ const Chapter3 = {
         {
           type: "svgchart",
           data: {
-            source: ["/charts/1_1_1.svg"],
-            imageoverlay: false,
+            source: ["/fineprint/Fineprint_1.svg"],
+            imageoverlay: true,
             textoverlay: false,
+            imageoverlay:["/fineprint/Fineprint_1_overlay.svg"],
           },
         },
       ],

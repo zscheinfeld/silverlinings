@@ -22,25 +22,27 @@ export default function AnimatedMapFade({
         end: `${fadeOutEnd}px`,
         scrub: true,
         onUpdate: (self) => {
-          // Toggle pointer-events based on scroll progress
           const progress = self.progress; // 0 to 1 based on scroll position
-          if (progress > 0 && progress < 1) {
-            elementRef.current.style.pointerEvents = "auto";
+        
+          // Enable pointer events when the map is fully visible (progress > 0.1)
+          if (progress > 0.1 && progress < 0.9) {
+            elementRef.current.style.pointerEvents = "auto"; // Enable pointer events when map is visible
           } else {
-            elementRef.current.style.pointerEvents = "none";
+            elementRef.current.style.pointerEvents = "none"; // Disable pointer events otherwise
           }
         },
       },
     });
 
+    // GSAP animation for fade-in, hold, and fade-out
     timeline
       .fromTo(
         elementRef.current,
         { opacity: 0 }, // Start at 0% opacity
         {
           opacity: 1,
-          duration: (fadeInEnd - fadeInStart) / (fadeOutEnd - fadeInStart),
-        }, // Fade to 100%
+          duration: (fadeInEnd - fadeInStart) / (fadeOutEnd - fadeInStart), // Fade to 100% opacity
+        }
       )
       .to(elementRef.current, {
         opacity: 1,
@@ -48,9 +50,10 @@ export default function AnimatedMapFade({
       })
       .to(elementRef.current, {
         opacity: 0,
-        duration: (fadeOutEnd - fadeOutStart) / (fadeOutEnd - fadeInStart), // Fade back to 0%
+        duration: (fadeOutEnd - fadeOutStart) / (fadeOutEnd - fadeInStart), // Fade back to 0% opacity
       });
 
+    // Cleanup function to kill GSAP animations and scrollTrigger
     return () => {
       if (timeline.scrollTrigger) timeline.scrollTrigger.kill();
       timeline.kill();
@@ -59,6 +62,8 @@ export default function AnimatedMapFade({
 
   return (
     // Apply animation to the child component directly
-    <div ref={elementRef}>{children}</div>
+    <div ref={elementRef}>
+      {children}
+    </div>
   );
 }

@@ -59,7 +59,7 @@ export default function AnimatedLandingElementFade({
 
   return (
     // Apply animation to the child component directly
-    <div ref={elementRef} style={{ zIndex: 500, position: "relative" }}>
+    <div ref={elementRef} style={{ position: "relative" }}>
       {children}
     </div>
   );
