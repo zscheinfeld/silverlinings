@@ -26,7 +26,6 @@ const Simulation = ({ data }) => {
     setShowDescription((prev) => !prev); // Toggle the description visibility
   };
 
-
   const [sectionIndex, setSectionIndex] = useState(0);
   const section = data.sections[sectionIndex];
 
@@ -111,11 +110,10 @@ const Simulation = ({ data }) => {
       inputFertility = 0,
     } = inputs;
 
-    // TODO: Verify this change from the original model!
     // Make adjustments to year shifts based on adoption rate
-    inputMortality = inputMortality || inputAdoption / 100;
-    inputProductivity = inputProductivity || inputAdoption / 100;
-    inputFertility = inputFertility || inputAdoption / 100;
+    inputMortality = inputMortality * (inputAdoption / 100);
+    inputProductivity = inputProductivity * (inputAdoption / 100);
+    inputFertility = Math.min(inputFertility, 1.2) * (inputAdoption / 100);
 
     // Below list needs to follow same order as the input list used to train the model
     const inputTensor_NPV = tf.tensor2d(
@@ -191,8 +189,6 @@ const Simulation = ({ data }) => {
 
   return (
     <>
-    
-
       <div
         className={styles.simulationhead}
         dangerouslySetInnerHTML={{ __html: data.title }}
@@ -201,14 +197,12 @@ const Simulation = ({ data }) => {
       <div key={`${sectionIndex}`}>
         <div className={styles.middleContainer}>
           <div className={styles.inputContainer}>
-
-          <div className={`${styles.explanation} ${showDescription ? styles.visible : ''}`}>
-            <div className={styles.sectionHeader}>EXPLANATION</div>
-            <div className={styles.explanationText}>{data.explanation}</div>
-          </div>
-
-
-
+            <div
+              className={`${styles.explanation} ${showDescription ? styles.visible : ""}`}
+            >
+              <div className={styles.sectionHeader}>EXPLANATION</div>
+              <div className={styles.explanationText}>{data.explanation}</div>
+            </div>
 
             <div className={styles.simbuttonContainer}>
               <button className={styles.resetContainer} onClick={handleReset}>
@@ -218,14 +212,14 @@ const Simulation = ({ data }) => {
                 Reset
               </button>
               <button
-                  className={`${styles.descriptionContainer} ${showDescription ? styles.visible : ''}`}
-                  onClick={toggleDescription}
-                >
-                  <div className={styles.svg}>
-                    <img src="info.svg" alt="Info" />
-                  </div>
-                  Description
-                </button>
+                className={`${styles.descriptionContainer} ${showDescription ? styles.visible : ""}`}
+                onClick={toggleDescription}
+              >
+                <div className={styles.svg}>
+                  <img src="info.svg" alt="Info" />
+                </div>
+                Description
+              </button>
             </div>
             <div className={styles.sectionHeader}>PRIMARY INPUTS</div>
             <Slider
