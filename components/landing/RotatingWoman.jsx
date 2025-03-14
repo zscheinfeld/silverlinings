@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@/components/Landing.module.css";
+import styles from "@/components/Landing.module.scss";
 import RotatingDivs from "./cards/RotatingDivs";
 
 const RotatingWoman = ({ windowTransition }) => {

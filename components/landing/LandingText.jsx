@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import styles from "@/components/GsapLanding.module.css";
+import styles from "@/components/GsapLanding.module.scss";
 import Link from "next/link";
 
 const LandingTextIntro = ({ fadeOutPoint }) => {

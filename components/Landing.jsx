@@ -1,54 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import GsapLanding from "./GsapLanding";
 
-const Landing = ({ onReachedBottom }) => {
-  const [scrollY, setScrollY] = useState(0);
-  const [isClient, setIsClient] = useState(false); // Track if we're in the browser
-  const [fadeEnd, setFadeEnd] = useState(0); // Dynamically set fadeEnd
+const Landing = ({ hidden, onReachedBottom }) => {
+  useEffect(() => {
+    // Hide the body scroll when the landing page is inactive.
+    document.body.style.overflow = hidden ? "hidden" : "auto";
+  }, [hidden]);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      setIsClient(true); // Now we know we're on the client-side
-      setFadeEnd(window.innerHeight); // Dynamically set fadeEnd to match window height
+    const handleScroll = () => {
+      // Check if user has scrolled to the bottom
+      const scrollableHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      if (window.scrollY >= scrollableHeight - 200) {
+        // Add a small buffer
+        onReachedBottom(); // Trigger the event
+      }
+    };
 
-      const handleScroll = () => {
-        setScrollY(window.scrollY); // Update scroll position
-      };
-
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll); // Cleanup the event listener
-    }
-  }, []);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setIsClient(true);
-      setFadeEnd(window.innerHeight);
-
-      const handleScroll = () => {
-        setScrollY(window.scrollY);
-
-        // Check if user has scrolled to the bottom
-        const scrollableHeight =
-          document.documentElement.scrollHeight - window.innerHeight;
-        if (window.scrollY >= scrollableHeight - 10) {
-          // Add a small buffer
-          onReachedBottom(); // Trigger the event
-        }
-      };
-
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    }
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [onReachedBottom]);
 
-  if (!isClient) {
-    return null; // Render nothing until the client-side is ready
-  }
-
   return (
-    <GsapLanding></GsapLanding>
+    <GsapLanding />
     // <div
     //   className={`${styles.scrollContainerLanding}`}
     //   style={{ backgroundColor: getBackgroundColor() }}

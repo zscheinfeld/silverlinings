@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "@/components/Landing.module.css"; // Import the CSS module
+import styles from "@/components/Landing.module.scss"; // Import the CSS module
 
 const HeartHotspot = () => {
   const [isHovered, setIsHovered] = useState(false);

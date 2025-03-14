@@ -1,16 +1,20 @@
 import styles from "./SubchapterNav.module.scss";
 import Link from "next/link";
 
-const SubchapterNav = ({ subchapters, number, activeSubchapter }) => {
+const SubchapterNav = ({ chapter, subchapters, activeSubchapter }) => {
+  const { slug, number } = chapter;
   return (
-    <div className={styles.subchapterInnerNav}>
+    <div className={styles.subchapterNav}>
       <div className={styles.previousSubChapterContainer}>
         {subchapters.map((subchapter) => {
           if (subchapter.number < activeSubchapter) {
             return (
               <Link
                 key={subchapter.slug}
-                href={`#${subchapter.slug}`}
+                href={{
+                  hash: `#${subchapter.slug}`,
+                  query: { chapter: slug },
+                }}
                 className={styles.previousSubChapter}
               />
             );
@@ -22,8 +26,11 @@ const SubchapterNav = ({ subchapters, number, activeSubchapter }) => {
           return (
             <Link
               key={subchapter.slug}
-              href={`#${subchapter.slug}`}
-              className={styles.subchapterInnernavText}
+              href={{
+                hash: `#${subchapter.slug}`,
+                query: { chapter: slug },
+              }}
+              className={styles.subchapterNavText}
             >
               {number}.{subchapter.number}
               {subchapter.header}
@@ -33,7 +40,10 @@ const SubchapterNav = ({ subchapters, number, activeSubchapter }) => {
           return (
             <Link
               key={subchapter.slug}
-              href={`#${subchapter.slug}`}
+              href={{
+                hash: `#${subchapter.slug}`,
+                query: { chapter: slug },
+              }}
               className={styles.upcomingSubChapter}
             >
               {number}.{subchapter.number}

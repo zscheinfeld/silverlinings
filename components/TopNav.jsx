@@ -1,18 +1,23 @@
 import { useState } from "react";
-import styles from "@/components/TopNav.module.css";
+import styles from "@/components/TopNav.module.scss";
 import { Chapters } from "@/data/book";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-const TopNav = () => {
+const TopNav = ({ handleOpen }) => {
   const [activeNav, setActiveNav] = useState(0);
   const router = useRouter();
 
   const handleClick = () => {
     if (activeNav === 0) {
+      handleOpen(true);
       setActiveNav(1);
     } else {
       setActiveNav(0);
+      // Don't fire the event until after the transition.
+      setTimeout(() => {
+        handleOpen(false);
+      }, 600);
     }
   };
 

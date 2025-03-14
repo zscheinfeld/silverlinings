@@ -1,4 +1,4 @@
-import styles from "@/components/Landing.module.css";
+import styles from "@/components/Landing.module.scss";
 import UterusHotspot from "./cards/UterusHotspot";
 import BrainHotspot from "./cards/BrainHotspot";
 import HeartHotspot from "./cards/HeartHotspot";

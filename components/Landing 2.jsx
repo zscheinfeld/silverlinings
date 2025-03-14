@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "@/components/Landing.module.css";
+import styles from "@/components/Landing.module.scss";
 import RotatingWoman from "@/components/landing/RotatingWoman";
 import WorldMap from "@/components/landing/WorldMap";
 import InteractiveWoman from "@/components/landing/InteractiveWoman";

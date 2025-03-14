@@ -1,17 +1,21 @@
+@use "../../styles/layout";
+
 .maincontent {
-  min-width: 950px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: auto;
-  padding-top: 176px;
+  padding: 176px 20px 0;
   height: 100vh;
   overflow-x: hidden;
   overflow-y: scroll;
   scrollbar-color: rgba(0, 0, 0, 0) rgba(255, 255, 255, 0);
   scrollbar-width: none;
-  scroll-behavior: smooth;
+
+  &.smooth {
+    scroll-behavior: smooth;
+  }
 }
 
 .chapter.black {
@@ -25,7 +29,24 @@
   background-color: #fff5e5;
 
   overflow: hidden;
-  transition: left 600ms ease-in-out;
+
+  z-index: var(--zIndex);
+  left: 0;
+  width: 100%;
+
+  &.upcoming,
+  &.next {
+    left: 100%;
+  }
+
+  &.transition {
+    transition: left 600ms ease-in-out;
+  }
+
+  @include layout.md {
+    left: var(--left) !important;
+    width: var(--width);
+  }
 }
 
 .chap-next {
@@ -103,19 +124,20 @@
   padding: 64px 0;
 }
 
-.subchapterNav {
-  /* position: fixed;
-    top: 0px;
-    left: 0px; */
-  height: 100vh;
-  width: 60px;
-  display: flex;
-  flex-shrink: 0;
-  justify-content: center;
-  padding-top: 240px;
+.chapterNav {
+  display: none;
+
+  @include layout.md {
+    height: 100vh;
+    width: 60px;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    padding-top: 240px;
+  }
 }
 
-.subchapterNavText {
+.chapterNavText {
   font-family: "Spectral", serif;
   font-weight: 400;
   font-style: normal;
@@ -125,7 +147,7 @@
   text-orientation: mixed;
 }
 
-.subchapterNav:hover {
+.chapterNav:hover {
   background-color: black;
   color: white;
   cursor: pointer;

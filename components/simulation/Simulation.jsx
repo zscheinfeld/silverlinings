@@ -1,5 +1,5 @@
 import * as tf from "@tensorflow/tfjs";
-import styles from "@/components/simulation/Simulation.module.css";
+import styles from "@/components/simulation/Simulation.module.scss";
 
 // Store normalization parameters
 const inputMeans = [

@@ -2,7 +2,9 @@
   width: 100%;
   position: fixed;
   z-index: 999;
-  transition: left 600ms ease-in-out;
+  transition: left 1000ms ease-in-out;
+  height: 100%;
+  overflow-x: hidden;
 }
 
 .bookContent {

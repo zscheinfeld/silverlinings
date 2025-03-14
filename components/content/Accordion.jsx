@@ -20,8 +20,6 @@ const Accordion = ({ title, numbered, questions, answers }) => {
     });
   }, [answers]);
 
-  console.log(renderedAnswers);
-
   return (
     <div className={styles.accordioncontainer}>
       {title && <div className={styles.title}>{title}</div>}

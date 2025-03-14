@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styles from "@/components/GsapLanding.module.css";
+import styles from "@/components/GsapLanding.module.scss";
 import AnimatedMapFade from "@/components/landing/AnimatedMapFade";
 import WorldMap from "@/components/landing/WorldMap";
 import AnimatedLandingElementFade from "@/components/landing/AnimatedLandingElementFade.jsx";
@@ -13,17 +13,14 @@ const GsapLanding = () => {
   const [fadeOutPoint, setFadeOutPoint] = useState(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      setFadeOutPoint(window.innerHeight);
-    }
+    setFadeOutPoint(window.innerHeight);
   }, []);
-
-  // Prevent rendering until fadeOutPoint is set
-  if (fadeOutPoint === null) return null;
 
   return (
     <div className={styles.background}>
       <div className={styles.space}></div>
+      <LandingTextIntro fadeOutPoint={fadeOutPoint} />
+
       <AnimatedLandingElementFade
         fadeInStart={0}
         fadeInEnd={fadeOutPoint}
@@ -44,8 +41,6 @@ const GsapLanding = () => {
       >
         <RotatingWoman windowTransition={fadeOutPoint * 2.7} />
       </AnimatedLandingElementFade>
-
-      <LandingTextIntro fadeOutPoint={fadeOutPoint} />
 
       <div className={styles.space}></div>
 

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import styles from "@/components/GsapLanding.module.css";
+import styles from "@/components/GsapLanding.module.scss";
 import Link from "next/link";
 
 const LandingTextIntro = ({ fadeOutPoint }) => {
@@ -8,6 +7,8 @@ const LandingTextIntro = ({ fadeOutPoint }) => {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
+    if (!fadeOutPoint) return;
+
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const progress = Math.min(scrollPosition / fadeOutPoint, 1);
@@ -78,7 +79,7 @@ const LandingTextIntro = ({ fadeOutPoint }) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "flex-start",
-          zIndex: 10,
+          zIndex: 998,
         }}
       >
         <div className={styles.landinginnertextContainer}>
@@ -109,12 +110,20 @@ const LandingTextIntro = ({ fadeOutPoint }) => {
         {/* Light Mode Face Image with Fade-Out Effect */}
         <div
           className={styles.lightfaceContainer}
-          style={{
-            opacity: 1 - scrollProgress, // Fades from 100% (1) to 0% as scroll progresses
-            transition: "opacity 0.1s linear",
-          }}
+          // style={{
+          //   opacity: 1 - scrollProgress, // Fades from 100% (1) to 0% as scroll progresses
+          //   transition: "opacity 0.1s linear",
+          // }}
         >
-          <img src="woman/face_lightmode.png" alt="Light Mode Face" />
+          <img
+            style={{
+              filter: `invert(${scrollProgress})`, // Fades from 100% (1) to 0% as scroll progresses
+              transition: "filter 0.1s linear, opacity 0.1 linear",
+              opacity: scrollProgress === 1 ? 0 : 1 - scrollProgress * 0.7,
+            }}
+            src="woman/face_lightmode.png"
+            alt="Light Mode Face"
+          />
         </div>
       </div>
       <div className={styles.space}></div>
@@ -138,11 +147,6 @@ const LandingTextIntro = ({ fadeOutPoint }) => {
       </div>
     </>
   );
-};
-
-// Prop type validation
-LandingTextIntro.propTypes = {
-  fadeOutPoint: PropTypes.number.isRequired,
 };
 
 export default LandingTextIntro;

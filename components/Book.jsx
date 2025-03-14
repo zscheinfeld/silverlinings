@@ -1,35 +1,20 @@
-import { useEffect, useMemo, useState } from "react";
-import Chapter from "./Chapter";
+import { useMemo, useState } from "react";
+import Chapter from "./chapter/Chapter";
 import { Chapters } from "@/data/book";
 import { useRouter } from "next/router";
 import TopNav from "@/components/TopNav";
-import styles from "./Book.module.css";
+import styles from "./Book.module.scss";
+import MobileChapterNav from "@/components/chapter/MobileChapterNav";
 
-const Book = ({ active }) => {
-  const [activeChapter, setActiveChapter] = useState(1);
+const Book = ({ activeChapter }) => {
   const router = useRouter();
-
-  useEffect(() => {
-    const { chapter } = router.query;
-    if (!chapter) return;
-    const currentChapter = Chapters.find((c) => c.slug === chapter);
-    if (currentChapter) {
-      setActiveChapter(currentChapter.number);
-    }
-  }, [router.query]);
-
-  useEffect(() => {
-    // Hide the body scroll when the book is active.
-    if (active) {
-      document.body.style.overflowY = "hidden";
-    }
-  }, [active]);
+  const [isTopNavOpen, setIsTopNavOpen] = useState(false);
 
   const style = useMemo(() => {
     return {
-      left: active ? 0 : "100%",
+      left: activeChapter > 0 ? 0 : "100%",
     };
-  }, [active]);
+  }, [activeChapter]);
 
   const onScrollToBottom = () => {
     const nextChapter = Chapters[activeChapter];
@@ -54,7 +39,8 @@ const Book = ({ active }) => {
   return (
     <div className={styles.book} style={style}>
       <div className={styles.bookContent}>
-        <TopNav />
+        <TopNav handleOpen={setIsTopNavOpen} />
+        <MobileChapterNav chapters={Chapters} activeChapter={activeChapter} />
         {Chapters.map((chapter) => {
           const { number } = chapter;
           const hasPrevious = number !== 1;
@@ -62,7 +48,9 @@ const Book = ({ active }) => {
 
           let state = "current";
 
-          if (number === activeChapter - 1) {
+          if (activeChapter <= 0) {
+            state = undefined;
+          } else if (number === activeChapter - 1) {
             state = "previous";
           } else if (number < activeChapter - 1) {
             state = "archived";
@@ -79,6 +67,7 @@ const Book = ({ active }) => {
               state={state}
               hasPrevious={hasPrevious}
               hasNext={hasNext}
+              isTopNavOpen={isTopNavOpen}
               onScrollToTop={onScrollToTop}
               onScrollToBottom={onScrollToBottom}
             />

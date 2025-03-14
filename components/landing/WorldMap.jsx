@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import styles from "@/components/Landing.module.css";
+import styles from "@/components/Landing.module.scss";
 
 const WorldMap = () => {
   useEffect(() => {

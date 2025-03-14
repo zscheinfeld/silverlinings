@@ -1,3 +1,5 @@
+@use "../../styles/layout";
+
 .middleContainer {
   display: flex;
 }
@@ -6,9 +8,14 @@
   /* background-color: rgb(255, 7, 7); */
   /* width: 295px; */
 
-  min-width: 200px;
-  max-width: 275px;
-  position: relative;
+  display: none;
+
+  @include layout.md {
+    display: block;
+    min-width: 200px;
+    max-width: 275px;
+    position: relative;
+  }
 }
 
 .outerOutputContainer {
@@ -73,8 +80,6 @@
 .explanation.visible {
   opacity: 1;
 }
-
-
 
 .explanationText {
   font-family: "Spectral", serif;
@@ -146,7 +151,7 @@
   text-align: center;
 }
 
-.simbuttonContainer{
+.simbuttonContainer {
   position: absolute;
   top: -40px;
   display: flex;
@@ -174,7 +179,6 @@
   align-items: center;
   justify-content: flex-start;
 }
-
 
 .descriptionContainer.visible {
   opacity: 100%; /* Full opacity when description is visible */

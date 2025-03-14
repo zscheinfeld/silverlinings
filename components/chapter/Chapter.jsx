@@ -1,6 +1,6 @@
-import styles from "@/components/Chapter.module.scss";
-import Subchapter from "./subchapter/Subchapter";
-import SubchapterNav from "./subchapter/SubchapterNav";
+import styles from "@/components/chapter/Chapter.module.scss";
+import Subchapter from "../subchapter/Subchapter";
+import SubchapterNav from "../subchapter/SubchapterNav";
 import React, { useRef, useEffect, useState, useMemo } from "react";
 import { throttle } from "lodash";
 import Link from "next/link";
@@ -16,6 +16,7 @@ const Chapter = ({
   state,
   hasPrevious,
   hasNext,
+  isTopNavOpen,
   onScrollToTop,
   onScrollToBottom,
 }) => {
@@ -24,6 +25,8 @@ const Chapter = ({
   const [overscroll, setOverscroll] = useState(0);
   const { title, number, subchapters, intro, options } = chapter;
   const { type = "default", color, spacer, hideSubchapterNav } = options || {};
+
+  const transition = !isTopNavOpen && state;
 
   const chapterRef = useRef(null);
   const subchapterRefs = useRef([]);
@@ -89,32 +92,36 @@ const Chapter = ({
   }, []);
 
   const style = useMemo(() => {
+    const left = "--left";
+    const zIndex = "--zIndex";
+    const width = "--width";
+
     let style = {
-      left: hasPrevious ? `${BAR_WIDTH}px` : 0,
-      zIndex: number,
+      [left]: hasPrevious ? `${BAR_WIDTH}px` : 0,
+      [zIndex]: number,
     };
 
     if (hasPrevious && hasNext) {
-      style.width = `calc(100vw - ${BAR_WIDTH * 2}px)`;
+      style[width] = `calc(100% - ${BAR_WIDTH * 2}px)`;
     } else {
-      style.width = `calc(100vw - ${BAR_WIDTH}px)`;
+      style[width] = `calc(100% - ${BAR_WIDTH}px)`;
     }
 
     if (state === "previous") {
-      style.left = 0;
+      style[left] = 0;
     } else if (state === "archived") {
-      style.left = `-${BAR_WIDTH}px`;
+      style[left] = `-${BAR_WIDTH}px`;
     } else if (state === "next") {
-      style.left = `calc(100% - ${BAR_WIDTH}px)`;
+      style[left] = `calc(100% - ${BAR_WIDTH}px)`;
     } else if (state === "upcoming") {
-      style.left = "100%";
+      style[left] = "100%";
     }
     return style;
   }, [state, hasPrevious, hasNext]);
 
   return (
     <div
-      className={`${styles.chapter} ${state} ${color === "black" && styles.black}`}
+      className={`${styles.chapter} ${styles[state]} ${color === "black" && styles.black} ${transition && styles.transition}`}
       style={style}
     >
       <Link
@@ -122,17 +129,17 @@ const Chapter = ({
           pathname: router.pathname,
           query: { ...router.query, chapter: chapter.slug },
         }}
-        className={`${styles.subchapterNav} ${styles[`chap-${chapter.number}`]} ${styles[`chap-${state}`]}`}
+        className={`${styles.chapterNav} ${styles[`chap-${chapter.number}`]} ${styles[`chap-${state}`]}`}
       >
-        <div className={styles.subchapterNavText}>
+        <div className={styles.chapterNavText}>
           0{chapter.number} / {chapter.title}
         </div>
       </Link>
 
       {!hideSubchapterNav && (
         <SubchapterNav
+          chapter={chapter}
           subchapters={subchapters}
-          number={number}
           activeSubchapter={activeSubchapter}
         />
       )}
@@ -140,7 +147,7 @@ const Chapter = ({
       <div
         ref={chapterRef}
         id={`chapter-${number}`}
-        className={`${styles.maincontent} ${type === "simulation" && styles.simulatorcontent}`}
+        className={`${styles.maincontent} ${type === "simulation" && styles.simulatorcontent} ${transition && styles.smooth}`}
       >
         {type === "default" ? (
           <div className={styles.chaptername}>{title}</div>

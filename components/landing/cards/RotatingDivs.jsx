@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "@/components/Landing.module.css";
+import styles from "@/components/Landing.module.scss";
 
 const RotatingDivs = ({ startTransitionAt }) => {
   const [visibleDiv, setVisibleDiv] = useState(null);

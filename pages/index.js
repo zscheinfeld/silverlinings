@@ -1,23 +1,27 @@
 import Head from "next/head";
 import Book from "@/components/Book";
 import Landing from "@/components/Landing";
-import { useEffect, useState } from "react";
 import { Chapters } from "@/data/book";
 import { useRouter } from "next/router";
-import Script from "next/script"; // Import Next.js Script component
+import Script from "next/script";
+import useActiveChapter from "@/hooks/useActiveChapter";
 
 export default function Home() {
-  const [isLanding, setIsLanding] = useState(true);
   const router = useRouter();
+  const activeChapter = useActiveChapter();
 
-  useEffect(() => {
-    const { chapter } = router.query;
-    if (!chapter) return;
-    const currentChapter = Chapters.find((c) => c.slug === chapter);
-    if (currentChapter) {
-      setIsLanding(false);
-    }
-  }, [router.query]);
+  const navigateToBook = () => {
+    void router.push(
+      {
+        path: router.pathname,
+        query: { ...router.query, chapter: Chapters[0].slug },
+      },
+      undefined,
+      {
+        scroll: false,
+      },
+    );
+  };
 
   return (
     <>
@@ -38,11 +42,8 @@ export default function Home() {
       />
 
       <div className="main">
-        <Landing
-          active={isLanding}
-          onReachedBottom={() => setIsLanding(false)}
-        />
-        <Book active={!isLanding} />
+        <Landing hidden={activeChapter > 0} onReachedBottom={navigateToBook} />
+        <Book activeChapter={activeChapter} />
       </div>
     </>
   );

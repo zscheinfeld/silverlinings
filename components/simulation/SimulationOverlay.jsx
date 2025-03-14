@@ -1,4 +1,4 @@
-import styles from "./SimulationOverlay.module.css";
+import styles from "./SimulationOverlay.module.scss";
 
 const SimulationOverlay = ({
   min,

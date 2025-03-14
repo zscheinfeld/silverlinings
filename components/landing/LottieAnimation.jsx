@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import styles from "@/components/GsapLanding.module.css";
+import styles from "@/components/GsapLanding.module.scss";
 
 // Dynamically import Lottie without SSR
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });

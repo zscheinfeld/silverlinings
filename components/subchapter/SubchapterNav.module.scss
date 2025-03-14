@@ -1,14 +1,20 @@
-.subchapterInnerNav {
-  height: 100vh;
-  width: 60px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  /* padding-top: 240px; */
+@use "../../styles/layout";
+
+.subchapterNav {
+  display: none;
+
+  @include layout.md {
+    height: 100vh;
+    width: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    /* padding-top: 240px; */
+  }
 }
 
-.subchapterInnernavText {
+.subchapterNavText {
   font-family: "Spectral", serif;
   font-weight: 400;
   font-style: normal;

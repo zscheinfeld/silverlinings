@@ -1,4 +1,4 @@
-import styles from "@/components/Landing.module.css";
+import styles from "@/components/Landing.module.scss";
 
 const LandingContent = () => {
   return (
