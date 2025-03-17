@@ -208,7 +208,7 @@ const GsapLanding = () => {
         </div>
       </div>
 
-      <div className={styles.space}></div>
+      {/* <div className={styles.space}></div>
       <div className={styles.landingoutertext}>
         <div
           className={`${styles.landinginnertext} ${styles.light} ${styles.landingmedium}`}
@@ -226,7 +226,7 @@ const GsapLanding = () => {
             who choose to remain in the workforce.
           </div>
         </div>
-      </div>
+      </div> */}
       <div className={styles.space}></div>
 
       <Overview></Overview>
