@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import styles from "@/components/GsapLanding.module.scss";
 import AnimatedMapFade from "@/components/landing/AnimatedMapFade";
 import WorldMap from "@/components/landing/WorldMap";
@@ -8,8 +8,43 @@ import RotatingWoman from "@/components/landing/RotatingWoman";
 import InteractiveWoman from "@/components/landing/InteractiveWoman";
 import UterusHotspot from "@/components/landing/cards/UterusHotspot";
 import LandingTextIntro from "@/components/landing/LandingTextIntro";
+import Overview from "./landing/Overview";
 
 const GsapLanding = () => {
+
+  const fadeInRefs = useRef([]); // Array to hold references to elements we want to observe
+
+  // UseEffect to setup the IntersectionObserver
+  useEffect(() => {
+    const options = {
+      root: null, // Default: viewport
+      rootMargin: "0px",
+      threshold: 0.1, // Trigger when 10% of the element is visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        // When the element is in view, add the "visible" class to trigger fade-in
+        if (entry.isIntersecting) {
+          entry.target.classList.add(styles.visible); // This will add the fade-in class
+        } else {
+          entry.target.classList.remove(styles.visible); // Remove class when not in view
+        }
+      });
+    }, options);
+
+    // Observe each element in the fadeInRefs array
+    fadeInRefs.current.forEach(ref => {
+      if (ref) observer.observe(ref);
+    });
+
+    // Cleanup the observer on unmount
+    return () => {
+      observer.disconnect();
+    };
+  }, []); // Empty dependency array ensures this runs once on mount
+
+
   const [fadeOutPoint, setFadeOutPoint] = useState(null);
 
   useEffect(() => {
@@ -64,6 +99,7 @@ const GsapLanding = () => {
         <InteractiveWoman></InteractiveWoman>
       </AnimatedLandingElementFade>
 
+
       <div className={styles.space}></div>
 
       <div className={styles.landingtextlightcontainer}>
@@ -101,10 +137,14 @@ const GsapLanding = () => {
       </div>
       <div className={styles.space}></div>
 
-      <div className={styles.landingtextlightcontainer2}>
+      <div className={styles.landingtextlightcontainer2}
+      
+      >
         <div className={styles.landingtextlightinnercontainer2}>
           <div className={styles.landingtextleft2}>
-            <div className={styles.landingtextlarge}>
+            <div className={styles.landingtextlarge}
+            
+            >
               Scientific breakthroughs from the 20th century allowed us to keep
               millions of older adults alive. 
             </div>
@@ -188,6 +228,8 @@ const GsapLanding = () => {
         </div>
       </div>
       <div className={styles.space}></div>
+
+      <Overview></Overview>
     </div>
   );
 };

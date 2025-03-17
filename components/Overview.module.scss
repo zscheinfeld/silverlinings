@@ -1,0 +1,149 @@
+
+
+.overviewContainer{
+    box-sizing: border-box;
+    // height: 200vh;
+    width: 100vw;
+    background-color: #191818;
+    padding-bottom: 360px;
+  }
+
+  .overviewInnerContainer{
+    box-sizing: border-box;
+    width: 100%;
+    // padding-left: 80px;
+    // padding-right: 80px;
+    max-width: 1280px;
+    margin: auto;
+  }
+
+  .overviewHeader{
+    font-family: "spectral";
+    font-size: 42px;
+    line-height: 106%;
+    color: white;
+    margin-bottom: 36px;
+  }
+
+  .futureContainer{
+    padding-bottom: 64px;
+  }
+
+  .futureTitle{
+    font-family: "spectral";
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    border-top: solid white 1px;
+    border-bottom: dotted white 1px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-bottom: 28px;
+  }
+
+  .futureInfoContainer{
+    display: flex;
+    
+  }
+
+  .futureInfo{
+    flex: 4;
+    // height: 200px;
+    color: white;
+    font-size: 16px;
+    line-height: 140%;
+    font-family: "spectral";
+    border-right: dashed 1px white;
+    padding-right: 36px;
+  }
+
+  .futureImage{
+    // background-color: blue;
+    flex: 3;
+    // height: 200px;
+  }
+
+  .futureImageContainer{
+    width: 100%;
+    padding: 12px;
+  }
+
+  .futureImageContainer img{
+    width: 100%;
+  }
+
+  .futureImageLabel{
+    font-family: "spectral";
+    color: white;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .yellow{
+    color: #FFF3A8;
+  }
+
+  .futureStats{
+    flex: 5;
+    font-family: "spectral";
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 5%;
+    color: white;
+  }
+
+  .label{
+    font-family: "spectral";
+    font-size: 16px;
+    font-family: "spectral";
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 5%;
+    color: white;
+    padding-bottom:24px;
+  }
+
+  .statsContainer{
+    display: flex;
+    // align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .innerStatsContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    flex: 1;
+    color: white;
+    max-width: 150px;
+  }
+
+  .innerStat{
+    font-family: "spectral";
+    font-size: 36px;
+    line-height: 106%;
+    font-weight: 200;
+  }
+
+  .innerLabel{
+    font-family: "spectral";
+    font-size: 14px;
+    line-height: 120%;
+    font-weight: 200;
+    text-align: left;
+  }
+
+  /* In your Overview.module.scss or separate CSS file */
+  .fadeIn {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .fadeIn.visible {
+    opacity: 1;
+  }
+  
+
+
+  

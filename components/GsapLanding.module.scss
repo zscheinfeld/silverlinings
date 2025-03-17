@@ -989,3 +989,19 @@
 .jvm-tooltip {
   z-index: 500;
 }
+
+// .overviewContainer{
+//   height: 200vh;
+//   width: 100vw;
+//   background-color: red;
+// }
+
+
+.fadeIn {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.fadeIn.visible {
+  opacity: 1;
+}
