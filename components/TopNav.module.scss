@@ -2,33 +2,37 @@
   position: fixed;
   width: 100%;
   border-bottom: solid black 1px;
+  overflow: hidden;
+  background-color: #fff5e5;
+  transition:
+    height 600ms ease-in-out,
+    z-index 0ms linear 200ms;
+  height: 56px;
   z-index: 10;
+
+  &.show {
+    z-index: 1001;
+    height: calc(100% + 1px);
+  }
+}
+
+.navbottom {
+  overflow-y: hidden;
+  height: calc(100% - 56px);
+  width: 100%;
+
+  &.scrollable {
+    overflow-y: auto;
+  }
 }
 
 .navtop {
-  background-color: #fff5e5;
   height: 56px;
   display: flex;
   justify-content: space-between;
   padding-left: 30px;
   padding-right: 30px;
   align-items: center;
-}
-
-.navbottom {
-  overflow: hidden;
-}
-
-.hide {
-  height: 0;
-  transition: height 600ms ease-in-out;
-  background-color: #fff5e5;
-}
-
-.show {
-  height: calc(100vh - 56px);
-  transition: height 600ms ease-in-out;
-  background-color: #fff5e5;
 }
 
 .left {
@@ -87,7 +91,7 @@
 }
 
 .navitemscontainer {
-  width: 540px;
+  max-width: 540px;
   margin: auto;
 }
 

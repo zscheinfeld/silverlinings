@@ -11,7 +11,6 @@ import LandingTextIntro from "@/components/landing/LandingTextIntro";
 import Overview from "./landing/Overview";
 
 const GsapLanding = () => {
-
   const fadeInRefs = useRef([]); // Array to hold references to elements we want to observe
 
   // UseEffect to setup the IntersectionObserver
@@ -23,7 +22,7 @@ const GsapLanding = () => {
     };
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         // When the element is in view, add the "visible" class to trigger fade-in
         if (entry.isIntersecting) {
           entry.target.classList.add(styles.visible); // This will add the fade-in class
@@ -34,7 +33,7 @@ const GsapLanding = () => {
     }, options);
 
     // Observe each element in the fadeInRefs array
-    fadeInRefs.current.forEach(ref => {
+    fadeInRefs.current.forEach((ref) => {
       if (ref) observer.observe(ref);
     });
 
@@ -43,7 +42,6 @@ const GsapLanding = () => {
       observer.disconnect();
     };
   }, []); // Empty dependency array ensures this runs once on mount
-
 
   const [fadeOutPoint, setFadeOutPoint] = useState(null);
 
@@ -99,7 +97,6 @@ const GsapLanding = () => {
         <InteractiveWoman></InteractiveWoman>
       </AnimatedLandingElementFade>
 
-
       <div className={styles.space}></div>
 
       <div className={styles.landingtextlightcontainer}>
@@ -137,14 +134,10 @@ const GsapLanding = () => {
       </div>
       <div className={styles.space}></div>
 
-      <div className={styles.landingtextlightcontainer2}
-      
-      >
+      <div className={styles.landingtextlightcontainer2}>
         <div className={styles.landingtextlightinnercontainer2}>
           <div className={styles.landingtextleft2}>
-            <div className={styles.landingtextlarge}
-            
-            >
+            <div className={styles.landingtextlarge}>
               Scientific breakthroughs from the 20th century allowed us to keep
               millions of older adults alive. 
             </div>

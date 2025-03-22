@@ -1,6 +1,7 @@
 .background {
   background-color: #191818;
   width: 100%;
+  overflow-x: hidden;
 }
 
 .element1 {
@@ -995,7 +996,6 @@
 //   width: 100vw;
 //   background-color: red;
 // }
-
 
 .fadeIn {
   opacity: 0;

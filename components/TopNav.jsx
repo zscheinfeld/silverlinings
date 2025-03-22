@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styles from "@/components/TopNav.module.scss";
 import { Chapters } from "@/data/book";
 import Link from "next/link";
@@ -6,23 +6,36 @@ import { useRouter } from "next/router";
 
 const TopNav = ({ handleOpen }) => {
   const [activeNav, setActiveNav] = useState(0);
+  const [scrollable, setScrollable] = useState();
+  const timeout = useRef();
   const router = useRouter();
 
   const handleClick = () => {
+    if (timeout.current) {
+      clearTimeout(timeout.current);
+    }
+
     if (activeNav === 0) {
       handleOpen(true);
       setActiveNav(1);
+      // Don't fire the event until after the transition.
+      timeout.current = setTimeout(() => {
+        setScrollable(true);
+      }, 600);
     } else {
       setActiveNav(0);
+      setScrollable(false);
       // Don't fire the event until after the transition.
-      setTimeout(() => {
+      timeout.current = setTimeout(() => {
         handleOpen(false);
       }, 600);
     }
   };
 
   return (
-    <div className={styles.nav}>
+    <div
+      className={`${styles.nav} ${activeNav === 1 ? styles.show : styles.hide}`}
+    >
       <div className={styles.navtop}>
         <button className={styles.left} onClick={() => handleClick()}>
           TABLE OF CONTENTS
@@ -33,9 +46,7 @@ const TopNav = ({ handleOpen }) => {
         </div>
       </div>
 
-      <div
-        className={`${styles.navbottom} ${activeNav === 1 ? styles.show : styles.hide}`}
-      >
+      <div className={`${styles.navbottom} ${scrollable && styles.scrollable}`}>
         <div className={styles.navbottomTitle}>Index</div>
         {Chapters.map((chapter) => {
           const href = {
