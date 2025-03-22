@@ -51,7 +51,7 @@ const TopNav = ({ handleOpen }) => {
         {Chapters.map((chapter) => {
           const href = {
             pathname: router.pathname,
-            query: { ...router.query, chapter: chapter.slug },
+            query: { chapter: chapter.slug },
           };
           return (
             <div className={styles.navitemscontainer} key={chapter.number}>
@@ -72,7 +72,10 @@ const TopNav = ({ handleOpen }) => {
                         onClick={handleClick}
                         href={{
                           ...href,
-                          hash: subchapter.slug,
+                          query: {
+                            chapter: chapter.slug,
+                            subchapter: subchapter.slug,
+                          },
                         }}
                       >
                         {subchapter.header}

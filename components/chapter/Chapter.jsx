@@ -31,10 +31,34 @@ const Chapter = ({
   const chapterRef = useRef(null);
   const subchapterRefs = useRef([]);
 
-  const handleActiveSubchapter = (subchapterNumber) => {
-    setActiveSubchapter(subchapterNumber);
-    const hash = `#${number}-${subchapterNumber}`;
-    window.history.replaceState(null, "", hash);
+  const handleActiveSubchapter = (subchapter) => {
+    setActiveSubchapter(subchapter.number);
+    window.history.replaceState(
+      null,
+      "",
+      `${router.pathname}?${new URLSearchParams({
+        chapter: chapter.slug,
+        subchapter: subchapter.slug,
+      }).toString()}`,
+    );
+  };
+
+  useEffect(() => {
+    if (router.query.chapter !== chapter.slug || !router.query.subchapter) {
+      return;
+    }
+    scrollToSubchapter(router.query.subchapter);
+  }, [router.query]);
+
+  const scrollToSubchapter = (slug, smooth) => {
+    const target = document.getElementById(slug);
+    if (chapterRef.current && target) {
+      const targetOffset = target.offsetTop - chapterRef.current.offsetTop;
+      chapterRef.current.scrollTo({
+        top: targetOffset,
+        behavior: smooth ? "smooth" : "auto",
+      });
+    }
   };
 
   useEffect(() => {
@@ -75,14 +99,14 @@ const Chapter = ({
 
   useEffect(() => {
     const handleScroll = throttle(() => {
-      let scrolledSubchapter = 1;
+      let scrolledSubchapter = 0;
       for (let i = 0; i < subchapterRefs.current.length; i++) {
         const ref = subchapterRefs.current[i];
         if (ref.getBoundingClientRect().top < 240) {
-          scrolledSubchapter = i + 1;
+          scrolledSubchapter = i;
         }
       }
-      handleActiveSubchapter(scrolledSubchapter);
+      handleActiveSubchapter(chapter.subchapters[scrolledSubchapter]);
     }, 200);
 
     chapterRef.current.addEventListener("scroll", handleScroll);
@@ -127,7 +151,7 @@ const Chapter = ({
       <Link
         href={{
           pathname: router.pathname,
-          query: { ...router.query, chapter: chapter.slug },
+          query: { chapter: chapter.slug },
         }}
         className={`${styles.chapterNav} ${styles[`chap-${chapter.number}`]} ${styles[`chap-${state}`]}`}
       >
@@ -141,6 +165,7 @@ const Chapter = ({
           chapter={chapter}
           subchapters={subchapters}
           activeSubchapter={activeSubchapter}
+          scrollToSubchapter={scrollToSubchapter}
         />
       )}
 

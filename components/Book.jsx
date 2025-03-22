@@ -37,7 +37,7 @@ const Book = ({ activeChapter }) => {
   };
 
   return (
-    <div className={styles.book} style={style}>
+    <div className={`${styles.book}`} style={style}>
       <div className={styles.bookContent}>
         <TopNav handleOpen={setIsTopNavOpen} />
         <MobileChapterNav chapters={Chapters} activeChapter={activeChapter} />

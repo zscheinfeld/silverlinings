@@ -12,10 +12,6 @@
   overflow-y: scroll;
   scrollbar-color: rgba(0, 0, 0, 0) rgba(255, 255, 255, 0);
   scrollbar-width: none;
-
-  &.smooth {
-    scroll-behavior: smooth;
-  }
 }
 
 .chapter.black {

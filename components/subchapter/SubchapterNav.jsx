@@ -1,21 +1,22 @@
 import styles from "./SubchapterNav.module.scss";
-import Link from "next/link";
 
-const SubchapterNav = ({ chapter, subchapters, activeSubchapter }) => {
-  const { slug, number } = chapter;
+const SubchapterNav = ({
+  chapter,
+  subchapters,
+  activeSubchapter,
+  scrollToSubchapter,
+}) => {
+  const { number } = chapter;
   return (
     <div className={styles.subchapterNav}>
       <div className={styles.previousSubChapterContainer}>
         {subchapters.map((subchapter) => {
           if (subchapter.number < activeSubchapter) {
             return (
-              <Link
+              <button
                 key={subchapter.slug}
-                href={{
-                  hash: `#${subchapter.slug}`,
-                  query: { chapter: slug },
-                }}
-                className={styles.previousSubChapter}
+                onClick={() => scrollToSubchapter(subchapter.slug, true)}
+                className={`${styles.previousSubChapter} ${styles.subchapterButton}`}
               />
             );
           }
@@ -24,30 +25,24 @@ const SubchapterNav = ({ chapter, subchapters, activeSubchapter }) => {
       {subchapters.map((subchapter) => {
         if (subchapter.number === activeSubchapter) {
           return (
-            <Link
+            <button
               key={subchapter.slug}
-              href={{
-                hash: `#${subchapter.slug}`,
-                query: { chapter: slug },
-              }}
-              className={styles.subchapterNavText}
+              onClick={() => scrollToSubchapter(subchapter.slug, true)}
+              className={`${styles.subchapterNavText} ${styles.subchapterButton}`}
             >
               {number}.{subchapter.number}
               {subchapter.header}
-            </Link>
+            </button>
           );
         } else if (subchapter.number > activeSubchapter) {
           return (
-            <Link
+            <button
               key={subchapter.slug}
-              href={{
-                hash: `#${subchapter.slug}`,
-                query: { chapter: slug },
-              }}
-              className={styles.upcomingSubChapter}
+              onClick={() => scrollToSubchapter(subchapter.slug, true)}
+              className={`${styles.upcomingSubChapter} ${styles.subchapterButton}`}
             >
               {number}.{subchapter.number}
-            </Link>
+            </button>
           );
         }
       })}
