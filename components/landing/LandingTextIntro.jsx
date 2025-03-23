@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "@/components/GsapLanding.module.scss";
 import Link from "next/link";
+import { Chapters } from "@/data/book";
 
 const LandingTextIntro = ({ fadeOutPoint }) => {
   const [isFixed, setIsFixed] = useState(true);
@@ -97,10 +98,10 @@ const LandingTextIntro = ({ fadeOutPoint }) => {
           <div className={styles.link}>
             <Link
               href={{
-                pathname: "/chapter=present", // Replace with actual page path
-                query: { chapter: "1-0" }, // Ensure the slug format matches your data
+                query: { chapter: Chapters[0].slug },
               }}
               style={{ color: "#191818" }}
+              replace={true}
             >
               View Full Report
             </Link>
@@ -138,8 +139,8 @@ const LandingTextIntro = ({ fadeOutPoint }) => {
           className={`${styles.landinginnertext} ${styles.light} ${styles.landingsmall}`}
         >
           <div className={styles.maxwidth400}>
-            And the way we age profoundly impacts our economies, shaping how we
-            live, <span className={styles.textproductivity}>work</span>,{" "}
+            And the way we age profoundly impacts how we live,{" "}
+            <span className={styles.textproductivity}>work</span>,{" "}
             <span className={styles.textfertility}>give birth</span>, and{" "}
             <span className={styles.textmortality}>die</span>.
           </div>

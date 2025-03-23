@@ -9,199 +9,277 @@ import InteractiveWoman from "@/components/landing/InteractiveWoman";
 import UterusHotspot from "@/components/landing/cards/UterusHotspot";
 import LandingTextIntro from "@/components/landing/LandingTextIntro";
 import Overview from "./landing/Overview";
+import TopNav from "@/components/TopNav";
 
 const GsapLanding = () => {
-  const fadeInRefs = useRef([]); // Array to hold references to elements we want to observe
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isNavVisible, setIsNavVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
-  // UseEffect to setup the IntersectionObserver
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleOpen = (isOpen) => {
+    setIsMenuOpen(isOpen);
+    console.log("Menu state:", isOpen);
+  };
+
+  const toggleText = () => {
+    setIsExpanded(!isExpanded);
+  };
+
+  const fadeInRefs = useRef([]); // Array to hold references to elements we want to observe
+  // Add new ref for landing text
+  const landingTextRef = useRef(null);
+
   useEffect(() => {
+    // 1. Intersection Observer Options
     const options = {
-      root: null, // Default: viewport
+      root: null,
       rootMargin: "0px",
       threshold: 0.1, // Trigger when 10% of the element is visible
     };
 
+    // 2. Create Intersection Observer
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        // When the element is in view, add the "visible" class to trigger fade-in
         if (entry.isIntersecting) {
-          entry.target.classList.add(styles.visible); // This will add the fade-in class
+          entry.target.classList.add(styles.visible);
         } else {
-          entry.target.classList.remove(styles.visible); // Remove class when not in view
+          entry.target.classList.remove(styles.visible);
         }
       });
     }, options);
 
-    // Observe each element in the fadeInRefs array
-    fadeInRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
+    // 3. Function to Observe Elements
+    const observeElements = () => {
+      fadeInRefs.current.forEach((ref) => {
+        if (ref) observer.observe(ref);
+      });
 
-    // Cleanup the observer on unmount
-    return () => {
-      observer.disconnect();
+      if (landingTextRef.current) {
+        observer.observe(landingTextRef.current);
+      }
     };
-  }, []); // Empty dependency array ensures this runs once on mount
+
+    // 4. Observe elements initially
+    observeElements();
+
+    // 5. Handle window resize to reinitialize observer
+    const handleResize = () => {
+      observer.disconnect(); // Clear previous observers on resize
+      observeElements(); // Re-observe after resizing
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // 6. Handle Nav Visibility on Scroll
+    let lastScrollY = window.scrollY; // Track scroll position
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 56) {
+        // User is scrolling down, hide nav
+        setIsNavVisible(false);
+      } else {
+        // User is scrolling up, show nav
+        setIsNavVisible(true);
+      }
+
+      if (currentScrollY === 0) {
+        // Show nav only when scrolled to the very top
+        setIsNavVisible(true);
+      } else {
+        setIsNavVisible(false);
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // 7. Cleanup Observer + Scroll + Resize Event Listeners
+    return () => {
+      fadeInRefs.current.forEach((ref) => {
+        if (ref) observer.unobserve(ref);
+      });
+
+      if (landingTextRef.current) {
+        observer.unobserve(landingTextRef.current);
+      }
+
+      observer.disconnect();
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []); // Empty dependency array ensures effect runs only once
 
   const [fadeOutPoint, setFadeOutPoint] = useState(null);
 
   useEffect(() => {
-    setFadeOutPoint(window.innerHeight);
+    setFadeOutPoint(window.innerHeight / 2);
   }, []);
 
   return (
-    <div className={styles.background}>
-      <div className={styles.space}></div>
-      <LandingTextIntro fadeOutPoint={fadeOutPoint} />
+    <>
+      <TopNav handleOpen={handleOpen} hidden={!isNavVisible} replace={true} />
+      <div className={styles.background}>
+        <div className={styles.space}></div>
 
-      <AnimatedLandingElementFade
-        fadeInStart={0}
-        fadeInEnd={fadeOutPoint}
-        fadeOutStart={fadeOutPoint * 1.5}
-        fadeOutEnd={fadeOutPoint * 2.5}
-      >
-        <LottieAnimation />
-        <div className={styles.image}>
-          <img src="woman/face_darkmode.png" alt="Face Dark Mode" />
-        </div>
-      </AnimatedLandingElementFade>
+        <LandingTextIntro fadeOutPoint={fadeOutPoint} />
 
-      <AnimatedLandingElementFade
-        fadeInStart={fadeOutPoint * 2.5}
-        fadeInEnd={fadeOutPoint * 3}
-        fadeOutStart={fadeOutPoint * 3.5}
-        fadeOutEnd={fadeOutPoint * 4}
-      >
-        <RotatingWoman windowTransition={fadeOutPoint * 2.7} />
-      </AnimatedLandingElementFade>
-
-      <div className={styles.space}></div>
-
-      {/* Animated Map */}
-      <AnimatedMapFade
-        fadeInStart={fadeOutPoint * 4.5}
-        fadeInEnd={fadeOutPoint * 5}
-        fadeOutStart={fadeOutPoint * 7}
-        fadeOutEnd={fadeOutPoint * 7.5}
-      >
-        <WorldMap />
-      </AnimatedMapFade>
-
-      <AnimatedLandingElementFade
-        fadeInStart={fadeOutPoint * 8.5}
-        fadeInEnd={fadeOutPoint * 9}
-        fadeOutStart={fadeOutPoint * 10}
-        fadeOutEnd={fadeOutPoint * 10.5}
-      >
-        <UterusHotspot></UterusHotspot>
-        <InteractiveWoman></InteractiveWoman>
-      </AnimatedLandingElementFade>
-
-      <div className={styles.space}></div>
-
-      <div className={styles.landingtextlightcontainer}>
-        <div className={styles.landingtextlightinnercontainer}>
-          <div className={styles.landingtextleft}>
-            <div className={styles.landingtextlarge}>
-              Our short healthspan affects every family, economy, and
-              government.
-            </div>
-          </div>
-          <div className={styles.landingtextright}>
-            <div className={styles.landingtextsmall}>
-              In 2025, some of the free-market economies with the highest debt
-              are developed countries with large populations of older adults
-              suffering from age-related health conditions like cancer,
-              menopause, and Alzheimer’s. Japan’s debt-to-GDP ratio, for
-              instance, is at 260% — twice the American ratio — in no small part
-              due to the sky-high costs of an aging and shrinking population.
-              But biological aging affects everyone.
-            </div>
-            <div className={styles.landingtextsmall}>
-              Even adults who exercise regularly and eat a healthy diet will
-              face the diseases of aging and rely on an unpaid caregiver or
-              become one. Think of an 80-year-old who has exercised regularly
-              for decades and still gets cancer “just” because of their
-              biological age. This creates a significant burden on populations
-              of all incomes and ages. In 2020, some 38 million Americans
-              provided 36 billion hours of unpaid care. By 2029, the United
-              States will spend $3 trillion yearly — half its federal budget —
-              on the medical treatment and social care of adults aged 65 or
-              older. 
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className={styles.space}></div>
-
-      <div className={styles.landingtextlightcontainer2}>
-        <div className={styles.landingtextlightinnercontainer2}>
-          <div className={styles.landingtextleft2}>
-            <div className={styles.landingtextlarge}>
-              Scientific breakthroughs from the 20th century allowed us to keep
-              millions of older adults alive. 
-            </div>
-          </div>
-          <div className={styles.landingtextright2}>
-            <div className={styles.landingtextsmall}>
-              This is good news, since biologically old humans are more
-              productive, healthier, and happier than dead ones. Yet it’s not
-              good news that in 2024, age-related conditions like cancer,
-              dementia and menopause still begin to show up at nearly the same
-              age as they did in 300 BC. When it comes to “longevity,” private
-              markets have mostly produced a $200B unproven supplements
-              industry, and treatments for late-stage diseases. To date, no
-              therapeutic has been designed to prevent biological aging.
-            </div>
-            <div className={styles.landingtextsmall}>
-              In this open project, we present a roadmap of market failures and
-              scientific challenges that stand in the way of real advancements
-              in aging science. Then, we use an open-source model to simulate
-              how new R&D breakthroughs could impact the U.S. population and
-              economy.
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className={styles.landingoutertext}>
-        <div
-          className={`${styles.landinginnertext} ${styles.light} ${styles.landingmedium}`}
+        <AnimatedLandingElementFade
+          fadeInStart={0}
+          fadeInEnd={fadeOutPoint}
+          fadeOutStart={fadeOutPoint * 3}
+          fadeOutEnd={fadeOutPoint * 3.5}
         >
-          What if new scientific breakthroughs could delay biological aging and
-          extend healthy life?
-        </div>
-        <div
-          className={`${styles.landinginnertext} ${styles.light} ${styles.landingsmall}`}
+          <LottieAnimation />
+          <div className={styles.image}>
+            <img src="woman/face_darkmode.png" alt="Face Dark Mode" />
+          </div>
+        </AnimatedLandingElementFade>
+
+        <AnimatedLandingElementFade
+          fadeInStart={fadeOutPoint * 3.5}
+          fadeInEnd={fadeOutPoint * 4}
+          fadeOutStart={fadeOutPoint * 6}
+          fadeOutEnd={fadeOutPoint * 6.5}
         >
-          <div className={`${styles.landingtextsmall} ${styles.maxwidth500}`}>
-            We present results informed by interviews with 72 scientists and
-            dozens of economists. But our model lets you simulate different
-            futures for the U.S. population and economy. You can input the
-            number of years until a therapeutic can safely delay brain or
-            overall aging; what percentage of the U.S. population would benefit;
-            and how this could affect{" "}
-            <span className={styles.textmortality}>mortality</span>,{" "}
-            <span className={styles.textproductivity}>productivity</span>, and{" "}
-            <span className={styles.textfertility}>fertility</span> rates by
-            age. In each simulation, we present the number of lives saved or
-            gained. We also highlight GDP as a helpful (even if imperfect) proxy
-            for lives improved.<br></br>
-            <br></br>
-            Beyond a certain point, improvements in non-cognitive functions have
-            counterintuitive effects on GDP. For instance, a 1-year delay in
-            brain aging is worth nearly as much as a 1-year delay in overall
-            biological aging in the near term. This is because the returns from
-            improving the age of other organs (e.g. kidneys or ovaries) are not
-            immediate, and sometimes reduce GDP temporarily. To understand the
-            non-linear effects of each R&D area in the short and long run (and
-            for GDP alternatives that measure non-market outcomes), see the
-            report.
+          <RotatingWoman windowTransition={fadeOutPoint * 4} />
+        </AnimatedLandingElementFade>
+
+        <div className={styles.space}></div>
+
+        {/* Animated Map */}
+        <AnimatedMapFade
+          fadeInStart={fadeOutPoint * 6.5}
+          fadeInEnd={fadeOutPoint * 6.75}
+          fadeOutStart={fadeOutPoint * 11}
+          fadeOutEnd={fadeOutPoint * 11.5}
+        >
+          <WorldMap />
+        </AnimatedMapFade>
+
+        <AnimatedLandingElementFade
+          fadeInStart={fadeOutPoint * 13.5}
+          fadeInEnd={fadeOutPoint * 14}
+          fadeOutStart={fadeOutPoint * 16}
+          fadeOutEnd={fadeOutPoint * 17}
+        >
+          <UterusHotspot></UterusHotspot>
+          <InteractiveWoman></InteractiveWoman>
+        </AnimatedLandingElementFade>
+
+        <div className={styles.space}></div>
+        <div className={styles.space}></div>
+        <div className={styles.landingtextlightcontainer}>
+          <div className={styles.landingtextlightinnercontainer}>
+            <div className={styles.landingtextleft}>
+              <div className={styles.landingtextlarge}>
+                Our short healthspan affects every family, economy, and
+                government.
+              </div>
+            </div>
+            <div className={styles.landingtextright}>
+              <div className={styles.landingtextsmall}>
+                In 2025, some of the free-market economies with the highest debt
+                are developed countries with large populations of older adults
+                suffering from age-related health conditions like cancer,
+                menopause, and Alzheimer’s. Japan’s debt-to-GDP ratio, for
+                instance, is at 260% — twice the American ratio — in no small
+                part due to the sky-high costs of an aging and shrinking
+                population. But biological aging affects everyone.
+              </div>
+              <div className={styles.landingtextsmall}>
+                Even adults who exercise regularly and eat a healthy diet will
+                face the diseases of aging and rely on an unpaid caregiver or
+                become one. Think of an 80-year-old who has exercised regularly
+                for decades and still gets cancer “just” because of their
+                biological age. This creates a significant burden on populations
+                of all incomes and ages. In 2020, some 38 million Americans
+                provided 36 billion hours of unpaid care. By 2029, the United
+                States will spend $3 trillion yearly — half its federal budget —
+                on the medical treatment and social care of adults aged 65 or
+                older. 
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+        <div className={styles.space}></div>
+        <div className={styles.space}></div>
 
-      {/* <div className={styles.space}></div>
+        <div className={styles.landingtextlightcontainer2}>
+          <div className={styles.landingtextlightinnercontainer2}>
+            <div className={styles.landingtextleft2}>
+              <div className={styles.landingtextlarge}>
+                When it comes to “longevity,” private markets have mostly
+                produced a $200B unproven supplements industry, and treatments
+                for late-stage diseases.
+              </div>
+            </div>
+            <div className={styles.landingtextright2}>
+              <div className={styles.landingtextsmall}>
+                To date, no therapeutic has been designed to prevent biological
+                aging. In this open project, we present a roadmap of market
+                failures and scientific challenges that stand in the way of real
+                advancements in aging science. Then, we use an open-source model
+                to simulate how new R&D breakthroughs could impact the U.S.
+                population and economy.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.landingoutertext}>
+          <div
+            className={`${styles.landinginnertext} ${styles.light} ${styles.landingmedium}`}
+          >
+            What if new scientific breakthroughs could delay biological aging
+            and extend healthy life?
+          </div>
+          <div
+            className={`${styles.landinginnertext} ${styles.light} ${styles.landingsmall}`}
+          >
+            <div
+              className={`${styles.landingtextsmall} ${styles.maxwidth500} ${styles.seemoreText}`}
+            >
+              {isExpanded && (
+                <div>
+                  We present results informed by interviews with 72 scientists
+                  and dozens of economists. But our model lets you simulate
+                  different futures for the U.S. population and economy. You can
+                  input the number of years until a therapeutic can safely delay
+                  brain or overall aging; what percentage of the U.S. population
+                  would benefit; and how this could affect{" "}
+                  <span className={styles.textmortality}>mortality</span>,{" "}
+                  <span className={styles.textproductivity}>productivity</span>,
+                  and <span className={styles.textfertility}>fertility</span>{" "}
+                  rates by age. In each simulation, we present the number of
+                  lives saved or gained. We also highlight GDP as a helpful
+                  (even if imperfect) proxy for lives improved.<br></br>
+                  <br></br>
+                  Beyond a certain point, improvements in non-cognitive
+                  functions have counterintuitive effects on GDP. For instance,
+                  a 1-year delay in brain aging is worth nearly as much as a
+                  1-year delay in overall biological aging in the near term.
+                  This is because the returns from improving the age of other
+                  organs (e.g. kidneys or ovaries) are not immediate, and
+                  sometimes reduce GDP temporarily. To understand the non-linear
+                  effects of each R&D area in the short and long run (and for
+                  GDP alternatives that measure non-market outcomes), see the
+                  report.
+                </div>
+              )}
+
+              <button onClick={toggleText} className={styles.seeMoreButton}>
+                {isExpanded ? "See Less" : "See More"}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* <div className={styles.space}></div>
       <div className={styles.landingoutertext}>
         <div
           className={`${styles.landinginnertext} ${styles.light} ${styles.landingmedium}`}
@@ -220,10 +298,11 @@ const GsapLanding = () => {
           </div>
         </div>
       </div> */}
-      <div className={styles.space}></div>
+        <div className={styles.space}></div>
 
-      <Overview></Overview>
-    </div>
+        <Overview></Overview>
+      </div>
+    </>
   );
 };
 

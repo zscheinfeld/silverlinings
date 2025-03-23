@@ -169,6 +169,7 @@
   top: 0;
   left: 0;
   z-index: 250;
+  pointer-events: none;
   /* top: 0px;
     left: 0px; */
 }
@@ -191,6 +192,7 @@
   height: 50px;
   width: 50px;
   z-index: 250;
+  pointer-events: all;
 }
 
 .brain {
@@ -450,10 +452,12 @@
 
 .rvisible {
   opacity: 1;
+  transition: opacity 0.8s ease-in-out;
 }
 
 .rhidden {
   opacity: 0;
+  transition: opacity 0.8s ease-in-out;
 }
 
 .rhotspot {
@@ -466,6 +470,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  pointer-events: all;
 }
 
 .rhotspotcontainer {
@@ -478,6 +483,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  pointer-events: all;
 }
 
 .rhotspotinnercontainer {
@@ -486,6 +492,7 @@
   background-color: rgba(255, 255, 255, 0.15);
   outline: 5px solid rgba(255, 255, 255, 0.05);
   border-radius: 100%;
+  pointer-events: all;
 }
 
 .rcard {
@@ -808,6 +815,7 @@
   width: 100vw;
   height: 100vh;
   z-index: 500;
+  pointer-events: all;
 }
 
 .jvm-tooltip {

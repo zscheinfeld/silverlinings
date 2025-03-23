@@ -22,7 +22,9 @@ const SubchapterToggle = ({ header, children, isHeader }) => {
         {children}
         <div className={styles.bottompadding}></div>
       </div>
-      {!isHeader && <div className={styles.line}></div>}
+      {/* {!isHeader && 
+      <div className={styles.line}></div>
+      } */}
     </div>
   );
 };

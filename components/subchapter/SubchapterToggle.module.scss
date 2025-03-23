@@ -65,7 +65,9 @@
 
 .answer.open {
   max-height: 5000px; /* Adjust if needed */
-  padding: 20px; /* Add padding back when expanded */
+  // padding: 20px; /* Add padding back when expanded */
+  padding-left: 20px; /* Add padding back when expanded */
+  padding-right: 20px; /* Add padding back when expanded */
 }
 
 .toggle {

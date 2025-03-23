@@ -4,7 +4,7 @@ import { Chapters } from "@/data/book";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-const TopNav = ({ handleOpen }) => {
+const TopNav = ({ hidden, handleOpen, replace = false }) => {
   const [activeNav, setActiveNav] = useState(0);
   const [scrollable, setScrollable] = useState();
   const timeout = useRef();
@@ -34,14 +34,14 @@ const TopNav = ({ handleOpen }) => {
 
   return (
     <div
-      className={`${styles.nav} ${activeNav === 1 ? styles.show : styles.hide}`}
+      className={`${styles.nav} ${activeNav === 1 && styles.expanded} ${hidden && styles.hidden}`}
     >
       <div className={styles.navtop}>
         <button className={styles.left} onClick={() => handleClick()}>
           TABLE OF CONTENTS
         </button>
         <div className={styles.right}>
-          <div className={styles.item}>INFORMATION</div>
+          <div className={styles.item}>ABOUT</div>
           <div className={styles.item}>SILVER LININGS.BIO</div>
         </div>
       </div>
@@ -57,7 +57,7 @@ const TopNav = ({ handleOpen }) => {
             <div className={styles.navitemscontainer} key={chapter.number}>
               <div className={styles.navchapteritem}>
                 <div className={styles.chapnumber}>{chapter.number + ".0"}</div>
-                <Link onClick={handleClick} href={href}>
+                <Link onClick={handleClick} href={href} replace={replace}>
                   {chapter.title}
                 </Link>
               </div>
@@ -77,6 +77,7 @@ const TopNav = ({ handleOpen }) => {
                             subchapter: subchapter.slug,
                           },
                         }}
+                        replace={replace}
                       >
                         {subchapter.header}
                       </Link>

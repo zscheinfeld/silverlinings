@@ -14,7 +14,7 @@ import Virtruvianwomannavigation from "./Virtruvianwomannavigation";
 
 const Content = ({ type, data }) => {
   if (type === "text") {
-    return <Textblock callouts={[data.callout]} paragraphs={data.paragraphs} />;
+    return <Textblock callouts={[data.callout]} paragraphs={data.paragraphs} bold={data.bold}/>;
   }
 
   if (type === "chart") {

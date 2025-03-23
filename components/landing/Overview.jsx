@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styles from "@/components/Overview.module.scss";
 import OverviewItem from "./OverviewItem";
 
@@ -32,7 +32,7 @@ const Overview = () => {
     },
 
     {
-        futureTitle: "Slow reproductive aging by 1 year",
+        futureTitle: "Replace aging: 2x increase in organ supply",
         imgSrc: "Heart.png",
         futureImageLabel: "Mortality (M)",
         futureImageLabelColor: "green",

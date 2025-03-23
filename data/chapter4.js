@@ -1,6 +1,6 @@
 const Chapter4 = {
-  title: "Information",
-  slug: "information",
+  title: "About",
+  slug: "about",
   number: 4,
   options: {
     // color: "black",
