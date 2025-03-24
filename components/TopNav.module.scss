@@ -75,6 +75,7 @@
 
   .icon_wrapper {
     display: block;
+    padding: 4px;
 
     @include layout.md {
       display: none;

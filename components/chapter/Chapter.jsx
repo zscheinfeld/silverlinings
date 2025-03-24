@@ -9,7 +9,7 @@ import Textblock from "@/components/content/Textblock";
 import Spacer from "@/components/content/Spacer";
 
 const BAR_WIDTH = 60;
-const RESISTANCE_THRESHOLD = 100;
+const RESISTANCE_THRESHOLD = 50;
 const MOBILE_RESISTANCE_THRESHOLD = 150;
 
 const Chapter = ({

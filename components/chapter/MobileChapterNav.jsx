@@ -46,8 +46,7 @@ const MobileChapterNav = ({ chapters, activeChapter, handleOpen }) => {
   }, [openChapter, activeChapter]);
 
   return (
-    <button
-      onClick={() => setActive(true)}
+    <div
       className={`${styles.mobileChapterNav} ${expanded && styles.expanded}`}
     >
       {chapters.map((chapter) => {
@@ -63,7 +62,7 @@ const MobileChapterNav = ({ chapters, activeChapter, handleOpen }) => {
               onClick={
                 expanded
                   ? (e) => handleChapterClick(e, chapter.number)
-                  : undefined
+                  : () => setActive(true)
               }
             >
               <span>{chapter.title}</span>
@@ -96,7 +95,7 @@ const MobileChapterNav = ({ chapters, activeChapter, handleOpen }) => {
           </div>
         );
       })}
-    </button>
+    </div>
   );
 };
 
