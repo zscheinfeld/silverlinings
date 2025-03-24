@@ -8,7 +8,6 @@ const Chapter1 = {
       header: "More humans, fewer problems",
       number: 1,
       content: [
-        { type: "subchaptertitle" },
         {
           type: "text",
           data: {
@@ -100,7 +99,6 @@ const Chapter1 = {
             // imageoverlay:["charts/1_1_2_overlay.svg"],
           },
         },
-        { type: "subchaptertitle" },
         {
           type: "text",
           data: {
@@ -148,7 +146,6 @@ const Chapter1 = {
       header: "Mortality, productivity, and fertility in the U.S.",
       number: 3,
       content: [
-        { type: "subchaptertitle" },
         {
           type: "text",
           data: {

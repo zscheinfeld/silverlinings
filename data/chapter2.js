@@ -1,6 +1,7 @@
 const Chapter2 = {
   title: "Counterfactual Futures",
   slug: "counterfactual-futures",
+  image: "woman-lightmode.png",
   number: 2,
   subchapters: [
     {
@@ -8,12 +9,6 @@ const Chapter2 = {
       header: "We can slow brain aging",
       number: 1,
       content: [
-        {
-          type: "subchaptertitle",
-        },
-        {
-          type: "virtruvianwomannavigation",
-        },
         {
           type: "simulation",
           data: {
@@ -61,15 +56,15 @@ const Chapter2 = {
                   mortality: {
                     min: 0,
                     max: 1,
-                    defaultValue: .2,
-                    step: .1,
+                    defaultValue: 0.2,
+                    step: 0.1,
                     label: "Mortality rates by age (year shift)",
                     tooltip: "",
                   },
                   productivity: {
                     min: 0,
                     max: 1,
-                    defaultValue: .7,
+                    defaultValue: 0.7,
                     step: 0.1,
                     label: "Productivity rates by age (year shift)",
                     tooltip: "",
@@ -78,7 +73,7 @@ const Chapter2 = {
                     min: 0,
                     max: 0,
                     defaultValue: 0,
-                    step: .1,
+                    step: 0.1,
                     label: "Fertility rates by age (year shift)",
                     tooltip: "",
                   },
@@ -187,7 +182,7 @@ const Chapter2 = {
         type: "default",
         showHeader: false, // This turns off the header
         // bordered: true, // Optional, if you want a border
-      }
+      },
     },
 
     {
@@ -195,10 +190,6 @@ const Chapter2 = {
       header: "We can slow reproductive aging",
       number: 2,
       content: [
-        {
-          type: "subchaptertitle",
-        },
-
         {
           type: "simulation",
           data: {
@@ -246,16 +237,16 @@ const Chapter2 = {
                   },
                   mortality: {
                     min: 0,
-                    max: .02,
-                    defaultValue: .02,
-                    step: .01,
+                    max: 0.02,
+                    defaultValue: 0.02,
+                    step: 0.01,
                     label: "Mortality rates by age (year shift)",
                     tooltip: "",
                   },
                   productivity: {
                     min: 0,
-                    max: .04,
-                    defaultValue: .04,
+                    max: 0.04,
+                    defaultValue: 0.04,
                     step: 0.01,
                     label: "Productivity rates by age (year shift)",
                     tooltip: "",
@@ -293,9 +284,8 @@ const Chapter2 = {
               },
             ],
           },
-          
         },
-        
+
         {
           type: "svgchart",
           data: {
@@ -374,7 +364,7 @@ const Chapter2 = {
         type: "default",
         showHeader: false, // This turns off the header
         // bordered: true, // Optional, if you want a border
-      }
+      },
     },
 
     {
@@ -382,9 +372,6 @@ const Chapter2 = {
       header: "We can “replace” aging",
       number: 3,
       content: [
-        {
-          type: "subchaptertitle",
-        },
         {
           type: "simulation",
           data: {
@@ -400,8 +387,9 @@ const Chapter2 = {
                     min: 0,
                     max: 100,
                     defaultValue: 25,
-                    step: .5,
-                    label: "Percentage of patients in need of life-saving organ transplants who adhere",
+                    step: 0.5,
+                    label:
+                      "Percentage of patients in need of life-saving organ transplants who adhere",
                     tooltip: "",
                   },
                   age: {
@@ -432,14 +420,14 @@ const Chapter2 = {
                   mortality: {
                     min: 0,
                     max: 2,
-                    defaultValue: .88,
-                    step: .01,
+                    defaultValue: 0.88,
+                    step: 0.01,
                     label: "Mortality rates by age (year shift)",
                     tooltip: "",
                   },
                   productivity: {
                     min: 0,
-                    max: .02,
+                    max: 0.02,
                     defaultValue: 0,
                     step: 0.01,
                     label: "Productivity rates by age (year shift)",
@@ -484,8 +472,9 @@ const Chapter2 = {
                     min: 0,
                     max: 100,
                     defaultValue: 50,
-                    step: .5,
-                    label: "Percentage of patients in need of life-saving organ transplants who adhere",
+                    step: 0.5,
+                    label:
+                      "Percentage of patients in need of life-saving organ transplants who adhere",
                     tooltip: "",
                   },
                   age: {
@@ -516,14 +505,14 @@ const Chapter2 = {
                   mortality: {
                     min: 0,
                     max: 2,
-                    defaultValue: .88,
-                    step: .01,
+                    defaultValue: 0.88,
+                    step: 0.01,
                     label: "Mortality rates by age (year shift)",
                     tooltip: "",
                   },
                   productivity: {
                     min: 0,
-                    max: .02,
+                    max: 0.02,
                     defaultValue: 0,
                     step: 0.01,
                     label: "Productivity rates by age (year shift)",
@@ -563,7 +552,6 @@ const Chapter2 = {
             ],
           },
         },
-        
 
         {
           type: "text",
@@ -622,7 +610,7 @@ const Chapter2 = {
         type: "default",
         showHeader: false, // This turns off the header
         // bordered: true, // Optional, if you want a border
-      }
+      },
     },
 
     {
@@ -630,9 +618,6 @@ const Chapter2 = {
       header: "We can measure & marginally slow aging",
       number: 4,
       content: [
-        {
-          type: "subchaptertitle",
-        },
         {
           type: "simulation",
           data: {
@@ -648,7 +633,7 @@ const Chapter2 = {
                     min: 0,
                     max: 20,
                     defaultValue: 11,
-                    step: .5,
+                    step: 0.5,
                     label: "Percentage of the population who will benefit",
                     tooltip: "",
                   },
@@ -680,15 +665,15 @@ const Chapter2 = {
                   mortality: {
                     min: 0,
                     max: 2,
-                    defaultValue: .72,
-                    step: .01,
+                    defaultValue: 0.72,
+                    step: 0.01,
                     label: "Mortality rates by age (year shift)",
                     tooltip: "",
                   },
                   productivity: {
                     min: 0,
                     max: 2,
-                    defaultValue: .82,
+                    defaultValue: 0.82,
                     step: 0.01,
                     label: "Productivity rates by age (year shift)",
                     tooltip: "",
@@ -732,7 +717,7 @@ const Chapter2 = {
                     min: 0,
                     max: 50,
                     defaultValue: 18.5,
-                    step: .5,
+                    step: 0.5,
                     label: "Percentage of the population who will benefit",
                     tooltip: "",
                   },
@@ -764,15 +749,15 @@ const Chapter2 = {
                   mortality: {
                     min: 0,
                     max: 2,
-                    defaultValue: .72,
-                    step: .01,
+                    defaultValue: 0.72,
+                    step: 0.01,
                     label: "Mortality rates by age (year shift)",
                     tooltip: "",
                   },
                   productivity: {
                     min: 0,
                     max: 2,
-                    defaultValue: .82,
+                    defaultValue: 0.82,
                     step: 0.01,
                     label: "Productivity rates by age (year shift)",
                     tooltip: "",
@@ -816,7 +801,7 @@ const Chapter2 = {
                     min: 0,
                     max: 100,
                     defaultValue: 50,
-                    step: .5,
+                    step: 0.5,
                     label: "Percentage of the population who will benefit",
                     tooltip: "",
                   },
@@ -849,14 +834,14 @@ const Chapter2 = {
                     min: 0,
                     max: 2,
                     defaultValue: 1.44,
-                    step: .01,
+                    step: 0.01,
                     label: "Mortality rates by age (year shift)",
                     tooltip: "",
                   },
                   productivity: {
                     min: 0,
                     max: 2,
-                    defaultValue: .82,
+                    defaultValue: 0.82,
                     step: 0.01,
                     label: "Productivity rates by age (year shift)",
                     tooltip: "",
@@ -900,7 +885,7 @@ const Chapter2 = {
                     min: 0,
                     max: 100,
                     defaultValue: 50,
-                    step: .5,
+                    step: 0.5,
                     label: "Percentage of the population who will benefit",
                     tooltip: "",
                   },
@@ -933,14 +918,14 @@ const Chapter2 = {
                     min: 0,
                     max: 2,
                     defaultValue: 1.44,
-                    step: .01,
+                    step: 0.01,
                     label: "Mortality rates by age (year shift)",
                     tooltip: "",
                   },
                   productivity: {
                     min: 0,
                     max: 2,
-                    defaultValue: .82,
+                    defaultValue: 0.82,
                     step: 0.01,
                     label: "Productivity rates by age (year shift)",
                     tooltip: "",
@@ -979,7 +964,7 @@ const Chapter2 = {
             ],
           },
         },
-       
+
         {
           type: "text",
           data: {
@@ -1021,7 +1006,7 @@ const Chapter2 = {
         type: "default",
         showHeader: false, // This turns off the header
         // bordered: true, // Optional, if you want a border
-      }
+      },
     },
 
     {
@@ -1029,10 +1014,6 @@ const Chapter2 = {
       header: "We can make 41 the new 40  (or 61 the new 60!)",
       number: 5,
       content: [
-        {
-          type: "subchaptertitle",
-        },
-        
         {
           type: "simulation",
           data: {
@@ -1081,7 +1062,7 @@ const Chapter2 = {
                     min: 0,
                     max: 5,
                     defaultValue: 1,
-                    step: .1,
+                    step: 0.1,
                     label: "Mortality rates by age (year shift)",
                     tooltip: "",
                   },
@@ -1175,7 +1156,7 @@ const Chapter2 = {
         type: "default",
         showHeader: false, // This turns off the header
         // bordered: true, // Optional, if you want a border
-      }
+      },
     },
   ],
 };

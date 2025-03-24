@@ -194,7 +194,7 @@ const Simulation = ({ data }) => {
         dangerouslySetInnerHTML={{ __html: data.title }}
       />
 
-      <div key={`${sectionIndex}`}>
+      <div className={styles.container} key={`${sectionIndex}`}>
         <div className={styles.middleContainer}>
           <div className={styles.inputContainer}>
             <div
@@ -317,7 +317,11 @@ const Simulation = ({ data }) => {
                   current3={outputs.outputPop || 0}
                 />
               )}
-              <img src={`/${section.image}`} alt="" />
+              <img
+                className={styles.outputImage}
+                src={`/${section.image}`}
+                alt=""
+              />
             </div>
             <div className={styles.outputContainer}>
               <div className={styles.sectionHeader}>
@@ -331,44 +335,26 @@ const Simulation = ({ data }) => {
               </div>
               <div className={styles.outputInnerContainer}>
                 <div className={styles.Item}>
-                  <label htmlFor="outputNPV"></label>
-                  <input
-                    type="text"
-                    id="outputNPV"
-                    name="outputNPV"
-                    className={styles.outputStat}
-                    value={outputs.outputNPV || 0}
-                    readOnly
-                  />
+                  <span className={styles.outputStat}>
+                    {outputs.outputNPV || 0}
+                  </span>
                   <div className={styles.outputLabel}>
                     Long-term return, (Net Present Value over decades)
                   </div>
                 </div>
                 <div className={styles.Item}>
-                  <label htmlFor="outputGDP20"></label>
-                  <input
-                    type="text"
-                    id="outputGDP20"
-                    name="outputGDP20"
-                    className={styles.outputStat}
-                    value={outputs.outputGDP20 || 0}
-                    readOnly
-                  />
+                  <span className={styles.outputStat}>
+                    {outputs.outputGDP20 || 0}
+                  </span>
                   <div className={styles.outputLabel}>
                     Yearly GDP change, Billions of 2025$ (average over
                     2045-2065)
                   </div>
                 </div>
                 <div className={styles.Item}>
-                  <label htmlFor="outputPop"></label>
-                  <input
-                    type="text"
-                    id="outputPop"
-                    className={styles.outputStat}
-                    name="outputPop"
-                    value={outputs.outputPop || 0}
-                    readOnly
-                  />
+                  <span className={styles.outputStat}>
+                    {outputs.outputPop || 0}
+                  </span>
                   <div className={styles.outputLabel}>
                     Lives saved by 2050 (thousands of people)
                   </div>

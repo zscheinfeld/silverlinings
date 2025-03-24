@@ -1,3 +1,5 @@
+@use "../styles/layout";
+
 .nav {
   position: fixed;
   width: 100%;
@@ -23,12 +25,17 @@
 }
 
 .navbottom {
-  overflow-y: hidden;
   height: calc(100% - 56px);
   width: 100%;
+  overflow-y: auto;
 
-  &.scrollable {
-    overflow-y: auto;
+  padding: 0 20px 48px;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
 
@@ -36,9 +43,12 @@
   height: 56px;
   display: flex;
   justify-content: space-between;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding: 0 24px;
   align-items: center;
+
+  @include layout.md {
+    padding: 0 30px;
+  }
 }
 
 .left {
@@ -46,6 +56,31 @@
   font-size: 12px;
   background-color: transparent;
   border: 0;
+  order: 1;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  @include layout.md {
+    order: 0;
+  }
+
+  .text {
+    display: none;
+
+    @include layout.md {
+      display: block;
+    }
+  }
+
+  .icon_wrapper {
+    display: block;
+    padding: 4px;
+
+    @include layout.md {
+      display: none;
+    }
+  }
 }
 
 .left:hover {
@@ -57,6 +92,19 @@
   font-family: "Spectral", serif;
   font-size: 12px;
   gap: 32px;
+  order: 0;
+
+  @include layout.md {
+    order: 1;
+  }
+}
+
+.about {
+  display: none;
+
+  @include layout.md {
+    display: block;
+  }
 }
 
 .navitem {

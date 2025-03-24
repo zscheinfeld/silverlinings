@@ -9,12 +9,16 @@ import ImageGrid from "@/components/content/ImageGrid";
 import NameGrid from "@/components/content/NameGrid";
 import List from "@/components/content/List";
 import Spacer from "@/components/content/Spacer";
-import Virtruvianwomannavigation from "./Virtruvianwomannavigation";
-
 
 const Content = ({ type, data }) => {
   if (type === "text") {
-    return <Textblock callouts={[data.callout]} paragraphs={data.paragraphs} bold={data.bold}/>;
+    return (
+      <Textblock
+        callouts={[data.callout]}
+        paragraphs={data.paragraphs}
+        bold={data.bold}
+      />
+    );
   }
 
   if (type === "chart") {
@@ -70,12 +74,6 @@ const Content = ({ type, data }) => {
 
   if (type === "spacer") {
     return <Spacer {...data} />;
-  }
-
-  if (type === "virtruvianwomannavigation") {
-    return <Virtruvianwomannavigation>
-      
-    </Virtruvianwomannavigation>;
   }
 };
 

@@ -21,7 +21,7 @@ const Book = ({ activeChapter }) => {
     if (nextChapter) {
       void router.push({
         pathname: router.pathname,
-        query: { ...router.query, chapter: nextChapter.slug },
+        query: { chapter: nextChapter.slug },
       });
     }
   };
@@ -31,7 +31,7 @@ const Book = ({ activeChapter }) => {
     if (previousChapter) {
       void router.push({
         pathname: router.pathname,
-        query: { ...router.query, chapter: previousChapter.slug },
+        query: { chapter: previousChapter.slug },
       });
     }
   };
@@ -40,7 +40,11 @@ const Book = ({ activeChapter }) => {
     <div className={`${styles.book}`} style={style}>
       <div className={styles.bookContent}>
         <TopNav handleOpen={setIsTopNavOpen} />
-        <MobileChapterNav chapters={Chapters} activeChapter={activeChapter} />
+        <MobileChapterNav
+          chapters={Chapters}
+          activeChapter={activeChapter}
+          handleOpen={setIsTopNavOpen}
+        />
         {Chapters.map((chapter) => {
           const { number } = chapter;
           const hasPrevious = number !== 1;

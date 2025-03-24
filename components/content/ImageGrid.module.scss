@@ -1,3 +1,5 @@
+@use "../../styles/layout";
+
 .image {
   border-radius: 50%;
   background-color: grey;
@@ -5,29 +7,40 @@
 
 .items_two {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 64px 32px;
 
+  @include layout.md {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .image {
-    width: 116px;
-    height: 116px;
+    aspect-ratio: 1;
+    width: 100%;
+    max-width: 116px;
     margin-right: 24px;
   }
 
   .item {
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
   }
 }
 
 .items_three {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 32px;
 
+  @include layout.md {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
   .image {
-    width: 215px;
-    height: 215px;
+    aspect-ratio: 1;
+    width: 100%;
+    max-width: 215px;
     margin-bottom: 24px;
   }
 

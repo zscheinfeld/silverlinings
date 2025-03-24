@@ -3,28 +3,25 @@ import styles from "@/components/TopNav.module.scss";
 import { Chapters } from "@/data/book";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Hamburger from "@/icons/hamburger.svg";
 
 const TopNav = ({ hidden, handleOpen, replace = false }) => {
   const [activeNav, setActiveNav] = useState(0);
-  const [scrollable, setScrollable] = useState();
   const timeout = useRef();
   const router = useRouter();
 
-  const handleClick = () => {
+  const setActive = (active) => {
     if (timeout.current) {
       clearTimeout(timeout.current);
     }
 
-    if (activeNav === 0) {
+    if (active && activeNav === 0) {
       handleOpen(true);
       setActiveNav(1);
       // Don't fire the event until after the transition.
-      timeout.current = setTimeout(() => {
-        setScrollable(true);
-      }, 600);
-    } else {
+    }
+    if (!active && activeNav === 1) {
       setActiveNav(0);
-      setScrollable(false);
       // Don't fire the event until after the transition.
       timeout.current = setTimeout(() => {
         handleOpen(false);
@@ -37,16 +34,28 @@ const TopNav = ({ hidden, handleOpen, replace = false }) => {
       className={`${styles.nav} ${activeNav === 1 && styles.expanded} ${hidden && styles.hidden}`}
     >
       <div className={styles.navtop}>
-        <button className={styles.left} onClick={() => handleClick()}>
-          TABLE OF CONTENTS
+        <button className={styles.left} onClick={() => setActive(!activeNav)}>
+          <span className={styles.text}>TABLE OF CONTENTS</span>
+          <div className={styles.icon_wrapper}>
+            <Hamburger />
+          </div>
         </button>
         <div className={styles.right}>
-          <div className={styles.item}>ABOUT</div>
-          <div className={styles.item}>SILVER LININGS.BIO</div>
+          <Link
+            href={{
+              pathname: router.pathname,
+              query: { chapter: "about" },
+            }}
+            className={`${styles.about}`}
+            onClick={() => setActive(false)}
+          >
+            ABOUT
+          </Link>
+          <div>SILVER LININGS.BIO</div>
         </div>
       </div>
 
-      <div className={`${styles.navbottom} ${scrollable && styles.scrollable}`}>
+      <div className={`${styles.navbottom}`}>
         <div className={styles.navbottomTitle}>Index</div>
         {Chapters.map((chapter) => {
           const href = {
@@ -57,7 +66,11 @@ const TopNav = ({ hidden, handleOpen, replace = false }) => {
             <div className={styles.navitemscontainer} key={chapter.number}>
               <div className={styles.navchapteritem}>
                 <div className={styles.chapnumber}>{chapter.number + ".0"}</div>
-                <Link onClick={handleClick} href={href} replace={replace}>
+                <Link
+                  onClick={() => setActive(!activeNav)}
+                  href={href}
+                  replace={replace}
+                >
                   {chapter.title}
                 </Link>
               </div>
@@ -69,7 +82,7 @@ const TopNav = ({ hidden, handleOpen, replace = false }) => {
                         {subchapter.slug.replace("-", ".")}
                       </div>
                       <Link
-                        onClick={handleClick}
+                        onClick={() => setActive(!activeNav)}
                         href={{
                           ...href,
                           query: {
