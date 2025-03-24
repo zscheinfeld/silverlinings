@@ -231,6 +231,7 @@ const Simulation = ({ data }) => {
             <Slider
               id="inputAge"
               {...section.inputs["age"]}
+              modifier={(value) => `${value}+`}
               value={inputs["inputAge"]}
               onChange={updateInputs}
             />
@@ -243,6 +244,7 @@ const Simulation = ({ data }) => {
             <Slider
               id="inputR"
               {...section.inputs["r"]}
+              modifier={(value) => `${value * 100}%`}
               value={inputs["inputR"]}
               onChange={updateInputs}
             />
@@ -256,7 +258,7 @@ const Simulation = ({ data }) => {
 
             <div
               className={`${styles.secondaryInputs} ${
-                showSecondaryInputs ? styles.show : styles.hide
+                showSecondaryInputs ? styles.expanded : styles.hide
               }`}
             >
               <Slider
@@ -336,7 +338,15 @@ const Simulation = ({ data }) => {
               <div className={styles.outputInnerContainer}>
                 <div className={styles.Item}>
                   <span className={styles.outputStat}>
-                    {outputs.outputNPV || 0}
+                    ${outputs.outputGDP20 || 0}B
+                  </span>
+                  <div className={styles.outputLabel}>
+                    Yearly gain to U.S. GDP (average over 2045-2065)
+                  </div>
+                </div>
+                <div className={styles.Item}>
+                  <span className={styles.outputStat}>
+                    ${outputs.outputNPV || 0}T
                   </span>
                   <div className={styles.outputLabel}>
                     Long-term return, (Net Present Value over decades)
@@ -344,19 +354,10 @@ const Simulation = ({ data }) => {
                 </div>
                 <div className={styles.Item}>
                   <span className={styles.outputStat}>
-                    {outputs.outputGDP20 || 0}
+                    {outputs.outputPop || 0}k
                   </span>
                   <div className={styles.outputLabel}>
-                    Yearly GDP change, Billions of 2025$ (average over
-                    2045-2065)
-                  </div>
-                </div>
-                <div className={styles.Item}>
-                  <span className={styles.outputStat}>
-                    {outputs.outputPop || 0}
-                  </span>
-                  <div className={styles.outputLabel}>
-                    Lives saved by 2050 (thousands of people)
+                    Lives saved or gain (by 2050)
                   </div>
                 </div>
               </div>
