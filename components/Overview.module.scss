@@ -1,155 +1,147 @@
+.overviewContainer {
+  box-sizing: border-box;
+  // height: 200vh;
+  width: 100vw;
+  background-color: #191818;
+  padding-bottom: 360px;
+}
 
+.overviewInnerContainer {
+  box-sizing: border-box;
+  width: 100%;
+  // padding-left: 80px;
+  // padding-right: 80px;
+  max-width: 1280px;
+  margin: auto;
+}
 
-.overviewContainer{
-    box-sizing: border-box;
-    // height: 200vh;
-    width: 100vw;
-    background-color: #191818;
-    padding-bottom: 360px;
-  }
+.overviewHeader {
+  font-family: "spectral";
+  font-size: 42px;
+  line-height: 106%;
+  color: white;
+  margin-bottom: 24px;
+}
 
-  .overviewInnerContainer{
-    box-sizing: border-box;
-    width: 100%;
-    // padding-left: 80px;
-    // padding-right: 80px;
-    max-width: 1280px;
-    margin: auto;
-  }
+.futureContainer {
+  padding-bottom: 42px;
+}
 
-  .overviewHeader{
-    font-family: "spectral";
-    font-size: 42px;
-    line-height: 106%;
-    color: white;
-    margin-bottom: 24px;
-  }
+.futureTitle {
+  font-family: "spectral";
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  border-top: solid white 1px;
+  border-bottom: dotted white 1px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
 
-  .futureContainer{
-    padding-bottom: 42px;
-  }
+.futureInfoContainer {
+  display: flex;
+}
 
-  .futureTitle{
-    font-family: "spectral";
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    border-top: solid white 1px;
-    border-bottom: dotted white 1px;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    margin-bottom: 16px;
-  }
+.futureInfo {
+  flex: 4;
+  // height: 200px;
+  color: white;
+  font-size: 16px;
+  line-height: 140%;
+  font-family: "spectral";
+  border-right: dashed 1px white;
+  padding-right: 36px;
+}
 
-  .futureInfoContainer{
-    display: flex;
-    
-  }
+.futureImage {
+  // background-color: blue;
+  flex: 3;
+  // height: 200px;
+}
 
-  .futureInfo{
-    flex: 4;
-    // height: 200px;
-    color: white;
-    font-size: 16px;
-    line-height: 140%;
-    font-family: "spectral";
-    border-right: dashed 1px white;
-    padding-right: 36px;
-  }
+.futureImageContainer {
+  width: 100%;
+  height: 200px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .futureImage{
-    // background-color: blue;
-    flex: 3;
-    // height: 200px;
-  }
+.futureImageContainer img {
+  // width: 100%;
+  height: 200px;
+}
 
-  .futureImageContainer{
-    width: 100%;
-    height: 200px;
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.futureImageLabel {
+  font-family: "spectral";
+  color: white;
+  font-size: 14px;
+  text-align: center;
+}
 
-  .futureImageContainer img{
-    // width: 100%;
-    height: 200px;
+.yellow {
+  color: #fff3a8;
+}
 
-  }
+.futureStats {
+  flex: 5;
+  font-family: "spectral";
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 5%;
+  color: white;
+}
 
-  .futureImageLabel{
-    font-family: "spectral";
-    color: white;
-    font-size: 14px;
-    text-align: center;
-  }
+.label {
+  font-family: "spectral";
+  font-size: 16px;
+  font-family: "spectral";
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 5%;
+  color: white;
+  padding-bottom: 24px;
+}
 
-  .yellow{
-    color: #FFF3A8;
-  }
+.statsContainer {
+  display: flex;
+  // align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
 
-  .futureStats{
-    flex: 5;
-    font-family: "spectral";
-    text-align: center;
-    font-weight: bold;
-    letter-spacing: 5%;
-    color: white;
-  }
+.innerStatsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  color: white;
+  max-width: 150px;
+}
 
-  .label{
-    font-family: "spectral";
-    font-size: 16px;
-    font-family: "spectral";
-    text-align: center;
-    font-weight: bold;
-    letter-spacing: 5%;
-    color: white;
-    padding-bottom:24px;
-  }
+.innerStat {
+  font-family: "spectral";
+  font-size: 36px;
+  line-height: 106%;
+  font-weight: 200;
+}
 
-  .statsContainer{
-    display: flex;
-    // align-items: center;
-    justify-content: center;
-    gap: 16px;
-  }
+.innerLabel {
+  font-family: "spectral";
+  font-size: 14px;
+  line-height: 120%;
+  font-weight: 200;
+  text-align: left;
+}
 
-  .innerStatsContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    flex: 1;
-    color: white;
-    max-width: 150px;
-  }
+/* In your Overview.module.scss or separate CSS file */
+.fadeIn {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
 
-  .innerStat{
-    font-family: "spectral";
-    font-size: 36px;
-    line-height: 106%;
-    font-weight: 200;
-  }
-
-  .innerLabel{
-    font-family: "spectral";
-    font-size: 14px;
-    line-height: 120%;
-    font-weight: 200;
-    text-align: left;
-  }
-
-  /* In your Overview.module.scss or separate CSS file */
-  .fadeIn {
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-  }
-  
-  .fadeIn.visible {
-    opacity: 1;
-  }
-  
-
-
-  
+.fadeIn.visible {
+  opacity: 1;
+}
