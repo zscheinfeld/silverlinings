@@ -1,14 +1,17 @@
 @use "../../styles/layout";
 
+.container {
+  width: 100%;
+}
+
 .middleContainer {
   display: flex;
+  width: 100%;
 }
 
 .inputContainer {
-  /* background-color: rgb(255, 7, 7); */
-  /* width: 295px; */
-
   display: none;
+  width: 100%;
 
   @include layout.md {
     display: block;
@@ -19,6 +22,7 @@
 }
 
 .outerOutputContainer {
+  width: 100%;
 }
 
 .outputContainer {
@@ -33,6 +37,7 @@
 .outputInnerContainer {
   display: flex;
   flex-direction: row;
+  width: 100%;
   max-width: 610px;
   justify-content: center;
 }
@@ -46,16 +51,19 @@
 }
 
 .output {
-  /* background-color: yellow; */
+  background-color: #fff5e5;
   height: 400px;
-  min-width: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+
+  @include layout.md {
+    //min-width: 500px;
+  }
 }
 
-.output img {
+.outputImage {
   width: 80%;
   height: 85%;
   object-fit: contain;
@@ -111,9 +119,9 @@
 .Item {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+  flex-basis: calc(1 / 3 * 100%);
+  max-width: 190px;
   align-items: center;
-  width: 190px;
 }
 
 .secondaryInputs {
@@ -212,8 +220,11 @@
   width: 100%;
   height: 34px;
   display: flex;
-  padding-left: 36px;
-  padding-right: 36px;
+
+  @include layout.md {
+    padding-left: 36px;
+    padding-right: 36px;
+  }
 }
 
 .sectionButton {

@@ -9,7 +9,8 @@ import Textblock from "@/components/content/Textblock";
 import Spacer from "@/components/content/Spacer";
 
 const BAR_WIDTH = 60;
-const RESISTANCE_THRESHOLD = 600;
+const RESISTANCE_THRESHOLD = 100;
+const MOBILE_RESISTANCE_THRESHOLD = 150;
 
 const Chapter = ({
   chapter,
@@ -22,9 +23,10 @@ const Chapter = ({
 }) => {
   const [activeSubchapter, setActiveSubchapter] = useState(1);
   const router = useRouter();
-  const [overscroll, setOverscroll] = useState(0);
-  const { title, number, subchapters, intro, options } = chapter;
+  const { title, number, subchapters, intro, image, options } = chapter;
   const { type = "default", color, spacer, hideSubchapterNav } = options || {};
+
+  const overscroll = useRef();
 
   const transition = !isTopNavOpen && state;
 
@@ -54,46 +56,92 @@ const Chapter = ({
     const target = document.getElementById(slug);
     if (chapterRef.current && target) {
       const targetOffset = target.offsetTop - chapterRef.current.offsetTop;
+      const BUFFER = 40;
       chapterRef.current.scrollTo({
-        top: targetOffset,
+        top: targetOffset - BUFFER,
         behavior: smooth ? "smooth" : "auto",
       });
     }
   };
 
   useEffect(() => {
-    const handleScroll = throttle((event) => {
-      if (!chapterRef.current || state !== "current") return;
+    if (!chapterRef.current || state !== "current") {
+      overscroll.current = 0;
+      return;
+    }
 
+    let startY = 0;
+
+    const handleWheel = throttle((event) => {
       const { scrollTop, scrollHeight, clientHeight } = chapterRef.current;
       const atTop = scrollTop <= 0;
       const atBottom = scrollTop + clientHeight >= scrollHeight - 3;
 
       if (atBottom && event.deltaY > 0) {
-        setOverscroll((prev) =>
-          Math.min(prev + event.deltaY, RESISTANCE_THRESHOLD),
+        overscroll.current = Math.min(
+          overscroll.current + event.deltaY,
+          RESISTANCE_THRESHOLD,
         );
       } else if (atTop && event.deltaY < 0) {
-        setOverscroll((prev) =>
-          Math.max(prev + event.deltaY, -RESISTANCE_THRESHOLD),
+        overscroll.current = Math.max(
+          overscroll.current + event.deltaY,
+          -RESISTANCE_THRESHOLD,
         );
       } else {
-        setOverscroll(0); // Reset overscroll if scrolling normally
+        overscroll.current = 0;
       }
 
-      if (overscroll >= RESISTANCE_THRESHOLD) {
-        onScrollToBottom?.();
-        setOverscroll(0);
-      } else if (overscroll <= -RESISTANCE_THRESHOLD) {
-        onScrollToTop?.();
-        setOverscroll(0);
-      }
+      checkOverscroll(RESISTANCE_THRESHOLD);
     }, 200);
 
-    chapterRef.current?.addEventListener("wheel", handleScroll);
+    const handleTouchStart = (event) => {
+      if (event.touches.length === 1) {
+        startY = event.touches[0].clientY;
+      }
+    };
+
+    const handleTouchMove = throttle((event) => {
+      if (!chapterRef.current) return;
+
+      const currentY = event.touches[0].clientY;
+      const deltaY = startY - currentY;
+
+      const { scrollTop, scrollHeight, clientHeight } = chapterRef.current;
+      const atTop = scrollTop <= 0;
+      const atBottom = scrollTop + clientHeight >= scrollHeight - 3;
+
+      if (atBottom && deltaY > 0) {
+        overscroll.current =
+          overscroll.current + Math.min(deltaY, MOBILE_RESISTANCE_THRESHOLD);
+      } else if (atTop && deltaY < 0) {
+        overscroll.current =
+          overscroll.current + Math.max(deltaY, -MOBILE_RESISTANCE_THRESHOLD);
+      } else {
+        overscroll.current = 0;
+      }
+
+      checkOverscroll(MOBILE_RESISTANCE_THRESHOLD);
+    }, 200);
+
+    const checkOverscroll = (threshold) => {
+      if (overscroll.current >= threshold) {
+        onScrollToBottom?.();
+        overscroll.current = 0;
+      } else if (overscroll.current <= threshold * -1) {
+        onScrollToTop?.();
+        overscroll.current = 0;
+      }
+    };
+
+    const el = chapterRef.current;
+    el.addEventListener("wheel", handleWheel);
+    el.addEventListener("touchstart", handleTouchStart);
+    el.addEventListener("touchmove", handleTouchMove);
 
     return () => {
-      chapterRef.current?.removeEventListener("wheel", handleScroll);
+      el.removeEventListener("wheel", handleWheel);
+      el.removeEventListener("touchstart", handleTouchStart);
+      el.removeEventListener("touchmove", handleTouchMove);
     };
   }, [state, overscroll]);
 
@@ -181,6 +229,12 @@ const Chapter = ({
         {intro && (
           <div className={styles.chapterintro}>
             <Textblock paragraphs={[intro]} />
+          </div>
+        )}
+
+        {image && (
+          <div className={styles.chapterimage}>
+            <img src={image} alt="" />
           </div>
         )}
 

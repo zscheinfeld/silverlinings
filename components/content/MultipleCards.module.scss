@@ -1,3 +1,5 @@
+@use "../../styles/layout";
+
 .multipleSidenoteInnerContainer {
   display: flex;
   border: solid 1px black;
@@ -8,12 +10,29 @@
   padding: 24px;
   height: auto;
   flex: 1 1 300px;
+
+  @include layout.md {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+    transition-delay: var(--delay);
+
+    &.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
 .multipleCardsContainer {
   display: flex;
+  flex-direction: column;
   gap: 24px;
   align-items: flex-start;
+
+  @include layout.md {
+    flex-direction: row;
+  }
 }
 
 .multipleSideNoteHeader {

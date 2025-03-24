@@ -1,43 +1,98 @@
 import styles from "./MobileChapterNav.module.scss";
 import chapterStyles from "./Chapter.module.scss";
-import { useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
 
-const MobileChapterNav = ({ chapters, activeChapter }) => {
+const MobileChapterNav = ({ chapters, activeChapter, handleOpen }) => {
+  const timeout = useRef();
   const [expanded, setExpanded] = useState(false);
+  const [openChapter, setOpenChapter] = useState(null);
+
+  const setActive = (active) => {
+    if (timeout.current) {
+      clearTimeout(timeout.current);
+    }
+
+    if (active && !expanded) {
+      handleOpen(true);
+      setExpanded(1);
+      // Don't fire the event until after the transition.
+    }
+    if (!active && expanded) {
+      setExpanded(0);
+      // Don't fire the event until after the transition.
+      timeout.current = setTimeout(() => {
+        handleOpen(false);
+      }, 600);
+    }
+  };
+
+  const handleSubchapterClick = (e) => {
+    e.stopPropagation();
+    setActive(false);
+  };
+
+  const handleChapterClick = (e, number) => {
+    e.stopPropagation();
+    setOpenChapter(number);
+  };
+
+  useEffect(() => {
+    setOpenChapter(null);
+  }, [activeChapter]);
+
+  const currentActiveChapter = useMemo(() => {
+    return openChapter || activeChapter;
+  }, [openChapter, activeChapter]);
 
   return (
     <button
-      onClick={() => setExpanded((expanded) => !expanded)}
+      onClick={() => setActive(true)}
       className={`${styles.mobileChapterNav} ${expanded && styles.expanded}`}
     >
       {chapters.map((chapter) => {
-        const isActive = activeChapter === chapter.number;
+        const isActive = currentActiveChapter === chapter.number;
+
         return (
           <div
             key={chapter.slug}
             className={`${styles.mobileChapterNavSection} ${isActive && styles.active} ${expanded && styles.expanded}`}
           >
-            <div
+            <button
               className={`${styles.mobileChapterNavChapter} ${chapterStyles[`chap-${chapter.number + 1}`]} ${isActive && styles.active} ${expanded && styles.expanded}`}
+              onClick={
+                expanded
+                  ? (e) => handleChapterClick(e, chapter.number)
+                  : undefined
+              }
             >
               <span>{chapter.title}</span>
               <span>{chapter.number}</span>
-            </div>
-            {isActive && (
+            </button>
+            <div
+              className={`${styles.mobileChapterNavSubchapterAccordion} ${isActive && styles.active}`}
+            >
               <div className={styles.mobileChapterNavSubchapters}>
                 {chapter.subchapters.map((subchapter) => (
-                  <div
+                  <Link
                     key={subchapter.slug}
                     className={styles.mobileChapterNavSubchapter}
+                    onClick={handleSubchapterClick}
+                    href={{
+                      query: {
+                        chapter: chapter.slug,
+                        subchapter: subchapter.slug,
+                      },
+                    }}
                   >
                     <span>{subchapter.header}</span>
                     <span>
                       {chapter.number}.{subchapter.number}
                     </span>
-                  </div>
+                  </Link>
                 ))}
               </div>
-            )}
+            </div>
           </div>
         );
       })}

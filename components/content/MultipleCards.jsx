@@ -1,26 +1,9 @@
-import { useEffect, useState, useRef } from "react";
-import { motion } from "framer-motion";
 import styles from "./MultipleCards.module.scss";
 import sidenoteStyles from "./Sidenote.module.scss";
+import { useInView } from "react-intersection-observer";
 
 const MultipleCards = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      { threshold: 0.9 },
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const { ref, inView } = useInView({ threshold: 0.3 });
 
   const cards = [
     {
@@ -42,19 +25,17 @@ const MultipleCards = () => {
       <div className={styles.desktopLabelXL}>MARKET FAILURES</div>
       <div className={styles.multipleCardsContainer} ref={ref}>
         {cards.map((card, index) => (
-          <motion.div
+          <div
             key={index}
-            initial={{ opacity: 0, y: 30 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
-            className={styles.multipleSidenoteInnerContainer}
+            className={`${styles.multipleSidenoteInnerContainer} ${inView && styles.active}`}
+            style={{ "--delay": `${index * 0.2}s` }}
           >
             <div className={styles.multipleSideNoteHeader}>{card.header}</div>
-            <div 
-              className={sidenoteStyles.sidenoteText} 
-              dangerouslySetInnerHTML={{ __html: card.text }} 
+            <div
+              className={sidenoteStyles.sidenoteText}
+              dangerouslySetInnerHTML={{ __html: card.text }}
             />
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>

@@ -18,7 +18,6 @@
     "jvectormap-next": "^3.1.1",
     "lodash": "^4.17.21",
     "lottie-react": "^2.4.1",
-    "motion": "^11.15.0",
     "next": "15.1.2",
     "react": "^18.3.1",
     "react-chartjs-2": "^5.2.0",
@@ -30,6 +29,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@svgr/webpack": "^8.1.0",
     "eslint": "^9",
     "eslint-config-next": "15.1.2",
     "prettier": "^3.4.2",

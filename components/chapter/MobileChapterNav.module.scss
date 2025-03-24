@@ -1,7 +1,7 @@
 @use "../../styles/layout";
 
-$height: 76px;
-$duration: 200ms;
+$height: 56px;
+$duration: 600ms;
 
 .mobileChapterNav {
   display: flex;
@@ -35,7 +35,9 @@ $duration: 200ms;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  transition: height $duration;
+  transition:
+    height $duration,
+    flex-grow $duration;
   color: black;
 
   &.active {
@@ -44,7 +46,7 @@ $duration: 200ms;
   }
 
   &.expanded {
-    height: auto !important;
+    height: $height !important;
   }
 }
 
@@ -57,17 +59,31 @@ $duration: 200ms;
   flex-shrink: 0;
 
   font-family: "Spectral", serif;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
   line-height: 112%;
+
+  border: none;
+  color: black;
+
+  transition: background-color 200ms;
 
   &.active.expanded {
     background-color: #fff5e5;
   }
 }
 
+.mobileChapterNavSubchapterAccordion {
+  display: grid;
+  grid-template-rows: 1fr;
+  //transition: $duration grid-template-rows ease;
+  height: 100%;
+}
+
 .mobileChapterNavSubchapters {
-  flex-grow: 1;
+  overflow: hidden;
+  //background-color: red;
+  height: calc(100%);
 }
 
 .mobileChapterNavSubchapter {
@@ -79,4 +95,7 @@ $duration: 200ms;
   font-size: 16px;
   font-weight: 400;
   line-height: 120%;
+
+  text-align: left;
+  gap: 16px;
 }
