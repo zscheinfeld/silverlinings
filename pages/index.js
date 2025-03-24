@@ -6,6 +6,12 @@ import { useRouter } from "next/router";
 import Script from "next/script";
 import useActiveChapter from "@/hooks/useActiveChapter";
 
+import { Spectral } from "next/font/google";
+const spectral = Spectral({
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  subsets: ["latin"],
+});
+
 export default function Home() {
   const router = useRouter();
   const activeChapter = useActiveChapter();
@@ -41,7 +47,7 @@ export default function Home() {
         strategy="beforeInteractive"
       />
 
-      <div className="main">
+      <div className={`main ${spectral.className}`}>
         <Landing hidden={activeChapter > 0} onReachedBottom={navigateToBook} />
         <Book activeChapter={activeChapter} />
       </div>

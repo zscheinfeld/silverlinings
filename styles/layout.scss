@@ -1,12 +1,10 @@
 @use "sass:map";
 
-// Define breakpoints
 $breakpoints: (
   md: 768px,
   lg: 1024px,
 );
 
-// Mixin for media queries
 @mixin respond($size) {
   @if map.has-key($breakpoints, $size) {
     @media (min-width: map.get($breakpoints, $size)) {
