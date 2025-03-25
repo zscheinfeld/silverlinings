@@ -349,7 +349,7 @@ const Simulation = ({ data }) => {
                     ${outputs.outputNPV || 0}T
                   </span>
                   <div className={styles.outputLabel}>
-                    Long-term return, (Net Present Value over decades)
+                    Long-term return (Net Present Value over decades)
                   </div>
                 </div>
                 <div className={styles.Item}>
