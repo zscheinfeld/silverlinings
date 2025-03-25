@@ -11,6 +11,7 @@ const Slider = ({
   min,
   max,
   step,
+  modifier,
   onChange,
   tooltip,
 }) => {
@@ -54,7 +55,7 @@ const Slider = ({
         </div>
         <div className={styles.value_wrapper}>
           <div className={styles.value} style={{ left: `${progress * 100}%` }}>
-            {value}
+            {modifier ? modifier(value) : value}
           </div>
         </div>
       </div>

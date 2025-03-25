@@ -129,11 +129,13 @@
   max-height: 0;
 
   opacity: 0;
-  transition: opacity 0.3s ease-out;
+  transition:
+    opacity 0.3s ease-out,
+    max-height 0.3s ease-out;
 }
 
 .expanded {
-  max-height: 500px; /* Adjust based on content */
+  max-height: 500px;
   opacity: 1;
 }
 
