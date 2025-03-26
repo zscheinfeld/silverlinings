@@ -12,7 +12,7 @@ const Chapter2 = {
         {
           type: "simulation",
           data: {
-            title: "We can <i>slow</i> brain aging <br> by just one year",
+            title: "We can <i>slow</i> brain aging <br> <div style='font-size:24px; line-height:130%'>by just one year</div>",
             explanation:
               "We arrive at our default inputs by computing two basic assumptions: that roughly 70% of all work/productivity in the U.S. is brain-related (based on the work of Lindqvest et al.), while roughly 20% of all deaths can be attributed to brain aging. Strokes and Alzheimer’s alone add up to 9% of all deaths in the United States, and their primary risk factor is aging. Parkinson’s, Amyotrophic Lateral Sclerosis (ALS) and brain tumors make up another 5% of all deaths. Some of these conditions (e.g. strokes) happen to young patients occasionally, or in older adults as a result of causes unrelated to aging. The exact percentage of deaths attributable to the aging brain is impossible to estimate. What is certain is that brain health is critical to overall health, including the proper regulation of metabolic and hormonal health, as well as the immune and nervous systems.",
             sections: [
@@ -194,7 +194,7 @@ const Chapter2 = {
           type: "simulation",
           data: {
             title:
-              "We can <i>slow</i> reproductive aging <br> by just one year",
+              "We can <i>slow</i> reproductive aging <br> <div style='font-size:24px; line-height:130%'>by just one year</div>",
             explanation:
               "These returns would be primarily driven by a larger working population from increases in fertility, with smaller contributions from lower mortality and higher productivity. The effects of reproductive aging on labor supply and mortality are impossible to quantify precisely with existing data. We consulted with several reproductive aging scientists, and arrived at the assumption that for every year reproductive aging is delayed, productivity rates would increase slightly, accompanied by smaller shifts in mortality rates. There was nearly unanimous agreement on how productivity would be affected more strongly than mortality, though not by how much. We used 0.01 and 0.02 for mortality and productivity respectively, as symbolic assumptions on an existing but unknown relationship between the reproductive healthspan and overall health/lifespan.",
             sections: [
@@ -627,7 +627,7 @@ const Chapter2 = {
             sections: [
               {
                 title: "1st Gen",
-                image: "simtool/cell.png",
+                image: "simtool/chip.png",
                 inputs: {
                   adoption: {
                     min: 0,
@@ -711,7 +711,7 @@ const Chapter2 = {
               },
               {
                 title: "1st Gen +",
-                image: "simtool/cell.png",
+                image: "simtool/chip.png",
                 inputs: {
                   adoption: {
                     min: 0,
@@ -795,7 +795,7 @@ const Chapter2 = {
               },
               {
                 title: "2nd Gen",
-                image: "simtool/cell.png",
+                image: "simtool/chip.png",
                 inputs: {
                   adoption: {
                     min: 0,
@@ -1023,7 +1023,7 @@ const Chapter2 = {
             sections: [
               {
                 title: "Testing",
-                image: "simtool/woman2.png",
+                image: "simtool/cell.png",
                 inputs: {
                   adoption: {
                     min: 0,
