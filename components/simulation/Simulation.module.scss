@@ -172,7 +172,7 @@
   background-color: transparent;
   border: 0;
   font-family: "Spectral", serif;
-  opacity: 50%;
+  opacity: 100%;
   font-size: 14px;
   display: flex;
   align-items: center;
@@ -183,7 +183,7 @@
   background-color: transparent;
   border: 0;
   font-family: "Spectral", serif;
-  opacity: 50%;
+  opacity: 100%;
   font-size: 14px;
   display: flex;
   align-items: center;
@@ -199,7 +199,7 @@
 }
 
 .descriptionContainer:hover {
-  opacity: 100%;
+  opacity: 50%;
 }
 
 .svg {
@@ -215,7 +215,7 @@
 }
 
 .resetContainer:hover {
-  opacity: 100%;
+  opacity: 50%;
 }
 
 .sectionButtonContainer {

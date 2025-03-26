@@ -218,7 +218,7 @@ const Simulation = ({ data }) => {
                 <div className={styles.svg}>
                   <img src="info.svg" alt="Info" />
                 </div>
-                Description
+                Explanation
               </button>
             </div>
             <div className={styles.sectionHeader}>PRIMARY INPUTS</div>
