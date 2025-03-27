@@ -37,7 +37,7 @@ const Chapter2 = {
                     defaultValue: 40,
                     step: 1,
                     label: "Age of population who will benefit",
-                    tooltip: "This is the age at which the assumed effects of this intervention begin with a favorable safety profile. The input '40+' considers U.S. adults ages 40 and older. You are free to assume that such a preventative therapeutic could only be designed to achieve a favorable risk-benefit profile for adults ages 50+, 60+, etc. ",
+                    tooltip: 'This is the age at which the assumed effects of this intervention begin with a favorable safety profile. The input "40+" considers U.S. adults ages 40 and older. You are free to assume that such a preventative therapeutic could only be designed to achieve a favorable risk-benefit profile for adults ages 50+, 60+, etc.',
                   },
                   startYear: {
                     min: 0,
@@ -45,7 +45,7 @@ const Chapter2 = {
                     defaultValue: 10,
                     step: 1,
                     label: "Years until aging treatment enters market",
-                    tooltip: "This is your assumed timeline for this R&D advancement. If you input '10 years' in this lever and '50%' in the first lever, the assumption is this therapeutic first enters the market in 10 years, and adoption rates take another 10 years to reach 50% of the U.S. population. In other words, we assume a gradual increase in adoption rates, with full effectiveness taking twice as long as 'Years until intervention is available.'",
+                    tooltip: 'This is your assumed timeline for this R&D advancement. If you input "10 years" in this lever and "50%" in the first lever, the assumption is this therapeutic first enters the market in 10 years, and adoption rates take another 10 years to reach 50% of the U.S. population. In other words, we assume a gradual increase in adoption rates, with full effectiveness taking twice as long as "Years until intervention is available."',
                   },
 
                   r: {
@@ -211,7 +211,7 @@ const Chapter2 = {
                     defaultValue: 50,
                     step: 1,
                     label: "Percentage of the population who will benefit",
-                    tooltip: "",
+                    tooltip: "This is the percentage of the U.S. population you assume would have access to a therapeutic that slows reproductive aging by 1 year, or for whom the risk-benefit profile of such an intervention would be favorable.",
                   },
                   age: {
                     min: 40,
@@ -219,7 +219,7 @@ const Chapter2 = {
                     defaultValue: 40,
                     step: 1,
                     label: "Age of population who will benefit",
-                    tooltip: "",
+                    tooltip: 'This is the age at which the assumed effects of this intervention begin with a favorable safety profile. The input "40+" considers U.S. adults ages 40 and older. Note that for women above age 40, we assume empirical fertility rates (i.e. very low).',
                   },
                   startYear: {
                     min: 0,
@@ -227,7 +227,7 @@ const Chapter2 = {
                     defaultValue: 10,
                     step: 1,
                     label: "Years until aging treatment enters market",
-                    tooltip: "",
+                    tooltip: 'This is your assumed timeline for this R&D advancement. If you input "10 years" in this lever and "50%" in the first lever, the assumption is this therapeutic first enters the market in 10 years, and adoption rates take another 10 years to reach 50% of the U.S. population. In other words, we assume a gradual increase in adoption rates, with full effectiveness taking twice as long as "Years until intervention is available.',
                   },
 
                   r: {
@@ -236,7 +236,7 @@ const Chapter2 = {
                     defaultValue: 0.02,
                     step: 0.01,
                     label: "Discount rate",
-                    tooltip: "",
+                    tooltip: 'This is your assumed interest rate. In our baseline results, we use a 2% discount rate for real dollar results (adjusted for inflation). This is the long run real interest rate forecast by the Congressional Budget Office.',
                   },
                   mortality: {
                     min: 0,
@@ -244,7 +244,7 @@ const Chapter2 = {
                     defaultValue: 0.02,
                     step: 0.01,
                     label: "Mortality rates by age (year shift)",
-                    tooltip: "",
+                    tooltip: 'Our default assumption is that mortality rates would be very slightly reduced by improvements in reproductive aging. (For details, see our technical paper.)',
                   },
                   productivity: {
                     min: 0,
@@ -252,7 +252,7 @@ const Chapter2 = {
                     defaultValue: 0.04,
                     step: 0.01,
                     label: "Productivity rates by age (year shift)",
-                    tooltip: "",
+                    tooltip: 'Our default assumption is that productivity rates would be slightly enhanced by improvements in reproductive aging. (For details, see our technical paper.)',
                   },
                   fertility: {
                     min: 1,
@@ -260,7 +260,7 @@ const Chapter2 = {
                     defaultValue: 1,
                     step: 0.01,
                     label: "Fertility rates by age (year shift)",
-                    tooltip: "",
+                    tooltip: 'Our default assumption is that for every year reproductive aging is delayed, there would be 1 additional birth per 50 couples. For this small shift, we consider empirical fertility rates by age. ',
                   },
                   numYears: {
                     min: 0,
@@ -269,7 +269,7 @@ const Chapter2 = {
                     step: 1,
                     label:
                       "Years from market entry until max adoption of treatment",
-                    tooltip: "",
+                    tooltip: 'This is how long you believe it will take between market entry and democratization for this intervention. ',
                   },
                   return: {
                     min: 0,
