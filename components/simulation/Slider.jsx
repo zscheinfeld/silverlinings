@@ -24,7 +24,7 @@ const Slider = ({
 
   return (
     <div className={styles.container}>
-      <Tooltip id={tooltipId} />
+      <Tooltip id={tooltipId} arrow={false} className={styles.customTooltip} arrowColor="transparent"  place="right" data-fade="true"/>
       <label
         className={styles.label}
         data-tooltip-id={tooltipId}

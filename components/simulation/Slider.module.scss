@@ -5,6 +5,32 @@ $track-bg: black;
 $track-height: 1px;
 $thumb-size: 16px;
 
+.customTooltip {
+  background-color: #ffffff !important;
+ 
+  color: black !important;
+  font-size: 14px !important;
+  padding: 10px !important;
+  border-radius: 0px !important;
+  max-width: 250px !important;
+  border: solid black 1px !important;
+  z-index: 1000 !important;
+  transform: translateY(50px) !important;
+  
+  transition: opacity 0.5s ease-in-out !important;
+  // opacity: 100% !important;
+}
+
+.customTooltip::before,
+.customTooltip::after
+{
+  display: none !important;
+  border:0 !important;
+  content: none !important;
+}
+
+
+
 .container {
   display: flex;
   flex-direction: column;
@@ -15,6 +41,11 @@ $thumb-size: 16px;
   font-family: "Spectral", serif;
   font-size: 14px;
   margin-bottom: 6px;
+}
+
+.label:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: background-color ease-in-out 200ms;
 }
 
 .input_wrapper {
