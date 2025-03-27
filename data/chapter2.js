@@ -1,7 +1,7 @@
 const Chapter2 = {
   title: "Counterfactual Futures",
   slug: "counterfactual-futures",
-  image: "woman-lightmode.png",
+  // image: "woman-lightmode.png",
   number: 2,
   subchapters: [
     {
@@ -9,6 +9,9 @@ const Chapter2 = {
       header: "We can slow brain aging",
       number: 1,
       content: [
+        {
+          type:"bodynav",
+        },
         {
           type: "simulation",
           data: {
