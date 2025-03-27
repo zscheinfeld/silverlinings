@@ -9,6 +9,7 @@ import ImageGrid from "@/components/content/ImageGrid";
 import NameGrid from "@/components/content/NameGrid";
 import List from "@/components/content/List";
 import Spacer from "@/components/content/Spacer";
+import Bodynavigation from "./Bodynavigation";
 
 const Content = ({ type, data }) => {
   if (type === "text") {
@@ -54,6 +55,10 @@ const Content = ({ type, data }) => {
         answers={data.answers}
       />
     );
+  }
+
+  if (type === "bodynav") {
+    return <Bodynavigation></Bodynavigation>;
   }
 
   if (type === "simulation") {
