@@ -3,6 +3,7 @@ import "react-tooltip/dist/react-tooltip.css";
 import { useMemo, useRef } from "react";
 import styles from "./Slider.module.scss";
 
+
 const Slider = ({
   id,
   value,

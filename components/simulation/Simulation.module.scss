@@ -48,6 +48,7 @@
   line-height: 110%;
   text-align: center;
   max-width: 170px;
+  cursor: default;
 }
 
 .output {
@@ -123,6 +124,11 @@
   max-width: 190px;
   align-items: center;
 }
+
+.Item:hover{
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
 
 .secondaryInputs {
   background-color: transparent;
@@ -273,4 +279,28 @@
 .overlaybutton img {
   height: 100%;
   width: 100%;
+}
+
+.customTooltip {
+  background-color: #ffffff !important;
+ 
+  color: black !important;
+  font-size: 14px !important;
+  padding: 10px !important;
+  border-radius: 0px !important;
+  max-width: 250px !important;
+  border: solid black 1px !important;
+  z-index: 1000 !important;
+  transform: translateY() !important;
+  
+  transition: opacity 0.5s ease-in-out !important;
+  // opacity: 100% !important;
+}
+
+.customTooltip::before,
+.customTooltip::after
+{
+  display: none !important;
+  border:0 !important;
+  content: none !important;
 }

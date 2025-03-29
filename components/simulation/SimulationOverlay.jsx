@@ -22,25 +22,16 @@ const SimulationOverlay = ({
   const clampedValue3 = Math.min(Math.max(current3, min3), max3);
 
   // Calculate radius for the circle
-  const radius = mapValue(clampedValue, min, max, 30, 250);
+  const radius = mapValue(clampedValue2, min2, max2, 30, 250);
 
   // Calculate height for the rectangle (from 20% to 100%)
-  const rectangleHeight = mapValue(clampedValue2, min2, max2, 60, 100);
+  const rectangleHeight = mapValue(clampedValue, min, max, 30, 100);
 
   // Calculate height for the masked image (from 20% to 100%)
   const maskedImageHeight = mapValue(clampedValue3, min3, max3, 20, 100);
 
   return (
     <div className={styles.overlaycontainer}>
-      <div className={`${styles.column} ${styles.rectanglecolumn}`}>
-        <div
-          className={styles.rectangle}
-          style={{ height: `${rectangleHeight}%`, transformOrigin: "bottom" }}
-        >
-
-        </div>
-      </div>
-      
       <div className={`${styles.column} ${styles.circlecolumn}`}>
         <div
           className={styles.circle}
@@ -50,6 +41,15 @@ const SimulationOverlay = ({
             borderRadius: "50%",
           }}
         ></div>
+      </div>
+      
+      <div className={`${styles.column} ${styles.rectanglecolumn}`}>
+        <div
+          className={styles.rectangle}
+          style={{ height: `${rectangleHeight}%`, transformOrigin: "bottom" }}
+        >
+
+        </div>
       </div>
       
       <div className={`${styles.column} ${styles.maskcolumn}`}>

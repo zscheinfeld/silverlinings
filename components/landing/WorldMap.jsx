@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/components/Landing.module.scss";
 
 const WorldMap = () => {
+  const [mapInstance, setMapInstance] = useState(null);
   useEffect(() => {
     // Dynamically add the CSS and JS files
     const loadMapAssets = async () => {
@@ -28,7 +29,7 @@ const WorldMap = () => {
       // Initialize the map after scripts are loaded
       mapScript.onload = () => {
         if (window.jsVectorMap) {
-          new window.jsVectorMap({
+          const map = new window.jsVectorMap({
             selectedRegions: ["US", "BR", "MA", "JP", "IN", "CN", "SA"],
             selector: "#map",
             map: "world",
@@ -131,6 +132,20 @@ const WorldMap = () => {
     };
 
     loadMapAssets();
+
+    // Handle window resize and update map size
+const handleResize = () => {
+  if (mapInstance) {
+    mapInstance.updateSize(); // Resize the map dynamically
+  }
+};
+
+window.addEventListener("resize", handleResize);
+
+// Clean up listener on unmount
+return () => {
+  window.removeEventListener("resize", handleResize);
+};
   }, []);
 
   return (

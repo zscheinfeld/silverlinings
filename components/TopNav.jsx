@@ -51,7 +51,7 @@ const TopNav = ({ hidden, handleOpen, replace = false }) => {
           >
             ABOUT
           </Link>
-          <div>SILVER LININGS.BIO</div>
+          <div>SILVERLININGS.BIO</div>
         </div>
       </div>
 
