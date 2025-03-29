@@ -1,5 +1,7 @@
 import * as tf from "@tensorflow/tfjs";
 import styles from "@/components/simulation/Simulation.module.scss";
+import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
 
 // Store normalization parameters
 const inputMeans = [
@@ -325,43 +327,61 @@ const Simulation = ({ data }) => {
                 alt=""
               />
             </div>
-            <div className={styles.outputContainer}>
-              <div className={styles.sectionHeader}>
-                OUTPUTS
-                <button
-                  className={styles.overlaybutton}
-                  onClick={toggleOverlay}
-                >
-                  <img src={showOverlay ? "on.svg" : "off.svg"} alt="" />
-                </button>
-              </div>
-              <div className={styles.outputInnerContainer}>
-                <div className={styles.Item}>
-                  <span className={styles.outputStat}>
-                    ${outputs.outputGDP20 || 0}B
-                  </span>
-                  <div className={styles.outputLabel}>
-                    Yearly gain to U.S. GDP (average over 2045-2065)
-                  </div>
-                </div>
-                <div className={styles.Item}>
-                  <span className={styles.outputStat}>
-                    ${outputs.outputNPV || 0}T
-                  </span>
-                  <div className={styles.outputLabel}>
-                    Long-term return (Net Present Value over decades)
-                  </div>
-                </div>
-                <div className={styles.Item}>
-                  <span className={styles.outputStat}>
-                    {outputs.outputPop || 0}k
-                  </span>
-                  <div className={styles.outputLabel}>
-                    Lives saved or gain (by 2050)
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div className={styles.outputInnerContainer}>
+  <Tooltip id="tooltip-gdp" arrow={false} arrowColor="transparent" className={styles.customTooltip} place="top" />
+  <Tooltip id="tooltip-npv" arrow={false} arrowColor="transparent" className={styles.customTooltip} place="top" />
+  <Tooltip id="tooltip-pop" arrow={false} arrowColor="transparent" className={styles.customTooltip} place="top" />
+
+  <div className={styles.Item}
+   data-tooltip-id="tooltip-gdp"
+   data-tooltip-content="Projected yearly economic benefit to U.S. GDP over first 20 years."
+  >
+    <span className={styles.outputStat}>
+      ${outputs.outputGDP20 || 0}B
+    </span>
+    <div
+      className={styles.outputLabel}
+     
+    >
+      Yearly gain to U.S. GDP
+    </div>
+  </div>
+
+  <div className={styles.Item}
+  data-tooltip-id="tooltip-npv"
+  data-tooltip-content="Total Net Present Value (NPV) of long-term economic returns."
+  arrowColor="transparent"  
+  place="top" 
+  data-fade="true"
+  >
+    <span className={styles.outputStat}>
+      ${outputs.outputNPV || 0}T
+    </span>
+    <div
+      className={styles.outputLabel}
+    >
+      Long-term return
+    </div>
+  </div>
+
+  <div className={styles.Item}
+  data-tooltip-id="tooltip-pop"
+  data-tooltip-content="Estimated number of lives saved or gained by 2050."  
+  arrowColor="transparent"  
+  place="top" 
+  data-fade="true"
+  >
+    <span className={styles.outputStat}>
+      {outputs.outputPop || 0}k
+    </span>
+    <div
+      className={styles.outputLabel}
+      
+    >
+      Lives saved or gained
+    </div>
+  </div>
+</div>
           </div>
 
           {/* <div className={styles.explanation}>
