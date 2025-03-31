@@ -5,9 +5,12 @@
   width: 100%;
   border-bottom: solid black 1px;
   overflow: hidden;
+  color: black;
   background-color: #fff5e5;
   transition:
     height 600ms ease-in-out,
+    color 200ms ease-in,
+    background-color 200ms ease-in,
     z-index 0ms linear 200ms,
     transform 0.2s ease-in-out;
   height: 56px;
@@ -21,6 +24,12 @@
   &.hidden {
     //visibility: hidden;
     transform: translateY(-60px);
+  }
+
+  &.dark {
+    background-color: black;
+    color: white;
+    border-bottom: solid white 1px;
   }
 }
 
@@ -55,6 +64,7 @@
   font-family: "Spectral", serif;
   font-size: 12px;
   background-color: transparent;
+  color: inherit;
   border: 0;
   order: 1;
   display: flex;
@@ -84,7 +94,7 @@
 }
 
 .left:hover {
-  color: rgba(0, 0, 0, 0.5);
+  opacity: 0.5
 }
 
 .right {
@@ -111,19 +121,16 @@
   padding-bottom: 4px;
   padding-top: 4px;
   font-family: "Spectral", serif;
-  color: rgba(0, 0, 0);
   display: flex;
   font-weight: 200;
 }
 
 .subchapnumber {
   width: 36px;
-  color: rgba(0, 0, 0);
 }
 
 .chapnumber {
   width: 36px;
-  color: rgba(0, 0, 0);
 }
 
 .navitem:hover {
@@ -134,7 +141,7 @@
   padding-bottom: 2px;
   margin-bottom: 6px;
   padding-top: 18px;
-  border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+  border-bottom: solid 1px currentColor;
   font-family: "Spectral", serif;
   display: flex;
   font-weight: 600;

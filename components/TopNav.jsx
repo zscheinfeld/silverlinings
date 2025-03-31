@@ -5,10 +5,10 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Hamburger from "@/icons/hamburger.svg";
 
-const TopNav = ({ handleOpen, isOpen }) => {
+const TopNav = ({ handleOpen, isOpen, dark = false }) => {
   const [activeNav, setActiveNav] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
-  const timeout = useRef();
+  const timeout = useRef(null);
   const router = useRouter();
 
   const setActive = (active) => {
@@ -66,7 +66,7 @@ const TopNav = ({ handleOpen, isOpen }) => {
 
   return (
     <div
-      className={`${styles.nav} ${activeNav === 1 && styles.expanded} ${!isVisible && styles.hidden}`}
+      className={`${styles.nav} ${activeNav === 1 && styles.expanded} ${!isVisible && styles.hidden} ${dark && styles.dark}`}
     >
       <div className={styles.navtop}>
         <button className={styles.left} onClick={() => setActive(!activeNav)}>

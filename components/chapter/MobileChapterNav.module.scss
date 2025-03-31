@@ -26,6 +26,10 @@ $duration: 600ms;
   &.expanded {
     height: 100%;
   }
+
+  &.hidden {
+    height: 0;
+  }
 }
 
 .mobileChapterNavSection {
