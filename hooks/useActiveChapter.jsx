@@ -4,16 +4,23 @@ import { useRouter } from "next/router";
 
 const useActiveChapter = () => {
   const [activeChapter, setActiveChapter] = useState(null);
+  const [isOpen, setIsOpen] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
     const handleRouteChange = (url) => {
       const parsedChapter = new URLSearchParams(url.split("?")[1]).get(
-        "chapter",
+        "chapter"
       );
       const matchedChapter =
-        Chapters.find((c) => c.slug === parsedChapter)?.number || -1;
-      setActiveChapter(matchedChapter);
+        Chapters.find((c) => c.slug === parsedChapter)?.number || 0;
+
+      if (matchedChapter) {
+        setActiveChapter(matchedChapter);
+        setIsOpen(true);
+      } else {
+        setIsOpen(false);
+      }
     };
 
     router.events.on("routeChangeComplete", handleRouteChange);
@@ -21,7 +28,15 @@ const useActiveChapter = () => {
     // Run once on mount in case of direct page load
     if (router.isReady) {
       const { chapter } = router.query;
-      setActiveChapter(Chapters.find((c) => c.slug === chapter)?.number || -1);
+      const matchedChapter =
+        Chapters.find((c) => c.slug === chapter)?.number || 0;
+
+      if (matchedChapter) {
+        setActiveChapter(matchedChapter);
+        setIsOpen(true);
+      } else {
+        setIsOpen(false);
+      }
     }
 
     return () => {
@@ -29,7 +44,7 @@ const useActiveChapter = () => {
     };
   }, [router.isReady]);
 
-  return activeChapter;
+  return { isOpen, activeChapter };
 };
 
 export default useActiveChapter;

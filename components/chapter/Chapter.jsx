@@ -17,19 +17,16 @@ const Chapter = ({
   state,
   hasPrevious,
   hasNext,
-  isTopNavOpen,
+  transition,
   onScrollToTop,
   onScrollToBottom,
 }) => {
   const [activeSubchapter, setActiveSubchapter] = useState(1);
   const router = useRouter();
-  const { title, number, subchapters, intro, image, options } = chapter;
+  const { title, number, subchapters, intro, image, options = {} } = chapter;
   const { type = "default", color, spacer, hideSubchapterNav } = options || {};
 
   const overscroll = useRef();
-
-  const transition = !isTopNavOpen && state;
-
   const chapterRef = useRef(null);
   const subchapterRefs = useRef([]);
 
@@ -41,7 +38,7 @@ const Chapter = ({
       `${router.pathname}?${new URLSearchParams({
         chapter: chapter.slug,
         subchapter: subchapter.slug,
-      }).toString()}`,
+      }).toString()}`
     );
   };
 
@@ -80,12 +77,12 @@ const Chapter = ({
       if (atBottom && event.deltaY > 0) {
         overscroll.current = Math.min(
           overscroll.current + event.deltaY,
-          RESISTANCE_THRESHOLD,
+          RESISTANCE_THRESHOLD
         );
       } else if (atTop && event.deltaY < 0) {
         overscroll.current = Math.max(
           overscroll.current + event.deltaY,
-          -RESISTANCE_THRESHOLD,
+          -RESISTANCE_THRESHOLD
         );
       } else {
         overscroll.current = 0;
@@ -197,10 +194,12 @@ const Chapter = ({
       style={style}
     >
       <Link
-        href={{
-          pathname: router.pathname,
-          query: { chapter: chapter.slug },
-        }}
+        href={
+          options.forceLink || {
+            pathname: router.pathname,
+            query: { chapter: chapter.slug },
+          }
+        }
         className={`${styles.chapterNav} ${styles[`chap-${chapter.number}`]} ${styles[`chap-${state}`]}`}
       >
         <div className={styles.chapterNavText}>
