@@ -5,6 +5,8 @@ import { Chapters } from "@/data/book";
 import { useRouter } from "next/router";
 import Script from "next/script";
 import useActiveChapter from "@/hooks/useActiveChapter";
+import TopNav from "@/components/TopNav";
+import { useState } from "react";
 
 import { Spectral } from "next/font/google";
 const spectral = Spectral({
@@ -14,18 +16,19 @@ const spectral = Spectral({
 
 export default function Home() {
   const router = useRouter();
-  const activeChapter = useActiveChapter();
+  const { isOpen, activeChapter } = useActiveChapter();
+  const [isTopNavOpen, setIsTopNavOpen] = useState(false);
 
   const navigateToBook = () => {
     void router.push(
       {
         path: router.pathname,
-        query: { ...router.query, chapter: Chapters[0].slug },
+        query: { ...router.query, chapter: Chapters[1].slug },
       },
       undefined,
       {
         scroll: false,
-      },
+      }
     );
   };
 
@@ -47,9 +50,17 @@ export default function Home() {
         strategy="beforeInteractive"
       />
 
-      <div className={`main ${spectral.className}`}>
-        <Landing hidden={activeChapter > 0} onReachedBottom={navigateToBook} />
-        <Book activeChapter={activeChapter} />
+      <div
+        className={`main ${spectral.className} ${isOpen == null && "invisible"}`}
+      >
+        <TopNav handleOpen={setIsTopNavOpen} isOpen={isOpen} />
+        <Landing isOpen={isOpen} onReachedBottom={navigateToBook} />
+        <Book
+          activeChapter={activeChapter}
+          isOpen={isOpen}
+          setIsTopNavOpen={setIsTopNavOpen}
+          isTopNavOpen={isTopNavOpen}
+        />
       </div>
     </>
   );

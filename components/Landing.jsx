@@ -2,19 +2,11 @@ import React, { useEffect, useState } from "react";
 
 import GsapLanding from "./GsapLanding";
 
-const Landing = ({ hidden, onReachedBottom }) => {
-  const [removed, setRemoved] = useState(false);
-
+const Landing = ({ isOpen, onReachedBottom }) => {
   useEffect(() => {
-    if (hidden) {
-      setTimeout(() => {
-        setRemoved(true);
-      }, 1000);
-    }
-
     // Hide the body scroll when the landing page is inactive.
-    document.body.style.overflow = hidden ? "hidden" : "auto";
-  }, [hidden]);
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
+  }, [isOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,10 +22,6 @@ const Landing = ({ hidden, onReachedBottom }) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [onReachedBottom]);
-
-  if (removed) {
-    return null;
-  }
 
   return (
     <GsapLanding />

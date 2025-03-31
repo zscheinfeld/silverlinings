@@ -41,7 +41,7 @@ const LandingTextIntro = ({ fadeOutPoint }) => {
   const backgroundColor = interpolateColor(
     lightColor,
     darkColor,
-    scrollProgress,
+    scrollProgress
   );
   const textColor = interpolateColor(darkColor, lightColor, scrollProgress);
 
@@ -53,7 +53,7 @@ const LandingTextIntro = ({ fadeOutPoint }) => {
     healthyTextColor = interpolateColor(
       healthyStartColor,
       healthyMiddleColor,
-      adjustedProgress,
+      adjustedProgress
     );
   } else {
     // Second phase (80% to 100%): Light color to pink
@@ -61,7 +61,7 @@ const LandingTextIntro = ({ fadeOutPoint }) => {
     healthyTextColor = interpolateColor(
       healthyMiddleColor,
       healthyEndColor,
-      adjustedProgress,
+      adjustedProgress
     );
   }
 
@@ -98,10 +98,9 @@ const LandingTextIntro = ({ fadeOutPoint }) => {
           <div className={styles.link}>
             <Link
               href={{
-                query: { chapter: Chapters[0].slug },
+                query: { chapter: Chapters[1].slug },
               }}
               style={{ color: "#191818" }}
-              replace={true}
             >
               View Full Report
             </Link>

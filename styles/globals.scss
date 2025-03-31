@@ -32,4 +32,10 @@ a {
 .main {
   display: flex;
   width: 100%;
+  opacity: 1;
+  transition: opacity 200ms ease-in;
+
+  &.invisible {
+    opacity: 0;
+  }
 }
