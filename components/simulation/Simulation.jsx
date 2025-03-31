@@ -128,7 +128,7 @@ const Simulation = ({ data }) => {
         inputFertility,
         inputR,
       ],
-      [1, 7],
+      [1, 7]
     );
     const inputTensor_GDP_pop = tf.tensor2d(
       [
@@ -139,7 +139,7 @@ const Simulation = ({ data }) => {
         inputProductivity,
         inputFertility,
       ],
-      [1, 6],
+      [1, 6]
     );
 
     // Get prediction with new input
@@ -148,12 +148,12 @@ const Simulation = ({ data }) => {
     const normalizedInputs_NPV = normalizeData(
       inputTensor_NPV,
       tf.tensor(inputMeans),
-      tf.tensor(inputStds),
+      tf.tensor(inputStds)
     );
     const normalizedInputs_GDP_pop = normalizeData(
       inputTensor_GDP_pop,
       tf.tensor(inputMeans.slice(0, -1)),
-      tf.tensor(inputStds.slice(0, -1)),
+      tf.tensor(inputStds.slice(0, -1))
     );
 
     const { npv_model, GDP_20_model, pop_model } = models;
@@ -188,6 +188,11 @@ const Simulation = ({ data }) => {
   };
 
   if (loading) return <span>Loading...</span>;
+
+  const formattedOutputPop =
+    outputs.outputPop > 1000
+      ? `${(outputs.outputPop / 1000).toFixed(2)}m`
+      : `${outputs.outputPop || 0}k`;
 
   return (
     <>
@@ -328,60 +333,67 @@ const Simulation = ({ data }) => {
               />
             </div>
             <div className={styles.outputInnerContainer}>
-  <Tooltip id="tooltip-gdp" arrow={false} arrowColor="transparent" className={styles.customTooltip} place="top" />
-  <Tooltip id="tooltip-npv" arrow={false} arrowColor="transparent" className={styles.customTooltip} place="top" />
-  <Tooltip id="tooltip-pop" arrow={false} arrowColor="transparent" className={styles.customTooltip} place="top" />
+              <Tooltip
+                id="tooltip-gdp"
+                arrow={false}
+                arrowColor="transparent"
+                className={styles.customTooltip}
+                place="top"
+              />
+              <Tooltip
+                id="tooltip-npv"
+                arrow={false}
+                arrowColor="transparent"
+                className={styles.customTooltip}
+                place="top"
+              />
+              <Tooltip
+                id="tooltip-pop"
+                arrow={false}
+                arrowColor="transparent"
+                className={styles.customTooltip}
+                place="top"
+              />
 
-  <div className={styles.Item}
-   data-tooltip-id="tooltip-gdp"
-   data-tooltip-content="Projected yearly economic benefit to U.S. GDP over first 20 years."
-  >
-    <span className={styles.outputStat}>
-      ${outputs.outputGDP20 || 0}B
-    </span>
-    <div
-      className={styles.outputLabel}
-     
-    >
-      Yearly gain to U.S. GDP
-    </div>
-  </div>
+              <div
+                className={styles.Item}
+                data-tooltip-id="tooltip-gdp"
+                data-tooltip-content="Projected yearly economic benefit to U.S. GDP over first 20 years."
+              >
+                <span className={styles.outputStat}>
+                  ${outputs.outputGDP20 || 0}B
+                </span>
+                <div className={styles.outputLabel}>
+                  Yearly gain to U.S. GDP
+                </div>
+              </div>
 
-  <div className={styles.Item}
-  data-tooltip-id="tooltip-npv"
-  data-tooltip-content="Total Net Present Value (NPV) of long-term economic returns."
-  arrowColor="transparent"  
-  place="top" 
-  data-fade="true"
-  >
-    <span className={styles.outputStat}>
-      ${outputs.outputNPV || 0}T
-    </span>
-    <div
-      className={styles.outputLabel}
-    >
-      Long-term return
-    </div>
-  </div>
+              <div
+                className={styles.Item}
+                data-tooltip-id="tooltip-npv"
+                data-tooltip-content="Total Net Present Value (NPV) of long-term economic returns."
+                arrowColor="transparent"
+                place="top"
+                data-fade="true"
+              >
+                <span className={styles.outputStat}>
+                  ${outputs.outputNPV || 0}T
+                </span>
+                <div className={styles.outputLabel}>Long-term return</div>
+              </div>
 
-  <div className={styles.Item}
-  data-tooltip-id="tooltip-pop"
-  data-tooltip-content="Estimated number of lives saved or gained by 2050."  
-  arrowColor="transparent"  
-  place="top" 
-  data-fade="true"
-  >
-    <span className={styles.outputStat}>
-      {outputs.outputPop || 0}k
-    </span>
-    <div
-      className={styles.outputLabel}
-      
-    >
-      Lives saved or gained
-    </div>
-  </div>
-</div>
+              <div
+                className={styles.Item}
+                data-tooltip-id="tooltip-pop"
+                data-tooltip-content="Estimated number of lives saved or gained by 2050."
+                arrowColor="transparent"
+                place="top"
+                data-fade="true"
+              >
+                <span className={styles.outputStat}>{formattedOutputPop}</span>
+                <div className={styles.outputLabel}>Lives saved or gained</div>
+              </div>
+            </div>
           </div>
 
           {/* <div className={styles.explanation}>

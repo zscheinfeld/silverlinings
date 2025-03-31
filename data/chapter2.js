@@ -1,8 +1,12 @@
 const Chapter2 = {
   title: "Counterfactual Futures",
   slug: "counterfactual-futures",
-  // image: "woman-lightmode.png",
   number: 2,
+  intro: [
+    {
+      type: "bodynav",
+    },
+  ],
   subchapters: [
     {
       slug: "2-1",
@@ -10,12 +14,10 @@ const Chapter2 = {
       number: 1,
       content: [
         {
-          type:"bodynav",
-        },
-        {
           type: "simulation",
           data: {
-            title: "We can <i>slow</i> brain aging <br> <div style='font-size:24px; line-height:130%'>by just one year</div>",
+            title:
+              "We can <i>slow</i> brain aging <br> <div style='font-size:24px; line-height:130%'>by just one year</div>",
             explanation:
               "We arrive at our default inputs by computing two basic assumptions: that roughly 70% of all work/productivity in the U.S. is brain-related (based on the work of Lindqvest et al.), while roughly 20% of all deaths can be attributed to brain aging. Strokes and Alzheimer’s alone add up to 9% of all deaths in the United States, and their primary risk factor is aging. Parkinson’s, Amyotrophic Lateral Sclerosis (ALS) and brain tumors make up another 5% of all deaths. Some of these conditions (e.g. strokes) happen to young patients occasionally, or in older adults as a result of causes unrelated to aging. The exact percentage of deaths attributable to the aging brain is impossible to estimate. What is certain is that brain health is critical to overall health, including the proper regulation of metabolic and hormonal health, as well as the immune and nervous systems.",
             sections: [
@@ -29,7 +31,8 @@ const Chapter2 = {
                     defaultValue: 50,
                     step: 1,
                     label: "Percentage of the population who will benefit",
-                    tooltip: "This is the percentage of the U.S. population you assume would have access to a therapeutic that slows brain aging by 1 year, or for whom the risk-benefit profile of such an intervention would be favorable.",
+                    tooltip:
+                      "This is the percentage of the U.S. population you assume would have access to a therapeutic that slows brain aging by 1 year, or for whom the risk-benefit profile of such an intervention would be favorable.",
                   },
                   age: {
                     min: 40,
@@ -37,7 +40,8 @@ const Chapter2 = {
                     defaultValue: 40,
                     step: 1,
                     label: "Age of population who will benefit",
-                    tooltip: 'This is the age at which the assumed effects of this intervention begin with a favorable safety profile. The input "40+" considers U.S. adults ages 40 and older. You are free to assume that such a preventative therapeutic could only be designed to achieve a favorable risk-benefit profile for adults ages 50+, 60+, etc.',
+                    tooltip:
+                      'This is the age at which the assumed effects of this intervention begin with a favorable safety profile. The input "40+" considers U.S. adults ages 40 and older. You are free to assume that such a preventative therapeutic could only be designed to achieve a favorable risk-benefit profile for adults ages 50+, 60+, etc.',
                   },
                   startYear: {
                     min: 0,
@@ -45,7 +49,8 @@ const Chapter2 = {
                     defaultValue: 10,
                     step: 1,
                     label: "Years until aging treatment enters market",
-                    tooltip: 'This is your assumed timeline for this R&D advancement. If you input "10 years" in this lever and "50%" in the first lever, the assumption is this therapeutic first enters the market in 10 years, and adoption rates take another 10 years to reach 50% of the U.S. population. In other words, we assume a gradual increase in adoption rates, with full effectiveness taking twice as long as "Years until intervention is available."',
+                    tooltip:
+                      'This is your assumed timeline for this R&D advancement. If you input "10 years" in this lever and "50%" in the first lever, the assumption is this therapeutic first enters the market in 10 years, and adoption rates take another 10 years to reach 50% of the U.S. population. In other words, we assume a gradual increase in adoption rates, with full effectiveness taking twice as long as "Years until intervention is available."',
                   },
 
                   r: {
@@ -54,7 +59,8 @@ const Chapter2 = {
                     defaultValue: 0.02,
                     step: 0.01,
                     label: "Discount rate",
-                    tooltip: "This is your assumed interest rate. In our baseline results, we use a 2% discount rate for real dollar results (adjusted for inflation). This is the long run real interest rate forecast by the Congressional Budget Office.",
+                    tooltip:
+                      "This is your assumed interest rate. In our baseline results, we use a 2% discount rate for real dollar results (adjusted for inflation). This is the long run real interest rate forecast by the Congressional Budget Office.",
                   },
                   mortality: {
                     min: 0,
@@ -62,7 +68,8 @@ const Chapter2 = {
                     defaultValue: 0.2,
                     step: 0.1,
                     label: "Mortality rates by age (year shift)",
-                    tooltip: "Our default assumption is that roughly 20% of all deaths can be attributed directly to the aging brain. (For more details, see our technical paper.)",
+                    tooltip:
+                      "Our default assumption is that roughly 20% of all deaths can be attributed directly to the aging brain. (For more details, see our technical paper.)",
                   },
                   productivity: {
                     min: 0,
@@ -70,7 +77,8 @@ const Chapter2 = {
                     defaultValue: 0.7,
                     step: 0.1,
                     label: "Productivity rates by age (year shift)",
-                    tooltip: "Our default assumption is that 70% of all work/productivity in the U.S. is brain-related. (For more details, see our technical paper, where we cite the work of Lindqvest et al.)",
+                    tooltip:
+                      "Our default assumption is that 70% of all work/productivity in the U.S. is brain-related. (For more details, see our technical paper, where we cite the work of Lindqvest et al.)",
                   },
                   fertility: {
                     min: 0,
@@ -78,7 +86,8 @@ const Chapter2 = {
                     defaultValue: 0,
                     step: 0.1,
                     label: "Fertility rates by age (year shift)",
-                    tooltip: "Our default assumption includes no shifts in fertility rates, but the reader is free to assume an unknown but existing relationship between reproductive aging and brain healthspan by inputing up to a 0.1 shift in fertility rates. (This relationship is suggested by the work of Jennifer Garrison at the Buck Institute for Research on Aging.)",
+                    tooltip:
+                      "Our default assumption includes no shifts in fertility rates, but the reader is free to assume an unknown but existing relationship between reproductive aging and brain healthspan by inputing up to a 0.1 shift in fertility rates. (This relationship is suggested by the work of Jennifer Garrison at the Buck Institute for Research on Aging.)",
                   },
                   numYears: {
                     min: 0,
@@ -87,7 +96,8 @@ const Chapter2 = {
                     step: 1,
                     label:
                       "Years from market entry until max adoption of treatment",
-                    tooltip: "This is how long you believe it will take between market entry and democratization for this intervention. ",
+                    tooltip:
+                      "This is how long you believe it will take between market entry and democratization for this intervention. ",
                   },
                   return: {
                     min: 0,
@@ -211,7 +221,8 @@ const Chapter2 = {
                     defaultValue: 50,
                     step: 1,
                     label: "Percentage of the population who will benefit",
-                    tooltip: "This is the percentage of the U.S. population you assume would have access to a therapeutic that slows reproductive aging by 1 year, or for whom the risk-benefit profile of such an intervention would be favorable.",
+                    tooltip:
+                      "This is the percentage of the U.S. population you assume would have access to a therapeutic that slows reproductive aging by 1 year, or for whom the risk-benefit profile of such an intervention would be favorable.",
                   },
                   age: {
                     min: 40,
@@ -219,7 +230,8 @@ const Chapter2 = {
                     defaultValue: 40,
                     step: 1,
                     label: "Age of population who will benefit",
-                    tooltip: 'This is the age at which the assumed effects of this intervention begin with a favorable safety profile. The input "40+" considers U.S. adults ages 40 and older. Note that for women above age 40, we assume empirical fertility rates (i.e. very low).',
+                    tooltip:
+                      'This is the age at which the assumed effects of this intervention begin with a favorable safety profile. The input "40+" considers U.S. adults ages 40 and older. Note that for women above age 40, we assume empirical fertility rates (i.e. very low).',
                   },
                   startYear: {
                     min: 0,
@@ -227,7 +239,8 @@ const Chapter2 = {
                     defaultValue: 10,
                     step: 1,
                     label: "Years until aging treatment enters market",
-                    tooltip: 'This is your assumed timeline for this R&D advancement. If you input "10 years" in this lever and "50%" in the first lever, the assumption is this therapeutic first enters the market in 10 years, and adoption rates take another 10 years to reach 50% of the U.S. population. In other words, we assume a gradual increase in adoption rates, with full effectiveness taking twice as long as "Years until intervention is available.',
+                    tooltip:
+                      'This is your assumed timeline for this R&D advancement. If you input "10 years" in this lever and "50%" in the first lever, the assumption is this therapeutic first enters the market in 10 years, and adoption rates take another 10 years to reach 50% of the U.S. population. In other words, we assume a gradual increase in adoption rates, with full effectiveness taking twice as long as "Years until intervention is available.',
                   },
 
                   r: {
@@ -236,7 +249,8 @@ const Chapter2 = {
                     defaultValue: 0.02,
                     step: 0.01,
                     label: "Discount rate",
-                    tooltip: 'This is your assumed interest rate. In our baseline results, we use a 2% discount rate for real dollar results (adjusted for inflation). This is the long run real interest rate forecast by the Congressional Budget Office.',
+                    tooltip:
+                      "This is your assumed interest rate. In our baseline results, we use a 2% discount rate for real dollar results (adjusted for inflation). This is the long run real interest rate forecast by the Congressional Budget Office.",
                   },
                   mortality: {
                     min: 0,
@@ -244,7 +258,8 @@ const Chapter2 = {
                     defaultValue: 0.02,
                     step: 0.01,
                     label: "Mortality rates by age (year shift)",
-                    tooltip: 'Our default assumption is that mortality rates would be very slightly reduced by improvements in reproductive aging. (For details, see our technical paper.)',
+                    tooltip:
+                      "Our default assumption is that mortality rates would be very slightly reduced by improvements in reproductive aging. (For details, see our technical paper.)",
                   },
                   productivity: {
                     min: 0,
@@ -252,7 +267,8 @@ const Chapter2 = {
                     defaultValue: 0.04,
                     step: 0.01,
                     label: "Productivity rates by age (year shift)",
-                    tooltip: 'Our default assumption is that productivity rates would be slightly enhanced by improvements in reproductive aging. (For details, see our technical paper.)',
+                    tooltip:
+                      "Our default assumption is that productivity rates would be slightly enhanced by improvements in reproductive aging. (For details, see our technical paper.)",
                   },
                   fertility: {
                     min: 1,
@@ -260,7 +276,8 @@ const Chapter2 = {
                     defaultValue: 1,
                     step: 0.01,
                     label: "Fertility rates by age (year shift)",
-                    tooltip: 'Our default assumption is that for every year reproductive aging is delayed, there would be 1 additional birth per 50 couples. For this small shift, we consider empirical fertility rates by age. ',
+                    tooltip:
+                      "Our default assumption is that for every year reproductive aging is delayed, there would be 1 additional birth per 50 couples. For this small shift, we consider empirical fertility rates by age. ",
                   },
                   numYears: {
                     min: 0,
@@ -269,7 +286,8 @@ const Chapter2 = {
                     step: 1,
                     label:
                       "Years from market entry until max adoption of treatment",
-                    tooltip: 'This is how long you believe it will take between market entry and democratization for this intervention. ',
+                    tooltip:
+                      "This is how long you believe it will take between market entry and democratization for this intervention. ",
                   },
                   return: {
                     min: 0,
