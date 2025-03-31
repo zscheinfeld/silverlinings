@@ -3,7 +3,6 @@ import "react-tooltip/dist/react-tooltip.css";
 import { useMemo, useRef } from "react";
 import styles from "./Slider.module.scss";
 
-
 const Slider = ({
   id,
   value,
@@ -25,12 +24,18 @@ const Slider = ({
 
   return (
     <div className={styles.container}>
-      <Tooltip id={tooltipId} arrow={false} className={styles.customTooltip} arrowColor="transparent"  place="right" data-fade="true"/>
+      <Tooltip
+        id={tooltipId}
+        arrow={false}
+        className={styles.customTooltip}
+        arrowColor="transparent"
+        place="right"
+        data-fade="true"
+      />
       <label
         className={styles.label}
         data-tooltip-id={tooltipId}
         data-tooltip-content={tooltip}
-        htmlFor={id}
       >
         {label}:
       </label>

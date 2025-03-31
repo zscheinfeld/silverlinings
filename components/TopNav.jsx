@@ -92,7 +92,7 @@ const TopNav = ({ handleOpen, isOpen, dark = false }) => {
 
       <div className={`${styles.navbottom}`}>
         <div className={styles.navbottomTitle}>Index</div>
-        {Chapters.map((chapter) => {
+        {Chapters.slice(1, 4).map((chapter) => {
           const href = {
             pathname: router.pathname,
             query: { chapter: chapter.slug },

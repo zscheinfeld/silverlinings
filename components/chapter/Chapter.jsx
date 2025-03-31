@@ -1,12 +1,12 @@
 import styles from "@/components/chapter/Chapter.module.scss";
 import Subchapter from "../subchapter/Subchapter";
 import SubchapterNav from "../subchapter/SubchapterNav";
-import React, { useRef, useEffect, useState, useMemo } from "react";
+import { useRef, useEffect, useState, useMemo } from "react";
 import { throttle } from "lodash";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Textblock from "@/components/content/Textblock";
 import Spacer from "@/components/content/Spacer";
+import Content from "../content/Content";
 
 const BAR_WIDTH = 60;
 const RESISTANCE_THRESHOLD = 50;
@@ -35,7 +35,7 @@ const Chapter = ({
     if (timeout.current) clearTimeout(timeout.current);
     if (state !== "current") {
       timeout.current = setTimeout(() => {
-        chapterRef.current.scrollTo({ top: 0 });
+        chapterRef.current?.scrollTo({ top: 0 });
       }, 1000);
     }
   }, [state]);
@@ -236,11 +236,9 @@ const Chapter = ({
           <div className={styles.chaptername}>{title}</div>
         ) : null}
 
-        {intro && (
-          <div className={styles.chapterintro}>
-            <Textblock paragraphs={[intro]} />
-          </div>
-        )}
+        <div className={styles.chapterintro}>
+          {intro && intro.map((content) => <Content {...content} />)}
+        </div>
 
         {image && (
           <div className={styles.chapterimage}>
