@@ -9,6 +9,7 @@ import TopNav from "@/components/TopNav";
 import { useState } from "react";
 
 import { Spectral } from "next/font/google";
+import MobileChapterNav from "@/components/chapter/MobileChapterNav";
 const spectral = Spectral({
   weight: ["200", "300", "400", "500", "600", "700", "800"],
   subsets: ["latin"],
@@ -19,10 +20,11 @@ export default function Home() {
   const { isOpen, activeChapter } = useActiveChapter();
   const [isTopNavOpen, setIsTopNavOpen] = useState(false);
 
+  const chapter = Chapters[activeChapter];
+
   const navigateToBook = () => {
     void router.push(
       {
-        path: router.pathname,
         query: { ...router.query, chapter: Chapters[1].slug },
       },
       undefined,
@@ -53,7 +55,17 @@ export default function Home() {
       <div
         className={`main ${spectral.className} ${isOpen == null && "invisible"}`}
       >
-        <TopNav handleOpen={setIsTopNavOpen} isOpen={isOpen} />
+        <TopNav
+          handleOpen={setIsTopNavOpen}
+          isOpen={isOpen}
+          dark={chapter?.options?.dark}
+        />
+        <MobileChapterNav
+          isOpen={isOpen}
+          chapters={Chapters}
+          activeChapter={activeChapter}
+          handleOpen={setIsTopNavOpen}
+        />
         <Landing isOpen={isOpen} onReachedBottom={navigateToBook} />
         <Book
           activeChapter={activeChapter}

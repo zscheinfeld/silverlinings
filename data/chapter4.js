@@ -3,7 +3,7 @@ const Chapter4 = {
   slug: "about",
   number: 4,
   options: {
-    // color: "black",
+    dark: true,
     spacer: true,
   },
   subchapters: [

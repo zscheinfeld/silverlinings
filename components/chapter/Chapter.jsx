@@ -24,11 +24,21 @@ const Chapter = ({
   const [activeSubchapter, setActiveSubchapter] = useState(1);
   const router = useRouter();
   const { title, number, subchapters, intro, image, options = {} } = chapter;
-  const { type = "default", color, spacer, hideSubchapterNav } = options || {};
+  const { type = "default", dark, spacer, hideSubchapterNav } = options || {};
 
-  const overscroll = useRef();
+  const timeout = useRef(null);
+  const overscroll = useRef(null);
   const chapterRef = useRef(null);
   const subchapterRefs = useRef([]);
+
+  useEffect(() => {
+    if (timeout.current) clearTimeout(timeout.current);
+    if (state !== "current") {
+      timeout.current = setTimeout(() => {
+        chapterRef.current.scrollTo({ top: 0 });
+      }, 1000);
+    }
+  }, [state]);
 
   const handleActiveSubchapter = (subchapter) => {
     setActiveSubchapter(subchapter.number);
@@ -190,7 +200,7 @@ const Chapter = ({
 
   return (
     <div
-      className={`${styles.chapter} ${styles[state]} ${color === "black" && styles.black} ${transition && styles.transition}`}
+      className={`${styles.chapter} ${styles[state]} ${dark && styles.dark} ${transition && styles.transition}`}
       style={style}
     >
       <Link
@@ -200,7 +210,7 @@ const Chapter = ({
             query: { chapter: chapter.slug },
           }
         }
-        className={`${styles.chapterNav} ${styles[`chap-${chapter.number}`]} ${styles[`chap-${state}`]}`}
+        className={`${styles.chapterNav} ${styles[`chap-${chapter.number}`]} ${styles[`chap-${state}`]} ${dark && state === "current" && styles.dark}`}
       >
         <div className={styles.chapterNavText}>
           0{chapter.number} / {chapter.title}
@@ -213,6 +223,7 @@ const Chapter = ({
           subchapters={subchapters}
           activeSubchapter={activeSubchapter}
           scrollToSubchapter={scrollToSubchapter}
+          dark={dark}
         />
       )}
 

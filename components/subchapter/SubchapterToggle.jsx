@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./SubchapterToggle.module.scss";
 
-const SubchapterToggle = ({ header, children, isHeader }) => {
+const SubchapterToggle = ({ header, children, isHeader = false }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -14,7 +14,9 @@ const SubchapterToggle = ({ header, children, isHeader }) => {
       >
         <div className={styles.title}>
           <span className={styles.icon}>{isOpen ? "- " : "+ "}</span>
-          <span className={isHeader && styles.underline}>{header}</span>
+          <span className={isHeader ? styles.underline : undefined}>
+            {header}
+          </span>
         </div>
       </div>
 

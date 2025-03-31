@@ -5,10 +5,11 @@ const SubchapterNav = ({
   subchapters,
   activeSubchapter,
   scrollToSubchapter,
+  dark,
 }) => {
   const { number } = chapter;
   return (
-    <div className={styles.subchapterNav}>
+    <div className={`${styles.subchapterNav} ${dark && styles.dark}`}>
       <div className={styles.previousSubChapterContainer}>
         {subchapters.map((subchapter) => {
           if (subchapter.number < activeSubchapter) {

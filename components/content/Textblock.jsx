@@ -4,7 +4,7 @@ import Bold from "@/components/content/Bold";
 import styles from "./Textblock.module.scss";
 
 
-const Textblock = ({ callouts, paragraphs, bold }) => {
+const Textblock = ({ callouts = [], paragraphs = [], bold = [] }) => {
   return (
     <div className={styles.textblock}>
       {/* Render callouts only if there are any */}

@@ -44,15 +44,10 @@ const Book = ({ activeChapter, isOpen, setIsTopNavOpen, isTopNavOpen }) => {
       style={style}
     >
       <div className={styles.bookContent}>
-        <MobileChapterNav
-          chapters={Chapters}
-          activeChapter={activeChapter}
-          handleOpen={setIsTopNavOpen}
-        />
         {Chapters.map((chapter) => {
           const { number } = chapter;
           const hasPrevious = number !== 0;
-          const hasNext = number !== Chapters.length;
+          const hasNext = number !== Chapters.length - 1;
 
           let state = "current";
 
@@ -74,7 +69,6 @@ const Book = ({ activeChapter, isOpen, setIsTopNavOpen, isTopNavOpen }) => {
               hasPrevious={hasPrevious}
               hasNext={hasNext}
               transition={transition && !isTopNavOpen}
-              isTopNavOpen={isTopNavOpen}
               onScrollToTop={onScrollToTop}
               onScrollToBottom={onScrollToBottom}
             />
