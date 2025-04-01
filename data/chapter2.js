@@ -291,7 +291,7 @@ const Chapter2 = {
                   },
                   return: {
                     min: 0,
-                    max: 80.0,
+                    max: 80.8,
                   },
                   yGDP: {
                     min: 3,
@@ -411,7 +411,7 @@ const Chapter2 = {
                     step: 0.5,
                     label:
                       "Percentage of patients in need of life-saving organ transplants who adhere",
-                    tooltip: "",
+                    tooltip: "See our technical paper or upcoming book for our detailed mapping of this simulated increase in organ supply, based on a Nature paper by Giwa et al.",
                   },
                   age: {
                     min: 40,
@@ -419,7 +419,7 @@ const Chapter2 = {
                     defaultValue: 40,
                     step: 1,
                     label: "Age of population who will benefit",
-                    tooltip: "",
+                    tooltip: 'This is the age at which the assumed effects of this intervention begin with a favorable safety profile. The input "40+" considers U.S. adults ages 40 and older. ',
                   },
                   startYear: {
                     min: 0,
@@ -427,7 +427,7 @@ const Chapter2 = {
                     defaultValue: 10,
                     step: 1,
                     label: "Years until aging treatment enters market",
-                    tooltip: "",
+                    tooltip: 'This is your assumed timeline for this R&D advancement.',
                   },
 
                   r: {
@@ -436,7 +436,7 @@ const Chapter2 = {
                     defaultValue: 0.02,
                     step: 0.01,
                     label: "Discount rate",
-                    tooltip: "",
+                    tooltip: 'This is your assumed interest rate. In our baseline results, we use a 2% discount rate for real dollar results (adjusted for inflation). This is the long run real interest rate forecast by the Congressional Budget Office.',
                   },
                   mortality: {
                     min: 0,
@@ -444,7 +444,7 @@ const Chapter2 = {
                     defaultValue: 0.88,
                     step: 0.01,
                     label: "Mortality rates by age (year shift)",
-                    tooltip: "",
+                    tooltip: 'See our technical paper or upcoming book for our detailed mapping of this simulated increase in organ supply, based on a Nature paper by Giwa et al. ',
                   },
                   productivity: {
                     min: 0,
@@ -452,7 +452,7 @@ const Chapter2 = {
                     defaultValue: 0,
                     step: 0.01,
                     label: "Productivity rates by age (year shift)",
-                    tooltip: "",
+                    tooltip: 'Our default assumption includes no shifts in productivity rates. But the reader is free to assume that organ, cell, and tissue transplant techniques will be refined in the coming decades to not only save terminally ill patients, but also extend healthspan and increase productivity rates by age. ',
                   },
                   fertility: {
                     min: 0,
@@ -460,7 +460,7 @@ const Chapter2 = {
                     defaultValue: 0,
                     step: 0.01,
                     label: "Fertility rates by age (year shift)",
-                    tooltip: "",
+                    tooltip: 'We assume no shifts in fertility rates. ',
                   },
                   numYears: {
                     min: 0,
@@ -469,19 +469,19 @@ const Chapter2 = {
                     step: 1,
                     label:
                       "Years from market entry until max adoption of treatment",
-                    tooltip: "",
+                    tooltip: 'This is how long you believe it will take between market entry and democratization for this advancement. ',
                   },
                   return: {
                     min: 0,
-                    max: 195,
+                    max: 78.7,
                   },
                   yGDP: {
                     min: 0,
-                    max: 1296,
+                    max: 902,
                   },
                   lives: {
                     min: 0,
-                    max: 19140,
+                    max: 18820,
                   },
                 },
               },
@@ -496,7 +496,7 @@ const Chapter2 = {
                     step: 0.5,
                     label:
                       "Percentage of patients in need of life-saving organ transplants who adhere",
-                    tooltip: "",
+                    tooltip: 'See our technical paper or upcoming book for our detailed mapping of this simulated increase in organ supply, based on a Nature paper by Giwa et al. ',
                   },
                   age: {
                     min: 40,
@@ -504,7 +504,7 @@ const Chapter2 = {
                     defaultValue: 40,
                     step: 1,
                     label: "Age of population who will benefit",
-                    tooltip: "",
+                    tooltip: 'This is the age at which the assumed effects of this intervention begin with a favorable safety profile. The input "40+" considers U.S. adults ages 40 and older. ',
                   },
                   startYear: {
                     min: 0,
@@ -512,7 +512,7 @@ const Chapter2 = {
                     defaultValue: 10,
                     step: 1,
                     label: "Years until aging treatment enters market",
-                    tooltip: "",
+                    tooltip: 'This is your assumed timeline for this R&D advancement. ',
                   },
 
                   r: {
@@ -521,7 +521,7 @@ const Chapter2 = {
                     defaultValue: 0.02,
                     step: 0.01,
                     label: "Discount rate",
-                    tooltip: "",
+                    tooltip: 'This is your assumed interest rate. In our baseline results, we use a 2% discount rate for real dollar results (adjusted for inflation). This is the long run real interest rate forecast by the Congressional Budget Office.',
                   },
                   mortality: {
                     min: 0,
@@ -529,7 +529,7 @@ const Chapter2 = {
                     defaultValue: 0.88,
                     step: 0.01,
                     label: "Mortality rates by age (year shift)",
-                    tooltip: "",
+                    tooltip: 'See our technical paper or upcoming book for our detailed mapping of this simulated increase in organ supply, based on a Nature paper by Giwa et al. ',
                   },
                   productivity: {
                     min: 0,
@@ -537,7 +537,7 @@ const Chapter2 = {
                     defaultValue: 0,
                     step: 0.01,
                     label: "Productivity rates by age (year shift)",
-                    tooltip: "",
+                    tooltip: 'Our default assumption includes no shifts in productivity rates. But the reader is free to assume that organ, cell, and tissue transplant techniques will be refined in the coming decades to not only save terminally ill patients, but also extend healthspan and increase productivity rates by age. ',
                   },
                   fertility: {
                     min: 0,
@@ -545,7 +545,7 @@ const Chapter2 = {
                     defaultValue: 0,
                     step: 0.01,
                     label: "Fertility rates by age (year shift)",
-                    tooltip: "",
+                    tooltip: 'We assume no shifts in fertility rates. ',
                   },
                   numYears: {
                     min: 0,
@@ -554,19 +554,19 @@ const Chapter2 = {
                     step: 1,
                     label:
                       "Years from market entry until max adoption of treatment",
-                    tooltip: "",
+                    tooltip: 'This is how long you believe it will take between market entry and democratization for this advancement. ',
                   },
                   return: {
                     min: 0,
-                    max: 195,
+                    max: 78.7,
                   },
                   yGDP: {
                     min: 0,
-                    max: 1296,
+                    max: 902,
                   },
                   lives: {
                     min: 0,
-                    max: 19140,
+                    max: 18820,
                   },
                 },
               },
@@ -656,7 +656,7 @@ const Chapter2 = {
                     defaultValue: 11,
                     step: 0.5,
                     label: "Percentage of the population who will benefit",
-                    tooltip: "",
+                    tooltip: 'Our default  assumption follows the TAME trial design to infer that only 11% of adults ages 65+ would benefit from this drug. This includes the assumptions that to enroll in the trial, patients must have at least 1 pre-existing disease of aging, and that diabetic patients must be excluded in order to test effects on overall aging. (See the technical paper for our detailed mapping of the TAME trial.)',
                   },
                   age: {
                     min: 40,
@@ -664,7 +664,7 @@ const Chapter2 = {
                     defaultValue: 40,
                     step: 1,
                     label: "Age of population who will benefit",
-                    tooltip: "",
+                    tooltip: 'Our default  assumption follows the TAME trial design to infer that only adults ages 65+ would benefit from this drug. This includes the assumptions that to enroll in the trial, patients must have at least 1 pre-existing disease of aging, and that diabetic patients must be excluded in order to test effects on overall aging. ',
                   },
                   startYear: {
                     min: 0,
@@ -672,7 +672,7 @@ const Chapter2 = {
                     defaultValue: 5,
                     step: 1,
                     label: "Years until aging treatment enters market",
-                    tooltip: "",
+                    tooltip: 'Our default  assumption is that the TAME trial could be completed by 2030. Yet metformin is an FDA-approved drug, and we again encourage the reader to insert their preferred existing therapeutic as the benchmark for this simulation.',
                   },
 
                   r: {
@@ -681,7 +681,7 @@ const Chapter2 = {
                     defaultValue: 0.02,
                     step: 0.01,
                     label: "Discount rate",
-                    tooltip: "",
+                    tooltip: 'This is your assumed interest rate. In our baseline results, we use a 2% discount rate for real dollar results (adjusted for inflation). This is the long run real interest rate forecast by the Congressional Budget Office.',
                   },
                   mortality: {
                     min: 0,
@@ -689,7 +689,7 @@ const Chapter2 = {
                     defaultValue: 0.72,
                     step: 0.01,
                     label: "Mortality rates by age (year shift)",
-                    tooltip: "",
+                    tooltip: 'See the technical paper for our detailed mapping of the TAME trial.',
                   },
                   productivity: {
                     min: 0,
@@ -697,7 +697,7 @@ const Chapter2 = {
                     defaultValue: 0.82,
                     step: 0.01,
                     label: "Productivity rates by age (year shift)",
-                    tooltip: "",
+                    tooltip: 'See the technical paper for our detailed mapping of the TAME trial.',
                   },
                   fertility: {
                     min: 0,
@@ -705,7 +705,7 @@ const Chapter2 = {
                     defaultValue: 0,
                     step: 0.01,
                     label: "Fertility rates by age (year shift)",
-                    tooltip: "",
+                    tooltip: 'See the technical paper for our detailed mapping of the TAME trial.',
                   },
                   numYears: {
                     min: 0,
@@ -714,19 +714,19 @@ const Chapter2 = {
                     step: 1,
                     label:
                       "Years from market entry until max adoption of treatment",
-                    tooltip: "",
+                    tooltip: 'Our default  assumption is that the effects of the TAME trial could be reach full market penetration very quickly because it is already approved and widely available.',
                   },
                   return: {
                     min: 0,
-                    max: 168,
+                    max: 37.9,
                   },
                   yGDP: {
                     min: 0,
-                    max: 1693,
+                    max: 417,
                   },
                   lives: {
                     min: 0,
-                    max: 18860,
+                    max: 2180,
                   },
                 },
               },
@@ -740,7 +740,7 @@ const Chapter2 = {
                     defaultValue: 18.5,
                     step: 0.5,
                     label: "Percentage of the population who will benefit",
-                    tooltip: "",
+                    tooltip: 'Our default  assumption follows the TAME trial design to infer that only 11% of adults ages 65+ would benefit from this drug. This includes the assumptions that to enroll in the trial, patients must have at least 1 pre-existing disease of aging, and that diabetic patients must be excluded in order to test effects on overall aging. (See the technical paper for our detailed mapping of the TAME trial.)',
                   },
                   age: {
                     min: 40,
@@ -748,7 +748,7 @@ const Chapter2 = {
                     defaultValue: 40,
                     step: 1,
                     label: "Age of population who will benefit",
-                    tooltip: "",
+                    tooltip: 'Our default  assumption follows the TAME trial design to infer that only adults ages 65+ would benefit from this drug. This includes the assumptions that to enroll in the trial, patients must have at least 1 pre-existing disease of aging, and that diabetic patients must be excluded in order to test effects on overall aging.',
                   },
                   startYear: {
                     min: 0,
@@ -756,7 +756,7 @@ const Chapter2 = {
                     defaultValue: 5,
                     step: 1,
                     label: "Years until aging treatment enters market",
-                    tooltip: "",
+                    tooltip: 'Our default  assumption is that the TAME trial could be completed by 2030. Yet metformin is an FDA-approved drug, and we again encourage the reader to insert their preferred existing therapeutic as the benchmark for this simulation.',
                   },
 
                   r: {
@@ -765,7 +765,7 @@ const Chapter2 = {
                     defaultValue: 0.02,
                     step: 0.01,
                     label: "Discount rate",
-                    tooltip: "",
+                    tooltip: 'This is your assumed interest rate. In our baseline results, we use a 2% discount rate for real dollar results (adjusted for inflation). This is the long run real interest rate forecast by the Congressional Budget Office.',
                   },
                   mortality: {
                     min: 0,
@@ -773,7 +773,7 @@ const Chapter2 = {
                     defaultValue: 0.72,
                     step: 0.01,
                     label: "Mortality rates by age (year shift)",
-                    tooltip: "",
+                    tooltip: 'See the technical paper for our detailed mapping of the TAME trial.',
                   },
                   productivity: {
                     min: 0,
@@ -781,7 +781,7 @@ const Chapter2 = {
                     defaultValue: 0.82,
                     step: 0.01,
                     label: "Productivity rates by age (year shift)",
-                    tooltip: "",
+                    tooltip: 'See the technical paper for our detailed mapping of the TAME trial.',
                   },
                   fertility: {
                     min: 0,
@@ -789,7 +789,7 @@ const Chapter2 = {
                     defaultValue: 0,
                     step: 0.01,
                     label: "Fertility rates by age (year shift)",
-                    tooltip: "",
+                    tooltip: 'See the technical paper for our detailed mapping of the TAME trial.',
                   },
                   numYears: {
                     min: 0,
@@ -798,19 +798,19 @@ const Chapter2 = {
                     step: 1,
                     label:
                       "Years from market entry until max adoption of treatment",
-                    tooltip: "",
+                    tooltip: 'Our default  assumption is that the effects of the TAME trial could be reach full market penetration very quickly because it is already approved and widely available.',
                   },
                   return: {
                     min: 0,
-                    max: 187.1,
+                    max: 37.9,
                   },
                   yGDP: {
                     min: 0,
-                    max: 1714,
+                    max: 417,
                   },
                   lives: {
                     min: 0,
-                    max: 18970,
+                    max: 2180,
                   },
                 },
               },
@@ -824,7 +824,7 @@ const Chapter2 = {
                     defaultValue: 50,
                     step: 0.5,
                     label: "Percentage of the population who will benefit",
-                    tooltip: "",
+                    tooltip: 'Our default  assumption follows the TAME trial design to infer that only 11% of adults ages 65+ would benefit from this drug. This includes the assumptions that to enroll in the trial, patients must have at least 1 pre-existing disease of aging, and that diabetic patients must be excluded in order to test effects on overall aging. (See the technical paper for our detailed mapping of the TAME trial.)',
                   },
                   age: {
                     min: 40,
@@ -832,7 +832,7 @@ const Chapter2 = {
                     defaultValue: 40,
                     step: 1,
                     label: "Age of population who will benefit",
-                    tooltip: "",
+                    tooltip: 'Our default  assumption follows the TAME trial design to infer that only adults ages 65+ would benefit from this drug. This includes the assumptions that to enroll in the trial, patients must have at least 1 pre-existing disease of aging, and that diabetic patients must be excluded in order to test effects on overall aging.',
                   },
                   startYear: {
                     min: 0,
@@ -840,7 +840,7 @@ const Chapter2 = {
                     defaultValue: 10,
                     step: 1,
                     label: "Years until aging treatment enters market",
-                    tooltip: "",
+                    tooltip: 'Our default  assumption is that the TAME trial could be completed by 2030. Yet metformin is an FDA-approved drug, and we again encourage the reader to insert their preferred existing therapeutic as the benchmark for this simulation.',
                   },
 
                   r: {
@@ -849,7 +849,7 @@ const Chapter2 = {
                     defaultValue: 0.02,
                     step: 0.01,
                     label: "Discount rate",
-                    tooltip: "",
+                    tooltip: 'This is your assumed interest rate. In our baseline results, we use a 2% discount rate for real dollar results (adjusted for inflation). This is the long run real interest rate forecast by the Congressional Budget Office.',
                   },
                   mortality: {
                     min: 0,
@@ -857,7 +857,7 @@ const Chapter2 = {
                     defaultValue: 1.44,
                     step: 0.01,
                     label: "Mortality rates by age (year shift)",
-                    tooltip: "",
+                    tooltip: 'See the technical paper for our detailed mapping of the TAME trial.',
                   },
                   productivity: {
                     min: 0,
@@ -865,7 +865,7 @@ const Chapter2 = {
                     defaultValue: 0.82,
                     step: 0.01,
                     label: "Productivity rates by age (year shift)",
-                    tooltip: "",
+                    tooltip: 'See the technical paper for our detailed mapping of the TAME trial.',
                   },
                   fertility: {
                     min: 0,
@@ -873,7 +873,7 @@ const Chapter2 = {
                     defaultValue: 0,
                     step: 0.01,
                     label: "Fertility rates by age (year shift)",
-                    tooltip: "",
+                    tooltip: 'See the technical paper for our detailed mapping of the TAME trial.',
                   },
                   numYears: {
                     min: 0,
@@ -882,19 +882,19 @@ const Chapter2 = {
                     step: 1,
                     label:
                       "Years from market entry until max adoption of treatment",
-                    tooltip: "",
+                    tooltip: 'Our default  assumption is that the effects of the TAME trial could be reach full market penetration very quickly because it is already approved and widely available.',
                   },
                   return: {
                     min: 0,
-                    max: 238.1,
+                    max: 37.9,
                   },
                   yGDP: {
                     min: 0,
-                    max: 1780,
+                    max: 417,
                   },
                   lives: {
                     min: 0,
-                    max: 19130,
+                    max: 2180,
                   },
                 },
               },
@@ -908,7 +908,7 @@ const Chapter2 = {
                     defaultValue: 50,
                     step: 0.5,
                     label: "Percentage of the population who will benefit",
-                    tooltip: "",
+                    tooltip: 'Our default  assumption follows the TAME trial design to infer that only 11% of adults ages 65+ would benefit from this drug. This includes the assumptions that to enroll in the trial, patients must have at least 1 pre-existing disease of aging, and that diabetic patients must be excluded in order to test effects on overall aging. (See the technical paper for our detailed mapping of the TAME trial.)',
                   },
                   age: {
                     min: 40,
@@ -916,7 +916,7 @@ const Chapter2 = {
                     defaultValue: 40,
                     step: 1,
                     label: "Age of population who will benefit",
-                    tooltip: "",
+                    tooltip: 'Our default  assumption follows the TAME trial design to infer that only adults ages 65+ would benefit from this drug. This includes the assumptions that to enroll in the trial, patients must have at least 1 pre-existing disease of aging, and that diabetic patients must be excluded in order to test effects on overall aging.',
                   },
                   startYear: {
                     min: 0,
@@ -924,7 +924,7 @@ const Chapter2 = {
                     defaultValue: 8,
                     step: 1,
                     label: "Years until aging treatment enters market",
-                    tooltip: "",
+                    tooltip: 'Our default  assumption is that the TAME trial could be completed by 2030. Yet metformin is an FDA-approved drug, and we again encourage the reader to insert their preferred existing therapeutic as the benchmark for this simulation.',
                   },
 
                   r: {
@@ -933,7 +933,7 @@ const Chapter2 = {
                     defaultValue: 0.02,
                     step: 0.01,
                     label: "Discount rate",
-                    tooltip: "",
+                    tooltip: 'This is your assumed interest rate. In our baseline results, we use a 2% discount rate for real dollar results (adjusted for inflation). This is the long run real interest rate forecast by the Congressional Budget Office.',
                   },
                   mortality: {
                     min: 0,
@@ -941,7 +941,7 @@ const Chapter2 = {
                     defaultValue: 1.44,
                     step: 0.01,
                     label: "Mortality rates by age (year shift)",
-                    tooltip: "",
+                    tooltip: 'See the technical paper for our detailed mapping of the TAME trial.',
                   },
                   productivity: {
                     min: 0,
@@ -957,7 +957,7 @@ const Chapter2 = {
                     defaultValue: 0,
                     step: 0.01,
                     label: "Fertility rates by age (year shift)",
-                    tooltip: "",
+                    tooltip: 'See the technical paper for our detailed mapping of the TAME trial.',
                   },
                   numYears: {
                     min: 0,
@@ -966,19 +966,19 @@ const Chapter2 = {
                     step: 1,
                     label:
                       "Years from market entry until max adoption of treatment",
-                    tooltip: "",
+                    tooltip: 'Our default  assumption is that the effects of the TAME trial could be reach full market penetration very quickly because it is already approved and widely available.',
                   },
                   return: {
                     min: 0,
-                    max: 238.1,
+                    max: 37.9,
                   },
                   yGDP: {
                     min: 0,
-                    max: 1780,
+                    max: 417,
                   },
                   lives: {
                     min: 0,
-                    max: 19130,
+                    max: 2180,
                   },
                 },
               },
@@ -1052,7 +1052,7 @@ const Chapter2 = {
                     defaultValue: 50,
                     step: 1,
                     label: "Percentage of the population who will benefit",
-                    tooltip: "",
+                    tooltip: 'This is the percentage of the U.S. population you assume would have access to a therapeutic that slows overall aging by 1 year, or for whom the risk-benefit profile of such an intervention would be favorable.',
                   },
                   age: {
                     min: 40,
@@ -1060,7 +1060,7 @@ const Chapter2 = {
                     defaultValue: 40,
                     step: 1,
                     label: "Age of population who will benefit",
-                    tooltip: "",
+                    tooltip: 'This is the age at which the assumed effects of this intervention begin with a favorable safety profile. The input "40+" considers U.S. adults ages 40 and older. You are free to assume that such a preventative therapeutic could only be designed to achieve a favorable risk-benefit profile for adults ages 50+, 60+, etc.',
                   },
                   startYear: {
                     min: 0,
@@ -1068,7 +1068,7 @@ const Chapter2 = {
                     defaultValue: 10,
                     step: 1,
                     label: "Years until aging treatment enters market",
-                    tooltip: "",
+                    tooltip: 'This is your assumed timeline for this R&D advancement. If you input "10 years" in this lever and "50%" in the first lever, the assumption is this therapeutic first enters the market in 10 years, and adoption rates take another 10 years to reach 50% of the U.S. population. In other words, we assume a gradual increase in adoption rates, with full effectiveness taking twice as long as "Years until intervention is available."',
                   },
 
                   r: {
@@ -1077,7 +1077,7 @@ const Chapter2 = {
                     defaultValue: 0.02,
                     step: 0.01,
                     label: "Discount rate",
-                    tooltip: "",
+                    tooltip: 'This is your assumed interest rate. In our baseline results, we use a 2% discount rate for real dollar results (adjusted for inflation). This is the long run real interest rate forecast by the Congressional Budget Office.',
                   },
                   mortality: {
                     min: 0,
@@ -1085,7 +1085,7 @@ const Chapter2 = {
                     defaultValue: 1,
                     step: 0.1,
                     label: "Mortality rates by age (year shift)",
-                    tooltip: "",
+                    tooltip: 'For a 1-year shift backwards in mortality rates by age, we simply consider that agents in the model aged 41 now have the same odds of dying as those aged 40 (and so forth for all ages 40+). This is significant because as Gompertz Law suggests, mortality rates follow a perfect exponential trajectory between ages 30 and 80, roughly doubling every 8 years.',
                   },
                   productivity: {
                     min: 0,
@@ -1093,7 +1093,7 @@ const Chapter2 = {
                     defaultValue: 1,
                     step: 0.1,
                     label: "Productivity rates by age (year shift)",
-                    tooltip: "",
+                    tooltip: 'For a 1-year shift backwards in productivity rates by age, we simply consider that agents in the model aged 41 now record the same labor productivity as those aged 40 (and so forth for all ages 40+). Most humans reach peak income/labor producitivity around age 55, an age by when knowledge and experience have not been outpaced by cognitive decline or other age-related conditions.',
                   },
                   fertility: {
                     min: 0,
@@ -1101,7 +1101,7 @@ const Chapter2 = {
                     defaultValue: 1,
                     step: 0.1,
                     label: "Fertility rates by age (year shift)",
-                    tooltip: "",
+                    tooltip: 'For a 1-year shift backwards in fertility rates by age, we consider emiprical rates. For more pronounced shifts (e.g. a 5-year delay in reproductive aging), it is unknown how reproductive choices would be affected. We conservatively cap the model to reflect realistic birth rates, as enabled by reproductive technologies like IVF.',
                   },
                   numYears: {
                     min: 0,
@@ -1110,19 +1110,19 @@ const Chapter2 = {
                     step: 1,
                     label:
                       "Years from market entry until max adoption of treatment",
-                    tooltip: "",
+                    tooltip: 'This is how long you believe it will take between market entry and democratization for this intervention.',
                   },
                   return: {
                     min: 0,
-                    max: 478.5,
+                    max: 494.6,
                   },
                   yGDP: {
                     min: 0,
-                    max: 4667,
+                    max: 4664,
                   },
                   lives: {
                     min: 0,
-                    max: 22100,
+                    max: 22190,
                   },
                 },
               },

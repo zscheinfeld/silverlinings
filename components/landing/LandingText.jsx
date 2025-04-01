@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import styles from "@/components/GsapLanding.module.scss";
 import Link from "next/link";
@@ -6,6 +6,39 @@ import Link from "next/link";
 const LandingTextIntro = ({ fadeOutPoint }) => {
   const [isFixed, setIsFixed] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
+
+  // Create a reference for the div you want to fade in
+  const landingOuterTextRef = useRef(null);
+
+  // Intersection Observer for fade-in
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 1, // Trigger when 20% of the element is visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add(styles.visible); // Add the "visible" class when in view
+        } else {
+          entry.target.classList.remove(styles.visible); // Remove the "visible" class when out of view
+        }
+      });
+    }, options);
+
+    if (landingOuterTextRef.current) {
+      observer.observe(landingOuterTextRef.current);
+    }
+
+    return () => {
+      if (landingOuterTextRef.current) {
+        observer.unobserve(landingOuterTextRef.current);
+      }
+      observer.disconnect();
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -96,8 +129,8 @@ const LandingTextIntro = ({ fadeOutPoint }) => {
           <div className={styles.link}>
             <Link
               href={{
-                pathname: "/chapter=present", // Replace with actual page path
-                query: { chapter: "1-0" }, // Ensure the slug format matches your data
+                pathname: "/chapter=present", 
+                query: { chapter: "1-0" }, 
               }}
               style={{ color: "#191818" }}
             >
@@ -110,7 +143,7 @@ const LandingTextIntro = ({ fadeOutPoint }) => {
         <div
           className={styles.lightfaceContainer}
           style={{
-            opacity: 1 - scrollProgress, // Fades from 100% (1) to 0% as scroll progresses
+            opacity: 1 - scrollProgress, 
             transition: "opacity 0.1s linear",
           }}
         >
@@ -119,7 +152,11 @@ const LandingTextIntro = ({ fadeOutPoint }) => {
       </div>
       <div className={styles.space}></div>
 
-      <div className={styles.landingoutertext}>
+      {/* The Div you want to fade-in */}
+      <div
+        ref={landingOuterTextRef} // Reference the div for fade-in
+        className={`${styles.landingoutertext} ${styles.fade}`}
+      >
         <div
           className={`${styles.landinginnertext} ${styles.light} ${styles.landingmedium}`}
         >
@@ -141,7 +178,7 @@ const LandingTextIntro = ({ fadeOutPoint }) => {
 };
 
 // Prop type validation
-LandingText.propTypes = {
+LandingTextIntro.propTypes = {
   fadeOutPoint: PropTypes.number.isRequired,
 };
 

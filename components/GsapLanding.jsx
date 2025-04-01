@@ -30,63 +30,91 @@ const GsapLanding = () => {
   const fadeInRefs = useRef([]); // Array to hold references to elements we want to observe
   // Add new ref for landing text
   const landingTextRef = useRef(null);
+  // Add this to your refs
+  const landingOuterTextRef = useRef(null);
+
+  const landingTextLightContainerRef = useRef(null); // New ref
 
   useEffect(() => {
     // 1. Intersection Observer Options
     const options = {
       root: null,
       rootMargin: "0px",
-      threshold: 0.1, // Trigger when 10% of the element is visible
+      threshold: 0.2, // Trigger when 20% of the element is visible (you can adjust this as needed)
     };
-
+  
     // 2. Create Intersection Observer
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add(styles.visible);
+          entry.target.classList.add(styles.visible); // Add the visible class
         } else {
-          entry.target.classList.remove(styles.visible);
+          entry.target.classList.remove(styles.visible); // Remove the visible class
         }
       });
     }, options);
-
+  
     // 3. Function to Observe Elements
     const observeElements = () => {
+      // Observe all elements in fadeInRefs
       fadeInRefs.current.forEach((ref) => {
         if (ref) observer.observe(ref);
       });
-
+  
+      // Observe landingTextRef
       if (landingTextRef.current) {
         observer.observe(landingTextRef.current);
       }
+  
+      // Observe landingOuterTextRef (new addition for the fade-in)
+      if (landingOuterTextRef.current) {
+        observer.observe(landingOuterTextRef.current);
+      }
+  
+      // Observe the new landingTextLightContainerRef
+      if (landingTextLightContainerRef.current) {
+        observer.observe(landingTextLightContainerRef.current); // Observe this new element
+      }
     };
-
+  
     // 4. Observe elements initially
     observeElements();
-
+  
     // 5. Handle window resize to reinitialize observer
     const handleResize = () => {
       observer.disconnect(); // Clear previous observers on resize
       observeElements(); // Re-observe after resizing
     };
-
+  
     window.addEventListener("resize", handleResize);
 
     // 7. Cleanup Observer + Scroll + Resize Event Listeners
     return () => {
+      // Unobserve all elements
       fadeInRefs.current.forEach((ref) => {
         if (ref) observer.unobserve(ref);
       });
-
+  
       if (landingTextRef.current) {
         observer.unobserve(landingTextRef.current);
       }
-
+  
+      // Unobserve the new landingOuterTextRef
+      if (landingOuterTextRef.current) {
+        observer.unobserve(landingOuterTextRef.current);
+      }
+  
+      // Unobserve the new landingTextLightContainerRef
+      if (landingTextLightContainerRef.current) {
+        observer.unobserve(landingTextLightContainerRef.current); // Unobserve this new element
+      }
+  
       observer.disconnect();
       window.removeEventListener("resize", handleResize);
     };
   }, []); // Empty dependency array ensures effect runs only once
-
+  
+  
   const [fadeOutPoint, setFadeOutPoint] = useState(null);
 
   useEffect(() => {
@@ -146,7 +174,10 @@ const GsapLanding = () => {
         <div className={styles.space}></div>
         <div className={styles.space}></div>
         <div className={styles.landingtextlightcontainer}>
-          <div className={styles.landingtextlightinnercontainer}>
+          <div
+            className={`${styles.landingtextlightinnercontainer} ${styles.hidden}`} // Add the hidden class initially
+            ref={landingTextLightContainerRef} // Link the ref here
+          >
             <div className={styles.landingtextleft}>
               <div className={styles.landingtextlarge}>
                 Our short healthspan affects every family, economy, and
@@ -182,7 +213,10 @@ const GsapLanding = () => {
         <div className={styles.space}></div>
 
         <div className={styles.landingtextlightcontainer2}>
-          <div className={styles.landingtextlightinnercontainer2}>
+          <div 
+          className={`${styles.landingtextlightinnercontainer2} ${styles.hidden}`} // Add hidden class initially
+          ref={(el) => fadeInRefs.current.push(el)} // Push to fadeInRefs
+          >
             <div className={styles.landingtextleft2}>
               <div className={styles.landingtextlarge}>
                 When it comes to “longevity,” private markets have mostly
@@ -203,50 +237,55 @@ const GsapLanding = () => {
           </div>
         </div>
 
-        <div className={styles.landingoutertext}>
-          <div
-            className={`${styles.landinginnertext} ${styles.light} ${styles.landingmedium}`}
-          >
-            What if new scientific breakthroughs could delay biological aging
-            and extend healthy life?
-          </div>
-          <div
-            className={`${styles.landinginnertext} ${styles.light} ${styles.landingsmall}`}
-          >
+        <div className={styles.landingoutertext}
+        >
+          <div 
+          className={styles.hidden}
+          ref={landingOuterTextRef}>
             <div
-              className={`${styles.landingtextsmall} ${styles.maxwidth500} ${styles.seemoreText}`}
+              className={`${styles.landinginnertext} ${styles.light} ${styles.landingmedium} ${styles.paddingbottom}`}
             >
-              {isExpanded && (
-                <div>
-                  We present results informed by interviews with 72 scientists
-                  and dozens of economists. But our model lets you simulate
-                  different futures for the U.S. population and economy. You can
-                  input the number of years until a therapeutic can safely delay
-                  brain or overall aging; what percentage of the U.S. population
-                  would benefit; and how this could affect{" "}
-                  <span className={styles.textmortality}>mortality</span>,{" "}
-                  <span className={styles.textproductivity}>productivity</span>,
-                  and <span className={styles.textfertility}>fertility</span>{" "}
-                  rates by age. In each simulation, we present the number of
-                  lives saved or gained. We also highlight GDP as a helpful
-                  (even if imperfect) proxy for lives improved.<br></br>
-                  <br></br>
-                  Beyond a certain point, improvements in non-cognitive
-                  functions have counterintuitive effects on GDP. For instance,
-                  a 1-year delay in brain aging is worth nearly as much as a
-                  1-year delay in overall biological aging in the near term.
-                  This is because the returns from improving the age of other
-                  organs (e.g. kidneys or ovaries) are not immediate, and
-                  sometimes reduce GDP temporarily. To understand the non-linear
-                  effects of each R&D area in the short and long run (and for
-                  GDP alternatives that measure non-market outcomes), see the
-                  report.
-                </div>
-              )}
+              What if new scientific breakthroughs could delay biological aging
+              and extend healthy life?
+            </div>
+            <div
+              className={`${styles.landinginnertext} ${styles.light} ${styles.landingsmall}`}
+            >
+              <div
+                className={`${styles.landingtextsmall} ${styles.maxwidth500} ${styles.seemoreText}`}
+              >
+                {isExpanded && (
+                  <div>
+                    We present results informed by interviews with 72 scientists
+                    and dozens of economists. But our model lets you simulate
+                    different futures for the U.S. population and economy. You can
+                    input the number of years until a therapeutic can safely delay
+                    brain or overall aging; what percentage of the U.S. population
+                    would benefit; and how this could affect{" "}
+                    <span className={styles.textmortality}>mortality</span>,{" "}
+                    <span className={styles.textproductivity}>productivity</span>,
+                    and <span className={styles.textfertility}>fertility</span>{" "}
+                    rates by age. In each simulation, we present the number of
+                    lives saved or gained. We also highlight GDP as a helpful
+                    (even if imperfect) proxy for lives improved.<br></br>
+                    <br></br>
+                    Beyond a certain point, improvements in non-cognitive
+                    functions have counterintuitive effects on GDP. For instance,
+                    a 1-year delay in brain aging is worth nearly as much as a
+                    1-year delay in overall biological aging in the near term.
+                    This is because the returns from improving the age of other
+                    organs (e.g. kidneys or ovaries) are not immediate, and
+                    sometimes reduce GDP temporarily. To understand the non-linear
+                    effects of each R&D area in the short and long run (and for
+                    GDP alternatives that measure non-market outcomes), see the
+                    report.
+                  </div>
+                )}
 
-              <button onClick={toggleText} className={styles.seeMoreButton}>
-                {isExpanded ? "See Less" : "See More"}
-              </button>
+                <button onClick={toggleText} className={styles.seeMoreButton}>
+                  {isExpanded ? "See Less" : "See More"}
+                </button>
+              </div>
             </div>
           </div>
         </div>
