@@ -14,11 +14,6 @@
   scrollbar-width: none;
 }
 
-.chapter.black {
-  color: white;
-  background-color: black;
-}
-
 .chapter {
   display: flex;
   position: absolute;
@@ -46,11 +41,15 @@
     left: var(--left) !important;
     width: var(--width);
   }
+
+  &.dark {
+    color: white;
+    background-color: black;
+  }
 }
 
 .chap-next {
-  /* background-color: #FBE0F3; */
-  border-left: solid black 1px;
+  border-left: solid currentColor 1px;
 }
 
 .chap-next:hover {
@@ -58,8 +57,7 @@
 }
 
 .chap-upcoming {
-  /* background-color: #FBE0F3; */
-  border-left: solid black 1px;
+  border-left: solid currentColor 1px;
 }
 
 .chap-1 {
@@ -84,7 +82,7 @@
 
 .chap-current {
   background-color: #fff5e5;
-  border-right: solid black 1px;
+  border-right: solid currentColor 1px;
 }
 
 .chap-current:hover {
@@ -93,7 +91,7 @@
 
 .chap-previous {
   background-color: #e1e0e0;
-  border-right: solid black 1px;
+  border-right: solid currentColor 1px;
 }
 
 .chap-previous:hover {
@@ -102,7 +100,7 @@
 
 .chap-archived {
   background-color: #e1e0e0;
-  border-right: solid black 1px;
+  border-right: solid currentColor 1px;
 }
 
 .simulatorcontent {
@@ -138,6 +136,7 @@
 
 .chapterNav {
   display: none;
+  color: black;
 
   @include layout.md {
     height: 100vh;
@@ -146,6 +145,22 @@
     flex-shrink: 0;
     justify-content: center;
     padding-top: 240px;
+  }
+
+  &:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+  }
+
+  &.dark {
+    background-color: black;
+    color: white;
+
+    &:hover {
+      background-color: white;
+      color: black;
+    }
   }
 }
 
@@ -157,10 +172,4 @@
   line-height: 100%;
   writing-mode: vertical-rl;
   text-orientation: mixed;
-}
-
-.chapterNav:hover {
-  background-color: black;
-  color: white;
-  cursor: pointer;
 }

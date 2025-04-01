@@ -87,33 +87,7 @@ const GsapLanding = () => {
     };
   
     window.addEventListener("resize", handleResize);
-  
-    // 6. Handle Nav Visibility on Scroll
-    let lastScrollY = window.scrollY; // Track scroll position
-  
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-  
-      if (currentScrollY > lastScrollY && currentScrollY > 56) {
-        // User is scrolling down, hide nav
-        setIsNavVisible(false);
-      } else {
-        // User is scrolling up, show nav
-        setIsNavVisible(true);
-      }
-  
-      if (currentScrollY === 0) {
-        // Show nav only when scrolled to the very top
-        setIsNavVisible(true);
-      } else {
-        setIsNavVisible(false);
-      }
-  
-      lastScrollY = currentScrollY;
-    };
-  
-    window.addEventListener("scroll", handleScroll);
-  
+
     // 7. Cleanup Observer + Scroll + Resize Event Listeners
     return () => {
       // Unobserve all elements
@@ -137,7 +111,6 @@ const GsapLanding = () => {
   
       observer.disconnect();
       window.removeEventListener("resize", handleResize);
-      window.removeEventListener("scroll", handleScroll);
     };
   }, []); // Empty dependency array ensures effect runs only once
   
@@ -150,7 +123,6 @@ const GsapLanding = () => {
 
   return (
     <>
-      <TopNav handleOpen={handleOpen} hidden={!isNavVisible} replace={true} />
       <div className={styles.background}>
         <div className={styles.space}></div>
 

@@ -2,9 +2,12 @@ import styles from "./MobileChapterNav.module.scss";
 import chapterStyles from "./Chapter.module.scss";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import { Chapters } from "@/data/book";
+import { useRouter } from "next/router";
 
-const MobileChapterNav = ({ chapters, activeChapter, handleOpen }) => {
-  const timeout = useRef();
+const MobileChapterNav = ({ isOpen, chapters, activeChapter, handleOpen }) => {
+  const timeout = useRef(null);
+  const router = useRouter();
   const [expanded, setExpanded] = useState(false);
   const [openChapter, setOpenChapter] = useState(null);
 
@@ -15,11 +18,11 @@ const MobileChapterNav = ({ chapters, activeChapter, handleOpen }) => {
 
     if (active && !expanded) {
       handleOpen(true);
-      setExpanded(1);
+      setExpanded(true);
       // Don't fire the event until after the transition.
     }
     if (!active && expanded) {
-      setExpanded(0);
+      setExpanded(false);
       // Don't fire the event until after the transition.
       timeout.current = setTimeout(() => {
         handleOpen(false);
@@ -34,7 +37,15 @@ const MobileChapterNav = ({ chapters, activeChapter, handleOpen }) => {
 
   const handleChapterClick = (e, number) => {
     e.stopPropagation();
-    setOpenChapter(number);
+    const chapter = Chapters[number];
+    if (chapter.options?.forceLink) {
+      router.push(chapter.options.forceLink);
+      setExpanded(false);
+    } else if (chapter.number === activeChapter) {
+      setExpanded(false);
+    } else {
+      setOpenChapter(number);
+    }
   };
 
   useEffect(() => {
@@ -47,7 +58,7 @@ const MobileChapterNav = ({ chapters, activeChapter, handleOpen }) => {
 
   return (
     <div
-      className={`${styles.mobileChapterNav} ${expanded && styles.expanded}`}
+      className={`${styles.mobileChapterNav} ${expanded && styles.expanded} ${!isOpen && styles.hidden}`}
     >
       {chapters.map((chapter) => {
         const isActive = currentActiveChapter === chapter.number;

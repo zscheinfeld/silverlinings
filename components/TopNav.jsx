@@ -1,13 +1,14 @@
-import { useRef, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import styles from "@/components/TopNav.module.scss";
 import { Chapters } from "@/data/book";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Hamburger from "@/icons/hamburger.svg";
 
-const TopNav = ({ hidden, handleOpen, replace = false }) => {
+const TopNav = ({ handleOpen, isOpen, dark = false }) => {
   const [activeNav, setActiveNav] = useState(0);
-  const timeout = useRef();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const timeout = useRef(null);
   const router = useRouter();
 
   const setActive = (active) => {
@@ -29,9 +30,43 @@ const TopNav = ({ hidden, handleOpen, replace = false }) => {
     }
   };
 
+  useEffect(() => {
+    // 6. Handle Nav Visibility on Scroll
+    let lastScrollY = window.scrollY; // Track scroll position
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 56) {
+        // User is scrolling down, hide nav
+        setIsScrolled(true);
+      } else {
+        // User is scrolling up, show nav
+        setIsScrolled(false);
+      }
+
+      if (currentScrollY === 0) {
+        // Show nav only when scrolled to the very top
+        setIsScrolled(false);
+      } else {
+        setIsScrolled(true);
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const isVisible = isOpen || !isScrolled;
+
   return (
     <div
-      className={`${styles.nav} ${activeNav === 1 && styles.expanded} ${hidden && styles.hidden}`}
+      className={`${styles.nav} ${activeNav === 1 && styles.expanded} ${!isVisible && styles.hidden} ${dark && styles.dark}`}
     >
       <div className={styles.navtop}>
         <button className={styles.left} onClick={() => setActive(!activeNav)}>
@@ -57,7 +92,7 @@ const TopNav = ({ hidden, handleOpen, replace = false }) => {
 
       <div className={`${styles.navbottom}`}>
         <div className={styles.navbottomTitle}>Index</div>
-        {Chapters.map((chapter) => {
+        {Chapters.slice(1, 4).map((chapter) => {
           const href = {
             pathname: router.pathname,
             query: { chapter: chapter.slug },
@@ -66,11 +101,7 @@ const TopNav = ({ hidden, handleOpen, replace = false }) => {
             <div className={styles.navitemscontainer} key={chapter.number}>
               <div className={styles.navchapteritem}>
                 <div className={styles.chapnumber}>{chapter.number + ".0"}</div>
-                <Link
-                  onClick={() => setActive(!activeNav)}
-                  href={href}
-                  replace={replace}
-                >
+                <Link onClick={() => setActive(!activeNav)} href={href}>
                   {chapter.title}
                 </Link>
               </div>
@@ -90,7 +121,6 @@ const TopNav = ({ hidden, handleOpen, replace = false }) => {
                             subchapter: subchapter.slug,
                           },
                         }}
-                        replace={replace}
                       >
                         {subchapter.header}
                       </Link>
