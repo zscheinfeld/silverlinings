@@ -328,7 +328,7 @@ const Simulation = ({ data }) => {
               )}
               <img
                 className={styles.outputImage}
-                src={`/${section.image}`}
+                src={section.image.url}
                 alt=""
               />
             </div>

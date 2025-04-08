@@ -1,11 +1,10 @@
 import { useRef, useEffect, useState } from "react";
 import styles from "@/components/TopNav.module.scss";
-import { Chapters } from "@/data/book";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Hamburger from "@/icons/hamburger.svg";
 
-const TopNav = ({ handleOpen, isOpen, dark = false }) => {
+const TopNav = ({ chapters, handleOpen, isOpen, dark = false }) => {
   const [activeNav, setActiveNav] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
   const timeout = useRef(null);
@@ -92,7 +91,7 @@ const TopNav = ({ handleOpen, isOpen, dark = false }) => {
 
       <div className={`${styles.navbottom}`}>
         <div className={styles.navbottomTitle}>Index</div>
-        {Chapters.slice(1, 4).map((chapter) => {
+        {chapters.slice(1, 4).map((chapter) => {
           const href = {
             pathname: router.pathname,
             query: { chapter: chapter.slug },

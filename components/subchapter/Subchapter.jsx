@@ -3,14 +3,14 @@ import { forwardRef, useMemo } from "react";
 import SubchapterToggle from "./SubchapterToggle";
 import Content from "@/components/content/Content";
 
-const Subchapter = forwardRef(({ subchapter, chapterNumber }, ref) => {
-  const { header, content, slug, options } = subchapter;
-  const { type = "default", showHeader = true, bordered } = options || {};
+const Subchapter = forwardRef(({ subchapter }, ref) => {
+  let { header, content, slug, bordered, type } = subchapter;
+  if (!type) type = "default";
 
   const renderedContent = useMemo(() => {
-    return content.map(({ type, data }, index) => (
-      <Content key={index} type={type} data={data} />
-    ));
+    return content.map((data, index) => {
+      return <Content key={index} {...data} />;
+    });
   }, [content]);
 
   return (
@@ -18,20 +18,17 @@ const Subchapter = forwardRef(({ subchapter, chapterNumber }, ref) => {
       ref={ref}
       id={slug}
       className={`${
-        type === "simulation"
-          ? styles.simulationsubachaptermodules
-          : type === "toggle" || type === "header"
-            ? styles.accordionsubachaptermodules
-            : styles.subchaptermodules
+        type === "toggle" || type === "header"
+          ? styles.accordionsubachaptermodules
+          : styles.subchaptermodules
       } ${bordered && styles.bordered}`}
     >
       {type === "default" && (
         <>
-          {showHeader && <div className={styles.subchaptername}>{header}</div>}
+          <div className={styles.subchaptername}>{header}</div>
           {renderedContent}
         </>
       )}
-      {type === "simulation" && renderedContent}
       {type === "toggle" && (
         <SubchapterToggle header={header}>{renderedContent}</SubchapterToggle>
       )}

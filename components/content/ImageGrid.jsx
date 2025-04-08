@@ -3,7 +3,9 @@ import styles from "./ImageGrid.module.scss";
 const ImageGrid = ({ type, items }) => {
   return (
     <div
-      className={type === "two-column" ? styles.items_two : styles.items_three}
+      className={
+        type === "TwoImageGrid" ? styles.items_two : styles.items_three
+      }
     >
       {items.map(({ title, description, image }, index) => {
         return (

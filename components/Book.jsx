@@ -1,13 +1,12 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import Chapter from "./chapter/Chapter";
-import { Chapters } from "@/data/book";
 import { useRouter } from "next/router";
 import styles from "./Book.module.scss";
-import MobileChapterNav from "@/components/chapter/MobileChapterNav";
 import usePrevious from "@/hooks/usePrevious";
 
-const Book = ({ activeChapter, isOpen, setIsTopNavOpen, isTopNavOpen }) => {
+const Book = ({ book, activeChapter, isOpen, isTopNavOpen }) => {
   const router = useRouter();
+  const { chapters } = book;
 
   const style = useMemo(() => {
     return {
@@ -16,7 +15,7 @@ const Book = ({ activeChapter, isOpen, setIsTopNavOpen, isTopNavOpen }) => {
   }, [isOpen]);
 
   const onScrollToBottom = () => {
-    const nextChapter = Chapters[activeChapter + 1];
+    const nextChapter = chapters[activeChapter + 1];
     if (nextChapter) {
       void router.push({
         pathname: router.pathname,
@@ -26,7 +25,7 @@ const Book = ({ activeChapter, isOpen, setIsTopNavOpen, isTopNavOpen }) => {
   };
 
   const onScrollToTop = () => {
-    const previousChapter = Chapters[activeChapter - 1];
+    const previousChapter = chapters[activeChapter - 1];
     if (previousChapter && previousChapter.number !== 0) {
       void router.push({
         pathname: router.pathname,
@@ -44,10 +43,10 @@ const Book = ({ activeChapter, isOpen, setIsTopNavOpen, isTopNavOpen }) => {
       style={style}
     >
       <div className={styles.bookContent}>
-        {Chapters.map((chapter) => {
+        {chapters.map((chapter) => {
           const { number } = chapter;
           const hasPrevious = number !== 0;
-          const hasNext = number !== Chapters.length - 1;
+          const hasNext = number !== chapters.length - 1;
 
           let state = "current";
 

@@ -1,13 +1,7 @@
 import { useState } from "react";
 import styles from "./SvgChat.module.scss";
 
-const SvgChart = ({
-  source,
-  imageoverlay = true,
-  textoverlay = true,
-  textcontent,
-  overlaycontent,
-}) => {
+const SvgChart = ({ source, textcontent, imageoverlay }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -17,17 +11,17 @@ const SvgChart = ({
       onMouseLeave={() => setIsHovered(false)}
       style={{ position: "relative" }}
     >
-      <img src={source} alt="Chart" />
+      <img src={source.url} alt="Chart" />
 
       {/* Image Overlay */}
       {imageoverlay && (
         <div className={`${styles.overlay} ${isHovered ? styles.visible : ""}`}>
-          <img src={overlaycontent} alt="" />
+          <img src={imageoverlay.url} alt="" />
         </div>
       )}
 
       {/* Text Overlay */}
-      {textoverlay && (
+      {textcontent && (
         <div
           className={`${styles.textOverlay} ${isHovered ? styles.visible : ""}`}
         >

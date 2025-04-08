@@ -23,8 +23,16 @@ const Chapter = ({
 }) => {
   const [activeSubchapter, setActiveSubchapter] = useState(1);
   const router = useRouter();
-  const { title, number, subchapters, intro, image, options = {} } = chapter;
-  const { type = "default", dark, spacer, hideSubchapterNav } = options || {};
+  const {
+    title,
+    number,
+    subchapters,
+    intro,
+    hideSubchapterNav,
+    dark,
+    options = {},
+  } = chapter;
+  const { spacer } = options || {};
 
   const timeout = useRef(null);
   const overscroll = useRef(null);
@@ -230,21 +238,13 @@ const Chapter = ({
       <div
         ref={chapterRef}
         id={`chapter-${number}`}
-        className={`${styles.maincontent} ${type === "simulation" && styles.simulatorcontent} ${transition && styles.smooth}`}
+        className={`${styles.maincontent} ${transition && styles.smooth}`}
       >
-        {type === "default" ? (
-          <div className={styles.chaptername}>{title}</div>
-        ) : null}
+        <div className={styles.chaptername}>{title}</div>
 
         <div className={styles.chapterintro}>
           {intro && intro.map((content) => <Content {...content} />)}
         </div>
-
-        {image && (
-          <div className={styles.chapterimage}>
-            <img src={image} alt="" />
-          </div>
-        )}
 
         {spacer && <Spacer border={false} />}
 

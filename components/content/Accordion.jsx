@@ -3,32 +3,32 @@ import AccordionItem from "./AccordionItem";
 import { useMemo } from "react";
 import Content from "@/components/content/Content";
 
-const Accordion = ({ title, numbered, questions, answers }) => {
+const Accordion = ({ title, numbered, items }) => {
   const renderedAnswers = useMemo(() => {
-    return answers.map((answer) => {
-      if (typeof answer === "string") {
-        return answer.split("\n\n").map((paragraph, index) => (
+    return items.map(({ description }) => {
+      if (typeof description === "string") {
+        return description.split("\n\n").map((paragraph, index) => (
           <div className={styles.answerparagraph} key={index}>
             {paragraph}
           </div>
         ));
-      } else if (Array.isArray(answer)) {
-        return answer.map(({ type, data }, index) => (
-          <Content key={index} type={type} data={data} />
+      } else if (Array.isArray(description)) {
+        return description.map((data, index) => (
+          <Content key={index} {...data} />
         ));
       }
     });
-  }, [answers]);
+  }, [items]);
 
   return (
     <div className={styles.accordioncontainer}>
       {title && <div className={styles.title}>{title}</div>}
 
-      {questions.map((item, index) => (
+      {items.map(({ title }, index) => (
         <AccordionItem
           key={`accordion-${index}`}
           number={numbered ? index + 1 : undefined}
-          question={item}
+          question={title}
         >
           {renderedAnswers[index]}
         </AccordionItem>

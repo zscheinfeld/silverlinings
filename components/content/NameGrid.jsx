@@ -3,11 +3,11 @@ import styles from "@/components/content/NameGrid.module.scss";
 const NameGrid = ({ items }) => {
   return (
     <div className={styles.items}>
-      {items.map(({ name, organization }, index) => {
+      {items.map(({ title, description }, index) => {
         return (
           <div className={styles.item} key={index}>
-            <span className={styles.name}>{name}</span>
-            <p className={styles.organization}>{organization}</p>
+            <span className={styles.name}>{title}</span>
+            <p className={styles.organization}>{description}</p>
           </div>
         );
       })}

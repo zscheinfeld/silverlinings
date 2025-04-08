@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Book from "@/components/Book";
 import Landing from "@/components/Landing";
-import { Chapters } from "@/data/book";
 import { useRouter } from "next/router";
 import Script from "next/script";
 import useActiveChapter from "@/hooks/useActiveChapter";
@@ -10,22 +9,25 @@ import { useState } from "react";
 
 import { Spectral } from "next/font/google";
 import MobileChapterNav from "@/components/chapter/MobileChapterNav";
+import { queryBook } from "@/contentful";
+import Introduction from "@/data/introduction";
+
 const spectral = Spectral({
   weight: ["200", "300", "400", "500", "600", "700", "800"],
   subsets: ["latin"],
 });
 
-export default function Home() {
+export default function Home({ book }) {
   const router = useRouter();
-  const { isOpen, activeChapter } = useActiveChapter();
+  const { isOpen, activeChapter } = useActiveChapter(book.chapters);
   const [isTopNavOpen, setIsTopNavOpen] = useState(false);
 
-  const chapter = Chapters[activeChapter];
+  const chapter = book.chapters[activeChapter];
 
   const navigateToBook = () => {
     void router.push(
       {
-        query: { ...router.query, chapter: Chapters[1].slug },
+        query: { ...router.query, chapter: book.chapters[1].slug },
       },
       undefined,
       {
@@ -58,16 +60,18 @@ export default function Home() {
         <TopNav
           handleOpen={setIsTopNavOpen}
           isOpen={isOpen}
-          dark={chapter?.options?.dark}
+          chapters={book.chapters}
+          dark={chapter?.dark}
         />
         <MobileChapterNav
           isOpen={isOpen}
-          chapters={Chapters}
+          chapters={book.chapters}
           activeChapter={activeChapter}
           handleOpen={setIsTopNavOpen}
         />
         <Landing isOpen={isOpen} onReachedBottom={navigateToBook} />
         <Book
+          book={book}
           activeChapter={activeChapter}
           isOpen={isOpen}
           setIsTopNavOpen={setIsTopNavOpen}
@@ -77,3 +81,9 @@ export default function Home() {
     </>
   );
 }
+
+export const getStaticProps = async () => {
+  const book = await queryBook();
+  book.chapters = [Introduction, ...book.chapters];
+  return { props: { book } };
+};
