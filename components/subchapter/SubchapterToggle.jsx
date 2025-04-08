@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./SubchapterToggle.module.scss";
+import Markdown from "markdown-to-jsx";
 
 const SubchapterToggle = ({ header, children, isHeader = false }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +16,7 @@ const SubchapterToggle = ({ header, children, isHeader = false }) => {
         <div className={styles.title}>
           <span className={styles.icon}>{isOpen ? "- " : "+ "}</span>
           <span className={isHeader ? styles.underline : undefined}>
-            {header}
+            <Markdown>{header}</Markdown>
           </span>
         </div>
       </div>

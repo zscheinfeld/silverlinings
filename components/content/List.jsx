@@ -1,3 +1,4 @@
+import Markdown from "markdown-to-jsx";
 import styles from "./List.module.scss";
 
 const List = ({ items }) => {
@@ -6,7 +7,9 @@ const List = ({ items }) => {
       {items.map(({ title, description }, index) => (
         <div key={index} className={styles.item}>
           <span className={styles.title}>{title}</span>
-          <p className={styles.description}>{description}</p>
+          <div className={styles.description}>
+            <Markdown>{description}</Markdown>
+          </div>
         </div>
       ))}
     </div>

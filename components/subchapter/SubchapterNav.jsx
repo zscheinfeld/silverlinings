@@ -1,3 +1,4 @@
+import Markdown from "markdown-to-jsx";
 import styles from "./SubchapterNav.module.scss";
 
 const SubchapterNav = ({
@@ -32,7 +33,7 @@ const SubchapterNav = ({
               className={`${styles.subchapterNavText} ${styles.subchapterButton}`}
             >
               {number}.{subchapter.number}
-              {subchapter.header}
+              <Markdown>{subchapter.header}</Markdown>
             </button>
           );
         } else if (subchapter.number > activeSubchapter) {

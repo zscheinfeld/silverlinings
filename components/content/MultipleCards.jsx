@@ -1,3 +1,4 @@
+import Markdown from "markdown-to-jsx";
 import styles from "./MultipleCards.module.scss";
 import sidenoteStyles from "./Sidenote.module.scss";
 import { useInView } from "react-intersection-observer";
@@ -16,10 +17,9 @@ const MultipleCards = ({ cards }) => {
             style={{ "--delay": `${index * 0.2}s` }}
           >
             <div className={styles.multipleSideNoteHeader}>{index + 1}</div>
-            <div
-              className={sidenoteStyles.sidenoteText}
-              dangerouslySetInnerHTML={{ __html: card }}
-            />
+            <div className={sidenoteStyles.sidenoteText}>
+              <Markdown>{card}</Markdown>
+            </div>
           </div>
         ))}
       </div>

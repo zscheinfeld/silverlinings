@@ -30,9 +30,9 @@ const Chapter = ({
     intro,
     hideSubchapterNav,
     dark,
+    bordered,
     options = {},
   } = chapter;
-  const { spacer } = options || {};
 
   const timeout = useRef(null);
   const overscroll = useRef(null);
@@ -246,13 +246,12 @@ const Chapter = ({
           {intro && intro.map((content) => <Content {...content} />)}
         </div>
 
-        {spacer && <Spacer border={false} />}
-
         {subchapters.map((subchapter, i) => (
           <Subchapter
             key={subchapter.slug}
             ref={(ref) => (subchapterRefs.current[i] = ref)}
             subchapter={subchapter}
+            bordered={bordered}
             chapterNumber={number}
           />
         ))}

@@ -196,11 +196,6 @@ const Simulation = ({ data }) => {
 
   return (
     <>
-      <div
-        className={styles.simulationhead}
-        dangerouslySetInnerHTML={{ __html: data.title }}
-      />
-
       <div className={styles.container} key={`${sectionIndex}`}>
         <div className={styles.middleContainer}>
           <div className={styles.inputContainer}>

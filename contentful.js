@@ -56,6 +56,7 @@ const bookQuery = `{
                     slug
                     number
                     dark
+                    bordered
                     hideSubchapterNav
                     introCollection(limit: 10) {
                         items ${contentQuery}
@@ -66,7 +67,6 @@ const bookQuery = `{
                             slug
                             number
                             type
-                            bordered
                             contentCollection(limit: 10) {
                                 items ${contentQuery}
                             }

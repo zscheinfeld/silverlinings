@@ -1,3 +1,4 @@
+import Markdown from "markdown-to-jsx";
 import styles from "./ImageGrid.module.scss";
 
 const ImageGrid = ({ type, items }) => {
@@ -13,7 +14,9 @@ const ImageGrid = ({ type, items }) => {
             <img className={styles.image} src={image} />
             <div className={styles.content}>
               <span className={styles.title}>{title}</span>
-              <p className={styles.description}>{description}</p>
+              <div className={styles.description}>
+                <Markdown>{description}</Markdown>
+              </div>
             </div>
           </div>
         );

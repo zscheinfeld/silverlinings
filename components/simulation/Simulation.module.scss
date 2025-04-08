@@ -125,10 +125,9 @@
   align-items: center;
 }
 
-.Item:hover{
+.Item:hover {
   background-color: rgba(255, 255, 255, 0.8);
 }
-
 
 .secondaryInputs {
   background-color: transparent;
@@ -158,13 +157,6 @@
 
 .secondaryInputsHeader:hover {
   color: rgba(0, 0, 0, 0.5);
-}
-
-.simulationhead {
-  font-size: 36px;
-  line-height: 92%;
-  font-family: "Spectral", serif;
-  text-align: center;
 }
 
 .simbuttonContainer {
@@ -283,7 +275,7 @@
 
 .customTooltip {
   background-color: #ffffff !important;
- 
+
   color: black !important;
   font-size: 14px !important;
   padding: 10px !important;
@@ -292,15 +284,14 @@
   border: solid black 1px !important;
   z-index: 1000 !important;
   transform: translateY() !important;
-  
+
   transition: opacity 0.5s ease-in-out !important;
   // opacity: 100% !important;
 }
 
 .customTooltip::before,
-.customTooltip::after
-{
+.customTooltip::after {
   display: none !important;
-  border:0 !important;
+  border: 0 !important;
   content: none !important;
 }
