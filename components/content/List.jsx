@@ -1,5 +1,5 @@
-import Markdown from "markdown-to-jsx";
 import styles from "./List.module.scss";
+import Markdown from "./Markdown";
 
 const List = ({ items }) => {
   return (

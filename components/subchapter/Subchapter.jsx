@@ -2,8 +2,8 @@ import styles from "./Subchapter.module.scss";
 import { forwardRef, Fragment, useMemo } from "react";
 import SubchapterToggle from "./SubchapterToggle";
 import Content from "@/components/content/Content";
-import Markdown from "markdown-to-jsx";
 import Spacer from "../content/Spacer";
+import Markdown from "../content/Markdown";
 
 const Subchapter = forwardRef(({ subchapter, bordered }, ref) => {
   let { header, content, slug, type } = subchapter;

@@ -1,4 +1,4 @@
-import Markdown from "markdown-to-jsx";
+import Markdown from "./Markdown";
 import styles from "./MultipleCards.module.scss";
 import sidenoteStyles from "./Sidenote.module.scss";
 import { useInView } from "react-intersection-observer";

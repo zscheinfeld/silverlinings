@@ -1,5 +1,5 @@
-import Markdown from "markdown-to-jsx";
 import styles from "./ImageGrid.module.scss";
+import Markdown from "./Markdown";
 
 const ImageGrid = ({ type, items }) => {
   return (

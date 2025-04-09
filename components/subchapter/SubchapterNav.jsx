@@ -1,4 +1,4 @@
-import Markdown from "markdown-to-jsx";
+import Markdown from "../content/Markdown";
 import styles from "./SubchapterNav.module.scss";
 
 const SubchapterNav = ({

@@ -1,5 +1,5 @@
 import styles from "@/components/content/NameGrid.module.scss";
-import Markdown from "markdown-to-jsx";
+import Markdown from "./Markdown";
 
 const NameGrid = ({ items }) => {
   return (

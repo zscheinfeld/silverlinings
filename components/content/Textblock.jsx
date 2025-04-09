@@ -1,5 +1,5 @@
+import Markdown from "./Markdown";
 import styles from "./Textblock.module.scss";
-import Markdown from "markdown-to-jsx";
 
 const Textblock = ({ paragraphs }) => {
   return (
