@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { Chapters } from "@/data/book";
 import { useRouter } from "next/router";
 
-const useActiveChapter = () => {
+const useActiveChapter = (chapters) => {
   const [activeChapter, setActiveChapter] = useState(null);
   const [isOpen, setIsOpen] = useState(null);
   const router = useRouter();
@@ -13,7 +12,7 @@ const useActiveChapter = () => {
         "chapter"
       );
       const matchedChapter =
-        Chapters.find((c) => c.slug === parsedChapter)?.number || 0;
+        chapters.find((c) => c.slug === parsedChapter)?.number || 0;
 
       if (matchedChapter) {
         setActiveChapter(matchedChapter);
@@ -29,7 +28,7 @@ const useActiveChapter = () => {
     if (router.isReady) {
       const { chapter } = router.query;
       const matchedChapter =
-        Chapters.find((c) => c.slug === chapter)?.number || 0;
+        chapters.find((c) => c.slug === chapter)?.number || 0;
 
       if (matchedChapter) {
         setActiveChapter(matchedChapter);
@@ -42,7 +41,7 @@ const useActiveChapter = () => {
     return () => {
       router.events.off("routeChangeComplete", handleRouteChange);
     };
-  }, [router.isReady]);
+  }, [router.isReady, chapters]);
 
   return { isOpen, activeChapter };
 };

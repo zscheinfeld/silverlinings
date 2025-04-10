@@ -2,8 +2,8 @@ import styles from "./MobileChapterNav.module.scss";
 import chapterStyles from "./Chapter.module.scss";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { Chapters } from "@/data/book";
 import { useRouter } from "next/router";
+import Markdown from "../content/Markdown";
 
 const MobileChapterNav = ({ isOpen, chapters, activeChapter, handleOpen }) => {
   const timeout = useRef(null);
@@ -37,7 +37,7 @@ const MobileChapterNav = ({ isOpen, chapters, activeChapter, handleOpen }) => {
 
   const handleChapterClick = (e, number) => {
     e.stopPropagation();
-    const chapter = Chapters[number];
+    const chapter = chapters[number];
     if (chapter.options?.forceLink) {
       router.push(chapter.options.forceLink);
       setExpanded(false);
@@ -95,7 +95,7 @@ const MobileChapterNav = ({ isOpen, chapters, activeChapter, handleOpen }) => {
                       },
                     }}
                   >
-                    <span>{subchapter.header}</span>
+                    <Markdown>{subchapter.header.split("\n")[0]}</Markdown>
                     <span>
                       {chapter.number}.{subchapter.number}
                     </span>

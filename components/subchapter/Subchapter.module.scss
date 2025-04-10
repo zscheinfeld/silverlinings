@@ -1,12 +1,25 @@
 .subchaptername {
   max-width: 620px;
-  font-size: 36px;
-  line-height: 100%;
+  text-align: center;
   font-family: "Spectral", serif;
+  white-space: pre-wrap;
+  line-height: 36px;
+}
+
+.singleline {
+  font-size: 36px;
   text-decoration: underline;
   text-decoration-thickness: 1.5px;
   text-underline-offset: 4px;
-  text-align: center;
+}
+
+.firstline {
+  display: block;
+  font-size: 36px;
+}
+
+.secondline {
+  font-size: 24px;
 }
 
 .subchaptermodules {

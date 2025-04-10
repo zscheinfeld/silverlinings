@@ -1,9 +1,12 @@
 import styles from "./ImageGrid.module.scss";
+import Markdown from "./Markdown";
 
 const ImageGrid = ({ type, items }) => {
   return (
     <div
-      className={type === "two-column" ? styles.items_two : styles.items_three}
+      className={
+        type === "TwoImageGrid" ? styles.items_two : styles.items_three
+      }
     >
       {items.map(({ title, description, image }, index) => {
         return (
@@ -11,7 +14,9 @@ const ImageGrid = ({ type, items }) => {
             <img className={styles.image} src={image} />
             <div className={styles.content}>
               <span className={styles.title}>{title}</span>
-              <p className={styles.description}>{description}</p>
+              <div className={styles.description}>
+                <Markdown>{description}</Markdown>
+              </div>
             </div>
           </div>
         );

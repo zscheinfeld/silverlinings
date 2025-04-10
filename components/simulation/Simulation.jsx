@@ -196,11 +196,6 @@ const Simulation = ({ data }) => {
 
   return (
     <>
-      <div
-        className={styles.simulationhead}
-        dangerouslySetInnerHTML={{ __html: data.title }}
-      />
-
       <div className={styles.container} key={`${sectionIndex}`}>
         <div className={styles.middleContainer}>
           <div className={styles.inputContainer}>
@@ -208,7 +203,9 @@ const Simulation = ({ data }) => {
               className={`${styles.explanation} ${showDescription ? styles.visible : ""}`}
             >
               <div className={styles.sectionHeader}>EXPLANATION</div>
-              <div className={styles.explanationText}>{data.explanation}</div>
+              <div className={styles.explanationText}>
+                {section.explanation}
+              </div>
             </div>
 
             <div className={styles.simbuttonContainer}>
@@ -328,7 +325,7 @@ const Simulation = ({ data }) => {
               )}
               <img
                 className={styles.outputImage}
-                src={`/${section.image}`}
+                src={section.image.url}
                 alt=""
               />
             </div>

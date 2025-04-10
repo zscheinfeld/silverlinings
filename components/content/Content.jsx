@@ -11,75 +11,73 @@ import List from "@/components/content/List";
 import Spacer from "@/components/content/Spacer";
 import Bodynavigation from "./Bodynavigation";
 
-const Content = ({ type, data }) => {
-  if (type === "text") {
-    return (
-      <Textblock
-        callouts={[data.callout]}
-        paragraphs={data.paragraphs}
-        bold={data.bold}
-      />
-    );
+const Content = ({ __typename, ...data }) => {
+  if (__typename === "Text") {
+    return <Textblock paragraphs={data.text} />;
   }
 
-  if (type === "chart") {
-    return <Chart data={data}></Chart>;
+  // if (__typename === "Chart") {
+  //   return <Chart data={data}></Chart>;
+  // }
+
+  if (__typename === "Sidenote") {
+    if (data.card2) {
+      return (
+        <MultipleCards
+          cards={[data.card1, data.card2, data.card3].filter(Boolean)}
+        />
+      );
+    } else {
+      return <Sidenote sidenotetext={data.card1}></Sidenote>;
+    }
   }
 
-  if (type === "sidenote") {
-    return <Sidenote sidenotetext={data.text}></Sidenote>;
-  }
+  // if (type === "multiplecards") {
+  //   return <MultipleCards />;
+  // }
 
-  if (type === "multiplecards") {
-    return <MultipleCards />;
-  }
-
-  if (type === "svgchart") {
+  if (__typename === "Chart") {
     return (
       <SvgChart
         source={data.source}
-        imageoverlay={data.imageoverlay}
-        overlaycontent={data.imageoverlay}
-        textoverlay={data.textoverlay}
-        textcontent={data.text}
+        imageoverlay={data.imageOverlay}
+        textcontent={data.textOverlay}
       />
     );
   }
 
-  if (type === "accordion") {
-    return (
-      <Accordion
-        title={data.title}
-        numbered={data.numbered}
-        questions={data.questions}
-        answers={data.answers}
-      />
-    );
+  if (__typename === "List") {
+    if (data.type === "Accordion") {
+      return (
+        <Accordion
+          title={data.title}
+          numbered={data.numbered}
+          items={data.items}
+        />
+      );
+    }
+    if (data.type === "ThreeImageGrid" || data.type === "TwoImageGrid") {
+      return <ImageGrid type={data.type} items={data.items} />;
+    }
+    if (data.type === "NameGrid") {
+      return <NameGrid items={data.items} />;
+    }
+    if (data.type === "List") {
+      return <List items={data.items} />;
+    }
   }
 
-  if (type === "bodynav") {
-    return <Bodynavigation></Bodynavigation>;
-  }
+  // if (type === "bodynav") {
+  //   return <Bodynavigation></Bodynavigation>;
+  // }
 
-  if (type === "simulation") {
+  if (__typename === "Simulation") {
     return <Simulation data={data} />;
   }
 
-  if (type === "imagegrid") {
-    return <ImageGrid {...data} />;
-  }
-
-  if (type === "namegrid") {
-    return <NameGrid {...data} />;
-  }
-
-  if (type === "list") {
-    return <List {...data} />;
-  }
-
-  if (type === "spacer") {
-    return <Spacer {...data} />;
-  }
+  // if (type === "spacer") {
+  //   return <Spacer {...data} />;
+  // }
 };
 
 export default Content;
