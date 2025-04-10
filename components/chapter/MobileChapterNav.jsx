@@ -95,7 +95,7 @@ const MobileChapterNav = ({ isOpen, chapters, activeChapter, handleOpen }) => {
                       },
                     }}
                   >
-                    <Markdown>{subchapter.header.split("\n")[0]}</Markdown>
+                    <Markdown>{subchapter.header.split(">")[0]}</Markdown>
                     <span>
                       {chapter.number}.{subchapter.number}
                     </span>
