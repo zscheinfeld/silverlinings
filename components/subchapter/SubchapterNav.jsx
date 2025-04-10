@@ -33,7 +33,7 @@ const SubchapterNav = ({
               className={`${styles.subchapterNavText} ${styles.subchapterButton}`}
             >
               {number}.{subchapter.number}
-              <Markdown>{subchapter.header.split("\n")[0]}</Markdown>
+              <Markdown>{subchapter.header.split(">")[0]}</Markdown>
             </button>
           );
         } else if (subchapter.number > activeSubchapter) {

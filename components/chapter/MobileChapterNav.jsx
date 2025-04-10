@@ -3,6 +3,7 @@ import chapterStyles from "./Chapter.module.scss";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Markdown from "../content/Markdown";
 
 const MobileChapterNav = ({ isOpen, chapters, activeChapter, handleOpen }) => {
   const timeout = useRef(null);
@@ -94,7 +95,7 @@ const MobileChapterNav = ({ isOpen, chapters, activeChapter, handleOpen }) => {
                       },
                     }}
                   >
-                    <span>{subchapter.header}</span>
+                    <Markdown>{subchapter.header.split("\n")[0]}</Markdown>
                     <span>
                       {chapter.number}.{subchapter.number}
                     </span>

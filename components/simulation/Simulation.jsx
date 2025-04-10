@@ -203,7 +203,9 @@ const Simulation = ({ data }) => {
               className={`${styles.explanation} ${showDescription ? styles.visible : ""}`}
             >
               <div className={styles.sectionHeader}>EXPLANATION</div>
-              <div className={styles.explanationText}>{data.explanation}</div>
+              <div className={styles.explanationText}>
+                {section.explanation}
+              </div>
             </div>
 
             <div className={styles.simbuttonContainer}>

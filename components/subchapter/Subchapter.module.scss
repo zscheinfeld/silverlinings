@@ -1,8 +1,9 @@
 .subchaptername {
   max-width: 620px;
-  line-height: 100%;
   text-align: center;
   font-family: "Spectral", serif;
+  white-space: pre-wrap;
+  line-height: 36px;
 }
 
 .singleline {
@@ -15,7 +16,6 @@
 .firstline {
   display: block;
   font-size: 36px;
-  margin-bottom: 16px;
 }
 
 .secondline {

@@ -3,6 +3,7 @@ import styles from "@/components/TopNav.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Hamburger from "@/icons/hamburger.svg";
+import Markdown from "./content/Markdown";
 
 const TopNav = ({ chapters, handleOpen, isOpen, dark = false }) => {
   const [activeNav, setActiveNav] = useState(0);
@@ -121,7 +122,7 @@ const TopNav = ({ chapters, handleOpen, isOpen, dark = false }) => {
                           },
                         }}
                       >
-                        {subchapter.header}
+                        <Markdown>{subchapter.header.split(">")[0]}</Markdown>
                       </Link>
                     </ol>
                   );

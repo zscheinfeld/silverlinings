@@ -21,7 +21,7 @@ const Subchapter = forwardRef(({ subchapter, bordered }, ref) => {
     return result;
   }, [content]);
 
-  const lines = header.split("\n");
+  const lines = header.split(">");
 
   return (
     <div

@@ -1,8 +1,3 @@
-const NEXT_PUBLIC_CONTENTFUL_SPACE = "bxded2igkelb";
-// TODO: Generate a new API Key and migrate to environment variable
-const NEXT_PUBLIC_CONTENTFUL_API_KEY =
-  "ABj5d9b1tXNYy3w3YmmmUpVtj_tj8pxKDP2NJn5RAOA";
-
 const imageQuery = `{
     url
     width
@@ -28,6 +23,7 @@ const contentQuery = `{
     ...on Simulation {
         sectionsCollection(limit: 4) {
             items {
+                explanation
                 title
                 image ${imageQuery}
                 inputs
@@ -37,7 +33,7 @@ const contentQuery = `{
     ...on List {
         type
         title
-        itemsCollection(limit: 10) {
+        itemsCollection(limit: 12) {
             items {
                 title
                 description
@@ -85,12 +81,12 @@ export async function queryBook() {
 
 export async function queryContentful(query) {
   const response = await fetch(
-    `https://graphql.contentful.com/content/v1/spaces/${NEXT_PUBLIC_CONTENTFUL_SPACE}/`,
+    `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE}/`,
     {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${NEXT_PUBLIC_CONTENTFUL_API_KEY}`,
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_CONTENTFUL_API_KEY}`,
       },
       body: JSON.stringify({ query }),
     }
