@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "@/components/Landing.module.scss";
 
 const WorldMap = () => {
+  const mapInstance = useRef(null);
 
-  
-  const [mapInstance, setMapInstance] = useState(null);
   useEffect(() => {
     // Dynamically add the CSS and JS files
     const loadMapAssets = async () => {
@@ -30,19 +29,19 @@ const WorldMap = () => {
 
       // Initialize the map after scripts are loaded
       mapScript.onload = () => {
+        if (document.getElementById("jvm-regions-group")) return;
+
         if (window.jsVectorMap) {
           const map = new window.jsVectorMap({
-            
             selectedRegions: ["US", "BR", "MA", "JP", "IN", "CN", "SA"],
             selector: "#map",
             map: "world",
             zoomOnScroll: false, // Disable zooming with the scroll wheel
             zoomButtons: false, // Disable zoom buttons
-            
+
             markers: [
               //US
               {
-      
                 coords: [37.0902, -95.7129],
                 // Add style for this particular marker
                 style: {
@@ -50,189 +49,180 @@ const WorldMap = () => {
                     fill: "#FFF3A8",
                     stroke: "none", // Remove the outline by setting stroke to 'none'
                     strokeWidth: 0, // Set the stroke width to 0
-                    r:6 // Adjust the size (radius) of the marker;
+                    r: 6, // Adjust the size (radius) of the marker;
                   },
-                    selected: { fill: "#FFF3A8" },
-                    selectedHover: { fill: "#FFF3A8", fillOpacity: 1 },
-                    hover:{ fill: "#FFF3A8" },
+                  selected: { fill: "#FFF3A8" },
+                  selectedHover: { fill: "#FFF3A8", fillOpacity: 1 },
+                  hover: { fill: "#FFF3A8" },
                 },
               },
-              
+
               // Brazil
               {
-                coords: [-14.2350, -51.9253],  // Coordinates for Brazil (latitude: -14.2350, longitude: -51.9253)
+                coords: [-14.235, -51.9253], // Coordinates for Brazil (latitude: -14.2350, longitude: -51.9253)
                 // Add style for this particular marker
                 style: {
                   initial: {
-                    fill: "#FB8ED7",        // Initial color of the marker
-                    stroke: "none",         // Remove the outline by setting stroke to 'none'
-                    strokeWidth: 0,         // Set the stroke width to 0
-                    r:6                   // Adjust the radius (size) of the marker
+                    fill: "#FB8ED7", // Initial color of the marker
+                    stroke: "none", // Remove the outline by setting stroke to 'none'
+                    strokeWidth: 0, // Set the stroke width to 0
+                    r: 6, // Adjust the radius (size) of the marker
                   },
                   selected: {
-                    fill: "#FB8ED7"         // Color when selected
+                    fill: "#FB8ED7", // Color when selected
                   },
                   selectedHover: {
-                    fill: "#FB8ED7",        // Color when selected and hovered
-                    fillOpacity: 1          // Ensure the opacity stays the same
+                    fill: "#FB8ED7", // Color when selected and hovered
+                    fillOpacity: 1, // Ensure the opacity stays the same
                   },
                   hover: {
-                    fill: "#FB8ED7"         // Color when hovered (same as initial)
-                  }
+                    fill: "#FB8ED7", // Color when hovered (same as initial)
+                  },
                 },
               },
 
               // Saudi Arabia
-{
-  coords: [23.8859, 45.0792],  // Coordinates for Saudi Arabia (latitude: 23.8859, longitude: 45.0792)
-  // Add style for this particular marker
-  style: {
-    initial: {
-      fill: "#BE8DD2",        // Fill color for the marker
-      stroke: "none",         // Remove the outline by setting stroke to 'none'
-      strokeWidth: 0,         // Set the stroke width to 0
-      r:6                 // Adjust the radius (size) of the marker
-    },
-    selected: {
-      fill: "#BE8DD2"         // Color when selected
-    },
-    selectedHover: {
-      fill: "#BE8DD2",        // Color when selected and hovered
-      fillOpacity: 1          // Ensure the opacity stays the same
-    },
-    hover: {
-      fill: "#BE8DD2"         // Color when hovered (same as initial)
-    }
-  },
-},
+              {
+                coords: [23.8859, 45.0792], // Coordinates for Saudi Arabia (latitude: 23.8859, longitude: 45.0792)
+                // Add style for this particular marker
+                style: {
+                  initial: {
+                    fill: "#BE8DD2", // Fill color for the marker
+                    stroke: "none", // Remove the outline by setting stroke to 'none'
+                    strokeWidth: 0, // Set the stroke width to 0
+                    r: 6, // Adjust the radius (size) of the marker
+                  },
+                  selected: {
+                    fill: "#BE8DD2", // Color when selected
+                  },
+                  selectedHover: {
+                    fill: "#BE8DD2", // Color when selected and hovered
+                    fillOpacity: 1, // Ensure the opacity stays the same
+                  },
+                  hover: {
+                    fill: "#BE8DD2", // Color when hovered (same as initial)
+                  },
+                },
+              },
 
-// Morocco
-{
-  coords: [31.7917, -7.0926],  // Coordinates for Morocco (latitude: 31.7917, longitude: -7.0926)
-  // Add style for this particular marker
-  style: {
-    initial: {
-      fill: "#BE8DD2",        // Fill color for the marker
-      stroke: "none",         // Remove the outline by setting stroke to 'none'
-      strokeWidth: 0,         // Set the stroke width to 0
-      r:6                  // Adjust the radius (size) of the marker
-    },
-    selected: {
-      fill: "#BE8DD2"         // Color when selected
-    },
-    selectedHover: {
-      fill: "#BE8DD2",        // Color when selected and hovered
-      fillOpacity: 1          // Ensure the opacity stays the same
-    },
-    hover: {
-      fill: "#BE8DD2"         // Color when hovered (same as initial)
-    }
-  },
-},
+              // Morocco
+              {
+                coords: [31.7917, -7.0926], // Coordinates for Morocco (latitude: 31.7917, longitude: -7.0926)
+                // Add style for this particular marker
+                style: {
+                  initial: {
+                    fill: "#BE8DD2", // Fill color for the marker
+                    stroke: "none", // Remove the outline by setting stroke to 'none'
+                    strokeWidth: 0, // Set the stroke width to 0
+                    r: 6, // Adjust the radius (size) of the marker
+                  },
+                  selected: {
+                    fill: "#BE8DD2", // Color when selected
+                  },
+                  selectedHover: {
+                    fill: "#BE8DD2", // Color when selected and hovered
+                    fillOpacity: 1, // Ensure the opacity stays the same
+                  },
+                  hover: {
+                    fill: "#BE8DD2", // Color when hovered (same as initial)
+                  },
+                },
+              },
 
-// Japan
-{
-  coords: [36.2048, 138.2529],  // Coordinates for Japan (latitude: 36.2048, longitude: 138.2529)
-  // Add style for this particular marker
-  style: {
-    initial: {
-      fill: "#F0696B",        // Fill color for the marker
-      stroke: "none",         // Remove the outline by setting stroke to 'none'
-      strokeWidth: 0,         // Set the stroke width to 0
-      r:6                   // Adjust the radius (size) of the marker
-    },
-    selected: {
-      fill: "#F0696B"         // Color when selected
-    },
-    selectedHover: {
-      fill: "#F0696B",        // Color when selected and hovered
-      fillOpacity: 1          // Ensure the opacity stays the same
-    },
-    hover: {
-      fill: "#F0696B"         // Color when hovered (same as initial)
-    }
-  },
-},
+              // Japan
+              {
+                coords: [36.2048, 138.2529], // Coordinates for Japan (latitude: 36.2048, longitude: 138.2529)
+                // Add style for this particular marker
+                style: {
+                  initial: {
+                    fill: "#F0696B", // Fill color for the marker
+                    stroke: "none", // Remove the outline by setting stroke to 'none'
+                    strokeWidth: 0, // Set the stroke width to 0
+                    r: 6, // Adjust the radius (size) of the marker
+                  },
+                  selected: {
+                    fill: "#F0696B", // Color when selected
+                  },
+                  selectedHover: {
+                    fill: "#F0696B", // Color when selected and hovered
+                    fillOpacity: 1, // Ensure the opacity stays the same
+                  },
+                  hover: {
+                    fill: "#F0696B", // Color when hovered (same as initial)
+                  },
+                },
+              },
 
-// China
-{
-  coords: [35.8617, 104.1954],  // Coordinates for China (latitude: 35.8617, longitude: 104.1954)
-  // Add style for this particular marker
-  style: {
-    initial: {
-      fill: "#527BFF",        // Fill color for the marker
-      stroke: "none",         // Remove the outline by setting stroke to 'none'
-      strokeWidth: 0,         // Set the stroke width to 0
-      r:6                   // Adjust the radius (size) of the marker
-    },
-    selected: {
-      fill: "#527BFF"         // Color when selected
-    },
-    selectedHover: {
-      fill: "#527BFF",        // Color when selected and hovered
-      fillOpacity: 1          // Ensure the opacity stays the same
-    },
-    hover: {
-      fill: "#527BFF"         // Color when hovered (same as initial)
-    }
-  },
-},
-// Italy
-{
-  coords: [41.87194, 12.56738],  // Coordinates for Italy (latitude: 41.87194, longitude: 12.56738)
-  // Add style for this particular marker
-  style: {
-    initial: {
-      fill: "#7FA8E9",        // Fill color for the marker
-      stroke: "none",         // Remove the outline by setting stroke to 'none'
-      strokeWidth: 0,         // Set the stroke width to 0
-      r:6,                   // Adjust the radius (size) of the marker
-    },
-    selected: {
-      fill: "#7FA8E9"         // Color when selected
-    },
-    selectedHover: {
-      fill: "#7FA8E9",        // Color when selected and hovered
-      fillOpacity: 1          // Ensure the opacity stays the same
-    },
-    hover: {
-      fill: "#7FA8E9"         // Color when hovered (same as initial)
-    }
-  },
-},
+              // China
+              {
+                coords: [35.8617, 104.1954], // Coordinates for China (latitude: 35.8617, longitude: 104.1954)
+                // Add style for this particular marker
+                style: {
+                  initial: {
+                    fill: "#527BFF", // Fill color for the marker
+                    stroke: "none", // Remove the outline by setting stroke to 'none'
+                    strokeWidth: 0, // Set the stroke width to 0
+                    r: 6, // Adjust the radius (size) of the marker
+                  },
+                  selected: {
+                    fill: "#527BFF", // Color when selected
+                  },
+                  selectedHover: {
+                    fill: "#527BFF", // Color when selected and hovered
+                    fillOpacity: 1, // Ensure the opacity stays the same
+                  },
+                  hover: {
+                    fill: "#527BFF", // Color when hovered (same as initial)
+                  },
+                },
+              },
+              // Italy
+              {
+                coords: [41.87194, 12.56738], // Coordinates for Italy (latitude: 41.87194, longitude: 12.56738)
+                // Add style for this particular marker
+                style: {
+                  initial: {
+                    fill: "#7FA8E9", // Fill color for the marker
+                    stroke: "none", // Remove the outline by setting stroke to 'none'
+                    strokeWidth: 0, // Set the stroke width to 0
+                    r: 6, // Adjust the radius (size) of the marker
+                  },
+                  selected: {
+                    fill: "#7FA8E9", // Color when selected
+                  },
+                  selectedHover: {
+                    fill: "#7FA8E9", // Color when selected and hovered
+                    fillOpacity: 1, // Ensure the opacity stays the same
+                  },
+                  hover: {
+                    fill: "#7FA8E9", // Color when hovered (same as initial)
+                  },
+                },
+              },
 
-// France
-{
-  coords: [46.603354, 1.888334],  // Coordinates for France (latitude: 46.603354, longitude: 1.888334)
-  // Add style for this particular marker
-  style: {
-    initial: {
-      fill: "#FFF3A8",        // Fill color for the marker
-      stroke: "none",         // Remove the outline by setting stroke to 'none'
-      strokeWidth: 0,         // Set the stroke width to 0
-      r:6                   // Adjust the radius (size) of the marker
-    },
-    selected: {
-      fill: "#FFF3A8"         // Color when selected
-    },
-    selectedHover: {
-      fill: "#FFF3A8",        // Color when selected and hovered
-      fillOpacity: 1          // Ensure the opacity stays the same
-    },
-    hover: {
-      fill: "#FFF3A8"         // Color when hovered (same as initial)
-    }
-  },
-},
-
-
-
-
-
-              
-
-
-              
+              // France
+              {
+                coords: [46.603354, 1.888334], // Coordinates for France (latitude: 46.603354, longitude: 1.888334)
+                // Add style for this particular marker
+                style: {
+                  initial: {
+                    fill: "#FFF3A8", // Fill color for the marker
+                    stroke: "none", // Remove the outline by setting stroke to 'none'
+                    strokeWidth: 0, // Set the stroke width to 0
+                    r: 6, // Adjust the radius (size) of the marker
+                  },
+                  selected: {
+                    fill: "#FFF3A8", // Color when selected
+                  },
+                  selectedHover: {
+                    fill: "#FFF3A8", // Color when selected and hovered
+                    fillOpacity: 1, // Ensure the opacity stays the same
+                  },
+                  hover: {
+                    fill: "#FFF3A8", // Color when hovered (same as initial)
+                  },
+                },
+              },
             ],
             onRegionTooltipShow: function (event, tooltip, region) {
               tooltip.css({
@@ -262,7 +252,7 @@ const WorldMap = () => {
                           on Social Security and Medicare will more than double, from $1.3 trillion to $2.7 trillion per year. 
                           The U.S. Social Security system will become insolvent by 2034 if its current tax and benefit structure is maintained.</p>
                       </div>`,
-                  true,
+                  true
                 );
               } else if (region === "BR") {
                 tooltip.text(
@@ -270,7 +260,7 @@ const WorldMap = () => {
                           <div class=${styles.tooltiphead}>Brazil</div>
                           <p> By 2050, Brazil’s population of older adults will triple. Adults aged 60 or older will make up 25% of the country’s population, while the country’s total population will begin to shrink.</p>
                       </div>`,
-                  true,
+                  true
                 );
               } else if (region === "MA") {
                 tooltip.text(
@@ -278,7 +268,7 @@ const WorldMap = () => {
                           <div class=${styles.tooltiphead}>Morocco</div>
                           <p>By 2050, 25% of Morocco’s population will be over 60. In urban areas, the elderly population is expected to double in the span of 9 years, between 2021 and 2030.</p>
                       </div>`,
-                  true,
+                  true
                 );
               } else if (region === "IN") {
                 tooltip.text(
@@ -286,7 +276,7 @@ const WorldMap = () => {
                           <div class=${styles.tooltiphead}>India</div>
                           <p>By 2050, India’s population of older adults will more than double, from 149 million to 347 million. Older adults will also surpass the number of children in the country.</p>
                       </div>`,
-                  true,
+                  true
                 );
               } else if (region === "JP") {
                 tooltip.text(
@@ -294,7 +284,7 @@ const WorldMap = () => {
                           <div class=${styles.tooltiphead}>Japan</div>
                           <p>In 2023, Japan recorded more than two deaths for every birth. By 2050, non-workers aged 50 and older could make up roughly 60% of Japan’s population.</p>
                       </div>`,
-                  true,
+                  true
                 );
               } else if (region === "CN") {
                 tooltip.text(
@@ -302,7 +292,7 @@ const WorldMap = () => {
                           <div class=${styles.tooltiphead}>China</div>
                           <p> By 2050, China will be home to over half a billion adults aged 65 and older. By the same year, for every Chinese retiree, there will be only 1.6 working-age adults. The Chinese government will likely need to increase its age of retirement whether or not biological aging can be therapeutically targeted by then.</p>
                       </div>`,
-                  true,
+                  true
                 );
               } else if (region === "SA") {
                 tooltip.text(
@@ -310,7 +300,7 @@ const WorldMap = () => {
                           <div class=${styles.tooltiphead}>Saudi Arabia</div>
                           <p>Between 2020 and 2050, Saudi Arabia’s population will see a fivefold increase in adults aged 60 and older. In parallel, its fertility rate will go from 2.2 to 1.8.</p>
                       </div>`,
-                  true,
+                  true
                 );
               }
             },
@@ -326,6 +316,7 @@ const WorldMap = () => {
               selectedHover: { fill: "#FFFFFF", fillOpacity: 1 },
             },
           });
+          mapInstance.current = map;
         }
       };
     };
@@ -333,74 +324,58 @@ const WorldMap = () => {
     loadMapAssets();
 
     // Handle window resize and update map size
-const handleResize = () => {
-  if (mapInstance) {
-    mapInstance.updateSize(); // Resize the map dynamically
-  }
-};
+    const handleResize = () => {
+      if (mapInstance.current) {
+        mapInstance.current.updateSize(); // Resize the map dynamically
+      }
+    };
 
-window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResize);
 
-// Clean up listener on unmount
-return () => {
-  window.removeEventListener("resize", handleResize);
-};
+    // Clean up listener on unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return (
-    <div className={styles.mapoutercountainer}
-    >
-
-        <div className={styles.keycontainer}>
-          <div className={styles.key}>
+    <div className={styles.mapoutercountainer}>
+      <div className={styles.keycontainer}>
+        <div className={styles.key}>
           <b>2025, POPULATION 60+</b>
 
           <div className={styles.keyitem}>
-            <div className={styles.symbol}>
-            </div>
-            35%  {" > "} (JAPAN)
+            <div className={styles.symbol}></div>
+            35% {" > "} (JAPAN)
           </div>
 
           <div className={styles.keyitem}>
-            <div className= {`${styles.symbol} ${styles.lightblue}`}>
-            </div>
-            30%  {" > "} (ITALY)
+            <div className={`${styles.symbol} ${styles.lightblue}`}></div>
+            30% {" > "} (ITALY)
           </div>
 
           <div className={styles.keyitem}>
-            <div className={`${styles.symbol} ${styles.yellow}`}>
-            </div>
-            25%  {" > "} (U.S., FRANCE)
+            <div className={`${styles.symbol} ${styles.yellow}`}></div>
+            25% {" > "} (U.S., FRANCE)
           </div>
 
           <div className={styles.keyitem}>
-            <div className={`${styles.symbol} ${styles.darkblue}`}>
-            </div>
-            20%  {" > "} (CHINA)
+            <div className={`${styles.symbol} ${styles.darkblue}`}></div>
+            20% {" > "} (CHINA)
           </div>
 
           <div className={styles.keyitem}>
-          <div className={`${styles.symbol} ${styles.pink}`}>
-            </div>
-            15%  {" > "} (BRAZIL)
+            <div className={`${styles.symbol} ${styles.pink}`}></div>
+            15% {" > "} (BRAZIL)
           </div>
 
           <div className={styles.keyitem}>
-          <div className={`${styles.symbol} ${styles.purple}`}>
-            </div>
-            8%  {" > "} (SAUDI ARABIA,
-        MOROCCO)
+            <div className={`${styles.symbol} ${styles.purple}`}></div>
+            8% {" > "} (SAUDI ARABIA, MOROCCO)
           </div>
-
-
-          </div>
-
-          
-
-          
-
         </div>
-      
+      </div>
+
       <div className={styles.mapbackground}>
         <div className={styles.verticallinesbg}>
           <div className={styles.verticallines}>
@@ -445,25 +420,31 @@ return () => {
             <div className={styles.vline}></div>
           </div>
         </div>
-          <div className={styles.horizontallinesbg}>
-            <div className={styles.horizontallines}>
-              {/* <div className={styles.legend}>
+        <div className={styles.horizontallinesbg}>
+          <div className={styles.horizontallines}>
+            {/* <div className={styles.legend}>
           
             </div> */}
-              <div className={styles.hline}></div>
-              <div className={styles.hline}></div>
-              <div className={styles.hline}></div>
-              <div className={styles.hline}></div>
-              <div className={styles.hline}></div>
-              <div className={styles.hline}></div>
-              <div className={styles.hline}></div>
-              <div className={styles.hline}></div>
-            </div>
+            <div className={styles.hline}></div>
+            <div className={styles.hline}></div>
+            <div className={styles.hline}></div>
+            <div className={styles.hline}></div>
+            <div className={styles.hline}></div>
+            <div className={styles.hline}></div>
+            <div className={styles.hline}></div>
+            <div className={styles.hline}></div>
           </div>
+        </div>
       </div>
 
-      <div style={{ width: "100%", height: "65%"}}>
-        <div id="map" style={{ width: "100%", height: "100%" }}></div>
+      <div style={{ width: "100%", height: "65%" }}>
+        <div
+          id="map"
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
+        ></div>
       </div>
     </div>
   );
