@@ -7,15 +7,23 @@ const Overview = () => {
     {
       futureTitle: "Slow brain aging by 1 year",
       imgSrc: "brain.png",
-      futureImageLabel: "Productivity",
+      futureImageLabel: "Productivity (P)",
       futureImageLabelColor: "yellow",
       futureInfo: "Most productivity depends on cognitive function, and brain health is the foundation of human identity. Though a distinction is often made between 'healthy' brain aging and neurodegenerative diseases, the boundary between normal and abnormal neurodegeneration is blurry. Much funding is devoted to late-stage brain diseases, but the predictable decline of brain health with age remains overlooked.",
       stat1: "$229B",
       stat2: "$9.3T",
       stat3: "257k",
       statLabel1: "Yearly gain to U.S. GDP",
-      statLabel2: "Long-term return (Net Present Value over decades)",
-      statLabel3: "Lived saved or gained (by 2050)",
+      statLabel2: (
+        <>
+          Long-term return<br />(Net Present Value over decades)
+        </>
+      ),
+      statLabel3: (
+        <>
+          Lives saved or gained<br />(by 2050)
+        </>
+      ),
     },
     {
       futureTitle: "Slow reproductive aging by 1 year",
@@ -27,23 +35,44 @@ const Overview = () => {
       stat2: "$8.5T",
       stat3: "25k",
       statLabel1: "Yearly gain to U.S. GDP",
-      statLabel2: "Long-term return (Net Present Value over decades)",
-      statLabel3: "Lived saved or gained (by 2050)",
+      statLabel2: (
+        <>
+          Long-term return<br />(Net Present Value over decades)
+        </>
+      ),
+      statLabel3: (
+        <>
+          Lives saved or gained<br />(by 2050)
+        </>
+      ),
     },
 
     {
-        futureTitle: "Replace aging: 2x increase in organ supply",
-        imgSrc: "Heart.png",
-        futureImageLabel: "Mortality (M)",
-        futureImageLabelColor: "green",
-        futureInfo: "The decline of organ function is a common symptom of aging. Many people need their organs replaced as they age. In the near future, a combination of biotechnologies may be needed to improve biological aging — including organ, cell, and tissue engineering. We simulate the economic effects of first meeting organ demand for the terminally ill, then achieving true organ abundance.",
-        stat1: "$68B",
-        stat2: "$3.9T",
-        stat3: "600k",
-        statLabel1: "Yearly gain to U.S. GDP",
-        statLabel2: "Long-term return (Net Present Value over decades)",
-        statLabel3: "Lived saved or gained (by 2050)",
-      },
+      futureTitle: "Replace aging: 2x increase in organ supply",
+      altTitle: "Replace aging: 4x increase in organ supply",
+      imgSrc: "Heart.png",
+      futureImageLabel: "Mortality (M)",
+      futureImageLabelColor: "green",
+      futureInfo: "The decline of organ function is a common symptom of aging. Many people need their organs replaced as they age. In the near future, a combination of biotechnologies may be needed to improve biological aging — including organ, cell, and tissue engineering. We simulate the economic effects of first meeting organ demand for the terminally ill, then achieving true organ abundance.",
+      stat1: "$68B",
+      stat2: "$3.9T",
+      stat3: "600k",
+      altStat1: "$129B/y",
+      altStat2: "$7.2T",
+      altStat3: "1.1M",
+      statLabel1: "Yearly gain to U.S. GDP",
+      statLabel2: (
+        <>
+          Long-term return<br />(Net Present Value over decades)
+        </>
+      ),
+      statLabel3: (
+        <>
+          Lives saved or gained<br />(by 2050)
+        </>
+      ),
+      enableSwitch: true
+    },
 
 
     {
@@ -56,8 +85,16 @@ const Overview = () => {
         stat2: "$22.5T",
         stat3: "1.3M",
         statLabel1: "Yearly gain to U.S. GDP",
-        statLabel2: "Long-term return (Net Present Value over decades)",
-        statLabel3: "Lived saved or gained (by 2050)",
+        statLabel2: (
+          <>
+            Long-term return<br />(Net Present Value over decades)
+          </>
+        ),
+        statLabel3: (
+          <>
+            Lives saved or gained<br />(by 2050)
+          </>
+        ),
       },
 
       {
@@ -70,8 +107,16 @@ const Overview = () => {
         stat2: "$2.7T",
         stat3: "300k",
         statLabel1: "Yearly gain to U.S. GDP",
-        statLabel2: "Long-term return (Net Present Value over decades)",
-        statLabel3: "Lived saved or gained (by 2050)",
+        statLabel2: (
+          <>
+            Long-term return<br />(Net Present Value over decades)
+          </>
+        ),
+        statLabel3: (
+          <>
+            Lives saved or gained<br />(by 2050)
+          </>
+        ),
       },
 
       
@@ -137,6 +182,7 @@ const Overview = () => {
           >
             <OverviewItem
               futureTitle={item.futureTitle}
+              altTitle={item.altTitle}
               imgSrc={item.imgSrc}
               futureImageLabel={item.futureImageLabel}
               futureImageLabelColor={item.futureImageLabelColor}
@@ -144,10 +190,14 @@ const Overview = () => {
               stat1={item.stat1}
               stat2={item.stat2}
               stat3={item.stat3}
+              altStat1={item.altStat1}
+              altStat2={item.altStat2}
+              altStat3={item.altStat3}
               statLabel1={item.statLabel1}
               statLabel2={item.statLabel2}
               statLabel3={item.statLabel3}
-            />
+              enableSwitch={item.enableSwitch}
+/>
           </div>
         ))}
       </div>
