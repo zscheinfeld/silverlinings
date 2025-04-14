@@ -33,7 +33,7 @@ const WorldMap = () => {
 
         if (window.jsVectorMap) {
           const map = new window.jsVectorMap({
-            selectedRegions: ["US", "BR", "MA", "JP", "IN", "CN", "SA"],
+            selectedRegions: ["US", "BR", "MA", "JP", "IN", "CN", "SA", "IT", "FR", "RU", "KR"],
             selector: "#map",
             map: "world",
             zoomOnScroll: false, // Disable zooming with the scroll wheel
@@ -223,20 +223,75 @@ const WorldMap = () => {
                   },
                 },
               },
+
+              // Russia
+{
+  coords: [61.5240, 105.3188],
+  style: {
+    initial: {
+      fill: "#FFF3A8", // Matches tooltip and key color for Russia (25%)
+      stroke: "none",
+      strokeWidth: 0,
+      r: 6,
+    },
+    selected: { fill: "#FFF3A8" },
+    selectedHover: { fill: "#FFF3A8", fillOpacity: 1 },
+    hover: { fill: "#FFF3A8" },
+  },
+},
+
+// South Korea
+{
+  coords: [35.9078, 127.7669],
+  style: {
+    initial: {
+      fill: "#7FA8E9", // Matches tooltip and key color for South Korea (30%)
+      stroke: "none",
+      strokeWidth: 0,
+      r: 6,
+    },
+    selected: { fill: "#7FA8E9" },
+    selectedHover: { fill: "#7FA8E9", fillOpacity: 1 },
+    hover: { fill: "#7FA8E9" },
+  },
+},
+
+// India
+{
+  coords: [20.5937, 78.9629],
+  style: {
+    initial: {
+      fill: "#BE8DD2", // Matches tooltip and key color for India (~10%)
+      stroke: "none",
+      strokeWidth: 0,
+      r: 6,
+    },
+    selected: { fill: "#BE8DD2" },
+    selectedHover: { fill: "#BE8DD2", fillOpacity: 1 },
+    hover: { fill: "#BE8DD2" },
+  },
+},
+
+
+
             ],
             onRegionTooltipShow: function (event, tooltip, region) {
+  // List of regions where the tooltip should be enabled
+  const enabledRegions = ["US", "BR", "MA", "JP", "IN", "CN", "SA", "IT", "FR", "RU", "KR"]; // Add region codes here
+
               tooltip.css({
                 backgroundColor: "transparent",
                 zIndex: "5",
               });
               console.log("Hovered over:", region); // Debugging log
 
-              // List of regions where the tooltip should be enabled
-              const enabledRegions = ["US", "BR", "MA", "JP", "IN", "CN", "SA"]; // Add region codes here
+            
 
               if (!enabledRegions.includes(region)) {
                 // Disable tooltip by preventing it from showing
                 // tooltip.text("");
+                event.preventDefault(); // ⛔ Stop tooltip from even attempting to render
+                tooltip.text("");       // Just in case, clear text
                 tooltip.hide();
                 return;
               }
@@ -303,6 +358,44 @@ const WorldMap = () => {
                   true
                 );
               }
+              else if (region === "IT") {
+                tooltip.text(
+                  `<div class=${styles.tooltipcustom}>
+                          <div class=${styles.tooltiphead}>Italy</div>
+                          <p>By 2050, Italy's population will shrink by roughly 6 million people. </p>
+                      </div>`,
+                  true
+                );
+              }
+              else if (region === "FR") {
+                tooltip.text(
+                  `<div class=${styles.tooltipcustom}>
+                          <div class=${styles.tooltiphead}>France</div>
+                          <p>Between 2030 and 2050, the number of people aged 85 and over in France will increase by almost 90%. </p>
+                      </div>`,
+                  true
+                );
+              }
+              else if (region === "RU") {
+                tooltip.text(
+                  `<div class=${styles.tooltipcustom}>
+                          <div class=${styles.tooltiphead}>Russia</div>
+                          <p>Between 1995 and 2050, Russia's population will shrink by over 25 million people. 
+                           </p>
+                      </div>`,
+                  true
+                );
+              }
+              else if (region === "KR") {
+                tooltip.text(
+                  `<div class=${styles.tooltipcustom}>
+                          <div class=${styles.tooltiphead}>South Korea</div>
+                          <p>South Korea is the fastest-aging population in the world, and will overtake Japan as the country with the oldest population by the year 2050. By then, 45% of South Korea's population will be over 60, compared to 42% in Japan. 
+                           </p>
+                      </div>`,
+                  true
+                );
+              }
             },
 
             regionStyle: {
@@ -342,7 +435,7 @@ const WorldMap = () => {
     <div className={styles.mapoutercountainer}>
       <div className={styles.keycontainer}>
         <div className={styles.key}>
-          <b>2025, POPULATION 60+</b>
+          <b>YEAR 2025, POPULATION 60+</b>
 
           <div className={styles.keyitem}>
             <div className={styles.symbol}></div>
@@ -351,12 +444,12 @@ const WorldMap = () => {
 
           <div className={styles.keyitem}>
             <div className={`${styles.symbol} ${styles.lightblue}`}></div>
-            30% {" > "} (ITALY)
+            30% {" > "} (ITALY, SOUTH KOREA)
           </div>
 
           <div className={styles.keyitem}>
             <div className={`${styles.symbol} ${styles.yellow}`}></div>
-            25% {" > "} (U.S., FRANCE)
+            25% {" > "} (U.S., FRANCE, RUSSIA)
           </div>
 
           <div className={styles.keyitem}>
@@ -371,7 +464,7 @@ const WorldMap = () => {
 
           <div className={styles.keyitem}>
             <div className={`${styles.symbol} ${styles.purple}`}></div>
-            8% {" > "} (SAUDI ARABIA, MOROCCO)
+            ~10% {" > "} (SAUDI ARABIA, MOROCCO, INDA)
           </div>
         </div>
       </div>

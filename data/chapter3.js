@@ -100,6 +100,15 @@ const Chapter3 = {
             ],
           },
         },
+
+        {
+          type: "svgchart",
+          data: {
+            source: ["/fineprintchart/3_2.svg"],
+            textoverlay: false,
+            imageoverlay: false,
+          },
+        },
       ],
     },
     {
@@ -109,7 +118,28 @@ const Chapter3 = {
       options: {
         type: "toggle",
       },
-      content: [],
+      content: [
+        {
+          type: "text",
+          data: {
+            paragraphs: [
+    
+              "<b>An ARPA-Vet for research on aging biology</b><br>The Veterans Affairs (VA) health system is overburdened, sustaining roughly 10 million retirees suffering from age-related diseases. Yet there may be a silver lining in this vast population of older adults: the Million Veterans Program (MVP). The MVP is a national research program with significant datasets on how “genes, lifestyle, military experiences, and exposures affect health and wellness in Veterans, with over 1 million veterans enrolled. It is one of the largest research programs in the world with biomarkers of overall health. Leveraging this program and making its data more widely accessible to researchers could improve the VA’s chances of extending its veterans’ healthspan, while offering invaluable insight on the healthspan of all humans. These understudied measurements offer a stunning possibility to collect and validate biomarkers of aging and health.",
+
+              "Today, only VA employees can conduct research under VA sponsorship. This limits the advancement of breakthroughs that could directly benefit millions of veterans and Americans. A new ARPA-Vet office within the VA Office of Research and Development could effectively transform how the United States approaches caring for aging veterans, while addressing many of the shortcomings of the broader U.S. healthcare and biomedical research systems. ",
+
+              "<b>Dr. Stebbins writes:</b><br> “Launching an advanced research effort like ARPA-H or DARPA out of the VA Research office requires authorizing legislation. Unlike other federal agencies, such as the Department of Defense, VA does not have the statutory authority to issue research contracts to any other non-VA entities. There would need to be an authorizing bill similar to the authorization created for the establishment of ARPA-H. Additionally, there would need to be an increase in appropriations that are large enough to have an impact, but not so large that it would be difficult to execute. The authorizing legislation should also address the need to make veterans’ health data widely available to qualified researchers in such a way that privacy is completely protected while using this tremendous health resource for driving insight and guiding a new form of care intended to drive [improvements in healthspan].”",
+            ],
+          },
+        },
+        ,
+        {
+          type: "sidenote",
+          data: {
+            text: "See the book for all policy considerations. We highlight one especially compelling idea here, thought up by Dr. Michael Stebbins, a geneticist and previously Assistant Director for Biotechnology in the White House Office of Science and Technology Policy under President Obama. Dr. Stebbins was also the main driver behind  the founding of Advanced-Research Projects Agency for Health (ARPA-H).",
+          },
+        },
+      ],
     },
     {
       slug: "3-4",
