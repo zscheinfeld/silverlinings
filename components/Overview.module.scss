@@ -4,6 +4,8 @@
   width: 100vw;
   background-color: #191818;
   padding-bottom: 360px;
+  z-index: 1000;
+  position: relative;
 }
 
 .overviewInnerContainer {
@@ -174,6 +176,7 @@ text-align: left;
   transition: opacity 0.4s ease;
   display: flex;
   align-items: center;
+  padding-right: 24px;
 }
 
 .innerfutureTitleWrapper {
@@ -224,4 +227,46 @@ text-align: left;
 
 .tagDefault {
   color: white;
+}
+
+.titleButton {
+  background: none;
+  border: none;
+  font: inherit;
+  padding: 0px 12px;
+  margin: 0;
+  color: white;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  z-index: 2000;
+}
+
+.titleButton:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.active {
+  opacity: 1;
+  // text-decoration: underline;
+}
+
+.inactive {
+  opacity: 0.45;
+}
+
+.inactive:hover {
+  opacity: 1;
+}
+
+.scrollFadeIn {
+  opacity: 0;
+  // transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
+}
+
+.scrollFadeIn.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
