@@ -39,11 +39,28 @@ const OverviewItem = ({
   return (
     <div className={styles.futureContainer}>
       <div className={styles.futureTitle}>
-  <div className={styles.innerfutureTitle}>
-    {switched && altTitle ? altTitle : futureTitle}
-  </div>
+      <div className={styles.innerfutureTitleToggle}>
+  <button
+    className={`${styles.titleButton} ${!switched ? styles.active : styles.inactive}`}
+    onClick={() => enableSwitch && setSwitched(false)}
+    disabled={!enableSwitch || !switched} // disable when already active
+  >
+    {futureTitle}
+  </button>
+  <button
+    className={`${styles.titleButton} ${switched ? styles.active : styles.inactive}`}
+    onClick={() => enableSwitch && setSwitched(true)}
+    disabled={!enableSwitch || switched}
+  >
+    {altTitle}
+  </button>
+</div>
 
-  {enableSwitch && (
+
+  {/* <div className={styles.innerfutureTitle}>
+    {switched && altTitle ? altTitle : futureTitle}
+  </div> */}
+  {/* {enableSwitch && (
     <div className={styles.switch} onClick={handleToggle}>
       <div className={styles.switchB}>
         <img src ="Left.svg"></img>
@@ -52,7 +69,7 @@ const OverviewItem = ({
         <img src ="Right.svg"></img>
       </div>
     </div>
-  )}
+  )} */}
 </div>
 
       <div className={styles.futureInfoContainer}>
