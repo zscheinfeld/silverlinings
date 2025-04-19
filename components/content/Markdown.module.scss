@@ -1,15 +1,17 @@
 .tooltipAnchor {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .customTooltip {
   background-color: #ffffff !important;
 
   color: black !important;
-  font-size: 14px !important;
-  padding: 10px !important;
+  font-size: 12px !important;
+  line-height: 120% !important;
+  padding: 24px !important;
   border-radius: 0px !important;
-  max-width: 250px !important;
+  max-width: 450px !important;
   border: solid black 1px !important;
   z-index: 1000 !important;
   transform: translateY() !important;
