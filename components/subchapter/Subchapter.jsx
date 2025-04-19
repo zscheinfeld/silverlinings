@@ -33,10 +33,13 @@ const Subchapter = forwardRef(({ subchapter, bordered }, ref) => {
           : styles.subchaptermodules
       } ${bordered && styles.bordered}`}
     >
+
+      
       {type === "default" && (
         <>
           <div className={`${styles.subchaptername}`}>
             {lines.map((line, index) => (
+              
               <span
                 key={index}
                 className={`${lines.length > 1 ? (index > 0 ? styles.secondline : styles.firstline) : styles.singleline}`}
