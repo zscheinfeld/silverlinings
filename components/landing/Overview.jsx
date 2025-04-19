@@ -48,8 +48,8 @@ const Overview = () => {
     },
 
     {
-      futureTitle: "Replace aging: 2x increase in organ supply",
-      altTitle: "Replace aging: 4x increase in organ supply",
+      futureTitle: "2x increase in organ supply",
+      altTitle: "4x increase in organ supply",
       imgSrc: "Heart.png",
       futureImageLabel: "Mortality (M)",
       futureImageLabelColor: "green",
@@ -168,7 +168,7 @@ const Overview = () => {
       <div className={styles.overviewInnerContainer}>
         <div
           ref={headerRef} // Add ref to the header
-          className={`${styles.overviewHeader} ${styles.fadeIn}`} // Apply fade-in class
+          className={`${styles.overviewHeader} ${styles.scrollFadeIn}`} // Apply fade-in class
         >
           High-impact <br />
           <b>R&D opportunities in aging biology</b>
@@ -178,7 +178,7 @@ const Overview = () => {
           <div
             key={index} // Use index as a key (or unique ID if available)
             ref={(el) => (overviewItemRefs.current[index] = el)} // Assigning ref to each item
-            className={styles.fadeIn} // Add fade-in class for animation
+            className={styles.scrollFadeIn} // Add fade-in class for animation
           >
             <OverviewItem
               futureTitle={item.futureTitle}
