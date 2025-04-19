@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Spacer from "@/components/content/Spacer";
 import Content from "../content/Content";
+import Bodynavigation from "../content/Bodynavigation";
 
 const BAR_WIDTH = 60;
 const RESISTANCE_THRESHOLD = 50;
@@ -245,6 +246,14 @@ const Chapter = ({
         <div className={styles.chapterintro}>
           {intro && intro.map((content) => <Content {...content} />)}
         </div>
+
+
+          {/* 🟡 Custom block rendered only for chapter 2 */}
+          {number === 2 && (
+            <>
+            <Bodynavigation></Bodynavigation>
+            </>
+          )}
 
         {subchapters.map((subchapter, i) => (
           <Subchapter
