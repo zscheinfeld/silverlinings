@@ -31,6 +31,7 @@ const Slider = ({
         arrowColor="transparent"
         place="right"
         data-fade="true"
+        opacity={1}
       />
       <label
         className={styles.label}

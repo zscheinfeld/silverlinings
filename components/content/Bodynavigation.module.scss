@@ -1,4 +1,5 @@
 .container{
+    margin-top: 32px;
     width: 100%;
     height: 800px;
     display: flex;
@@ -37,32 +38,88 @@
     justify-content: center;
   }
 
-.hotspotinnercontainer{
-    border: 0px;
+  .hotspotinnercontainer {
     width: 20px;
     height: 20px;
-    background-color: rgba(255, 255, 255);
-    outline: 2px solid rgba(255, 255, 255, 0.50);
+    border: 0;
+    background-color: white;
+    outline: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 100%;
-    transition: ease-in-out 300ms;
+    transition: outline 0.2s ease-in-out, background-color 0.2s ease-in-out;
   }
-
-  .hotspotinnercontainer:hover{
-    width: 20px;
-    height: 20px;
+  
+  .hotspotinnercontainer:hover {
     background-color: rgba(0, 0, 0, 0.5);
     outline: 7px solid rgba(255, 255, 255, 0.85);
-    border: 0px;
-    border-radius: 100%;
-    transition: ease-in-out 300ms;
     cursor: pointer;
   }
+  
 
   .image{
     height: 100%;
+    width: 100%;
     position: relative;
   }
 
   .image img{
     height: 100%;
   }
+
+
+  .customTooltip {
+    background: #FFF5E5 !important;
+    color: black !important;
+    border: 1px solid black !important;
+    border-radius: 0px !important;
+    max-width: var(--tooltip-max-width, 500px) !important; // ✅ fallback default
+    padding: 16px !important;
+    z-index: 1000;
+    
+    // opacity: 1 !important;
+    // transition: opacity 0.3s ease-in-out !important;
+  }
+
+  .customTooltip::before {
+    display: none !important;
+  }
+
+  .customTooltip::after {
+    border: 0px !important;
+     display: none !important;
+
+  }
+
+  .tooltipContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .tooltipImage {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-position: center;
+  }
+  
+  .tooltipText {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .tooltipTitle {
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  
+  .tooltipBody {
+    font-size: 12px;
+    line-height: 140%;
+  }
+  
+  

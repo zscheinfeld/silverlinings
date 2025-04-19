@@ -243,9 +243,13 @@ const Chapter = ({
       >
         <div className={styles.chaptername}>{title}</div>
 
-        <div className={styles.chapterintro}>
-          {intro && intro.map((content) => <Content {...content} />)}
-        </div>
+        {intro && intro.length > 0 && (
+  <div className={styles.chapterintro}>
+    {intro.map((content, i) => (
+      <Content key={i} {...content} />
+    ))}
+  </div>
+)}
 
 
           {/* 🟡 Custom block rendered only for chapter 2 */}
