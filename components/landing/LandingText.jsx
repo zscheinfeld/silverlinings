@@ -99,6 +99,7 @@ const LandingTextIntro = ({ fadeOutPoint }) => {
   return (
     <>
       <div
+       className={styles.landingTextContainer}
         style={{
           position: isFixed ? "fixed" : "static",
           top: isFixed ? "0" : "auto",

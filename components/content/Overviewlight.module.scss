@@ -1,0 +1,319 @@
+.overviewContainer {
+    box-sizing: border-box;
+    // height: 200vh;
+    // width: 100vw;
+    padding-top: 120px;
+    z-index: 900;
+    position: relative;
+    // max-width: 1800px;
+    width: 100%;
+    
+  }
+  
+  .overviewInnerContainer {
+    box-sizing: border-box;
+    width: 100%;
+    // padding-left: 80px;
+    // padding-right: 80px;
+    max-width: 1280px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .overviewHeader {
+    font-family: "spectral";
+    font-size: 36px;
+    line-height: 106%;
+    color: #171717;
+    margin-bottom: 64px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: #171717 solid 1px;
+    width: fit-content;
+  }
+  
+  .futureContainer {
+    padding-bottom: 42px;
+    flex-grow:1;
+    flex-shrink: 1;
+    flex-basis: 0;
+  }
+  
+  .futureTitle {
+    font-family: "spectral";
+    font-size: 20px;
+    font-weight: bold;
+    color: #171717;
+    border-top: solid #171717 1px;
+    border-bottom: dotted #171717 1px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    
+  }
+  
+  .futureInfoContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .futureInfo {
+    flex: 4;
+    // height: 200px;
+    color: #171717;
+    font-size: 16px;
+    line-height: 140%;
+    font-family: "spectral";
+    border-right: dashed 1px #171717;
+    padding-right: 36px;
+  }
+  
+  .futureImage {
+    // background-color: blue;
+    flex: 3;
+    // height: 200px;
+  }
+  
+  .futureImageContainer {
+    width: 100%;
+    height: 200px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .futureImageContainer img {
+    width: 100%;
+    max-height: 160px;
+    object-fit: contain;
+  }
+  
+  .futureImageLabel {
+    font-family: "spectral";
+    color: #171717;
+    font-size: 14px;
+    text-align: left;
+    border-top: dashed 1px rgba(0, 0, 0, 0.25); 
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  
+  .yellow {
+    color: #171717;
+  }
+  
+  .futureStats {
+    flex: 5;
+    font-family: "spectral";
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 5%;
+    color: #171717;
+  }
+  
+  .label {
+    font-family: "spectral";
+    font-size: 16px;
+    font-family: "spectral";
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 5%;
+    color: #171717;
+    padding-bottom: 24px;
+  }
+  
+  .statsContainer {
+    display: flex;
+    // align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .innerStatsContainer {
+    position: relative; // ✅ Add this to allow absolutely positioned children
+    // height: 40px;        // ✅ Set a fixed height to contain the stat text
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    color: #171717;
+    
+    // max-width: 150px;
+  }
+  
+  .innerStat {
+    // position: absolute;  // ✅ Enables one stat to sit on top of the other
+    // top: 0;
+    // left: 0;
+    width: 100%;
+    font-family: "spectral";
+    font-size: 24px;
+    line-height: 112%;
+    font-weight: 400;
+    transition: opacity 0.2s ease; // ✅ already here but reinforced
+    text-align: left;
+    border-top: dashed 1px rgba(0, 0, 0, 0.25); 
+    padding-top: 8px;
+  }
+  
+  .innerLabel {
+    font-family: "spectral";
+    font-size: 12px;
+    line-height: 120%;
+    font-weight: 400;
+    text-align: left;
+    // transform: translateY(42px);
+  }
+  
+  /* In your Overview.module.scss or separate CSS file */
+  .fadeIn {
+    opacity: 1;
+    transition: opacity 0.4s ease;
+  }
+  
+  .fadeOut {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  
+  .fadeIn.visible {
+    opacity: 1;
+  }
+  
+  .fadeTransition {
+    transition: opacity 0.4s ease;
+  }
+  
+  .innerfutureTitle {
+    // position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: opacity 0.4s ease;
+    display: flex;
+    align-items: center;
+    padding-right: 24px;
+  }
+  
+  .innerfutureTitleWrapper {
+    position: relative;
+    height: 32px;
+    width: 100% ;
+  
+  }
+  
+  .innerStat, .innerfutureTitle {
+    // opacity: 1;
+    transition: opacity 0.4s ease;
+  }
+  
+  .switch {
+    // background: red;
+    color: #171717;
+    // padding: 4px 4px;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    gap:8px;
+    height: 24px;
+  }
+  
+  .switchB{
+    height: 24px;
+  }
+  
+  .switchB:hover{
+    opacity: 50%;
+  
+  }.labelWrapper {
+    color: #171717;
+  }
+  
+  .tagF {
+    color: #171717;
+  }
+  
+  .tagP {
+    color: #171717;
+  }
+  
+  .tagM {
+    color: #171717;
+  }
+  
+  .tagDefault {
+    color: #171717;
+  }
+  
+  .titleButton {
+    background: none;
+    border: none;
+    font: inherit;
+    padding: 0px 12px;
+    margin: 0;
+    color: #171717;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    z-index: 2000;
+  }
+  
+  .titleButton:disabled {
+    cursor: default;
+    opacity: 1;
+  }
+  
+  .active {
+    opacity: 1;
+    // text-decoration: underline;
+  }
+  
+  .inactive {
+    opacity: 0.45;
+  }
+  
+  .inactive:hover {
+    opacity: 1;
+  }
+  
+  .scrollFadeIn {
+    opacity: 0;
+    // transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    will-change: opacity, transform;
+    flex: 1 1 0%; // 💥 Even width distribution
+    min-width: 0; // Prevent overflow due to long words or images
+  }
+  
+  .scrollFadeIn.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .itemMasterContainer{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap:18px;
+  }
+
+  .futureImageTitle{
+    padding-top: 18px;
+    border-top: solid rgba(0, 0, 0, 0.25) 1px;
+    font-size:20px;
+    font-weight: 400;;
+    line-height: 115%;
+    min-height: 96px;
+    
+
+  }
+  
+  .transparent {
+    opacity: 0;
+  }

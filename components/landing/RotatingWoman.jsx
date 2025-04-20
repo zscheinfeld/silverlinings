@@ -28,7 +28,7 @@ const RotatingWoman = ({ windowTransition }) => {
           backgroundImage: `linear-gradient(to right, #191818,rgba(0,0,10,0))`,
         }}
       ></div>{" "}
-      {/* Updated gradient dynamically */}
+      Updated gradient dynamically
     </div>
   );
 };

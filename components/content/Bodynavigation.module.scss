@@ -57,12 +57,25 @@
 
   .image{
     height: 100%;
-    width: 100%;
+    width: 950px;
     position: relative;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+
+  .imageContainer{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 950px;
   }
 
   .image img{
-    height: 100%;
+    // height: 100%;
+    width: 100%;
+    position: relative;
   }
 
 

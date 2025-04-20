@@ -6,6 +6,8 @@ import { Chapters } from "@/data/book";
 const LandingTextIntro = ({ fadeOutPoint }) => {
   const [isFixed, setIsFixed] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
 
   useEffect(() => {
     if (!fadeOutPoint) return;
@@ -20,6 +22,20 @@ const LandingTextIntro = ({ fadeOutPoint }) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [fadeOutPoint]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1080);
+    };
+  
+    // Initial check
+    handleResize();
+  
+    // Add listener
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  
 
   // Function to interpolate between two colors
   const interpolateColor = (startColor, endColor, factor) => {
@@ -68,6 +84,7 @@ const LandingTextIntro = ({ fadeOutPoint }) => {
   return (
     <>
       <div
+      className={styles.landingTextContainer}
         style={{
           position: isFixed ? "fixed" : "static",
           top: isFixed ? "0" : "auto",
@@ -86,14 +103,11 @@ const LandingTextIntro = ({ fadeOutPoint }) => {
         <div className={styles.landinginnertextContainer}>
           <div className={styles.empty}></div>
           <div className={styles.landinginnertext}>
-            An open project to accelerate&nbsp;
-            <span
-              className={styles.healthy}
-              style={{ color: healthyTextColor }}
-            >
-              healthy
-            </span>
-            &nbsp;longevity
+          An open project to accelerate{isMobile ? " " : "\u00A0"}
+<span className={styles.healthy} style={{ color: healthyTextColor }}>
+  healthy
+</span>
+{isMobile ? " " : "\u00A0"}longevity
           </div>
           <div className={styles.link}>
             <Link

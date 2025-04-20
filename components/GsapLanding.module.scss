@@ -1056,3 +1056,150 @@
   background-color: #fff; // Add your preferred background color
   // box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); // Optional shadow for better UX
 }
+
+
+//mobile
+@media only screen and (max-width: 768px) {
+
+  .landingoutertext {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 200;
+    width: 100%;
+    gap: 36px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .landingTextContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .landinginnertextContainer{
+    width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+    align-items: center;
+  }
+
+
+  .landinginnertext {
+    padding-top: 100px;
+    width: 100%;
+    font-family: "Spectral", serif;
+    font-size: 30px;
+    line-height: 120%;
+    text-align: center;
+    max-width: 400px;
+  }
+
+  .link {
+    padding-bottom: 60px;
+    width: auto;
+    padding-left:0px
+  }
+
+  .lightfaceContainer{
+    width: 100%;
+    padding-left: 48px;
+    padding-right: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: auto;
+    margin-top: 160px;
+    top: 0px;
+    height: 70vh;
+  }
+
+  .lightfaceContainer img {
+    max-width: 350px;
+    object-fit: contain;
+    transform: scale(1.1);
+  }
+
+
+.empty {
+  display: none;
+}
+
+.image {
+  width: 100%;
+  padding-left: 48px;
+  padding-right: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: auto;
+  margin-top: 160px;
+  top: 0px;
+  height: 70vh;
+}
+
+.image img {
+  height: 100%;
+  width: 100%;
+  max-width: 350px;
+  object-fit: contain;
+  transform: scale(1.1);
+}
+
+
+.landingimage {
+  width: 100%;
+  padding-left: 48px;
+  padding-right: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: auto;
+  margin-top: 160px;
+  top: 0px;
+  height: 70vh;
+}
+
+.landingimage svg {
+  height: 100%;
+  width: 100%;
+  max-width: 350px;
+  object-fit: contain;
+  transform: scale(1.1);
+  /* transform: translateX(-500px); */
+  /* background-color: red; */
+  /* background-color: red; */
+}
+
+  
+  
+}
+
+//ipad
+@media only screen and (min-width: 769px) and (max-width: 1080px) {
+
+  .landinginnertext {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+
+  .lightfaceContainer{
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+
+  .landinginnertextContainer{
+    align-items: flex-start;
+  }
+
+  .link{
+    padding-left: 24px;
+  }
+
+  
+}
