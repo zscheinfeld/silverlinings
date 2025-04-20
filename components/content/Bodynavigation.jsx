@@ -18,13 +18,14 @@ const Bodynavigation = () => {
 
   return (
     <div className={styles.container}>
-        <div className={styles.image}>
+        <div className={styles.imageContainer}>
+            <div className={styles.image}>
+          
             <img src="woman-lightmode.png">
 
-
             </img>
-        
-                {/* <div 
+            </div>
+         {/* <div 
                 className={styles.hotspot}
                 style={{ top: "50px", left: "445px" }}
                 >
@@ -146,6 +147,7 @@ const Bodynavigation = () => {
                 offset={30}
                 maxWidth={250}
                 />
+               
             
 
         </div>

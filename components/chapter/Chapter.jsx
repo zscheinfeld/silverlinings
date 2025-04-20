@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import Spacer from "@/components/content/Spacer";
 import Content from "../content/Content";
 import Bodynavigation from "../content/Bodynavigation";
+import Overviewlight from "../content/Overviewlight";
 
 const BAR_WIDTH = 60;
 const RESISTANCE_THRESHOLD = 50;
@@ -268,7 +269,11 @@ const Chapter = ({
             chapterNumber={number}
           />
         ))}
-
+         {number === 2 && (
+            <>
+            <Overviewlight></Overviewlight>
+            </>
+          )}
         <Spacer border={false} />
       </div>
     </div>

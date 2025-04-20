@@ -148,6 +148,7 @@
 
 .uterusfadeDiv {
   top: -200px;
+  
 }
 
 .visible {
@@ -167,7 +168,7 @@
   overflow-x: hidden;
   /* position: fixed; */
   top: 0;
-  left: 0;
+  left:0vw ;
   z-index: 250;
   pointer-events: none;
   /* top: 0px;
@@ -512,7 +513,7 @@
   right: 64px;
 }
 
-.uterisrcard {
+.uterusrcard {
   top: -250px;
   right: 64px;
 }
