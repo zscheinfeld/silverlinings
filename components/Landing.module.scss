@@ -198,7 +198,7 @@
 
 .brain {
   top: 40px;
-  right: 325px;
+  right: 323px;
 }
 
 .uterus {
@@ -892,3 +892,33 @@
 }
 
 
+@media only screen and (max-width: 768px) {
+
+  .womanContainer {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    top: 0;
+    left:0vw ;
+    z-index: 250;
+    pointer-events: none;
+  }
+  
+  .womanInnerContainer {
+    position: absolute;
+    right: -20vw;
+    top:-4vh;
+    height: 100vh;
+    /* width: 100vw; */
+  }
+  
+  .womanInnerContainer img {
+    height: 100%
+    /* width: 100; */
+  }
+
+  
+  
+}

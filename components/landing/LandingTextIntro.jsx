@@ -140,7 +140,7 @@ const LandingTextIntro = ({ fadeOutPoint }) => {
           />
         </div>
       </div>
-      <div className={styles.space}></div>
+      <div className={`${styles.space} ${styles.mobilespace}`}></div>
 
       <div className={styles.landingoutertext}>
         <div
@@ -151,7 +151,7 @@ const LandingTextIntro = ({ fadeOutPoint }) => {
         <div
           className={`${styles.landinginnertext} ${styles.light} ${styles.landingsmall}`}
         >
-          <div className={styles.maxwidth400}>
+          <div className={`${styles.maxwidth400} ${styles.mobilesmall}`}>
             And the way we age profoundly impacts how we live,{" "}
             <span className={styles.textproductivity}>work</span>,{" "}
             <span className={styles.textfertility}>give birth</span>, and{" "}

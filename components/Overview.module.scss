@@ -270,3 +270,51 @@ text-align: left;
   opacity: 1;
   transform: translateY(0);
 }
+
+@media only screen and (max-width: 768px) {
+
+  .overviewHeader {
+    font-family: "spectral";
+    font-size: 30px;
+    line-height: 106%;
+    color: white;
+    margin-bottom: 24px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .futureInfoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .futureContainer {
+    padding-bottom: 42px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .futureInfo {
+    flex: 4;
+    // height: 200px;
+    color: white;
+    font-size: 16px;
+    line-height: 140%;
+    font-family: "spectral";
+    border-right: 0px;
+    padding-right: 0px;
+    order:3;
+  }
+
+  .futureStats {
+    order:2;
+    padding-bottom: 64px;
+  }
+  
+  
+  
+
+
+
+}
