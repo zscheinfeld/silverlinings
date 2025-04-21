@@ -10,7 +10,7 @@ import UterusHotspot from "@/components/landing/cards/UterusHotspot";
 import LandingTextIntro from "@/components/landing/LandingTextIntro";
 import Overview from "./landing/Overview";
 import TopNav from "@/components/TopNav";
-import MobileCards from "./landing/Mobilecards";
+import MobileCards from "./landing/MobileCards";
 
 const GsapLanding = () => {
   const [isExpanded, setIsExpanded] = useState(false);
