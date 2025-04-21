@@ -32,6 +32,7 @@ const WorldMap = () => {
         if (document.getElementById("jvm-regions-group")) return;
 
         if (window.jsVectorMap) {
+          const isMobile = window.innerWidth <= 768;
           const map = new window.jsVectorMap({
             selectedRegions: ["US", "BR", "MA", "JP", "IN", "CN", "SA", "IT", "FR", "RU", "KR"],
             selector: "#map",
@@ -398,6 +399,8 @@ const WorldMap = () => {
               }
             },
 
+            
+
             regionStyle: {
               initial: {
                 fill: "#191818",
@@ -409,6 +412,7 @@ const WorldMap = () => {
               selectedHover: { fill: "#FFFFFF", fillOpacity: 1 },
             },
           });
+          
           mapInstance.current = map;
         }
       };

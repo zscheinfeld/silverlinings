@@ -1,34 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/components/Landing.module.scss";
 import RotatingDivs from "./cards/RotatingDivs";
 
 const RotatingWoman = ({ windowTransition }) => {
-  // Convert the rgb backgroundColor to rgba
-  // const rgbToRgba = (rgbColor, alpha = 0) => {
-  //   const match = rgbColor.match(/\d+/g); // Extracts the r, g, b values
-  //   if (match && match.length === 3) {
-  //     const [r, g, b] = match;
-  //     return `rgba(${r}, ${g}, ${b}, ${alpha})`; // Convert to rgba
-  //   }
-  //   return rgbColor; // Return the original if the format isn't valid
-  // };
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Convert the backgroundColor to an rgba with 0.1 alpha for the dark part of the gradient
-  // const rgbaDark = rgbToRgba(backgroundColor, 0);
+  useEffect(() => {
+    const checkIsMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkIsMobile(); // Initial
+    window.addEventListener("resize", checkIsMobile);
+
+    return () => window.removeEventListener("resize", checkIsMobile);
+  }, []);
 
   return (
     <div className={styles.womanContainer}>
-      <RotatingDivs startTransitionAt={windowTransition} />
+      {!isMobile && (
+        <RotatingDivs startTransitionAt={windowTransition} />
+      )}
+
       <div className={styles.womanInnerContainer}>
         <img src="/woman4.png" alt="Woman" />
       </div>
+
       <div
         className={styles.gradientOverlay}
         style={{
-          backgroundImage: `linear-gradient(to right, #191818,rgba(0,0,10,0))`,
+          backgroundImage: `linear-gradient(to right, #191818, rgba(0,0,10,0))`,
         }}
-      ></div>{" "}
-      Updated gradient dynamically
+      />
     </div>
   );
 };

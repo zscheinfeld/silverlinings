@@ -10,13 +10,14 @@ import UterusHotspot from "@/components/landing/cards/UterusHotspot";
 import LandingTextIntro from "@/components/landing/LandingTextIntro";
 import Overview from "./landing/Overview";
 import TopNav from "@/components/TopNav";
+import MobileCards from "./landing/Mobilecards";
 
 const GsapLanding = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const handleOpen = (isOpen) => {
     setIsMenuOpen(isOpen);
@@ -118,8 +119,18 @@ const GsapLanding = () => {
   const [fadeOutPoint, setFadeOutPoint] = useState(null);
 
   useEffect(() => {
-    setFadeOutPoint(window.innerHeight / 2);
+    const updateViewport = () => {
+      const mobile = window.innerWidth <= 768;
+      setIsMobile(mobile); // ✅ This updates the state you can use in rendering
+      setFadeOutPoint(mobile ? window.innerHeight : window.innerHeight * 0.5);
+    };
+  
+    updateViewport(); // Initial call
+    window.addEventListener("resize", updateViewport);
+  
+    return () => window.removeEventListener("resize", updateViewport);
   }, []);
+  
 
   return (
     <>
@@ -131,8 +142,8 @@ const GsapLanding = () => {
         <AnimatedLandingElementFade
           fadeInStart={0}
           fadeInEnd={fadeOutPoint}
-          fadeOutStart={fadeOutPoint * 3}
-          fadeOutEnd={fadeOutPoint * 3.5}
+          fadeOutStart={isMobile ? fadeOutPoint * 1.5 : fadeOutPoint * 3}
+          fadeOutEnd={isMobile ? fadeOutPoint * 2 : fadeOutPoint * 3.5}
         >
           <LottieAnimation />
           <div className={styles.image}>
@@ -149,7 +160,48 @@ const GsapLanding = () => {
           <RotatingWoman windowTransition={fadeOutPoint * 4} />
         </AnimatedLandingElementFade>
 
+        
+
         <div className={styles.space}></div>
+
+        <div className={styles.mobileCard}>
+          <MobileCards
+            imageSrc="brain.png"
+            imageAlt="Brain"
+            header={
+              <>
+                The brain predictably <br /> fails with age.
+              </>
+            }
+            text="At age 65, less than 5% of the population has an Alzheimer’s diagnosis. This number increases to roughly 50% beyond age 85."
+          />
+           <MobileCards
+            imageSrc="Uterus.png"
+            imageAlt="Uterus"
+            header={
+              <>
+                Egg reserve <br />disappears by age ~40.
+              </>
+            }
+            text=" Most women in the U.S. have children after 30. This increases
+            miscarriages, maternal deaths, and infertility. Reproductive aging
+            is also seen as a driver of diseases like Alzheimer’s."
+          />
+           <MobileCards
+            imageSrc="Heart.png"
+            imageAlt="Heart"
+            header={
+              <>
+                 Many people need <br />  their
+            organs replaced as they age.
+              </>
+            }
+            text="At age 65, less than 5% of the population has an Alzheimer’s diagnosis. This number increases to roughly 50% beyond age 85."
+          />
+
+         
+          
+        </div>
 
         {/* Animated Map */}
         <AnimatedMapFade
@@ -161,15 +213,17 @@ const GsapLanding = () => {
           <WorldMap />
         </AnimatedMapFade>
 
-        <AnimatedLandingElementFade
-          fadeInStart={fadeOutPoint * 13.5}
-          fadeInEnd={fadeOutPoint * 14}
-          fadeOutStart={fadeOutPoint * 16}
-          fadeOutEnd={fadeOutPoint * 17}
-        >
-          <UterusHotspot></UterusHotspot>
-          <InteractiveWoman></InteractiveWoman>
-        </AnimatedLandingElementFade>
+        {!isMobile && (
+  <AnimatedLandingElementFade
+    fadeInStart={fadeOutPoint * 13.5}
+    fadeInEnd={fadeOutPoint * 14}
+    fadeOutStart={fadeOutPoint * 16}
+    fadeOutEnd={fadeOutPoint * 17}
+  >
+    <UterusHotspot />
+    <InteractiveWoman />
+  </AnimatedLandingElementFade>
+)}
 
         <div className={styles.space}></div>
         <div className={styles.space}></div>
