@@ -310,7 +310,7 @@ const GsapLanding = () => {
               >
                 {isExpanded && (
                   <div>
-                    We present results informed by interviews with 72 scientists
+                    We present results informed by interviews with 102 scientists
                     and dozens of economists. But our model lets you simulate
                     different futures for the U.S. population and economy. You can
                     input the number of years until a therapeutic can safely delay
@@ -331,8 +331,7 @@ const GsapLanding = () => {
                     organs (e.g. kidneys or ovaries) are not immediate, and
                     sometimes reduce GDP temporarily. To understand the non-linear
                     effects of each R&D area in the short and long run (and for
-                    GDP alternatives that measure non-market outcomes), see the
-                    report.
+                    GDP alternatives that measure non-market outcomes), see the full report, technical paper, and our forthcoming book.
                   </div>
                 )}
 
