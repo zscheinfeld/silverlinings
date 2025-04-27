@@ -33,6 +33,9 @@ const Accordion = ({ title, numbered, items }) => {
           {renderedAnswers[index]}
         </AccordionItem>
       ))}
+    <div className={styles.label}>
+    Our selection criteria for these sample projects was low commercial incentives and potential for extraordinary socio-economic returns
+    </div>
     </div>
   );
 };

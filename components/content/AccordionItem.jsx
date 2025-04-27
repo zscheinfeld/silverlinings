@@ -41,6 +41,7 @@ const AccordionItem = ({ number, question, children }) => {
         {children}
         <div className={styles.answerpadding}></div>
       </div>
+    
     </div>
   );
 };

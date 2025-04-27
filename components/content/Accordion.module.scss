@@ -1,10 +1,11 @@
 .title {
   font-family: "Spectral", serif;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 100%;
   text-transform: uppercase;
-  padding-bottom: 14px;
+  padding-bottom: 16px;
+  max-width: 620px;
 }
 
 .item {
@@ -92,4 +93,13 @@
   max-height: 1000px; /* A high value to ensure content fits */
   transition: max-height 0.4s ease-in-out;
   overflow: hidden;
+}
+
+.label{
+  padding-top: 14px;
+  max-width: 620px;
+  border-top: solid #00000020 1px;
+  color: #878787;
+  line-height: 110%;
+  padding-left: 32px;
 }
