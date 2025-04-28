@@ -1,11 +1,19 @@
 import React, { useEffect, useRef } from 'react';
 import styles from "@/components/content/Overviewlight.module.scss";
 import Overviewlightitem from "./Overviewlightitem";
+import Accordion from './Accordion';
 
 const Overviewlight = () => {
+
+
+
+ 
+
   const overviewData = [
     {
-      futureTitle: "Slow brain aging by 1 year",
+      futureTitle: <>
+      Slow brain aging<br/>by 1 year
+     </>,
       imgSrc: "brainsimulation.png",
       futureImageLabel: "Productivity (P)",
       futureImageLabelColor: "yellow",
@@ -28,7 +36,11 @@ const Overviewlight = () => {
       
     },
     {
-      futureTitle: "Slow reproductive aging by 1 year",
+      futureTitle: (
+        <>
+          Slow reproductive <br/>aging by 1 year
+        </>
+      ),
       imgSrc: "simtool/uterus.png",
       futureImageLabel: "Fertility (F)",
       futureImageLabelColor: "green",
@@ -50,8 +62,16 @@ const Overviewlight = () => {
     },
 
     {
-      futureTitle: "2x increase in organ supply",
-      altTitle: "4x increase in organ supply",
+      futureTitle:  (
+        <>
+          2x increase in <br/>organ supply
+        </>
+      ),
+      altTitle: (
+        <>
+          4x increase in <br/>organ supply
+        </>
+      ),
       imgSrc: "simtool/heart.png",
       futureImageLabel: "Mortality (M)",
       futureImageLabelColor: "green",
@@ -78,7 +98,11 @@ const Overviewlight = () => {
 
 
     {
-        futureTitle: "Slow biological aging by 1 year ",
+        futureTitle: (
+          <>
+            Slow biological<br/>aging by 1 year
+          </>
+        ),
         imgSrc: "simtool/cell.png",
         futureImageLabel: "All (P, F, M)",
         futureImageLabelColor: "green",
@@ -170,6 +194,7 @@ const Overviewlight = () => {
   }, []);
 
   return (
+
     <div className={styles.overviewContainer}>
       <div className={styles.overviewInnerContainer}>
         <div
@@ -215,6 +240,7 @@ const Overviewlight = () => {
 
       </div>
     </div>
+    
   );
 };
 

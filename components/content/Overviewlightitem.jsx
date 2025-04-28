@@ -47,8 +47,21 @@ const Overviewlightitem = ({
             <img src={imgSrc} alt="Future Opportunity" />
           </div>
           <div className={styles.futureImageTitle}>
-            {futureTitle}
+          {enableSwitch && switched && altTitle ? altTitle : futureTitle}
+
+          {enableSwitch && (
+            <div
+              onClick={handleToggle}
+              className={styles.switchButton}
+            >
+              <img src="Left.svg"></img>
+              <img src="Right.svg"></img>
+            </div>
+          )}
+
+
           </div>
+          
           <div className={styles.futureImageLabel}>
           
           {futureImageLabel.replace(/\s*\(.*\)/, "")}{" "}
