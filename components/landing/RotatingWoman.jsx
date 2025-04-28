@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "@/components/Landing.module.scss";
+import styles from "@/components/Womanstyles.module.scss";
 import RotatingDivs from "./cards/RotatingDivs";
 
 const RotatingWoman = ({ windowTransition }) => {
@@ -15,20 +15,23 @@ const RotatingWoman = ({ windowTransition }) => {
 
   return (
     <div className={styles.womanContainer}>
-      {!isMobile && (
-        <RotatingDivs startTransitionAt={windowTransition} />
-      )}
-
+      
+      <div className={styles.leftContainer}></div>
+      <div className={styles.womanmidContainer}>
       <div className={styles.womanInnerContainer}>
         <img src="/woman4.png" alt="Woman" />
+        {!isMobile && (
+        <RotatingDivs startTransitionAt={windowTransition} />
+        )}  
+      </div>
       </div>
 
-      <div
+      {/* <div
         className={styles.gradientOverlay}
         style={{
           backgroundImage: `linear-gradient(to right, #191818, rgba(0,0,10,0))`,
         }}
-      />
+      /> */}
     </div>
   );
 };

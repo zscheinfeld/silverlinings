@@ -106,8 +106,8 @@ const RotatingDivs = ({ startTransitionAt }) => {
   }, [isTransitioning, divs.length, transitionDelay]);
 
   return (
-    <div className={styles.rcontainer}>
-      {/* Hotspots */}
+    
+      <>
       <div className={`${styles.rhotspotcontainer} ${styles.brain}`}>
         <div className={styles.rhotspotinnercontainer}></div>
       </div>
@@ -130,7 +130,7 @@ const RotatingDivs = ({ startTransitionAt }) => {
             {content}
           </div>
         ))}
-    </div>
+    </>
   );
 };
 

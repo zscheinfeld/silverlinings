@@ -26,6 +26,19 @@
 
 }
 
+.space{
+  // background-color: red;
+  min-height: 64px;
+  width: 100%;
+}
+
+.spacer{
+  // background-color: red;
+  min-height: 240px;
+  width: 100%;
+  border-bottom: solid 1px black;
+}
+
 .hotspot {
     animation: hotspot 3s ease-in-out infinite;
     position: absolute;
@@ -112,12 +125,16 @@
   .tooltipImage {
     width: 120px;
     height: 120px;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
     object-position: center;
+  }
+
+  .tooltipImage img{
+
   }
   
   .tooltipText {
@@ -134,5 +151,7 @@
     font-size: 12px;
     line-height: 140%;
   }
+
+ 
   
   
