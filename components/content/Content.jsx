@@ -53,6 +53,7 @@ const Content = ({ __typename, ...data }) => {
           title={data.title}
           numbered={data.numbered}
           items={data.items}
+          label={data.label}
         />
       );
     }

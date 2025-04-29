@@ -3,7 +3,7 @@ import AccordionItem from "./AccordionItem";
 import { useMemo } from "react";
 import Content from "@/components/content/Content";
 
-const Accordion = ({ title, numbered, items, showLabel = true }) => {
+const Accordion = ({ title, numbered, items, label = null }) => {
   const renderedAnswers = useMemo(() => {
     return items.map(({ description }) => {
       if (typeof description === "string") {
@@ -34,11 +34,7 @@ const Accordion = ({ title, numbered, items, showLabel = true }) => {
         </AccordionItem>
       ))}
 
-      {showLabel && (
-        <div className={styles.label}>
-          Our selection criteria for these sample projects was low commercial incentives and potential for extraordinary socio-economic returns
-        </div>
-      )}
+      {label && <div className={styles.label}>{label}</div>}
     </div>
   );
 };

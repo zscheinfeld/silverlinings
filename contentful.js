@@ -33,6 +33,7 @@ const contentQuery = `{
     ...on List {
         type
         title
+        label
         itemsCollection(limit: 12) {
             items {
                 title
