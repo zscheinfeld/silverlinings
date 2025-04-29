@@ -25,6 +25,7 @@ const Content = ({ __typename, ...data }) => {
       return (
         <MultipleCards
           cards={[data.card1, data.card2, data.card3].filter(Boolean)}
+          title={data.title}
         />
       );
     } else {

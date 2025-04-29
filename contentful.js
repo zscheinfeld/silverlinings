@@ -19,6 +19,7 @@ const contentQuery = `{
         card1
         card2
         card3
+        title
     }       
     ...on Simulation {
         sectionsCollection(limit: 4) {
