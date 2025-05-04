@@ -66,4 +66,11 @@
   font-family: "Spectral", serif;
   font-size: 12px;
   line-height: 120%;
+
+  p {
+    margin-bottom: 12px;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
 }
