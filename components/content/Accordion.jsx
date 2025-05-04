@@ -5,16 +5,14 @@ import Content from "@/components/content/Content";
 
 const Accordion = ({ title, numbered, items, label = null }) => {
   const renderedAnswers = useMemo(() => {
-    return items.map(({ description }) => {
-      if (typeof description === "string") {
+    return items.map(({ description, content }) => {
+      if (content) {
+        return content.map((data, index) => <Content key={index} {...data} />);
+      } else if (description) {
         return description.split("\n\n").map((paragraph, index) => (
           <div className={styles.answerparagraph} key={index}>
             {paragraph}
           </div>
-        ));
-      } else if (Array.isArray(description)) {
-        return description.map((data, index) => (
-          <Content key={index} {...data} />
         ));
       }
     });
