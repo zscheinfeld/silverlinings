@@ -260,6 +260,10 @@ const Chapter = ({
             </>
           )}
 
+          {number === 4 && (
+            <div className={styles.divider}></div>
+          )}
+
         {subchapters.map((subchapter, i) => (
           <Subchapter
             key={subchapter.slug}
