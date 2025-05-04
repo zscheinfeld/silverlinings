@@ -58,3 +58,11 @@
   border-top: solid rgba(0, 0, 0, 0.25) 1px;
   border-bottom: solid rgba(0, 0, 0, 0.25) 1px;
 }
+
+@media only screen and (max-width: 770px) {
+  
+  .multipleSidenoteInnerContainer {
+    flex: 1 1;
+
+}
+}
