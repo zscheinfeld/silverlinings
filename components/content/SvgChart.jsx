@@ -1,4 +1,4 @@
-import { useState, useEffect, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./SvgChat.module.scss";
 
 // Custom hook to detect mobile screen size
@@ -19,43 +19,27 @@ function useIsMobile(breakpoint = 768) {
 const SvgChart = ({ source, mobileSource, textcontent, imageoverlay }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isInView, setIsInView] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const textRef = useRef();
-
-  // Track screen width responsively
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    handleResize(); // Initial check
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const isMobile = useIsMobile(); // ✅ use this as your one source of truth
 
   // Set up Intersection Observer for mobile text reveal
   useEffect(() => {
     if (!isMobile || !textRef.current) return;
-  
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsInView(entry.isIntersecting);
       },
-      {
-        threshold: 0.2,
-      }
+      { threshold: 0.2 }
     );
-  
+
     observer.observe(textRef.current);
-  
     return () => observer.disconnect();
   }, [isMobile]);
-  
 
   const textClass = `${styles.textOverlay} ${
     isMobile ? (isInView ? styles.visible : "") : isHovered ? styles.visible : ""
   }`;
-  const isMobile = useIsMobile();
 
   const imageToUse = isMobile && mobileSource ? mobileSource : source;
 
@@ -73,7 +57,7 @@ const SvgChart = ({ source, mobileSource, textcontent, imageoverlay }) => {
       onMouseLeave={() => setIsHovered(false)}
       style={{ position: "relative" }}
     >
-      <img src={imageToUse.url} alt="Chart" />
+      <img src={imageToUse?.url} alt="Chart" />
 
       {/* Image Overlay (only on desktop) */}
       {imageoverlay && !isMobile && (
