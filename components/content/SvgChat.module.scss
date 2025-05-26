@@ -1,6 +1,4 @@
 .chartcontainer {
-  /* background-color: red; */
-  /* height: 500px; */
   width: 100%;
   max-width: 950px;
   transition: max-width 300ms;
@@ -8,12 +6,11 @@
   display: inline-block;
 }
 
-.chartcontainer {
-  position: relative;
-  display: inline-block;
+.chartcontainer img {
+  width: 100%;
 }
 
-/* Common Overlay Styles */
+/* Common overlay styles */
 .overlay,
 .textOverlay {
   position: absolute;
@@ -26,14 +23,15 @@
   justify-content: center;
   opacity: 0;
   transform: translateY(40px);
-  transition:
-    opacity 0.4s ease-in-out,
-    transform 0.6s ease-in-out;
+  transition: opacity 0.4s ease-in-out, transform 0.6s ease-in-out;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: default;
 }
 
 /* Image Overlay */
 .overlay {
-  /* background: rgba(0, 0, 0, 0.5); */
   color: white;
 }
 
@@ -44,7 +42,6 @@
 
 /* Text Overlay */
 .textOverlay {
-  /* background: rgba(255, 255, 255, 0.8); */
   color: black;
   font-size: 18px;
   font-weight: bold;
@@ -57,34 +54,47 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 140%;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding: 16px;
   border: solid 1px black;
   max-width: 500px;
 }
 
-/* Visibility Class */
+/* Active Visibility Class */
 .visible {
-  opacity: 1;
-  transform: translateY(0px);
+  opacity: 1 !important;
+  transform: translateY(0px) !important;
 }
 
-.chartcontainer img {
-  width: 100%;
-}
-
+/* Tablet / Responsive Width Adjustments */
 @media only screen and (max-width: 1130px) {
-  .chart {
-    width: 100%;
-    max-width: 620px;
-    transition: max-width 300ms;
-  }
-
   .chartcontainer {
     width: 100%;
     max-width: 620px;
     transition: max-width 300ms;
+  }
+}
+
+/* MOBILE-SPECIFIC OVERRIDES */
+@media only screen and (max-width: 770px) {
+  .overlay {
+    display: none !important;
+  }
+
+  .textOverlay {
+    position: static;
+    display: block;
+    height: auto;
+  }
+
+  .textOverlayInner {
+    background-color: white;
+    font-family: "Spectral", serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    padding: 16px;
+    border: solid 1px black;
+    max-width: 100%;
+    margin-top: 16px;
   }
 }

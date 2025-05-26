@@ -52,3 +52,20 @@
   padding: 64px 0;
   border-top: 1px solid currentColor;
 }
+
+@media only screen and (max-width: 770px) {
+  .subchaptername {
+    font-size: 28px;
+    line-height: 28px;
+  }
+
+  .singleline {
+    font-size: 28px;
+  }
+
+  .subchaptermodules {
+    gap: 36px;
+    padding-top: 42px;
+  }
+  
+}
