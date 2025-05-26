@@ -40,20 +40,22 @@ const OverviewItem = ({
     <div className={styles.futureContainer}>
       <div className={styles.futureTitle}>
       <div className={styles.innerfutureTitleToggle}>
-  <button
-    className={`${styles.titleButton} ${!switched ? styles.active : styles.inactive}`}
-    onClick={() => enableSwitch && setSwitched(false)}
-    disabled={!enableSwitch || !switched} // disable when already active
-  >
-    {futureTitle}
-  </button>
-  <button
-    className={`${styles.titleButton} ${switched ? styles.active : styles.inactive}`}
-    onClick={() => enableSwitch && setSwitched(true)}
-    disabled={!enableSwitch || switched}
-  >
-    {altTitle}
-  </button>
+      <button
+  className={`${styles.titleButton} ${!switched ? styles.active : styles.inactive}`}
+  onClick={() => enableSwitch && setSwitched(false)}
+  disabled={!enableSwitch || !switched}
+>
+  {futureTitle}
+</button>
+
+<button
+  className={`${styles.titleButton} ${switched ? styles.active : styles.inactive}`}
+  onClick={() => enableSwitch && setSwitched(true)}
+  disabled={!enableSwitch || switched}
+  style={{ display: altTitle ? "inline-block" : "none" }}
+>
+  {altTitle}
+</button>
 </div>
 
 

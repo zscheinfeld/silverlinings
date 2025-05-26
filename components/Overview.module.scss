@@ -273,6 +273,19 @@ text-align: left;
 
 @media only screen and (max-width: 768px) {
 
+  .titleButton {
+    padding: 0px;
+    line-height: 100%;
+  }
+
+  .futureTitle {
+    font-size: 18px;
+  }
+
+  .innerStat {
+    font-size: 28px;
+  }
+
   .overviewHeader {
     font-family: "spectral";
     font-size: 30px;
@@ -309,7 +322,7 @@ text-align: left;
 
   .futureStats {
     order:2;
-    padding-bottom: 64px;
+    padding-bottom: 86px;
   }
   
   
