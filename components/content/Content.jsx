@@ -41,6 +41,7 @@ const Content = ({ __typename, ...data }) => {
     return (
       <SvgChart
         source={data.source}
+        mobileSource={data.mobileSource}
         imageoverlay={data.imageOverlay}
         textcontent={data.textOverlay}
       />
