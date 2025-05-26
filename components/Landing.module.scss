@@ -898,6 +898,10 @@
 
 @media only screen and (max-width: 768px) {
 
+  .mapoutercountainer{
+    pointer-events: none;
+  }
+
   .womanContainer {
     position: fixed;
     height: 100vh;

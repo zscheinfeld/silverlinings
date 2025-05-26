@@ -1117,6 +1117,16 @@
     max-width: 400px;
   }
 
+  .mobileLeft{
+    text-align: left;
+    font-size: 30px !important;
+  }
+
+  .landingmedium {
+    font-size: 30px;
+    line-height: 106%;
+  }
+
   .link {
     padding-bottom: 60px;
     width: auto;
@@ -1252,6 +1262,7 @@
   .landinginnertext {
     padding-left: 24px;
     padding-right: 24px;
+    text-align: left;
   }
 
 

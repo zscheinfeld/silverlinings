@@ -48,7 +48,7 @@ const contentQuery = (includeListContent = false) => `{
         type
         title
         label
-        itemsCollection(limit: 12) {
+        itemsCollection(limit: 25) {
             items {
                 title
                 description

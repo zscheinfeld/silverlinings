@@ -297,13 +297,13 @@ const GsapLanding = () => {
           className={styles.hidden}
           ref={landingOuterTextRef}>
             <div
-              className={`${styles.landinginnertext} ${styles.light} ${styles.landingmedium} ${styles.paddingbottom}`}
+              className={`${styles.mobileLeft}${styles.landinginnertext} ${styles.light} ${styles.landingmedium} ${styles.paddingbottom}`}
             >
               What if new scientific breakthroughs could delay biological aging
               and extend healthy life?
             </div>
             <div
-              className={`${styles.landinginnertext} ${styles.light} ${styles.landingsmall}`}
+              className={`${styles.mobileLeft}${styles.landinginnertext} ${styles.light} ${styles.landingsmall}`}
             >
               <div
                 className={`${styles.landingtextsmall} ${styles.maxwidth500} ${styles.seemoreText}`}
