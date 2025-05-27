@@ -203,6 +203,8 @@ const GsapLanding = () => {
           
         </div>
 
+       
+
         {/* Animated Map */}
         <AnimatedMapFade
           fadeInStart={fadeOutPoint * 6.5}
@@ -227,11 +229,17 @@ const GsapLanding = () => {
 
         <div className={styles.space}></div>
         <div className={styles.space}></div>
+
+       
+        
+      
+
         <div className={styles.landingtextlightcontainer}>
           <div
             className={`${styles.landingtextlightinnercontainer} ${styles.hidden}`} // Add the hidden class initially
             ref={landingTextLightContainerRef} // Link the ref here
           >
+        
             <div className={styles.landingtextleft}>
               <div className={styles.landingtextlarge}>
                 Our short healthspan affects every family, economy, and
@@ -263,8 +271,14 @@ const GsapLanding = () => {
             </div>
           </div>
         </div>
+
+      
+
+
         <div className={styles.space}></div>
         <div className={styles.space}></div>
+
+       
 
         <div className={styles.landingtextlightcontainer2}>
           <div 
@@ -297,13 +311,13 @@ const GsapLanding = () => {
           className={styles.hidden}
           ref={landingOuterTextRef}>
             <div
-              className={`${styles.mobileLeft}${styles.landinginnertext} ${styles.light} ${styles.landingmedium} ${styles.paddingbottom}`}
+              className={`${styles.mobileLeft} ${styles.landinginnertext} ${styles.light} ${styles.landingmedium} ${styles.paddingbottom}`}
             >
               What if new scientific breakthroughs could delay biological aging
               and extend healthy life?
             </div>
             <div
-              className={`${styles.mobileLeft}${styles.landinginnertext} ${styles.light} ${styles.landingsmall}`}
+              className={`${styles.mobileLeft} ${styles.landinginnertext} ${styles.light} ${styles.landingsmall}`}
             >
               <div
                 className={`${styles.landingtextsmall} ${styles.maxwidth500} ${styles.seemoreText}`}
