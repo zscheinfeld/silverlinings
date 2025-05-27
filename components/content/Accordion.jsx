@@ -5,8 +5,8 @@ import Content from "@/components/content/Content";
 
 const Accordion = ({ title, numbered, items, label = null }) => {
   const renderedAnswers = useMemo(() => {
-    return items.map(({ description, content }) => {
-      if (content) {
+    return items.map(({ title, description, content }) => {
+      if (content?.length) {
         return content.map((data, index) => <Content key={index} {...data} />);
       } else if (description) {
         return (
@@ -18,7 +18,6 @@ const Accordion = ({ title, numbered, items, label = null }) => {
             ))}
           </div>
         );
-        
       }
     });
   }, [items]);
