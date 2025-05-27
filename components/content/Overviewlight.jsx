@@ -103,6 +103,11 @@ const Overviewlight = () => {
             Slow biological<br/>aging by 1 year
           </>
         ),
+        altTitle: (
+          <>
+            Slow biological <br/>aging by 5 years
+          </>
+        ),
         imgSrc: "simtool/cell.png",
         futureImageLabel: "All (P, F, M)",
         futureImageLabelColor: "green",
@@ -110,6 +115,9 @@ const Overviewlight = () => {
         stat1: "$426B",
         stat2: "$22.5T",
         stat3: "1.3M",
+        altStat1: "$2T/y",
+        altStat2: "$102.7T ",
+        altStat3: "6M",
         statLabel1: "Yearly gain to U.S. GDP",
         statLabel2: (
           <>
@@ -121,6 +129,7 @@ const Overviewlight = () => {
             Lives saved or gained<br />(by 2050)
           </>
         ),
+        enableSwitch: true
       },
 
       {

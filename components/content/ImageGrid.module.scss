@@ -5,33 +5,117 @@
   background-color: grey;
 }
 
+
+
+
+
+
+
 .items_two {
   display: grid;
   grid-template-columns: 1fr;
   gap: 64px 32px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  .title {
+    font-family: "Spectral", serif;
+    font-size: 18px;
+    line-height: 112%;
+  }
 
   @include layout.md {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
+
+    // 4 columns at large screen
+    @include layout.lg {
+      grid-template-columns: repeat(4, 1fr);
+    }
 
   .image {
     aspect-ratio: 1;
     width: 100%;
     max-width: 116px;
     margin-right: 24px;
+    margin-bottom: 16px;
   }
 
   .item {
     display: flex;
     flex-direction: row;
+    align-items: center;
+
+    @include layout.md {
+      
+    flex-direction: column;
     align-items: flex-start;
+
+    }
+  
+  }
+
+  .descriptionWrapper {
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+  }
+
+  .description {
+    margin-top: 8px;
+    font-family: "Spectral", serif;
+    font-size: 12px;
+    line-height: 120%;
+    opacity: 1;
+
+    @include layout.md {
+      font-size: 12px;
+  
+      }
+
+    p {
+      margin-bottom: 12px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .toggleButton {
+    font-family: "Spectral", serif;
+    margin-top: 2px;
+    background: none;
+    border: none;
+    color: hsla(0, 0%, 100%, 0.75);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+    text-decoration: underline;
+    text-align: left;
+
+    &:hover {
+      color: #ffffff;
+    }
   }
 }
 
 .items_three {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
+  grid-template-columns: 1fr;
+  column-gap: 32px;
+  row-gap: 96px;
+
+  @include layout.md {
+    row-gap: 64px;
+  }
+
+  .title {
+    font-family: "Spectral", serif;
+    font-size: 24px;
+    line-height: 112%;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
 
   @include layout.md {
     grid-template-columns: 1fr 1fr 1fr;
@@ -40,13 +124,38 @@
   .image {
     aspect-ratio: 1;
     width: 100%;
-    max-width: 160px;
+    max-width: 200px;
     margin-bottom: 24px;
+    @include layout.md {
+      max-width: 160px;
+    }
   }
 
   .item {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    @include layout.md {
+      align-items: flex-start;
+    }
+  }
+
+  .description {
+    font-family: "Spectral", serif;
+    font-size: 16px;
+    line-height: 120%;
+
+    @include layout.md {
+      font-size: 12px;
+    }
+
+    p {
+      margin-bottom: 12px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
   }
 }
 
@@ -55,22 +164,4 @@
   flex-direction: column;
 }
 
-.title {
-  font-family: "Spectral", serif;
-  font-size: 24px;
-  line-height: 112%;
-  margin-bottom: 12px;
-}
 
-.description {
-  font-family: "Spectral", serif;
-  font-size: 12px;
-  line-height: 120%;
-
-  p {
-    margin-bottom: 12px;
-    &:last-of-type {
-      margin-bottom: 0;
-    }
-  }
-}

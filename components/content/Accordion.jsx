@@ -9,11 +9,16 @@ const Accordion = ({ title, numbered, items, label = null }) => {
       if (content) {
         return content.map((data, index) => <Content key={index} {...data} />);
       } else if (description) {
-        return description.split("\n\n").map((paragraph, index) => (
-          <div className={styles.answerparagraph} key={index}>
-            {paragraph}
+        return (
+          <div className={styles.answerBlock}>
+            {description.split("\n\n").map((paragraph, index) => (
+              <div className={styles.answerparagraph} key={index}>
+                {paragraph}
+              </div>
+            ))}
           </div>
-        ));
+        );
+        
       }
     });
   }, [items]);
