@@ -77,6 +77,7 @@ const Overview = () => {
 
     {
         futureTitle: "Slow biological aging by 1 year ",
+        altTitle: "Slow biological aging by 5 years",
         imgSrc: "Cellwhite.png",
         futureImageLabel: "All (P, F, M)",
         futureImageLabelColor: "green",
@@ -84,6 +85,9 @@ const Overview = () => {
         stat1: "$426B",
         stat2: "$22.5T",
         stat3: "1.3M",
+        altStat1: "$2T/y",
+        altStat2: "$102.7T ",
+        altStat3: "6M",
         statLabel1: "Yearly gain to U.S. GDP",
         statLabel2: (
           <>
@@ -95,6 +99,7 @@ const Overview = () => {
             Lives saved or gained<br />(by 2050)
           </>
         ),
+        enableSwitch: true
       },
 
       {

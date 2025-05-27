@@ -1,9 +1,15 @@
+@use "../../styles/layout";
+
 .items {
   display: grid;
   margin-top: 64px;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 24px 32px;
   width: 100%;
+
+  @include layout.md {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }
 
 .item {
