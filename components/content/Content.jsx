@@ -70,6 +70,17 @@ const Content = ({ __typename, ...data }) => {
     }
   }
 
+  if (__typename === "Accordion") {
+    return (
+      <Accordion
+        title={data.title}
+        numbered={data.numbered}
+        items={data.items}
+        label={data.label}
+      />
+    );
+  }
+
   // if (type === "bodynav") {
   //   return <Bodynavigation></Bodynavigation>;
   // }

@@ -44,8 +44,22 @@ const contentQuery = (includeListContent = false) => `{
             }
         }
     }
+    ${
+      includeListContent
+        ? `
     ...on List {
         type
+        title
+        label
+        itemsCollection(limit: 200) {
+            items {
+                title
+                description
+                image ${imageQuery}
+            }
+        }
+    }
+    ...on Accordion {
         title
         label
         itemsCollection(limit: 25) {
@@ -53,15 +67,13 @@ const contentQuery = (includeListContent = false) => `{
                 title
                 description
                 image ${imageQuery}
-                ${
-                  includeListContent
-                    ? `contentCollection(limit: 10) {
+                contentCollection(limit: 10) {
                   items ${subcontentQuery}
-                }`
-                    : ""
-                } 
+                }
             }
         }
+    }`
+        : ""
     }
 }`;
 
@@ -99,7 +111,7 @@ const subchaptersQuery = (id) => `{
     number
     type
     contentCollection(limit: 10) {
-        items ${contentQuery(true)}
+      items ${contentQuery(true)}
     }
   }
 }`;
