@@ -164,4 +164,53 @@
   flex-direction: column;
 }
 
+.personRow {
+  display: flex;
+  align-items: top;
+  cursor: pointer;
+  margin-bottom: 8px;
+  font-weight: bold;
 
+  &:hover {
+    opacity: 0.7; // optional hover effect
+  }
+}
+
+.toggleIcon {
+  display: inline-block;
+  width: 20px; // fixed width for alignment
+  text-align: center;
+  margin-right: 4px;
+  font-size: 16px;
+  line-height: 120%;
+}
+
+.personName {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 120%;
+}
+
+@media only screen and (max-width: 770px) {
+
+  .toggleIcon {
+    font-size: 24px;
+  }
+
+  .personName {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+
+  .description {
+    font-size: 16px;
+    
+    p {
+      font-size: 14px;
+      line-height: 140%;
+  }
+
+}
+
+}

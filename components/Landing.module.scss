@@ -224,8 +224,8 @@
 }
 
 .descriptiontext {
-  font-size: 16px;
-  line-height: 120%;
+  font-size: 14px;
+  line-height: 140%;
   color: white;
   font-family: "Spectral", serif;
   text-align: left;
@@ -252,7 +252,7 @@
   color: white;
   font-family: "Spectral", serif;
   text-align: left;
-  padding-bottom: 24px;
+  padding-bottom: 16px;
 }
 
 .cardorgan img {
@@ -268,16 +268,18 @@
 .cardnumber {
   font-size: 28px;
   line-height: 90%;
-  color: white;
   font-family: "Spectral", serif;
+  color: white;
+ 
 }
 
 .cardnumberdescription {
   font-size: 14px;
   line-height: 120%;
-  color: white;
   font-family: "Spectral", serif;
   text-align: left;
+  color: white;
+  
 }
 
 .carddatapoint {
@@ -302,10 +304,10 @@
 .cardlabel {
   font-size: 14px;
   line-height: 120%;
-  color: white;
-  font-family: "Spectral", serif;
-  text-align: left;
   padding-bottom: 2px;
+  text-align: left;
+  font-family: "Spectral", serif;
+  color: white; 
 }
 
 .cardhairline {
@@ -897,6 +899,10 @@
 
 
 @media only screen and (max-width: 768px) {
+
+  .keycontainer{
+    display: none;
+  }
 
   .mapoutercountainer{
     pointer-events: none;

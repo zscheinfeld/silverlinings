@@ -49,12 +49,24 @@ const Bodynavigation = () => {
             left="445px"
             targetId="2-1"
             id="tip-1"
-            title="Future 1"
-            bodyText="We can slow brain <br> aging by 1 year"
+            title="Slow brain aging by 1 year"
+            bodyText="Most productivity depends on cognitive function, and brain health
+            is the foundation of human identity. Though a distinction is often
+            made between “healthy” brain aging and neurodegenerative diseases,
+            the boundary between normal and abnormal neurodegeneration is
+            blurry. Much funding is devoted to late-stage brain diseases, but
+            the predictable decline of brain health with age remains
+            overlooked."
             image="/brainsimulation.png"
             place="right"
-            offset={30}
+            offset={16}
             maxWidth={250}
+            stat1="$364B"
+            statLabel1="Yearly gain<br>to U.S. GDP"
+            stat2="$15T"
+            statLabel2="Long-term <br> Net Present Value"
+            stat3="257k"
+            statLabel3="Lived saved <br>or gained by 2050"
           />
 
           {/* <div 
@@ -73,12 +85,24 @@ const Bodynavigation = () => {
             left="450px"
             targetId="2-2"
             id="tip-2"
-            title="Future 2"
-            bodyText="We can slow reproductive <br>  aging  by 1 year"
+            title="Slow reproductive <br> aging by 1 year"
+            bodyText="Most women in the U.S. reproduce after age 30. This increases
+            miscarriages, maternal deaths, and infertility. Our model takes
+            into account the short- and long-term effects of better
+            reproductive aging on labor supply, wages, and new lives. We also
+            consider the less studied relationship between menopause and
+            lifespan/healthspan, as reproductive aging is increasingly
+            understood as a driver of diseases like Alzheimer’s."
             image="/simtool/uterus.png"
             place="left"
             offset={30}
             maxWidth={250}
+            stat1="$11B"
+            statLabel1="Yearly gain<br>to U.S. GDP"
+            stat2="$8.5T"
+            statLabel2="Long-term <br> Net Present Value"
+            stat3="25k"
+            statLabel3="Lived saved <br>or gained by 2050"
           />
 
           {/* <div 
@@ -98,12 +122,18 @@ const Bodynavigation = () => {
             left="480px"
             targetId="2-3"
             id="tip-3"
-            title="Future 3"
-            bodyText="We can replace aging"
+            title="2x increase in<br> organ supply"
+            bodyText="Most productivity depends on cognitive function, and brain health is the foundation of human identity. Though a distinction is often made between “healthy” brain aging and neurodegenerative diseases, the boundary between normal and abnormal neurodegeneration is blurry. Much funding is devoted to late-stage brain diseases, but the predictable decline of brain health with age remains overlooked. "
             image="/simtool/heart.png"
             place="left"
-            offset={30}
+            offset={10}
             maxWidth={250}
+            stat1="$68B"
+            statLabel1="Yearly gain<br>to U.S. GDP"
+            stat2="$3.9"
+            statLabel2="Long-term <br> Net Present Value"
+            stat3="600k"
+            statLabel3="Lived saved <br>or gained by 2050"
           />
 
           {/* <div 
@@ -121,13 +151,19 @@ const Bodynavigation = () => {
             left="430px"
             targetId="2-4"
             id="tip-4"
-            title="Future 4"
-            bodyText="We can measure
-                & <br> marginally slow aging"
+            title="Measure
+            & marginally slow aging"
+            bodyText="We lack the tools & data to precisely measure biological aging. This bottlenecks the development of new therapeutics, and prevents us from knowing whether  existing ones can slow aging. We simulate the value of first- and second-generation therapeutics. The first are existing drugs that may marginally improve how we age, but have not yet been tested. The second are counterfactual therapeutics that could slow aging in still-healthy adults."
             image="/simtool/chip.png"
             place="left"
             offset={30}
             maxWidth={250}
+            stat1="$58B"
+            statLabel1="Yearly gain<br>to U.S. GDP"
+            stat2="$2.7T"
+            statLabel2="Long-term <br> Net Present Value"
+            stat3="300k"
+            statLabel3="Lived saved <br>or gained by 2050"
           />
 
           {/* <div 
@@ -146,12 +182,18 @@ const Bodynavigation = () => {
             left="470px"
             targetId="2-5"
             id="tip-5"
-            title="Future 5"
-            bodyText="We can make 41 the new 40 <br> (or 60 the new 55!)"
+            title="Slow biological<br>aging by 1 year "
+            bodyText="Think of a world where 41 is the new 40, so that all U.S. adults 40+ live, work, save, spend, consume, and die at the rates of adults 1 year younger.  We simulate a 1-year delay in the biological age of cells, organs and tissues. This is likely possible with existing methods. To unlock more significant year shifts (e.g. 20y), we may need to couple lifestyle interventions with therapeutics that target cellular aging + better tissue, cell, and organ engineering. "
             image="/simtool/cell.png"
             place="left"
             offset={30}
             maxWidth={250}
+            stat1="$426B"
+            statLabel1="Yearly gain<br>to U.S. GDP"
+            stat2="$22.5T"
+            statLabel2="Long-term <br> Net Present Value"
+            stat3="1.3M"
+            statLabel3="Lived saved <br>or gained by 2050"
           />
         </div>
       </div>

@@ -174,6 +174,7 @@ const GsapLanding = () => {
               </>
             }
             text="At age 65, less than 5% of the population has an Alzheimer’s diagnosis. This number increases to roughly 50% beyond age 85."
+            colorHex="#FFF3A8"
           />
            <MobileCards
             imageSrc="Uterus.png"
@@ -186,6 +187,7 @@ const GsapLanding = () => {
             text=" Most women in the U.S. have children after 30. This increases
             miscarriages, maternal deaths, and infertility. Reproductive aging
             is also seen as a driver of diseases like Alzheimer’s."
+            colorHex="#FB8ED7"
           />
            <MobileCards
             imageSrc="Heart.png"
@@ -197,6 +199,7 @@ const GsapLanding = () => {
               </>
             }
             text="At age 65, less than 5% of the population has an Alzheimer’s diagnosis. This number increases to roughly 50% beyond age 85."
+            colorHex="#F0696B"
           />
 
          
@@ -227,6 +230,42 @@ const GsapLanding = () => {
 
         <div className={styles.space}></div>
         <div className={styles.space}></div>
+
+        <div className={styles.mobileKey}>
+        <div className={styles.key}>
+          <b>YEAR 2025, POPULATION 60+</b>
+
+          <div className={styles.keyitem}>
+            <div className={styles.symbol}></div>
+            35% {" > "} (JAPAN)
+          </div>
+
+          <div className={styles.keyitem}>
+            <div className={`${styles.symbol} ${styles.lightblue}`}></div>
+            30% {" > "} (ITALY, SOUTH KOREA)
+          </div>
+
+          <div className={styles.keyitem}>
+            <div className={`${styles.symbol} ${styles.yellow}`}></div>
+            25% {" > "} (U.S., FRANCE, RUSSIA)
+          </div>
+
+          <div className={styles.keyitem}>
+            <div className={`${styles.symbol} ${styles.darkblue}`}></div>
+            20% {" > "} (CHINA)
+          </div>
+
+          <div className={styles.keyitem}>
+            <div className={`${styles.symbol} ${styles.pink}`}></div>
+            15% {" > "} (BRAZIL)
+          </div>
+
+          <div className={styles.keyitem}>
+            <div className={`${styles.symbol} ${styles.purple}`}></div>
+            ~10% {" > "} (SAUDI ARABIA, MOROCCO, INDA)
+          </div>
+        </div>
+        </div>
         <div className={styles.landingtextlightcontainer}>
           <div
             className={`${styles.landingtextlightinnercontainer} ${styles.hidden}`} // Add the hidden class initially
@@ -297,7 +336,7 @@ const GsapLanding = () => {
           className={styles.hidden}
           ref={landingOuterTextRef}>
             <div
-              className={`${styles.mobileLeft}${styles.landinginnertext} ${styles.light} ${styles.landingmedium} ${styles.paddingbottom}`}
+              className={`${styles.mobileLeft} ${styles.landinginnertext} ${styles.light} ${styles.landingmedium} ${styles.paddingbottom}`}
             >
               What if new scientific breakthroughs could delay biological aging
               and extend healthy life?

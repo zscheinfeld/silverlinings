@@ -5,16 +5,17 @@
 }
 
 .answer {
+  
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 56px;
   width: 100%;
-
   max-height: 0;
   overflow: hidden; /* Hides content when collapsed */
   /* transition: max-height 0.8s ease-in-out, padding 0.8s ease-in-out; */
   padding: 0; /* Ensures padding doesn't affect collapsing */
+  // padding-top: 24px;
 }
 
 .title {
@@ -54,6 +55,8 @@
     padding: 0;
     user-select: none;
     text-align: center;
+    padding-top: 24px;
+    padding-bottom: 24px;
 
     .icon {
       display: inline-block;
@@ -67,6 +70,7 @@
   // padding: 20px; /* Add padding back when expanded */
   padding-left: 20px; /* Add padding back when expanded */
   padding-right: 20px; /* Add padding back when expanded */
+  // padding-top: 24px;
 }
 
 .toggle {

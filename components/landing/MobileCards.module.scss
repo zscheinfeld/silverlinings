@@ -1,4 +1,5 @@
 .rcard {
+  position: relative;
   margin-top: 24px;
     background-color: #191818;
     border: solid white 1px;
@@ -7,6 +8,16 @@
     display: flex;
     flex-direction: column;
     gap: 46px;
+  }
+
+  .color{
+    background-color: white;
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    top: 28px;
+    left: 28px;
+    border-radius: 100%;
   }
 
   .rcardtext {
