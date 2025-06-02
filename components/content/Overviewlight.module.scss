@@ -314,7 +314,6 @@
     line-height: 115%;
     min-height: 105px;
     position: relative; 
-
   }
   
   .transparent {
@@ -327,13 +326,11 @@
     left: 0px;
     display: flex;
     gap: 4px;
-    
   }
 
   .switchButton img{
     opacity: 100%;
     transition: opacity 300ms ease-in-out;
-    
   }
 
   .switchButton img:hover{
@@ -366,4 +363,113 @@
       object-fit: contain;
     }
     
+  }
+
+  @media only screen and (max-width: 770px) {
+    
+  .itemMasterContainer{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap:18px;
+    flex-direction: column;
+  }
+
+  .statsContainer {
+    display: flex;
+    // align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .futureImageTitle{
+    padding-top: 18px;
+    border-top: solid rgba(0, 0, 0, 0.25) 1px;
+    font-size:20px;
+    font-weight: 400;;
+    line-height: 115%;
+    min-height: auto;
+    position: relative; 
+  }
+
+  .innerStat {
+    font-size: 28px;
+    line-height: 120%;
+  }
+
+  .innerLabel {
+    font-family: "spectral";
+    font-size: 14px;
+    line-height: 120%;
+    font-weight: 400;
+    text-align: left;
+    padding-top: 20px;
+    // transform: translateY(42px);
+  }
+
+  .futureImageTitle{
+    padding-top: 18px;
+    border-top: solid rgba(0, 0, 0, 0.25) 1px;
+    font-size: 24px;
+    font-weight: 400;;
+    line-height: 115%;
+    padding-bottom: 12px;
+    position: relative; 
+  }
+
+  .switchButton{
+    position: absolute;
+    top: 8px;
+    right: 0px;
+    display: flex;
+    gap: 4px;
+    height: 40px;
+   justify-content: flex-end;
+  }
+
+  .switchButton img{
+    opacity: 100%;
+    transition: opacity 300ms ease-in-out;
+  }
+
+  .futureImageContainer {
+    width: 100%;
+    height: 300px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: none;
+    padding-bottom: 36px;
+  }
+
+  .futureImageContainer img{
+    width: 100%;
+    height: 100%;
+    // height: 120%;
+    // object-fit: fit;
+    max-height: none;
+
+  }
+
+  
+  .futureContainer {
+    padding-bottom: 24px;
+  }
+
+  .overviewHeader {
+    font-family: "spectral";
+    font-size: 28px;
+    line-height: 106%;
+    color: #171717;
+    margin-bottom: 64px;
+    text-align: center;
+    padding-bottom: 16px;
+    border-bottom: #171717 solid 1px;
+    width: fit-content;
+  }
+  
+  
+
   }

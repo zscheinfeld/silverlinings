@@ -37,10 +37,22 @@ const ImageGrid = ({ type, items }) => {
           <div className={styles.item} key={index}>
             <img className={styles.image} src={image?.url} />
             <div className={styles.content}>
-              <span className={styles.title}>{title}</span>
-
               {isTwoGrid ? (
                 <>
+                  {/* Person row with + / - toggle */}
+                  <div
+                    className={styles.personRow}
+                    onClick={() => toggleIndex(index)}
+                  >
+                    <span className={styles.toggleIcon}>
+                      {isExpanded ? "−" : "+"}
+                    </span>
+                    <span className={styles.personName}>
+                      {title}
+                    </span>
+                  </div>
+
+                  {/* Expandable description */}
                   <div
                     ref={(el) => (refs.current[index] = el)}
                     className={styles.descriptionWrapper}
@@ -53,18 +65,15 @@ const ImageGrid = ({ type, items }) => {
                       <Markdown>{description}</Markdown>
                     </div>
                   </div>
-
-                  <button
-                    className={styles.toggleButton}
-                    onClick={() => toggleIndex(index)}
-                  >
-                    {isExpanded ? "Hide Bio" : "Read Bio"}
-                  </button>
                 </>
               ) : (
-                <div className={styles.description}>
-                  <Markdown>{description}</Markdown>
-                </div>
+                <>
+                  {/* No toggle — just title and description */}
+                  <span className={styles.title}>{title}</span>
+                  <div className={styles.description}>
+                    <Markdown>{description}</Markdown>
+                  </div>
+                </>
               )}
             </div>
           </div>

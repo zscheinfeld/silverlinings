@@ -1,9 +1,13 @@
 import React from "react";
 import styles from "@/components/landing/MobileCards.module.scss";
 
-const MobileCards = ({ imageSrc, imageAlt, header, text}) => {
+const MobileCards = ({ imageSrc, imageAlt, header, text, colorHex }) => {
   return (
     <div className={`${styles.rcard}`}>
+      <div
+        className={styles.color}
+        style={{ backgroundColor: colorHex }}
+      ></div>
       <div className={styles.rcardimage}>
         <img src={imageSrc} alt={imageAlt} />
       </div>
