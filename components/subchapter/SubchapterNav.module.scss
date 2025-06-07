@@ -38,12 +38,24 @@
   font-weight: 400;
   font-style: normal;
   font-size: 16px;
-  line-height: 100%;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  height: 120px;
+  line-height: 1.2;
+  // transform: rotate(90deg) translate(36px, -78px);
+  white-space: nowrap; /* prevents line breaks */
   color: inherit;
+  text-align: left;
+  // display: flex;
+  // justify-content: ;
 }
+
+.subchapterNavText > *  {
+  display: block; /* THIS is the missing piece! */
+  transform-origin: left bottom;
+  transform: rotate(90deg)  translate(-118px, 0px);
+  // max-width: 200px;
+  
+}
+
+
 
 .previousSubChapter:hover {
   background-color: rgba(0, 0, 0, 0.15);
@@ -83,6 +95,7 @@
 
 .subchapterButton {
   appearance: none;
+  -webkit-appearance: none;
   outline: none;
   background: none;
   width: 100%;

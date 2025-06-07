@@ -224,4 +224,17 @@
 
  
   
+  @media (max-width: 767px) {
   
+    .image{
+      width: 500px;
+    }
+
+    .hotspot {
+      display: none;
+    }
+    .spacer{
+      min-height: 60px;
+      max-height: 60px;
+    }
+  }
