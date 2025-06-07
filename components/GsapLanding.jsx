@@ -166,7 +166,7 @@ const GsapLanding = () => {
 
         <div className={styles.mobileCard}>
           <MobileCards
-            imageSrc="brain.png"
+            imageSrc="Brainyellow.png"
             imageAlt="Brain"
             header={
               <>
@@ -177,7 +177,7 @@ const GsapLanding = () => {
             colorHex="#FFF3A8"
           />
            <MobileCards
-            imageSrc="Uterus.png"
+            imageSrc="Uteruspink.png"
             imageAlt="Uterus"
             header={
               <>
@@ -190,7 +190,7 @@ const GsapLanding = () => {
             colorHex="#FB8ED7"
           />
            <MobileCards
-            imageSrc="Heart.png"
+            imageSrc="Heartred.png"
             imageAlt="Heart"
             header={
               <>
