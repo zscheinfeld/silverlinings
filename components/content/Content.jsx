@@ -29,7 +29,7 @@ const Content = ({ __typename, ...data }) => {
         />
       );
     } else {
-      return <Sidenote sidenotetext={data.card1}></Sidenote>;
+      return <Sidenote sidenotetext={data.card1} title={data.title} />;
     }
   }
 
