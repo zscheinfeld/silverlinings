@@ -1,16 +1,6 @@
-import * as tf from "@tensorflow/tfjs";
 import styles from "@/components/simulation/Simulation.module.scss";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
-
-// Store normalization parameters
-const inputMeans = [
-  5.1302979e1, 8.4279661, 1.0377118e1, 1.9504026, 1.8451481, 6.747458e-1,
-  3.5e-2,
-];
-const inputStds = [
-  10.563937, 8.102567, 8.245038, 2.1774914, 2.1157672, 0.6330082, 0.01707825,
-];
 
 import { useEffect, useState } from "react";
 import Slider from "@/components/simulation/Slider";
@@ -18,14 +8,14 @@ import SimulationOverlay from "./SimulationOverlay";
 
 const Simulation = ({ data }) => {
   const [showOverlay, setShowOverlay] = useState(true);
-  const [showDescription, setShowDescription] = useState(false); // State to toggle the description visibility
+  const [showDescription, setShowDescription] = useState(false);
 
   const toggleOverlay = () => {
     setShowOverlay((prev) => !prev);
   };
 
   const toggleDescription = () => {
-    setShowDescription((prev) => !prev); // Toggle the description visibility
+    setShowDescription((prev) => !prev);
   };
 
   const [sectionIndex, setSectionIndex] = useState(0);
@@ -42,12 +32,18 @@ const Simulation = ({ data }) => {
     inputNumYears: section.inputs["numYears"].defaultValue,
   };
 
-  const [models, setModels] = useState({});
   const [inputs, setInputs] = useState(defaultInputs);
   const [outputs, setOutputs] = useState({});
-  const [loading, setLoading] = useState(true);
-
+  const [loading, setLoading] = useState(false);
   const [showSecondaryInputs, setShowSecondaryInputs] = useState(false);
+
+  // API configuration
+  // const API_BASE = "/predict"; // Update this to match your FastAPI endpoint
+  const API_BASE = "http://localhost:8000/predict" ;
+
+  // Timer for debounced API calls
+  const [updateTimer, setUpdateTimer] = useState(null);
+  const [isUpdating, setIsUpdating] = useState(false);
 
   const handleReset = () => {
     setInputs({ ...defaultInputs });
@@ -61,133 +57,114 @@ const Simulation = ({ data }) => {
     setInputs({ ...defaultInputs });
   }, [sectionIndex]);
 
-  useEffect(() => {
-    const run = async () => {
-      const [npv_model, GDP_20_model, pop_model] = await Promise.all([
-        tf.loadLayersModel("/tf_model/NPV/model.json"),
-        tf.loadLayersModel("/tf_model/GDP_20/model.json"),
-        tf.loadLayersModel("/tf_model/Pop/model.json"),
-      ]);
-      setModels({
-        npv_model,
-        GDP_20_model,
-        pop_model,
-      });
-      setLoading(false);
-    };
-    void run();
-  }, []);
+  // Make prediction via API call
+  const makePrediction = async () => {
+    if (isUpdating) return; // Prevent multiple simultaneous requests
 
-  useEffect(() => {
-    if (!loading) {
-      doSurrogate();
+    setIsUpdating(true);
+    setLoading(true);
+
+    try {
+      let {
+        inputAdoption = 0,
+        inputR = 0,
+        inputAge = 0,
+        inputStartYear = 0,
+        inputNumYears = 0,
+        inputMortality = 0,
+        inputProductivity = 0,
+        inputFertility = 0,
+      } = inputs;
+
+      // Make adjustments to year shifts based on adoption rate
+      const adjustedMortality = inputMortality * (inputAdoption / 100);
+      const adjustedProductivity = inputProductivity * (inputAdoption / 100);
+      const adjustedFertility = Math.min(inputFertility, 1.2) * (inputAdoption / 100);
+
+      // Prepare payload matching the expected API format
+      const payload = {
+        age_effect: inputAge,
+        initial_effect: inputStartYear,
+        final_effect: inputNumYears,
+        mort_effect: adjustedMortality,
+        prod_effect: adjustedProductivity,
+        fert_effect: adjustedFertility,
+        discount_rate: inputR,
+      };
+
+      const response = await fetch(API_BASE, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        const error = await response.json().catch(() => ({ detail: response.statusText }));
+        throw new Error(error.detail || `HTTP ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      // Update outputs with API response
+      setOutputs({
+        outputNPV: Math.round(data.NPV * 10) / 10, // Round to 1 decimal place (trillions)
+        outputGDP20: Math.round(data.avg_diff * 10) / 10, // Round to 1 decimal place (billions)
+        outputPop: Math.round(data.pop_diffs_2050 * 1000), // Round to nearest thousand
+      });
+
+    } catch (error) {
+      console.error("Prediction error:", error);
+      // Clear outputs on error
+      setOutputs({
+        outputNPV: 0,
+        outputGDP20: 0,
+        outputPop: 0,
+      });
+    } finally {
+      setIsUpdating(false);
+      setLoading(false);
     }
-  }, [loading, inputs]);
+  };
+
+  // Schedule debounced update
+  const scheduleUpdate = () => {
+    if (updateTimer) {
+      clearTimeout(updateTimer);
+    }
+
+    const newTimer = setTimeout(() => {
+      makePrediction();
+    }, 250);
+
+    setUpdateTimer(newTimer);
+  };
+
+  // Effect to trigger predictions when inputs change
+  useEffect(() => {
+    scheduleUpdate();
+
+    // Cleanup timer on unmount
+    return () => {
+      if (updateTimer) {
+        clearTimeout(updateTimer);
+      }
+    };
+  }, [inputs]);
+
+  // Initial prediction on component mount
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      makePrediction();
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const updateInputs = (event) => {
     setInputs((inputs) => {
       return { ...inputs, [event.target.id]: parseFloat(event.target.value) };
     });
   };
-
-  // Normalization function
-  const normalizeData = (tensor, means, stds) => {
-    return tf.tidy(() => {
-      return tensor.sub(means).div(stds);
-    });
-  };
-
-  // Run the surrogate model
-  const doSurrogate = () => {
-    // Get input value
-
-    let {
-      inputAdoption = 0,
-      inputR = 0,
-      inputAge = 0,
-      inputStartYear = 0,
-      inputNumYears = 0,
-      inputMortality = 0,
-      inputProductivity = 0,
-      inputFertility = 0,
-    } = inputs;
-
-    // Make adjustments to year shifts based on adoption rate
-    inputMortality = inputMortality * (inputAdoption / 100);
-    inputProductivity = inputProductivity * (inputAdoption / 100);
-    inputFertility = Math.min(inputFertility, 1.2) * (inputAdoption / 100);
-
-    // Below list needs to follow same order as the input list used to train the model
-    const inputTensor_NPV = tf.tensor2d(
-      [
-        inputAge,
-        inputStartYear,
-        inputNumYears,
-        inputMortality,
-        inputProductivity,
-        inputFertility,
-        inputR,
-      ],
-      [1, 7]
-    );
-    const inputTensor_GDP_pop = tf.tensor2d(
-      [
-        inputAge,
-        inputStartYear,
-        inputNumYears,
-        inputMortality,
-        inputProductivity,
-        inputFertility,
-      ],
-      [1, 6]
-    );
-
-    // Get prediction with new input
-
-    // Normalize the inputs
-    const normalizedInputs_NPV = normalizeData(
-      inputTensor_NPV,
-      tf.tensor(inputMeans),
-      tf.tensor(inputStds)
-    );
-    const normalizedInputs_GDP_pop = normalizeData(
-      inputTensor_GDP_pop,
-      tf.tensor(inputMeans.slice(0, -1)),
-      tf.tensor(inputStds.slice(0, -1))
-    );
-
-    const { npv_model, GDP_20_model, pop_model } = models;
-    let prediction_NPV = npv_model.predict(normalizedInputs_NPV);
-    let prediction_GDP_20 = GDP_20_model.predict(normalizedInputs_GDP_pop);
-    let prediction_Pop = pop_model.predict(normalizedInputs_GDP_pop);
-
-    // If inputMortality, inputProductivity, inputFertility all zero, then set predictions to zero
-    if (
-      inputMortality === 0 &&
-      inputProductivity === 0 &&
-      inputFertility === 0
-    ) {
-      prediction_NPV = tf.tensor2d([[0]]);
-      prediction_GDP_20 = tf.tensor2d([[0]]);
-      prediction_Pop = tf.tensor2d([[0]]);
-    }
-
-    // Clean up tensors
-    tf.dispose([
-      inputTensor_NPV,
-      inputTensor_GDP_pop,
-      normalizedInputs_NPV,
-      normalizedInputs_GDP_pop,
-    ]);
-
-    setOutputs({
-      outputNPV: Math.round(prediction_NPV.arraySync()[0][0] * 10) / 10,
-      outputGDP20: Math.round(prediction_GDP_20.arraySync()[0][0]),
-      outputPop: Math.round(prediction_Pop.arraySync()[0][0] * 100) / 0.1, // The arraySync() method returns the value of the tensor as a nested array.
-    });
-  };
-
-  if (loading) return <span>Loading...</span>;
 
   const formattedOutputPop =
     outputs.outputPop > 1000
@@ -328,6 +305,11 @@ const Simulation = ({ data }) => {
                 src={section.image.url}
                 alt=""
               />
+              {loading && (
+                <div className={styles.loadingOverlay}>
+                  <span>Updating...</span>
+                </div>
+              )}
             </div>
             <div className={styles.outputInnerContainer}>
               <Tooltip
@@ -392,11 +374,6 @@ const Simulation = ({ data }) => {
               </div>
             </div>
           </div>
-
-          {/* <div className={styles.explanation}>
-            <div className={styles.sectionHeader}>EXPLANATION</div>
-            <div className={styles.explanationText}>{data.explanation}</div>
-          </div> */}
         </div>
       </div>
     </>
