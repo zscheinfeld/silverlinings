@@ -305,11 +305,6 @@ const Simulation = ({ data }) => {
                 src={section.image.url}
                 alt=""
               />
-              {loading && (
-                <div className={styles.loadingOverlay}>
-                  <span>Updating...</span>
-                </div>
-              )}
             </div>
             <div className={styles.outputInnerContainer}>
               <Tooltip
