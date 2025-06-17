@@ -1,0 +1,225 @@
+@use "../../styles/layout";
+
+.image {
+  border-radius: 50%;
+  background-color: grey;
+}
+
+
+
+
+
+
+
+.items_two {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px 32px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  .title {
+    font-family: "Spectral", serif;
+    font-size: 18px;
+    line-height: 112%;
+  }
+
+  @include layout.md {
+    gap: 64px 32px;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+    // 4 columns at large screen
+    @include layout.lg {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+  .image {
+    aspect-ratio: 1;
+    width: 100%;
+    max-width: 140px;
+    
+    margin-bottom: 16px;
+    @include layout.md {
+      margin-right: 24px;
+      max-width: 116px;
+    }
+  }
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include layout.md {
+      
+    flex-direction: column;
+    align-items: flex-start;
+
+    }
+  
+  }
+
+  .descriptionWrapper {
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+  }
+
+  .description {
+    margin-top: 8px;
+    font-family: "Spectral", serif;
+    font-size: 12px;
+    line-height: 120%;
+    opacity: 1;
+
+    @include layout.md {
+      font-size: 12px;
+  
+      }
+
+    p {
+      margin-bottom: 12px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .toggleButton {
+    font-family: "Spectral", serif;
+    margin-top: 2px;
+    background: none;
+    border: none;
+    color: hsla(0, 0%, 100%, 0.75);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+    text-decoration: underline;
+    text-align: left;
+
+    &:hover {
+      color: #ffffff;
+    }
+  }
+}
+
+.items_three {
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 32px;
+  row-gap: 96px;
+
+  @include layout.md {
+    row-gap: 64px;
+  }
+
+  .title {
+    font-family: "Spectral", serif;
+    font-size: 24px;
+    line-height: 112%;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  @include layout.md {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .image {
+    aspect-ratio: 1;
+    width: 100%;
+    max-width: 200px;
+    margin-bottom: 24px;
+    @include layout.md {
+      max-width: 160px;
+    }
+  }
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include layout.md {
+      align-items: flex-start;
+    }
+  }
+
+  .description {
+    font-family: "Spectral", serif;
+    font-size: 16px;
+    line-height: 120%;
+
+    @include layout.md {
+      font-size: 12px;
+    }
+
+    p {
+      margin-bottom: 12px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.personRow {
+  display: flex;
+  align-items: top;
+  cursor: pointer;
+  margin-bottom: 8px;
+  font-weight: bold;
+
+  &:hover {
+    opacity: 0.7; // optional hover effect
+  }
+}
+
+.toggleIcon {
+  display: inline-block;
+  width: 20px; // fixed width for alignment
+  text-align: center;
+  margin-right: 4px;
+  font-size: 16px;
+  line-height: 120%;
+}
+
+.personName {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 120%;
+}
+
+@media only screen and (max-width: 770px) {
+
+  .personRow{
+    justify-content: center;
+  }
+
+  .toggleIcon {
+    font-size: 24px;
+  }
+
+  .personName {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+
+  .description {
+    font-size: 16px;
+    
+    p {
+      font-size: 14px;
+      line-height: 140%;
+  }
+
+}
+
+}

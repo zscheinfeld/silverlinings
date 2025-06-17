@@ -1,0 +1,70 @@
+.womanContainer {
+  /* position: fixed; */
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  top: 0;
+  left:0vw ;
+  z-index: 250;
+  pointer-events: none;
+  display: flex;
+}
+
+.leftContainer{
+  width: 50vw;
+  height: 100vh;
+}
+
+.womanmidContainer{
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  width: 50vw;
+  align-items: center;
+  
+}
+
+.womanInnerContainer {
+  height: 1000px; 
+  position: relative;
+  /* width: 100vw; */
+}
+
+.womanInnerContainer img {
+  height: 1000px;
+  transform: translateY(-100px);
+  /* width: 100; */
+}
+
+
+@media only screen and (max-width: 768px) {
+
+  .womanContainer {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    top: 0;
+    left:0vw ;
+    z-index: 250;
+    pointer-events: none;
+  }
+  
+  .womanInnerContainer {
+    position: absolute;
+    right: -20vw;
+    top:-4vh;
+    height: 100vh;
+    /* width: 100vw; */
+  }
+  
+  .womanInnerContainer img {
+    height: 100%
+    /* width: 100; */
+  }
+  
+}

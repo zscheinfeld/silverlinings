@@ -2,9 +2,18 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+First, run the backend server:
 
 ```bash
+cd fastapi-backend
+uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+```
+
+
+Second, run the frontend development server:
+
+```bash
+cd nextjs-frontend
 npm run dev
 # or
 yarn dev
