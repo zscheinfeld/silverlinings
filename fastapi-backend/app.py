@@ -8,19 +8,27 @@ import numpy as np
 import pandas as pd
 import pickle
 import pathlib
+import time
+from fastapi import Request
 
-# ---------- load the interpolants once at start-up ----------------
-model_path = pathlib.Path(__file__).parent / "models"
 
-# I don't have the NPV interpolant, uncomment this to make use of this.
-with open(model_path / "interpolant_NPV.pkl", "rb") as f:
-    interp_NPV = pickle.load(f)
+# Declare globals for later assignment
+interp_NPV = None
+interp_avg = None
+interp_pop = None
 
-with open(model_path / "interpolant_avg_diff.pkl", "rb") as f:
-    interp_avg = pickle.load(f)
 
-with open(model_path / "interpolant_pop_diffs_2050.pkl", "rb") as f:
-    interp_pop = pickle.load(f)
+# # ---------- load the interpolants once at start-up ----------------
+# model_path = pathlib.Path(__file__).parent / "models"
+# # Load the interpolants from pickle files
+# with open(model_path / "interpolant_NPV.pkl", "rb") as f:
+#     interp_NPV = pickle.load(f)
+
+# with open(model_path / "interpolant_avg_diff.pkl", "rb") as f:
+#     interp_avg = pickle.load(f)
+
+# with open(model_path / "interpolant_pop_diffs_2050.pkl", "rb") as f:
+#     interp_pop = pickle.load(f)
 
 # ---------- request / response schema -----------------------------
 ScalarOrList = Union[float, List[float]]
@@ -101,6 +109,20 @@ def select_data(df, output_variables):
 # ---------- create the FastAPI instance ---------------------------
 app = FastAPI(title="My Interpolant Service")
 
+@app.on_event("startup")
+def load_models():
+    global interp_NPV, interp_avg, interp_pop
+    model_path = pathlib.Path(__file__).parent / "models"
+
+    t0 = time.time()
+    with open(model_path / "interpolant_NPV.pkl", "rb") as f:
+        interp_NPV = pickle.load(f)
+    with open(model_path / "interpolant_avg_diff.pkl", "rb") as f:
+        interp_avg = pickle.load(f)
+    with open(model_path / "interpolant_pop_diffs_2050.pkl", "rb") as f:
+        interp_pop = pickle.load(f)
+    print(f"Loaded models in {time.time() - t0:.2f}s")
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000"],  # Next.js dev server
@@ -109,13 +131,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Serve the SPA root (GET /) → index.html
-@app.get("/", response_class=HTMLResponse)
-async def index():
-    return FileResponse("index.html")
-
 @app.post("/predict", response_model=Outputs)
 def predict(data: Inputs):
+    global interp_NPV, interp_avg, interp_pop
     # 1. Collect and broadcast inputs
     fields = [
         data.age_effect, data.initial_effect, data.final_effect,
@@ -123,23 +141,24 @@ def predict(data: Inputs):
         data.discount_rate
     ]
     arrays, n = _broadcast_or_400(fields)
-
+    print("collected inputs")
     # 2. Build the X matrix expected by your interpolators
     df = pd.DataFrame(np.column_stack(arrays))
     df.columns = [
         'age_effect', 'initial_effect', 'final_effect', 'mort_effect',
         'prod_effect', 'fert_effect', 'discount_rate'
     ]
-
+    print("built input DataFrame")
     # 3. Call the three interpolators (each returns ndarray of shape (n,))
     npv            = interp_NPV(select_data(df, 'NPV')).ravel()
     avg            = interp_avg(select_data(df, 'avg_diff')).ravel()
     pop_diffs_2050 = interp_pop(select_data(df, 'pop_diffs_2050')).ravel()
-
+    print("called interpolators")
     # 4. Some interpolators return masked or NaN for extrapolation—clean up
     npv   = np.nan_to_num(npv,   nan=float("nan")).tolist()
     avg   = np.nan_to_num(avg,   nan=float("nan")).tolist()
     pop   = np.nan_to_num(pop_diffs_2050, nan=float("nan")).tolist()
+    print("cleaned up outputs")
 
     return Outputs(NPV=npv, pop_diffs_2050=pop, avg_diff=avg)
 
