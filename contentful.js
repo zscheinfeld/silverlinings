@@ -22,6 +22,11 @@ const text = `...on Text {
   text
 }`;
 
+const button = `...on Button {
+  label
+  url
+}`;
+
 const subcontentQuery = `{
     __typename
     ${chart}
@@ -34,6 +39,7 @@ const contentQuery = (includeListContent = false) => `{
     ${chart}
     ${sidenote}
     ${text}
+    ${button}
     ...on Simulation {
         sectionsCollection(limit: 4) {
             items {
