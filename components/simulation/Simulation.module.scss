@@ -12,6 +12,7 @@
 .inputContainer {
   display: none;
   width: 100%;
+  z-index: 5;
 
   @include layout.md {
     display: block;
