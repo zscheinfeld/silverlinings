@@ -30,8 +30,13 @@ const ImageGrid = ({ type, items }) => {
 
   return (
     <div className={isTwoGrid ? styles.items_two : styles.items_three}>
-      {items.map(({ title, description, image }, index) => {
-        const isExpanded = expandedIndexes.includes(index);
+      {items.map((item, index) => {
+  if (!item) return null; // Skip null or undefined items
+
+  const { title, description, image } = item;
+  const isExpanded = expandedIndexes.includes(index);
+
+        
 
         return (
           <div className={styles.item} key={index}>

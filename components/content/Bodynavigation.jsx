@@ -123,7 +123,7 @@ const Bodynavigation = () => {
             targetId="2-3"
             id="tip-3"
             title="2x increase in<br> organ supply"
-            bodyText="Most productivity depends on cognitive function, and brain health is the foundation of human identity. Though a distinction is often made between “healthy” brain aging and neurodegenerative diseases, the boundary between normal and abnormal neurodegeneration is blurry. Much funding is devoted to late-stage brain diseases, but the predictable decline of brain health with age remains overlooked. "
+            bodyText="The decline of organ function is a common symptom of aging. Many people need their organs replaced as they age. In the near future, a combination of biotechnologies may be needed to improve biological aging — including organ, cell, and tissue engineering. We simulate the economic effects of first meeting organ demand for the terminally ill, then achieving true organ abundance."
             image="/simtool/heart.png"
             place="left"
             offset={10}
