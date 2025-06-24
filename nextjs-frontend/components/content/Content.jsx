@@ -10,15 +10,26 @@ import NameGrid from "@/components/content/NameGrid";
 import List from "@/components/content/List";
 import Spacer from "@/components/content/Spacer";
 import Bodynavigation from "./Bodynavigation";
+import CTAbutton from "./CTAbutton";
 
 const Content = ({ __typename, ...data }) => {
+
+  console.log("Content block:", __typename, data);
+
   if (__typename === "Text") {
+    console.log(data, "text data");
     return <Textblock paragraphs={data.text} />;
   }
 
   // if (__typename === "Chart") {
   //   return <Chart data={data}></Chart>;
   // }
+
+  if (__typename === "Button") {
+    console.log(data, "button data");
+  return <CTAbutton label={data.label} url={data.url} />;
+    
+  }
 
   if (__typename === "Sidenote") {
     if (data.card2) {
@@ -29,7 +40,7 @@ const Content = ({ __typename, ...data }) => {
         />
       );
     } else {
-      return <Sidenote sidenotetext={data.card1}></Sidenote>;
+      return <Sidenote sidenotetext={data.card1} title={data.title} />;
     }
   }
 

@@ -1,13 +1,13 @@
 import styles from "./Bodynavigation.module.scss";
 import React from "react";
 import HotspotWithTooltip from "./HotspotWithTooltip";
-import Accordion from "./Accordion";
+import Lightaccordion from "./Lightaccordion";
 
 const Bodynavigation = () => {
   const accordionItems = [
     {
       title:
-        "Explainer: “You input what scientific advancements you believe are feasible in the next 1-20 years. Then, you see the returns on investment in terms of lives saved & impacts on U.S. GDP.”",
+        "To use our simulation tool, you input what scientific advancements you believe are feasible in the next 1 - 20 years. Then, you see returns on investment in terms of lives saved & impact on U.S. GDP.",
       description:
         "We simulate delays in biological aging by considering shifts backwards in mortality, productivity, and fertility rates by age in the U.S. Fertility rates are capped to match realistic birth rates. To visualize a 5-year shift in each lever in the model, think of a world where “45 is the new 40,” so that all adults over the age of 40 in the U.S. live, work, save, consume, spend, and die at the rates of adults 5 years younger. This is different from extending  life expectancy by 5 years.\n\n We assume no shifts in the age of retirement, making our results especially conservative. Instead, we consider the number of older adults who would voluntarily remain in the workforce past age 65, given empirical data. This is conservative because in a future where older adults enjoy better health, voluntary labor participation would likely be higher. To inspect each of our simulation parameters, please read our upcoming book, or our technical paper. \n\n In our baseline results, we use a 2% discount rate for real dollar results (adjusted for inflation). This is the long run real interest rate forecast by the Congressional Budget Office. We also assume 10 years until market entry, and 20 years until full market penetration for each therapeutic. Given the fast pace of technological advancement, we encourage the reader to focus on near-term annual changes to U.S. GDP, while entertaining possible long-term returns over several decades. The latter offers important insight into how, for instance, higher fertility rates only begin to offer returns on investment after several decades. (Newborns don’t work, and they temporarily reduce parents’ labor supply.)  These far-future effects cannot be precisely estimated, but they also cannot be ignored.\n\n",
     },
@@ -123,7 +123,7 @@ const Bodynavigation = () => {
             targetId="2-3"
             id="tip-3"
             title="2x increase in<br> organ supply"
-            bodyText="Most productivity depends on cognitive function, and brain health is the foundation of human identity. Though a distinction is often made between “healthy” brain aging and neurodegenerative diseases, the boundary between normal and abnormal neurodegeneration is blurry. Much funding is devoted to late-stage brain diseases, but the predictable decline of brain health with age remains overlooked. "
+            bodyText="The decline of organ function is a common symptom of aging. Many people need their organs replaced as they age. In the near future, a combination of biotechnologies may be needed to improve biological aging — including organ, cell, and tissue engineering. We simulate the economic effects of first meeting organ demand for the terminally ill, then achieving true organ abundance."
             image="/simtool/heart.png"
             place="left"
             offset={10}
@@ -198,11 +198,11 @@ const Bodynavigation = () => {
         </div>
       </div>
       <div className={styles.space}></div>
-      <Accordion
+      <Lightaccordion
         title={false}
         numbered={false}
         items={accordionItems}
-      ></Accordion>
+      ></Lightaccordion>
       <div className={styles.spacer}></div>
     </>
   );
