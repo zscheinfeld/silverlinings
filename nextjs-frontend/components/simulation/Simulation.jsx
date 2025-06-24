@@ -40,6 +40,7 @@ const Simulation = ({ data }) => {
   // API configuration
   // const API_BASE = "/predict"; // Update this to match your FastAPI endpoint
   const API_BASE = "http://localhost:8000/predict" ;
+  // const API_BASE = "https://fastapi-backend-proud-tree-3049.fly.dev/predict"; // Update this to match your FastAPI endpoint;
 
   // Timer for debounced API calls
   const [updateTimer, setUpdateTimer] = useState(null);
@@ -56,6 +57,7 @@ const Simulation = ({ data }) => {
   useEffect(() => {
     setInputs({ ...defaultInputs });
   }, [sectionIndex]);
+
 
   // Make prediction via API call
   const makePrediction = async () => {
@@ -151,7 +153,7 @@ const Simulation = ({ data }) => {
     };
   }, [inputs]);
 
-  // Initial prediction on component mount
+  // // Initial prediction on component mount
   useEffect(() => {
     const timer = setTimeout(() => {
       makePrediction();
