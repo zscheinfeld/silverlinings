@@ -61,6 +61,7 @@ const Simulation = ({ data }) => {
 
   // Make prediction via API call
   const makePrediction = async () => {
+
     if (isUpdating) return; // Prevent multiple simultaneous requests
 
     setIsUpdating(true);
@@ -153,20 +154,22 @@ const Simulation = ({ data }) => {
     };
   }, [inputs]);
 
-  // // Initial prediction on component mount
+  // Initial prediction on component mount
   useEffect(() => {
     const timer = setTimeout(() => {
       makePrediction();
     }, 100);
-
-    return () => clearTimeout(timer);
+      return () => clearTimeout(timer);
   }, []);
+
 
   const updateInputs = (event) => {
     setInputs((inputs) => {
       return { ...inputs, [event.target.id]: parseFloat(event.target.value) };
     });
   };
+
+  if (loading) return <span>Loading...</span>;
 
   const formattedOutputPop =
     outputs.outputPop > 1000
