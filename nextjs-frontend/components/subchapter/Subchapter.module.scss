@@ -1,0 +1,71 @@
+.subchaptername {
+  max-width: 620px;
+  text-align: center;
+  font-family: "Spectral", serif;
+  white-space: pre-wrap;
+  line-height: 36px;
+}
+
+.singleline {
+  font-size: 36px;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+}
+
+.firstline {
+  display: block;
+  font-size: 36px;
+}
+
+.secondline {
+  font-size: 24px;
+}
+
+.subchaptermodules {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  align-items: center;
+  width: 100%;
+  max-width: 950px;
+  padding-top: 64px;
+}
+
+.simulationsubachaptermodules {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  width: 100%;
+  max-width: 950px;
+  padding-top: 64px;
+  margin-bottom: 240px;
+}
+
+.accordionsubachaptermodules {
+  width: 100%;
+  max-width: 950px;
+}
+
+.bordered {
+  padding: 64px 0;
+  border-top: 1px solid currentColor;
+}
+
+@media only screen and (max-width: 770px) {
+  .subchaptername {
+    font-size: 28px;
+    line-height: 28px;
+  }
+
+  .singleline {
+    font-size: 28px;
+  }
+
+  .subchaptermodules {
+    gap: 36px;
+    padding-top: 42px;
+  }
+  
+}

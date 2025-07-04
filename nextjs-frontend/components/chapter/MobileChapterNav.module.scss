@@ -1,0 +1,105 @@
+@use "../../styles/layout";
+
+$height: 56px;
+$duration: 600ms;
+
+.mobileChapterNav {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: $height;
+  overflow-y: auto;
+  z-index: 1001;
+  background-color: #fff5e5;
+  border: none;
+  transition: height $duration;
+  -webkit-tap-highlight-color: transparent;
+
+  @include layout.md {
+    display: none;
+  }
+
+  &.expanded {
+    height: 100%;
+  }
+
+  &.hidden {
+    height: 0;
+  }
+}
+
+.mobileChapterNavSection {
+  height: 0;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  transition:
+    height $duration,
+    flex-grow $duration;
+  color: black;
+
+  &.active {
+    height: $height;
+    flex-grow: 1;
+  }
+
+  &.expanded {
+    height: $height !important;
+  }
+}
+
+.mobileChapterNavChapter {
+  height: $height;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  flex-shrink: 0;
+
+  font-family: "Spectral", serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 112%;
+
+  border: none;
+  color: black;
+
+  transition: background-color 200ms;
+
+  &.active.expanded {
+    background-color: #fff5e5;
+  }
+}
+
+.mobileChapterNavSubchapterAccordion {
+  display: grid;
+  grid-template-rows: 1fr;
+  //transition: $duration grid-template-rows ease;
+  height: 100%;
+}
+
+.mobileChapterNavSubchapters {
+  overflow: hidden;
+  //background-color: red;
+  height: calc(100%);
+}
+
+.mobileChapterNavSubchapter {
+  padding: 16px 30px;
+  display: flex;
+  justify-content: space-between;
+
+  font-family: "Spectral", serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 120%;
+
+  text-align: left;
+  gap: 16px;
+}

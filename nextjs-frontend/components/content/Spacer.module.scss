@@ -1,0 +1,15 @@
+@use "../../styles/layout";
+
+.spacer {
+  height: 120px;
+  width: 100%;
+  flex-shrink: 0;
+
+  @include layout.md {
+    height: 240px;
+  }
+}
+
+.border {
+  border-bottom: solid 1px black;
+}
