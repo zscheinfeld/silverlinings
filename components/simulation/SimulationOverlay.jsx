@@ -39,6 +39,7 @@ const SimulationOverlay = ({
             width: `${radius}px`,
             height: `${radius}px`,
             borderRadius: "50%",
+            transition: "width 0.5s ease, height 0.5s ease",
           }}
         ></div>
       </div>
@@ -46,7 +47,7 @@ const SimulationOverlay = ({
       <div className={`${styles.column} ${styles.rectanglecolumn}`}>
         <div
           className={styles.rectangle}
-          style={{ height: `${rectangleHeight}%`, transformOrigin: "bottom" }}
+          style={{ height: `${rectangleHeight}%`, transformOrigin: "bottom", transition: "height 0.5s ease", }}
         >
 
         </div>
@@ -55,7 +56,7 @@ const SimulationOverlay = ({
       <div className={`${styles.column} ${styles.maskcolumn}`}>
         <div
           className={styles.maskedimage}
-          style={{ height: `${maskedImageHeight}%`, overflow: "hidden" }}
+          style={{ height: `${maskedImageHeight}%`, overflow: "hidden",   transition: "height 0.5s ease", }}
         >
           <div className={styles.pattern}>
             <img
