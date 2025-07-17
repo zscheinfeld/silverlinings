@@ -4,7 +4,7 @@ import styles from "@/components/Landing.module.scss";
 const RotatingDivs = ({ startTransitionAt }) => {
   const [visibleDiv, setVisibleDiv] = useState(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const transitionDelay = 1400;
+  const transitionDelay = 2400;
 
   const divs = [
     <div className={`${styles.rhotspot} ${styles.brain}`}>
