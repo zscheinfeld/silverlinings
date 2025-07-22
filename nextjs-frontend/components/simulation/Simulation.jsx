@@ -32,9 +32,16 @@ const Simulation = ({ data }) => {
     inputNumYears: section.inputs["numYears"].defaultValue,
   };
 
+  const defaultOutputs = {
+    outputNPV: section.inputs["return"].defaultValue,
+    outputGDP20: section.inputs["yGDP"].defaultValue,
+    outputPop: section.inputs["lives"].defaultValue,
+};
+
   const [inputs, setInputs] = useState(defaultInputs);
-  const [outputs, setOutputs] = useState({});
+  const [outputs, setOutputs] = useState(defaultOutputs);
   const [loading, setLoading] = useState(false);
+  const [inputsUpdated, setInputsUpdated] = useState(false);
   const [showSecondaryInputs, setShowSecondaryInputs] = useState(false);
 
   // API configuration
@@ -55,6 +62,8 @@ const Simulation = ({ data }) => {
   };
 
   useEffect(() => {
+    setInputsUpdated(false)
+    setOutputs({ ...defaultOutputs });
     setInputs({ ...defaultInputs });
   }, [sectionIndex]);
 
@@ -143,7 +152,9 @@ const Simulation = ({ data }) => {
   };
 
   // Effect to trigger predictions when inputs change
-  useEffect(() => {
+    useEffect(() => {
+    if (!inputsUpdated) return;
+
     scheduleUpdate();
 
     // Cleanup timer on unmount
@@ -152,18 +163,10 @@ const Simulation = ({ data }) => {
         clearTimeout(updateTimer);
       }
     };
-  }, [inputs]);
-
-  // Initial prediction on component mount
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      makePrediction();
-    }, 100);
-      return () => clearTimeout(timer);
-  }, []);
-
+  }, [inputs, inputsUpdated]);
 
   const updateInputs = (event) => {
+    setInputsUpdated(true)
     setInputs((inputs) => {
       return { ...inputs, [event.target.id]: parseFloat(event.target.value) };
     });
