@@ -11,24 +11,11 @@ import pathlib
 import time
 from fastapi import Request
 
-
 # Declare globals for later assignment
 interp_NPV = None
 interp_avg = None
 interp_pop = None
 
-
-# # ---------- load the interpolants once at start-up ----------------
-# model_path = pathlib.Path(__file__).parent / "models"
-# # Load the interpolants from pickle files
-# with open(model_path / "interpolant_NPV.pkl", "rb") as f:
-#     interp_NPV = pickle.load(f)
-
-# with open(model_path / "interpolant_avg_diff.pkl", "rb") as f:
-#     interp_avg = pickle.load(f)
-
-# with open(model_path / "interpolant_pop_diffs_2050.pkl", "rb") as f:
-#     interp_pop = pickle.load(f)
 
 # ---------- request / response schema -----------------------------
 ScalarOrList = Union[float, List[float]]
@@ -109,6 +96,9 @@ def select_data(df, output_variables):
 # ---------- create the FastAPI instance ---------------------------
 app = FastAPI(title="My Interpolant Service")
 
+# TODO: see if we can have startup triggers when website loads (before
+# navigating to the model page) so that the models are loaded
+# before the user tries to make a prediction
 @app.on_event("startup")
 def load_models():
     global interp_NPV, interp_avg, interp_pop
@@ -126,10 +116,16 @@ def load_models():
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000"],  # Next.js dev server
+    # allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# TODO: remove this endpoint in production
+@app.get("/test")
+async def test():
+    return {"message": "CORS test successful"}
 
 @app.post("/predict", response_model=Outputs)
 def predict(data: Inputs):
