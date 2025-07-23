@@ -33,10 +33,10 @@ const Simulation = ({ data }) => {
   };
 
   const defaultOutputs = {
-    outputNPV: section.inputs["return"].defaultValue,
-    outputGDP20: section.inputs["yGDP"].defaultValue,
-    outputPop: section.inputs["lives"].defaultValue,
-};
+    outputNPV: section.inputs.return.defaultValue,
+    outputGDP20: section.inputs.yGDP.defaultValue,
+    outputPop: section.inputs.lives.defaultValue,
+  };
 
   const [inputs, setInputs] = useState(defaultInputs);
   const [outputs, setOutputs] = useState(defaultOutputs);
@@ -46,8 +46,8 @@ const Simulation = ({ data }) => {
 
   // API configuration
   // const API_BASE = "/predict"; // Update this to match your FastAPI endpoint
-  const API_BASE = "http://localhost:8000/predict" ;
-  // const API_BASE = "https://fastapi-backend-proud-tree-3049.fly.dev/predict"; // Update this to match your FastAPI endpoint;
+  // const API_BASE = "http://localhost:8000/predict" ;
+  const API_BASE = "https://fastapi-backend-proud-tree-3049.fly.dev/predict"; // Update this to match your FastAPI endpoint;
 
   // Timer for debounced API calls
   const [updateTimer, setUpdateTimer] = useState(null);
