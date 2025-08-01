@@ -1,0 +1,61 @@
+@use "../../styles/layout";
+
+.sideNoteHeader {
+  font-family: "Spectral", serif;
+  font-size: 20px;
+  line-height: 100%;
+}
+
+.sidenoteText {
+  font-family: "Spectral", serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 120%;
+
+
+  // Style markdown headings inside the sidenote
+  h1, h2, h3 {
+    font-family: "Spectral", serif;
+    font-weight: 400;
+    line-height: 130%;
+    margin: 0 0 8px 0;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+}
+
+
+
+.sidenoteInnterContainer {
+  display: flex;
+  border: solid 1px black;
+  max-width: 400px;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+
+  @include layout.md {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+
+    &.active {
+      @include layout.md {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+}

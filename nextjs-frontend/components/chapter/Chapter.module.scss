@@ -1,0 +1,193 @@
+@use "../../styles/layout";
+
+.maincontent {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  padding: 136px 20px 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scrollbar-color: rgba(0, 0, 0, 0) rgba(255, 255, 255, 0);
+  scrollbar-width: none;
+}
+
+.maincontent::-webkit-scrollbar {
+  display: none;
+}
+
+.divider{
+  min-height: 64px;
+  width: 100%;
+  // background-color:red;
+}
+
+.chapter {
+  display: flex;
+  position: absolute;
+  background-color: #fff5e5;
+  border-left: 1px solid black;
+
+  overflow: hidden;
+
+  z-index: var(--zIndex);
+  left: -1px;
+  width: calc(100% + 1px);
+  height: 100%;
+
+  &.upcoming,
+  &.next {
+    left: 100%;
+  }
+
+  &.transition {
+    transition: left 600ms ease-in-out;
+  }
+
+  @include layout.md {
+    border-left: none;
+    left: var(--left) !important;
+    width: var(--width);
+  }
+
+  &.dark {
+    color: white;
+    background-color: #191818;
+  }
+}
+
+
+.chap-next {
+  border-left: solid currentColor 1px;
+}
+
+.chap-next:hover {
+  background-color: #191818;
+}
+
+.chap-upcoming {
+  border-left: solid currentColor 1px;
+}
+
+.chap-1 {
+  background-color: #E1E0E0;
+}
+
+.chap-2 {
+  background-color: #fbe0f3;
+}
+
+.chap-3 {
+  background-color: #f4e9fe;
+}
+
+.chap-4 {
+  background-color: #dfeee6;
+}
+
+.chap-5 {
+  background-color: #e4f4ff;
+}
+
+.chap-current {
+  background-color: #fff5e5;
+  border-right: solid currentColor 1px;
+}
+
+.chap-current:hover {
+  background-color: #191818;
+}
+
+.chap-previous {
+  background-color: #e1e0e0;
+  border-right: solid currentColor 1px;
+}
+
+.chap-previous:hover {
+  background-color: #191818;
+}
+
+.chap-archived {
+  background-color: #e1e0e0;
+  border-right: solid currentColor 1px;
+}
+
+.simulatorcontent {
+  padding-top: 60px;
+}
+
+.chaptername {
+  font-size: 36px;
+  line-height: 93%;
+  font-family: "Spectral", serif;
+  text-align: center;
+  max-width: 950px;
+  text-transform: uppercase;
+
+  @include layout.md {
+    font-size: 86px;
+  }
+}
+
+.chapterintro {
+  padding: 64px 0;
+}
+
+.chapterimage {
+  width: 100%;
+  margin: 60px 0 120px;
+  max-width: 950px;
+
+  img {
+    width: 100%;
+  }
+}
+
+.chapterNav {
+  display: none;
+  color: black;
+
+  @include layout.md {
+    height: 100vh;
+    width: 60px;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    padding-top: 240px;
+  }
+
+  &:hover {
+    background-color: #191818;
+    color: white;
+    cursor: pointer;
+  }
+
+  &.dark {
+    background-color: #191818;
+    color: white;
+
+    &:hover {
+      background-color: white;
+      background-color: #191818;
+    }
+  }
+}
+
+.chapterNavText {
+  font-family: "Spectral", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 26px;
+  line-height: 100%;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+@media only screen and (max-width: 770px) {
+  .maincontent {
+    padding: 120px 20px 0;
+  
+  }
+
+}
