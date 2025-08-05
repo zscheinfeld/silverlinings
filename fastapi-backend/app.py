@@ -116,7 +116,7 @@ def load_models():
 app.add_middleware(
     CORSMiddleware,
     # allow_origins=["http://localhost:3000"],  # for local Next.js dev server
-    allow_origins=["https://profound-brioche-f9933d.netlify.app/"], # for brioche app
+    allow_origins=["http://localhost:3000", "https://profound-brioche-f9933d.netlify.app/"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
