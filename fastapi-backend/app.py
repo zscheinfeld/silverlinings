@@ -113,6 +113,7 @@ def load_models():
         interp_pop = pickle.load(f)
     print(f"Loaded models in {time.time() - t0:.2f}s")
 
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -120,7 +121,7 @@ app.add_middleware(
         "https://profound-brioche-f9933d.netlify.app"
         ],
     allow_credentials=True,
-    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 
