@@ -38,17 +38,18 @@ const SvgChart = ({ source, mobileSource, textcontent, imageoverlay }) => {
   }, [isMobile]);
 
   const textClass = `${styles.textOverlay} ${
-    isMobile ? (isInView ? styles.visible : "") : isHovered ? styles.visible : ""
+    isMobile
+      ? isInView
+        ? styles.visible
+        : ""
+      : isHovered
+        ? styles.visible
+        : ""
   }`;
 
   const imageToUse = isMobile && mobileSource ? mobileSource : source;
 
-  useEffect(() => {
-    console.log("Full image source object:", source);
-    console.log("Mobile image source object:", mobileSource);
-    console.log("Is mobile?", isMobile);
-    console.log("Image being used:", imageToUse?.url);
-  }, [isMobile, source, mobileSource]);
+  useEffect(() => {}, [isMobile, source, mobileSource]);
 
   return (
     <div

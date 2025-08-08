@@ -12,6 +12,7 @@ const Slider = ({
   max,
   step,
   modifier,
+  disabled,
   onChange,
   tooltip,
 }) => {
@@ -58,6 +59,7 @@ const Slider = ({
             step={step}
             value={value}
             onChange={onChange}
+            disabled={disabled}
           />
         </div>
         <div className={styles.value_wrapper}>
