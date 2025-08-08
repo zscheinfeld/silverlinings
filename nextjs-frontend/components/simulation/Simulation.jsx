@@ -62,15 +62,13 @@ const Simulation = ({ data }) => {
   };
 
   useEffect(() => {
-    setInputsUpdated(false)
+    setInputsUpdated(false);
     setOutputs({ ...defaultOutputs });
     setInputs({ ...defaultInputs });
   }, [sectionIndex]);
 
-
   // Make prediction via API call
   const makePrediction = async () => {
-
     if (isUpdating) return; // Prevent multiple simultaneous requests
 
     setIsUpdating(true);
@@ -91,7 +89,8 @@ const Simulation = ({ data }) => {
       // Make adjustments to year shifts based on adoption rate
       const adjustedMortality = inputMortality * (inputAdoption / 100);
       const adjustedProductivity = inputProductivity * (inputAdoption / 100);
-      const adjustedFertility = Math.min(inputFertility, 1.2) * (inputAdoption / 100);
+      const adjustedFertility =
+        Math.min(inputFertility, 1.2) * (inputAdoption / 100);
 
       // Prepare payload matching the expected API format
       const payload = {
@@ -111,7 +110,9 @@ const Simulation = ({ data }) => {
       });
 
       if (!response.ok) {
-        const error = await response.json().catch(() => ({ detail: response.statusText }));
+        const error = await response
+          .json()
+          .catch(() => ({ detail: response.statusText }));
         throw new Error(error.detail || `HTTP ${response.status}`);
       }
 
@@ -123,7 +124,6 @@ const Simulation = ({ data }) => {
         outputGDP20: Math.round(data.avg_diff * 10) / 10, // Round to 1 decimal place (billions)
         outputPop: Math.round(data.pop_diffs_2050 * 1000), // Round to nearest thousand
       });
-
     } catch (error) {
       console.error("Prediction error:", error);
       // Clear outputs on error
@@ -152,7 +152,7 @@ const Simulation = ({ data }) => {
   };
 
   // Effect to trigger predictions when inputs change
-    useEffect(() => {
+  useEffect(() => {
     if (!inputsUpdated) return;
 
     scheduleUpdate();
@@ -166,18 +166,20 @@ const Simulation = ({ data }) => {
   }, [inputs, inputsUpdated]);
 
   const updateInputs = (event) => {
-    setInputsUpdated(true)
+    setInputsUpdated(true);
     setInputs((inputs) => {
       return { ...inputs, [event.target.id]: parseFloat(event.target.value) };
     });
   };
-
-  if (loading) return <span>Loading...</span>;
-
   const formattedOutputPop =
     outputs.outputPop > 1000
       ? `${(outputs.outputPop / 1000).toFixed(2)}m`
       : `${outputs.outputPop || 0}k`;
+
+  const formattedOutputGDP20 =
+    outputs.outputGDP20 > 1000
+      ? `${(outputs.outputGDP20 / 1000).toFixed(2)}T`
+      : `${outputs.outputGDP20 || 0}B`;
 
   return (
     <>
@@ -216,6 +218,7 @@ const Simulation = ({ data }) => {
               {...section.inputs["adoption"]}
               value={inputs["inputAdoption"]}
               onChange={updateInputs}
+              disabled={loading}
             />
             <Slider
               id="inputAge"
@@ -223,12 +226,14 @@ const Simulation = ({ data }) => {
               modifier={(value) => `${value}+`}
               value={inputs["inputAge"]}
               onChange={updateInputs}
+              disabled={loading}
             />
             <Slider
               id="inputStartYear"
               {...section.inputs["startYear"]}
               value={inputs["inputStartYear"]}
               onChange={updateInputs}
+              disabled={loading}
             />
             <Slider
               id="inputR"
@@ -236,6 +241,7 @@ const Simulation = ({ data }) => {
               modifier={(value) => `${value * 100}%`}
               value={inputs["inputR"]}
               onChange={updateInputs}
+              disabled={loading}
             />
 
             <button
@@ -255,24 +261,28 @@ const Simulation = ({ data }) => {
                 {...section.inputs["mortality"]}
                 value={inputs["inputMortality"]}
                 onChange={updateInputs}
+                disabled={loading}
               />
               <Slider
                 id="inputProductivity"
                 {...section.inputs["productivity"]}
                 value={inputs["inputProductivity"]}
                 onChange={updateInputs}
+                disabled={loading}
               />
               <Slider
                 id="inputFertility"
                 {...section.inputs["fertility"]}
                 value={inputs["inputFertility"]}
                 onChange={updateInputs}
+                disabled={loading}
               />
               <Slider
                 id="inputNumYears"
                 {...section.inputs["numYears"]}
                 value={inputs["inputNumYears"]}
                 onChange={updateInputs}
+                disabled={loading}
               />
             </div>
           </div>
@@ -343,7 +353,7 @@ const Simulation = ({ data }) => {
                 data-tooltip-content="Projected yearly economic benefit to U.S. GDP over first 20 years."
               >
                 <span className={styles.outputStat}>
-                  ${outputs.outputGDP20 || 0}B
+                  ${formattedOutputGDP20}
                 </span>
                 <div className={styles.outputLabel}>
                   Yearly gain to U.S. GDP

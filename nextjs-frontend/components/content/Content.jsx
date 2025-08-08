@@ -13,11 +13,7 @@ import Bodynavigation from "./Bodynavigation";
 import CTAbutton from "./CTAbutton";
 
 const Content = ({ __typename, ...data }) => {
-
-  console.log("Content block:", __typename, data);
-
   if (__typename === "Text") {
-    console.log(data, "text data");
     return <Textblock paragraphs={data.text} />;
   }
 
@@ -26,9 +22,7 @@ const Content = ({ __typename, ...data }) => {
   // }
 
   if (__typename === "Button") {
-    console.log(data, "button data");
-  return <CTAbutton label={data.label} url={data.url} />;
-    
+    return <CTAbutton label={data.label} url={data.url} />;
   }
 
   if (__typename === "Sidenote") {

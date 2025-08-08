@@ -21,7 +21,6 @@ const GsapLanding = () => {
 
   const handleOpen = (isOpen) => {
     setIsMenuOpen(isOpen);
-    console.log("Menu state:", isOpen);
   };
 
   const toggleText = () => {
@@ -43,7 +42,7 @@ const GsapLanding = () => {
       rootMargin: "0px",
       threshold: 0.2, // Trigger when 20% of the element is visible (you can adjust this as needed)
     };
-  
+
     // 2. Create Intersection Observer
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -54,39 +53,39 @@ const GsapLanding = () => {
         }
       });
     }, options);
-  
+
     // 3. Function to Observe Elements
     const observeElements = () => {
       // Observe all elements in fadeInRefs
       fadeInRefs.current.forEach((ref) => {
         if (ref) observer.observe(ref);
       });
-  
+
       // Observe landingTextRef
       if (landingTextRef.current) {
         observer.observe(landingTextRef.current);
       }
-  
+
       // Observe landingOuterTextRef (new addition for the fade-in)
       if (landingOuterTextRef.current) {
         observer.observe(landingOuterTextRef.current);
       }
-  
+
       // Observe the new landingTextLightContainerRef
       if (landingTextLightContainerRef.current) {
         observer.observe(landingTextLightContainerRef.current); // Observe this new element
       }
     };
-  
+
     // 4. Observe elements initially
     observeElements();
-  
+
     // 5. Handle window resize to reinitialize observer
     const handleResize = () => {
       observer.disconnect(); // Clear previous observers on resize
       observeElements(); // Re-observe after resizing
     };
-  
+
     window.addEventListener("resize", handleResize);
 
     // 7. Cleanup Observer + Scroll + Resize Event Listeners
@@ -95,27 +94,26 @@ const GsapLanding = () => {
       fadeInRefs.current.forEach((ref) => {
         if (ref) observer.unobserve(ref);
       });
-  
+
       if (landingTextRef.current) {
         observer.unobserve(landingTextRef.current);
       }
-  
+
       // Unobserve the new landingOuterTextRef
       if (landingOuterTextRef.current) {
         observer.unobserve(landingOuterTextRef.current);
       }
-  
+
       // Unobserve the new landingTextLightContainerRef
       if (landingTextLightContainerRef.current) {
         observer.unobserve(landingTextLightContainerRef.current); // Unobserve this new element
       }
-  
+
       observer.disconnect();
       window.removeEventListener("resize", handleResize);
     };
   }, []); // Empty dependency array ensures effect runs only once
-  
-  
+
   const [fadeOutPoint, setFadeOutPoint] = useState(null);
 
   useEffect(() => {
@@ -124,13 +122,12 @@ const GsapLanding = () => {
       setIsMobile(mobile); // ✅ This updates the state you can use in rendering
       setFadeOutPoint(mobile ? window.innerHeight : window.innerHeight * 0.5);
     };
-  
+
     updateViewport(); // Initial call
     window.addEventListener("resize", updateViewport);
-  
+
     return () => window.removeEventListener("resize", updateViewport);
   }, []);
-  
 
   return (
     <>
@@ -160,8 +157,6 @@ const GsapLanding = () => {
           <RotatingWoman windowTransition={fadeOutPoint * 4} />
         </AnimatedLandingElementFade>
 
-        
-
         <div className={styles.space}></div>
 
         <div className={styles.mobileCard}>
@@ -176,12 +171,13 @@ const GsapLanding = () => {
             text="At age 65, less than 5% of the population has an Alzheimer’s diagnosis. This number increases to roughly 50% beyond age 85."
             colorHex="#FFF3A8"
           />
-           <MobileCards
+          <MobileCards
             imageSrc="Uteruspink.png"
             imageAlt="Uterus"
             header={
               <>
-                Egg reserve <br />disappears by age ~40.
+                Egg reserve <br />
+                disappears by age ~40.
               </>
             }
             text=" Most women in the U.S. have children after 30. This increases
@@ -189,21 +185,17 @@ const GsapLanding = () => {
             is also seen as a driver of diseases like Alzheimer’s."
             colorHex="#FB8ED7"
           />
-           <MobileCards
+          <MobileCards
             imageSrc="Heartred.png"
             imageAlt="Heart"
             header={
               <>
-                 Many people need <br />  their
-            organs replaced as they age.
+                Many people need <br /> their organs replaced as they age.
               </>
             }
             text="At age 65, less than 5% of the population has an Alzheimer’s diagnosis. This number increases to roughly 50% beyond age 85."
             colorHex="#F0696B"
           />
-
-         
-          
         </div>
 
         {/* Animated Map */}
@@ -217,54 +209,54 @@ const GsapLanding = () => {
         </AnimatedMapFade>
 
         {!isMobile && (
-  <AnimatedLandingElementFade
-    fadeInStart={fadeOutPoint * 13.5}
-    fadeInEnd={fadeOutPoint * 14}
-    fadeOutStart={fadeOutPoint * 16}
-    fadeOutEnd={fadeOutPoint * 17}
-  >
-    <UterusHotspot />
-    <InteractiveWoman />
-  </AnimatedLandingElementFade>
-)}
+          <AnimatedLandingElementFade
+            fadeInStart={fadeOutPoint * 13.5}
+            fadeInEnd={fadeOutPoint * 14}
+            fadeOutStart={fadeOutPoint * 16}
+            fadeOutEnd={fadeOutPoint * 17}
+          >
+            <UterusHotspot />
+            <InteractiveWoman />
+          </AnimatedLandingElementFade>
+        )}
 
         <div className={styles.space}></div>
         <div className={styles.space}></div>
 
         <div className={styles.mobileKey}>
-        <div className={styles.key}>
-          <b>YEAR 2025, POPULATION 60+</b>
+          <div className={styles.key}>
+            <b>YEAR 2025, POPULATION 60+</b>
 
-          <div className={styles.keyitem}>
-            <div className={styles.symbol}></div>
-            35% {" > "} (JAPAN)
-          </div>
+            <div className={styles.keyitem}>
+              <div className={styles.symbol}></div>
+              35% {" > "} (JAPAN)
+            </div>
 
-          <div className={styles.keyitem}>
-            <div className={`${styles.symbol} ${styles.lightblue}`}></div>
-            30% {" > "} (ITALY, SOUTH KOREA)
-          </div>
+            <div className={styles.keyitem}>
+              <div className={`${styles.symbol} ${styles.lightblue}`}></div>
+              30% {" > "} (ITALY, SOUTH KOREA)
+            </div>
 
-          <div className={styles.keyitem}>
-            <div className={`${styles.symbol} ${styles.yellow}`}></div>
-            25% {" > "} (U.S., FRANCE, RUSSIA)
-          </div>
+            <div className={styles.keyitem}>
+              <div className={`${styles.symbol} ${styles.yellow}`}></div>
+              25% {" > "} (U.S., FRANCE, RUSSIA)
+            </div>
 
-          <div className={styles.keyitem}>
-            <div className={`${styles.symbol} ${styles.darkblue}`}></div>
-            20% {" > "} (CHINA)
-          </div>
+            <div className={styles.keyitem}>
+              <div className={`${styles.symbol} ${styles.darkblue}`}></div>
+              20% {" > "} (CHINA)
+            </div>
 
-          <div className={styles.keyitem}>
-            <div className={`${styles.symbol} ${styles.pink}`}></div>
-            15% {" > "} (BRAZIL)
-          </div>
+            <div className={styles.keyitem}>
+              <div className={`${styles.symbol} ${styles.pink}`}></div>
+              15% {" > "} (BRAZIL)
+            </div>
 
-          <div className={styles.keyitem}>
-            <div className={`${styles.symbol} ${styles.purple}`}></div>
-            ~10% {" > "} (SAUDI ARABIA, MOROCCO, INDA)
+            <div className={styles.keyitem}>
+              <div className={`${styles.symbol} ${styles.purple}`}></div>
+              ~10% {" > "} (SAUDI ARABIA, MOROCCO, INDA)
+            </div>
           </div>
-        </div>
         </div>
         <div className={styles.landingtextlightcontainer}>
           <div
@@ -306,9 +298,9 @@ const GsapLanding = () => {
         <div className={styles.space}></div>
 
         <div className={styles.landingtextlightcontainer2}>
-          <div 
-          className={`${styles.landingtextlightinnercontainer2} ${styles.hidden}`} // Add hidden class initially
-          ref={(el) => fadeInRefs.current.push(el)} // Push to fadeInRefs
+          <div
+            className={`${styles.landingtextlightinnercontainer2} ${styles.hidden}`} // Add hidden class initially
+            ref={(el) => fadeInRefs.current.push(el)} // Push to fadeInRefs
           >
             <div className={styles.landingtextleft2}>
               <div className={styles.landingtextlarge}>
@@ -330,11 +322,8 @@ const GsapLanding = () => {
           </div>
         </div>
 
-        <div className={styles.landingoutertext}
-        >
-          <div 
-          className={styles.hidden}
-          ref={landingOuterTextRef}>
+        <div className={styles.landingoutertext}>
+          <div className={styles.hidden} ref={landingOuterTextRef}>
             <div
               className={`${styles.mobileLeft} ${styles.landinginnertext} ${styles.light} ${styles.landingmedium} ${styles.paddingbottom}`}
             >
@@ -349,28 +338,34 @@ const GsapLanding = () => {
               >
                 {isExpanded && (
                   <div>
-                    We present results informed by interviews with 102 scientists
-                    and dozens of economists. But our model lets you simulate
-                    different futures for the U.S. population and economy. You can
-                    input the number of years until a therapeutic can safely delay
-                    brain or overall aging; what percentage of the U.S. population
-                    would benefit; and how this could affect{" "}
+                    We present results informed by interviews with 102
+                    scientists and dozens of economists. But our model lets you
+                    simulate different futures for the U.S. population and
+                    economy. You can input the number of years until a
+                    therapeutic can safely delay brain or overall aging; what
+                    percentage of the U.S. population would benefit; and how
+                    this could affect{" "}
                     <span className={styles.textmortality}>mortality</span>,{" "}
-                    <span className={styles.textproductivity}>productivity</span>,
-                    and <span className={styles.textfertility}>fertility</span>{" "}
+                    <span className={styles.textproductivity}>
+                      productivity
+                    </span>
+                    , and{" "}
+                    <span className={styles.textfertility}>fertility</span>{" "}
                     rates by age. In each simulation, we present the number of
                     lives saved or gained. We also highlight GDP as a helpful
                     (even if imperfect) proxy for lives improved.<br></br>
                     <br></br>
                     Beyond a certain point, improvements in non-cognitive
-                    functions have counterintuitive effects on GDP. For instance,
-                    a 1-year delay in brain aging is worth nearly as much as a
-                    1-year delay in overall biological aging in the near term.
-                    This is because the returns from improving the age of other
-                    organs (e.g. kidneys or ovaries) are not immediate, and
-                    sometimes reduce GDP temporarily. To understand the non-linear
-                    effects of each R&D area in the short and long run (and for
-                    GDP alternatives that measure non-market outcomes), see the full report, technical paper, and our forthcoming book.
+                    functions have counterintuitive effects on GDP. For
+                    instance, a 1-year delay in brain aging is worth nearly as
+                    much as a 1-year delay in overall biological aging in the
+                    near term. This is because the returns from improving the
+                    age of other organs (e.g. kidneys or ovaries) are not
+                    immediate, and sometimes reduce GDP temporarily. To
+                    understand the non-linear effects of each R&D area in the
+                    short and long run (and for GDP alternatives that measure
+                    non-market outcomes), see the full report, technical paper,
+                    and our forthcoming book.
                   </div>
                 )}
 
