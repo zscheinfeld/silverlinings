@@ -7,7 +7,7 @@ function useIsMobile(breakpoint = 768) {
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= breakpoint);
-    checkMobile(); // run once on mount
+    checkMobile();
 
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
@@ -19,21 +19,24 @@ function useIsMobile(breakpoint = 768) {
 const SvgChart = ({ source, mobileSource, textcontent, imageoverlay }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isInView, setIsInView] = useState(false);
-  const textRef = useRef();
-  const isMobile = useIsMobile(); // ✅ use this as your one source of truth
+  const chartRef = useRef(null);
+  const isMobile = useIsMobile();
 
-  // Set up Intersection Observer for mobile text reveal
+  // IntersectionObserver for mobile text reveal
   useEffect(() => {
-    if (!isMobile || !textRef.current) return;
+    if (!isMobile || !chartRef.current) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsInView(entry.isIntersecting);
       },
-      { threshold: 0.2 }
+      {
+        threshold: 0.3,
+        rootMargin: "0px 0px -50% 0px",
+      }
     );
 
-    observer.observe(textRef.current);
+    observer.observe(chartRef.current);
     return () => observer.disconnect();
   }, [isMobile]);
 
@@ -49,10 +52,9 @@ const SvgChart = ({ source, mobileSource, textcontent, imageoverlay }) => {
 
   const imageToUse = isMobile && mobileSource ? mobileSource : source;
 
-  useEffect(() => {}, [isMobile, source, mobileSource]);
-
   return (
     <div
+      ref={chartRef}
       className={styles.chartcontainer}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -60,16 +62,17 @@ const SvgChart = ({ source, mobileSource, textcontent, imageoverlay }) => {
     >
       <img src={imageToUse?.url} alt="Chart" />
 
-      {/* Image Overlay (only on desktop) */}
-      {imageoverlay && !isMobile && (
+      {/* Desktop: show image overlay if present */}
+      {!isMobile && imageoverlay && (
         <div className={`${styles.overlay} ${isHovered ? styles.visible : ""}`}>
           <img src={imageoverlay.url} alt="" />
         </div>
       )}
 
-      {/* Text Overlay */}
-      {textcontent && (
-        <div ref={textRef} className={textClass}>
+      {/* Desktop fallback OR Mobile: show text overlay if present */}
+      {((!isMobile && !imageoverlay && textcontent) ||
+        (isMobile && textcontent)) && (
+        <div className={textClass}>
           <div className={styles.textOverlayInner}>{textcontent}</div>
         </div>
       )}
