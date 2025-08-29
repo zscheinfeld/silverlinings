@@ -193,7 +193,7 @@ const GsapLanding = () => {
                 Many people need <br /> their organs replaced as they age.
               </>
             }
-            text="At age 65, less than 5% of the population has an Alzheimer’s diagnosis. This number increases to roughly 50% beyond age 85."
+            text="The decline of organ function is a common symptom of aging. But current cell, tissue, and organ transplant methods are in short supply and invasive."
             colorHex="#F0696B"
           />
         </div>
