@@ -22,7 +22,7 @@ const SvgChart = ({ source, mobileSource, textcontent, imageoverlay }) => {
   const chartRef = useRef(null);
   const isMobile = useIsMobile();
 
-  // IntersectionObserver for mobile text reveal
+  // IntersectionObserver for mobile reveal
   useEffect(() => {
     if (!isMobile || !chartRef.current) return;
 
@@ -31,7 +31,7 @@ const SvgChart = ({ source, mobileSource, textcontent, imageoverlay }) => {
         setIsInView(entry.isIntersecting);
       },
       {
-        threshold: 0.3,
+        threshold: 0.5,
         rootMargin: "0px 0px -50% 0px",
       }
     );
@@ -46,8 +46,18 @@ const SvgChart = ({ source, mobileSource, textcontent, imageoverlay }) => {
         ? styles.visible
         : ""
       : isHovered
+      ? styles.visible
+      : ""
+  }`;
+
+  const overlayClass = `${styles.overlay} ${
+    isMobile
+      ? isInView
         ? styles.visible
         : ""
+      : isHovered
+      ? styles.visible
+      : ""
   }`;
 
   const imageToUse = isMobile && mobileSource ? mobileSource : source;
@@ -62,16 +72,15 @@ const SvgChart = ({ source, mobileSource, textcontent, imageoverlay }) => {
     >
       <img src={imageToUse?.url} alt="Chart" />
 
-      {/* Desktop: show image overlay if present */}
-      {!isMobile && imageoverlay && (
-        <div className={`${styles.overlay} ${isHovered ? styles.visible : ""}`}>
+      {/* Image overlay (desktop hover OR mobile in-view) */}
+      {imageoverlay && (
+        <div className={overlayClass}>
           <img src={imageoverlay.url} alt="" />
         </div>
       )}
 
-      {/* Desktop fallback OR Mobile: show text overlay if present */}
-      {((!isMobile && !imageoverlay && textcontent) ||
-        (isMobile && textcontent)) && (
+      {/* Text overlay (desktop hover fallback OR mobile in-view) */}
+      {textcontent && (
         <div className={textClass}>
           <div className={styles.textOverlayInner}>{textcontent}</div>
         </div>
