@@ -222,9 +222,24 @@
     width: 100%;
   }
 
+  .mobileOnly {
+    display: none;
+  }
+  
+  .desktopOnly {
+    display: inline;
+  }
+
  
   
   @media (max-width: 767px) {
+
+    .mobileOnly {
+      display: inline;
+    }
+    .desktopOnly {
+      display: none;
+    }
   
     .image{
       width: 500px;
