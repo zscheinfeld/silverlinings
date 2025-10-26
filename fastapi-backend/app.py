@@ -70,7 +70,7 @@ def select_data(df, output_variables):
             "fert_effect",
             "discount_rate",
         ]
-    elif "pop_diffs_2050" == output_variables:
+    elif "total_pop_diff_2050" == output_variables:
         input_variables = [
             "age_effect",
             "initial_effect",
@@ -109,7 +109,7 @@ def load_models():
         interp_NPV = pickle.load(f)
     with open(model_path / "interpolant_avg_diff.pkl", "rb") as f:
         interp_avg = pickle.load(f)
-    with open(model_path / "interpolant_pop_diffs_2050.pkl", "rb") as f:
+    with open(model_path / "interpolant_total_pop_diff_2050.pkl", "rb") as f:
         interp_pop = pickle.load(f)
     print(f"Loaded models in {time.time() - t0:.2f}s")
 
@@ -151,7 +151,7 @@ def predict(data: Inputs):
     # 3. Call the three interpolators (each returns ndarray of shape (n,))
     npv            = interp_NPV(select_data(df, 'NPV')).ravel()
     avg            = interp_avg(select_data(df, 'avg_diff')).ravel()
-    pop_diffs_2050 = interp_pop(select_data(df, 'pop_diffs_2050')).ravel()
+    pop_diffs_2050 = interp_pop(select_data(df, 'total_pop_diff_2050')).ravel()
     print("called interpolators")
     # 4. Some interpolators return masked or NaN for extrapolation—clean up
     npv   = np.nan_to_num(npv,   nan=float("nan")).tolist()
