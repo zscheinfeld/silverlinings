@@ -76,12 +76,12 @@ const Overviewlight = () => {
       futureImageLabel: "Mortality (M)",
       futureImageLabelColor: "green",
       futureInfo: "The decline of organ function is a common symptom of aging. Many people need their organs replaced as they age. In the near future, a combination of biotechnologies may be needed to improve biological aging — including organ, cell, and tissue engineering. We simulate the economic effects of first meeting organ demand for the terminally ill, then achieving true organ abundance.",
-      stat1: "$68B",
-      stat2: "$3.9T",
-      stat3: "600k",
-      altStat1: "$129B",
-      altStat2: "$7.2T",
-      altStat3: "1.1M",
+      stat1: "$50B",
+      stat2: "$3.2T",
+      stat3: "529k",
+      altStat1: "$236B",
+      altStat2: "$13.6T",
+      altStat3: "2.4M",
       statLabel1: "Yearly gain to U.S. GDP",
       statLabel2: (
         <>
