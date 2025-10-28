@@ -41,9 +41,9 @@ const InteractiveWoman = () => {
         organAlt="Uterus"
         interventionTitle="Slow reproductive aging by 1 year"
         descriptionText="Most women in the U.S. reproduce after age 30. This increases miscarriages, maternal deaths, and infertility. Our model takes into account the short- and long-term effects of better reproductive aging on labor supply, wages, and new lives. We also consider the less studied relationship between menopause and lifespan/healthspan, as reproductive aging is increasingly understood as a driver of diseases like Alzheimer’s."
-        yearlyGain="$11B"
-        netPresentValue="$8.5T"
-        livesSaved="25k"
+        yearlyGain="$9B"
+        netPresentValue="$9.3T"
+        livesSaved="391k"
         cardAlign="center"
         hotspotColor="#FB8ED7" 
         baseImageSettings={{
@@ -73,9 +73,9 @@ const InteractiveWoman = () => {
         blurry. Much funding is devoted to late-stage brain diseases, but
         the predictable decline of brain health with age remains
         overlooked."
-        yearlyGain="$68B"
-        netPresentValue="$3.9T"
-        livesSaved="600k"
+        yearlyGain="$50B"
+        netPresentValue="$3.2T"
+        livesSaved="529k"
         cardAlign="top"
         hotspotColor="#F0696B" 
         baseImageSettings={{
@@ -105,9 +105,9 @@ const InteractiveWoman = () => {
         blurry. Much funding is devoted to late-stage brain diseases, but
         the predictable decline of brain health with age remains
         overlooked."
-        yearlyGain="$364B"
-        netPresentValue="$15T"
-        livesSaved="257k"
+        yearlyGain="$201B"
+        netPresentValue="$8.9T"
+        livesSaved="268k"
         cardAlign="top"
         hotspotColor="#FFF3A8" 
         baseImageSettings={{

@@ -10,9 +10,9 @@ const Overview = () => {
       futureImageLabel: "Productivity (P)",
       futureImageLabelColor: "yellow",
       futureInfo: "Most productivity depends on cognitive function, and brain health is the foundation of human identity. Though a distinction is often made between 'healthy' brain aging and neurodegenerative diseases, the boundary between normal and abnormal neurodegeneration is blurry. Much funding is devoted to late-stage brain diseases, but the predictable decline of brain health with age remains overlooked.",
-      stat1: "$229B",
-      stat2: "$9.3T",
-      stat3: "257k",
+      stat1: "$201B",
+      stat2: "$8.9T",
+      stat3: "268k",
       statLabel1: "Yearly gain to U.S. GDP",
       statLabel2: (
         <>
@@ -31,9 +31,9 @@ const Overview = () => {
       futureImageLabel: "Fertility (F)",
       futureImageLabelColor: "green",
       futureInfo: "Most women in the U.S. reproduce after age 30. This increases miscarriages, maternal deaths, and infertility. Our model takes into account the short- and long-term effects of better reproductive aging on labor supply, wages, and new lives. We also consider the less studied relationship between menopause and lifespan/healthspan, as reproductive aging is increasingly understood as a driver of diseases like Alzheimer’s",
-      stat1: "$11B",
-      stat2: "$8.5T",
-      stat3: "25k",
+      stat1: "$9B",
+      stat2: "$9.3T",
+      stat3: "391k",
       statLabel1: "Yearly gain to U.S. GDP",
       statLabel2: (
         <>
@@ -54,12 +54,12 @@ const Overview = () => {
       futureImageLabel: "Mortality (M)",
       futureImageLabelColor: "green",
       futureInfo: "The decline of organ function is a common symptom of aging. Many people need their organs replaced as they age. In the near future, a combination of biotechnologies may be needed to improve biological aging — including organ, cell, and tissue engineering. We simulate the economic effects of first meeting organ demand for the terminally ill, then achieving true organ abundance.",
-      stat1: "$68B",
-      stat2: "$3.9T",
-      stat3: "600k",
-      altStat1: "$129B/y",
-      altStat2: "$7.2T",
-      altStat3: "1.1M",
+      stat1: "$50B",
+      stat2: "$3.2T",
+      stat3: "529k",
+      altStat1: "$236B",
+      altStat2: "$13.6T",
+      altStat3: "2.4M",
       statLabel1: "Yearly gain to U.S. GDP",
       statLabel2: (
         <>
@@ -82,12 +82,12 @@ const Overview = () => {
         futureImageLabel: "All (P, F, M)",
         futureImageLabelColor: "green",
         futureInfo: "Think of a world where 41 is the new 40, so that all U.S. adults 40+ live, work, save, spend, consume, and die at the rates of adults 1 year younger.  We simulate a 1-year delay in the biological age of cells, organs and tissues. This is likely possible with existing methods. To unlock more significant year shifts (e.g. 20y), we may need to couple lifestyle interventions with therapeutics that target cellular aging + better tissue, cell, and organ engineering. ",
-        stat1: "$426B",
-        stat2: "$22.5T",
-        stat3: "1.3M",
-        altStat1: "$2T/y",
-        altStat2: "$102.7T ",
-        altStat3: "6M",
+        stat1: "$408B",
+        stat2: "$27.1T",
+        stat3: "1.7M",
+        altStat1: "$2.0T",
+        altStat2: "$101.9T ",
+        altStat3: "6.9M",
         statLabel1: "Yearly gain to U.S. GDP",
         statLabel2: (
           <>
@@ -108,9 +108,9 @@ const Overview = () => {
         futureImageLabel: "All (P, F, M)",
         futureImageLabelColor: "green",
         futureInfo: "We lack the tools & data to precisely measure biological aging. This bottlenecks the development of new therapeutics, and prevents us from knowing whether  existing ones can slow aging. We simulate the value of first- and second-generation therapeutics. The first are existing drugs that may marginally improve how we age, but have not yet been tested. The second are counterfactual therapeutics that could slow aging in still-healthy adults.",
-        stat1: "$58B",
-        stat2: "$2.7T",
-        stat3: "300k",
+        stat1: "$40B",
+        stat2: "$2.4T",
+        stat3: "275k",
         statLabel1: "Yearly gain to U.S. GDP",
         statLabel2: (
           <>

@@ -62,11 +62,11 @@ const Bodynavigation = () => {
             place="right"
             offset={16}
             maxWidth={250}
-            stat1="$364B"
+            stat1="$201B"
             statLabel1="Yearly gain<br>to U.S. GDP"
-            stat2="$15T"
+            stat2="$8.9T"
             statLabel2="Long-term <br> Net Present Value"
-            stat3="257k"
+            stat3="268k"
             statLabel3="Lived saved <br>or gained by 2050"
           />
 
@@ -98,11 +98,11 @@ const Bodynavigation = () => {
             place="left"
             offset={30}
             maxWidth={250}
-            stat1="$11B"
+            stat1="$9B"
             statLabel1="Yearly gain<br>to U.S. GDP"
-            stat2="$8.5T"
+            stat2="$9.3T"
             statLabel2="Long-term <br> Net Present Value"
-            stat3="25k"
+            stat3="391k"
             statLabel3="Lived saved <br>or gained by 2050"
           />
 
@@ -129,11 +129,11 @@ const Bodynavigation = () => {
             place="left"
             offset={10}
             maxWidth={250}
-            stat1="$68B"
+            stat1="$50B"
             statLabel1="Yearly gain<br>to U.S. GDP"
-            stat2="$3.9"
+            stat2="$3.2"
             statLabel2="Long-term <br> Net Present Value"
-            stat3="600k"
+            stat3="529k"
             statLabel3="Lived saved <br>or gained by 2050"
           />
 
@@ -159,11 +159,11 @@ const Bodynavigation = () => {
             place="left"
             offset={30}
             maxWidth={250}
-            stat1="$58B"
+            stat1="$40B"
             statLabel1="Yearly gain<br>to U.S. GDP"
-            stat2="$2.7T"
+            stat2="$2.4T"
             statLabel2="Long-term <br> Net Present Value"
-            stat3="300k"
+            stat3="275k"
             statLabel3="Lived saved <br>or gained by 2050"
           />
 
@@ -189,11 +189,11 @@ const Bodynavigation = () => {
             place="left"
             offset={30}
             maxWidth={250}
-            stat1="$426B"
+            stat1="$408B"
             statLabel1="Yearly gain<br>to U.S. GDP"
-            stat2="$22.5T"
+            stat2="$27.1T"
             statLabel2="Long-term <br> Net Present Value"
-            stat3="1.3M"
+            stat3="1.7M"
             statLabel3="Lived saved <br>or gained by 2050"
           />
         </div>

@@ -180,9 +180,7 @@ const GsapLanding = () => {
                 disappears by age ~40.
               </>
             }
-            text=" Most women in the U.S. have children after 30. This increases
-            miscarriages, maternal deaths, and infertility. Reproductive aging
-            is also seen as a driver of diseases like Alzheimer’s."
+            text="Most women in the U.S. have children after 30. This increases miscarriages, maternal deaths, and infertility. Reproductive aging is also seen as a driver of diseases like Alzheimer’s. Fast ovarian aging is also linked to shorter healthspan, including higher rates of Alzheimer's."
             colorHex="#FB8ED7"
           />
           <MobileCards
