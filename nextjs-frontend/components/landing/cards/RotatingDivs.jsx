@@ -40,9 +40,7 @@ const RotatingDivs = ({ startTransitionAt }) => {
             Egg reserve disappears by age ~40.
           </div>
           <div className={styles.rcardtext}>
-            Most women in the U.S. have children after 30. This increases
-            miscarriages, maternal deaths, and infertility. Reproductive aging
-            is also seen as a driver of diseases like Alzheimer’s.
+          Most women in the U.S. have children after 30. This increases miscarriages, maternal deaths, and infertility. Reproductive aging is also seen as a driver of diseases like Alzheimer’s. Fast ovarian aging is also linked to shorter healthspan, including higher rates of Alzheimer's.
           </div>
         </div>
       </div>
