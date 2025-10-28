@@ -79,7 +79,7 @@ const Overviewlight = () => {
       stat1: "$68B",
       stat2: "$3.9T",
       stat3: "600k",
-      altStat1: "$129B/y",
+      altStat1: "$129B",
       altStat2: "$7.2T",
       altStat3: "1.1M",
       statLabel1: "Yearly gain to U.S. GDP",
