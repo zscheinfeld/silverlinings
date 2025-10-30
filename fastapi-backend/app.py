@@ -7,6 +7,7 @@ from pydantic import BaseModel, validator
 import numpy as np
 import pandas as pd
 import pickle
+import joblib
 import pathlib
 import time
 from fastapi import Request
@@ -105,12 +106,15 @@ def load_models():
     model_path = pathlib.Path(__file__).parent / "models"
 
     t0 = time.time()
-    with open(model_path / "interpolant_NPV.pkl", "rb") as f:
-        interp_NPV = pickle.load(f)
-    with open(model_path / "interpolant_avg_diff.pkl", "rb") as f:
-        interp_avg = pickle.load(f)
-    with open(model_path / "interpolant_total_pop_diff_2050.pkl", "rb") as f:
-        interp_pop = pickle.load(f)
+    # with open(model_path / "interpolant_NPV.pkl", "rb") as f:
+    #     interp_NPV = pickle.load(f)
+    # with open(model_path / "interpolant_avg_diff.pkl", "rb") as f:
+    #     interp_avg = pickle.load(f)
+    # with open(model_path / "interpolant_total_pop_diff_2050.pkl", "rb") as f:
+    #     interp_pop = pickle.load(f)
+    interp_NPV = joblib.load(model_path / "interpolant_NPV.joblib", mmap_mode='r')
+    interp_avg = joblib.load(model_path / "interpolant_avg.joblib", mmap_mode='r')
+    interp_pop = joblib.load(model_path / "interpolant_total_pop_diff_2050.joblib", mmap_mode='r')
     print(f"Loaded models in {time.time() - t0:.2f}s")
 
 
