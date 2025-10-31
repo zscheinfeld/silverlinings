@@ -90,7 +90,7 @@ const Simulation = ({ data }) => {
       const adjustedMortality = inputMortality * (inputAdoption / 100);
       const adjustedProductivity = inputProductivity * (inputAdoption / 100);
       const adjustedFertility =
-        Math.min(inputFertility, 1.2) * (inputAdoption / 100);
+        Math.min(0.6, inputFertility * (inputAdoption / 100));
 
       // Prepare payload matching the expected API format
       const payload = {
