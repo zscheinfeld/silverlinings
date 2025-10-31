@@ -1,0 +1,33 @@
+# fly.toml app configuration file generated for fastapi-backend-proud-tree-3049 on 2025-06-17T22:47:37-04:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'fastapi-backend-proud-tree-3049'
+primary_region = 'iad'
+
+[build]
+  dockerfile = "Dockerfile"
+
+[processes]
+app = "uvicorn app:app --host 0.0.0.0 --port 8080"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ['app']
+
+  [[http_service.checks]]
+    grace_period = "60s"
+    interval = "15s"
+    timeout = "10s"
+    method = "GET"
+    path = "/health"
+
+[[vm]]
+  memory = '2gb'
+  cpu_kind = 'shared'
+  cpus = 1

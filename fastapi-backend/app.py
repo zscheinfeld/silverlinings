@@ -7,6 +7,7 @@ from pydantic import BaseModel, validator
 import numpy as np
 import pandas as pd
 import pickle
+import joblib
 import pathlib
 import time
 from fastapi import Request
@@ -96,22 +97,27 @@ def select_data(df, output_variables):
 # ---------- create the FastAPI instance ---------------------------
 app = FastAPI(title="My Interpolant Service")
 
-# TODO: see if we can have startup triggers when website loads (before
-# navigating to the model page) so that the models are loaded
-# before the user tries to make a prediction
+# Startup event to load models
 @app.on_event("startup")
 def load_models():
     global interp_NPV, interp_avg, interp_pop
     model_path = pathlib.Path(__file__).parent / "models"
 
-    t0 = time.time()
-    with open(model_path / "interpolant_NPV.pkl", "rb") as f:
-        interp_NPV = pickle.load(f)
-    with open(model_path / "interpolant_avg_diff.pkl", "rb") as f:
-        interp_avg = pickle.load(f)
-    with open(model_path / "interpolant_total_pop_diff_2050.pkl", "rb") as f:
-        interp_pop = pickle.load(f)
-    print(f"Loaded models in {time.time() - t0:.2f}s")
+    try:
+        t0 = time.time()
+        # with open(model_path / "interpolant_NPV.pkl", "rb") as f:
+        #     interp_NPV = pickle.load(f)
+        # with open(model_path / "interpolant_avg_diff.pkl", "rb") as f:
+        #     interp_avg = pickle.load(f)
+        # with open(model_path / "interpolant_total_pop_diff_2050.pkl", "rb") as f:
+        #     interp_pop = pickle.load(f)
+        interp_NPV = joblib.load(model_path / "interpolant_NPV.joblib", mmap_mode='r')
+        interp_avg = joblib.load(model_path / "interpolant_avg_diff.joblib", mmap_mode='r')
+        interp_pop = joblib.load(model_path / "interpolant_total_pop_diff_2050.joblib", mmap_mode='r')
+        print(f"Loaded models in {time.time() - t0:.2f}s")
+    except FileNotFoundError as e:
+        print(f"Warning: Could not load models: {e}")
+        print("App will start but /predict endpoint will not work until models are available")
 
 
 app.add_middleware(
@@ -124,11 +130,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-# TODO: remove this endpoint in production
-@app.get("/test")
-async def test():
-    return {"message": "CORS test successful"}
 
 @app.post("/predict", response_model=Outputs)
 def predict(data: Inputs):
@@ -154,9 +155,9 @@ def predict(data: Inputs):
     pop_diffs_2050 = interp_pop(select_data(df, 'total_pop_diff_2050')).ravel()
     print("called interpolators")
     # 4. Some interpolators return masked or NaN for extrapolation—clean up
-    npv   = np.nan_to_num(npv,   nan=float("nan")).tolist()
-    avg   = np.nan_to_num(avg,   nan=float("nan")).tolist()
-    pop   = np.nan_to_num(pop_diffs_2050, nan=float("nan")).tolist()
+    npv   = np.nan_to_num(npv,   nan=0.0).tolist()
+    avg   = np.nan_to_num(avg,   nan=0.0).tolist()
+    pop   = np.nan_to_num(pop_diffs_2050, nan=0.0).tolist()
     print("cleaned up outputs")
 
     return Outputs(NPV=npv, pop_diffs_2050=pop, avg_diff=avg)
