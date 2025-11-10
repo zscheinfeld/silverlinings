@@ -97,6 +97,11 @@ def select_data(df, output_variables):
 # ---------- create the FastAPI instance ---------------------------
 app = FastAPI(title="My Interpolant Service")
 
+# Add health endpoint check
+@app.get('/health')
+def health_check():
+    return {'status': 'healthy'}
+
 # Startup event to load models
 @app.on_event("startup")
 def load_models():
@@ -124,7 +129,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000",
-        "https://profound-brioche-f9933d.netlify.app"
+        "https://profound-brioche-f9933d.netlify.app",
+        "https://silverlinings.bio"
         ],
     allow_credentials=True,
     allow_methods=["*"],
