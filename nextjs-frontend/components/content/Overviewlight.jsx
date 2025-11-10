@@ -114,7 +114,7 @@ const Overviewlight = () => {
         futureInfo: "Think of a world where 41 is the new 40, so that all U.S. adults 40+ live, work, save, spend, consume, and die at the rates of adults 1 year younger.  We simulate a 1-year delay in the biological age of cells, organs and tissues. This is likely possible with existing methods. To unlock more significant year shifts (e.g. 20y), we may need to couple lifestyle interventions with therapeutics that target cellular aging + better tissue, cell, and organ engineering. ",
         stat1: "$408B",
         stat2: "$27.1T",
-        stat3: "2.4M",
+        stat3: "1.7M",
         altStat1: "$2.0T",
         altStat2: "$101.9T ",
         altStat3: "6.9M",
