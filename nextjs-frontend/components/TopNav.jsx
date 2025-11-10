@@ -62,11 +62,29 @@ const TopNav = ({ chapters, handleOpen, isOpen, dark = false }) => {
     };
   }, []);
 
+    // Automatically turn off dark mode on the introduction (home) page
+    const [isDarkMode, setIsDarkMode] = useState(dark);
+
+    useEffect(() => {
+      // If there is no chapter in the query, assume it's the introduction/homepage
+      const atHome = !router.query.chapter;
+      if (atHome) {
+        setIsDarkMode(false);
+      } else if (router.query.chapter === "about") {
+        setIsDarkMode(true);
+      } else {
+        setIsDarkMode(dark); // fallback to whatever parent passed
+      }
+    }, [router.query.chapter, dark]);
+
   const isVisible = isOpen || !isScrolled;
 
   return (
     <div
-      className={`${styles.nav} ${activeNav === 1 && styles.expanded} ${!isVisible && styles.hidden} ${dark && styles.dark}`}
+      className={`${styles.nav} 
+      ${activeNav === 1 && styles.expanded} 
+      ${!isVisible && styles.hidden} 
+      ${isDarkMode && styles.dark}`}
     >
       <div className={styles.navtop}>
         <button className={styles.left} onClick={() => setActive(!activeNav)}>
@@ -86,7 +104,13 @@ const TopNav = ({ chapters, handleOpen, isOpen, dark = false }) => {
           >
             ABOUT
           </Link>
-          <div>SILVERLININGS.BIO</div>
+          <Link
+    href="/"
+    className={styles.logo}
+    onClick={() => setActive(false)}
+  >
+    SILVERLININGS.BIO
+  </Link>
         </div>
       </div>
 
