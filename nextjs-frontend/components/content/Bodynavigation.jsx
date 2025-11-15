@@ -62,7 +62,7 @@ const Bodynavigation = () => {
             place="right"
             offset={16}
             maxWidth={250}
-            stat1="$201B"
+            stat1="$201.3B"
             statLabel1="Yearly gain<br>to U.S. GDP"
             stat2="$8.9T"
             statLabel2="Long-term <br> Net Present Value"
@@ -98,7 +98,7 @@ const Bodynavigation = () => {
             place="left"
             offset={30}
             maxWidth={250}
-            stat1="$9B"
+            stat1="$9.1B"
             statLabel1="Yearly gain<br>to U.S. GDP"
             stat2="$9.3T"
             statLabel2="Long-term <br> Net Present Value"
@@ -189,11 +189,11 @@ const Bodynavigation = () => {
             place="left"
             offset={30}
             maxWidth={250}
-            stat1="$408B"
+            stat1="$408.4B"
             statLabel1="Yearly gain<br>to U.S. GDP"
             stat2="$27.1T"
             statLabel2="Long-term <br> Net Present Value"
-            stat3="1.7M"
+            stat3="1.72M"
             statLabel3="Lived saved <br>or gained by 2050"
           />
         </div>
