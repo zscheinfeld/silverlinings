@@ -159,11 +159,11 @@ const Bodynavigation = () => {
             place="left"
             offset={30}
             maxWidth={250}
-            stat1="$40B"
+            stat1="42.2B"
             statLabel1="Yearly gain<br>to U.S. GDP"
-            stat2="$2.4T"
+            stat2="$2.5T"
             statLabel2="Long-term <br> Net Present Value"
-            stat3="275k"
+            stat3="242k"
             statLabel3="Lived saved <br>or gained by 2050"
           />
 

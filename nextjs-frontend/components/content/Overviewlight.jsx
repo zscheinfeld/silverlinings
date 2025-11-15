@@ -142,9 +142,9 @@ const Overviewlight = () => {
         futureImageLabel: "All (P, F, M)",
         futureImageLabelColor: "green",
         futureInfo: "We lack the tools & data to precisely measure biological aging. This bottlenecks the development of new therapeutics, and prevents us from knowing whether  existing ones can slow aging. We simulate the value of first- and second-generation therapeutics. The first are existing drugs that may marginally improve how we age, but have not yet been tested. The second are counterfactual therapeutics that could slow aging in still-healthy adults.",
-        stat1: "$40B",
-        stat2: "$2.4T",
-        stat3: "275k",
+        stat1: "$42.2B",
+        stat2: "$2.5T",
+        stat3: "242k",
         statLabel1: "Yearly gain to U.S. GDP",
         statLabel2: (
           <>
