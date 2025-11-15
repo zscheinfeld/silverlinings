@@ -45,8 +45,8 @@ const Simulation = ({ data }) => {
 
   // API configuration
   // const API_BASE = "/predict"; // Update this to match your FastAPI endpoint
-  const API_BASE = "http://localhost:8000/predict" ;
-  // const API_BASE = "https://fastapi-backend-proud-tree-3049.fly.dev/predict"; // Update this to match your FastAPI endpoint;
+  // const API_BASE = "http://localhost:8000/predict" ;
+  const API_BASE = "https://fastapi-backend-proud-tree-3049.fly.dev/predict"; // Update this to match your FastAPI endpoint;
 
   // Timer for debounced API calls (using ref to avoid stale closures)
   const updateTimerRef = useRef(null);
