@@ -10,7 +10,7 @@ primary_region = 'iad'
   dockerfile = "Dockerfile"
 
 [processes]
-app = "uvicorn app:app --host 0.0.0.0 --port 8080 --workers 4"
+app = "uvicorn app:app --host 0.0.0.0 --port 8080 --workers 2"
 
 [http_service]
   internal_port = 8080
@@ -30,4 +30,4 @@ app = "uvicorn app:app --host 0.0.0.0 --port 8080 --workers 4"
 [[vm]]
   memory = '4gb'
   cpu_kind = 'performance'
-  cpus = 1
+  cpus = 2
