@@ -1,16 +1,16 @@
 # app.py ------------------------------------------------------------
 from typing import List, Union
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, validator
 import numpy as np
-import pandas as pd
-import pickle
 import joblib
 import pathlib
 import time
-from fastapi import Request
+import logging
+
+# Set up logging instead of print statements
+logger = logging.getLogger(__name__)
 
 # Declare globals for later assignment
 interp_NPV = None
@@ -59,40 +59,29 @@ def _broadcast_or_400(arrays):
             )
     return out, max_len
 
-# Function to select data
-def select_data(df, output_variables):
-    if "NPV" == output_variables:
-        input_variables = [
-            "age_effect",
-            "initial_effect",
-            "final_effect",
-            "mort_effect",
-            "prod_effect",
-            "fert_effect",
-            "discount_rate",
-        ]
-    elif "total_pop_diff_2050" == output_variables:
-        input_variables = [
-            "age_effect",
-            "initial_effect",
-            "final_effect",
-            "mort_effect",
-            "fert_effect",
-        ]
-    elif "avg_diff" == output_variables:
-        input_variables = [
-            "age_effect",
-            "initial_effect",
-            "final_effect",
-            "mort_effect",
-            "prod_effect",
-            "fert_effect",
-        ]
-    else:
-        print("No valid output variable selected")
-    # Depending on the sample, there may be duplicates because, e.g.,
-    # the discount rate doesn't affect the population changes
-    return df[input_variables].values
+# Pre-compute column indices for efficient selection
+# Column order: age_effect, initial_effect, final_effect, mort_effect, prod_effect, fert_effect, discount_rate
+COLUMN_INDICES = {
+    'NPV': [0, 1, 2, 3, 4, 5, 6],  # All 7 columns
+    'total_pop_diff_2050': [0, 1, 2, 3, 5],  # age, initial, final, mort, fert (no prod, no discount)
+    'avg_diff': [0, 1, 2, 3, 4, 5],  # All except discount_rate
+}
+
+def select_data(X, output_variables):
+    """Select relevant columns from input array X based on output variable type.
+    
+    Args:
+        X: numpy array of shape (n_samples, 7) with columns:
+           [age_effect, initial_effect, final_effect, mort_effect, prod_effect, fert_effect, discount_rate]
+        output_variables: str, one of 'NPV', 'total_pop_diff_2050', 'avg_diff'
+    
+    Returns:
+        numpy array with selected columns
+    """
+    indices = COLUMN_INDICES.get(output_variables)
+    if indices is None:
+        raise ValueError(f"Invalid output_variables: {output_variables}")
+    return X[:, indices]
 
 # ---------- create the FastAPI instance ---------------------------
 app = FastAPI(title="My Interpolant Service")
@@ -110,25 +99,20 @@ def load_models():
 
     try:
         t0 = time.time()
-        # with open(model_path / "interpolant_NPV.pkl", "rb") as f:
-        #     interp_NPV = pickle.load(f)
-        # with open(model_path / "interpolant_avg_diff.pkl", "rb") as f:
-        #     interp_avg = pickle.load(f)
-        # with open(model_path / "interpolant_total_pop_diff_2050.pkl", "rb") as f:
-        #     interp_pop = pickle.load(f)
         interp_NPV = joblib.load(model_path / "interpolant_NPV.joblib", mmap_mode='r')
         interp_avg = joblib.load(model_path / "interpolant_avg_diff.joblib", mmap_mode='r')
         interp_pop = joblib.load(model_path / "interpolant_total_pop_diff_2050.joblib", mmap_mode='r')
-        print(f"Loaded models in {time.time() - t0:.2f}s")
+        logger.info(f"Loaded models in {time.time() - t0:.2f}s")
     except FileNotFoundError as e:
-        print(f"Warning: Could not load models: {e}")
-        print("App will start but /predict endpoint will not work until models are available")
+        logger.warning(f"Could not load models: {e}")
+        logger.warning("App will start but /predict endpoint will not work until models are available")
 
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000",
+        "http://localhost:3001",
         "https://profound-brioche-f9933d.netlify.app",
         "https://silverlinings.bio"
         ],
@@ -140,6 +124,14 @@ app.add_middleware(
 @app.post("/predict", response_model=Outputs)
 def predict(data: Inputs):
     global interp_NPV, interp_avg, interp_pop
+    
+    # Check if models are loaded
+    if interp_NPV is None or interp_avg is None or interp_pop is None:
+        raise HTTPException(
+            status_code=503,
+            detail="Models not loaded. Please ensure model files are available in the models directory."
+        )
+    
     # 1. Collect and broadcast inputs
     fields = [
         data.age_effect, data.initial_effect, data.final_effect,
@@ -147,24 +139,27 @@ def predict(data: Inputs):
         data.discount_rate
     ]
     arrays, n = _broadcast_or_400(fields)
-    print("collected inputs")
-    # 2. Build the X matrix expected by your interpolators
-    df = pd.DataFrame(np.column_stack(arrays))
-    df.columns = [
-        'age_effect', 'initial_effect', 'final_effect', 'mort_effect',
-        'prod_effect', 'fert_effect', 'discount_rate'
-    ]
-    print("built input DataFrame")
+    
+    # 2. Build the X matrix directly as numpy array (faster than DataFrame)
+    # Column order: age_effect, initial_effect, final_effect, mort_effect, 
+    #               prod_effect, fert_effect, discount_rate
+    X = np.column_stack(arrays)
+    
     # 3. Call the three interpolators (each returns ndarray of shape (n,))
-    npv            = interp_NPV(select_data(df, 'NPV')).ravel()
-    avg            = interp_avg(select_data(df, 'avg_diff')).ravel()
-    pop_diffs_2050 = interp_pop(select_data(df, 'total_pop_diff_2050')).ravel()
-    print("called interpolators")
+    npv = interp_NPV(select_data(X, 'NPV'))
+    avg = interp_avg(select_data(X, 'avg_diff'))
+    pop_diffs_2050 = interp_pop(select_data(X, 'total_pop_diff_2050'))
+    
     # 4. Some interpolators return masked or NaN for extrapolation—clean up
-    npv   = np.nan_to_num(npv,   nan=0.0).tolist()
-    avg   = np.nan_to_num(avg,   nan=0.0).tolist()
-    pop   = np.nan_to_num(pop_diffs_2050, nan=0.0).tolist()
-    print("cleaned up outputs")
+    # Handle 1D arrays (ravel only if needed, but interpolators should return 1D)
+    npv = np.nan_to_num(npv, nan=0.0)
+    avg = np.nan_to_num(avg, nan=0.0)
+    pop_diffs_2050 = np.nan_to_num(pop_diffs_2050, nan=0.0)
+    
+    # Convert to lists for JSON serialization
+    npv = npv.tolist() if hasattr(npv, 'tolist') else [float(npv)]
+    avg = avg.tolist() if hasattr(avg, 'tolist') else [float(avg)]
+    pop = pop_diffs_2050.tolist() if hasattr(pop_diffs_2050, 'tolist') else [float(pop_diffs_2050)]
 
     return Outputs(NPV=npv, pop_diffs_2050=pop, avg_diff=avg)
 

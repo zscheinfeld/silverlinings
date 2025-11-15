@@ -14,6 +14,7 @@ const Slider = ({
   modifier,
   disabled,
   onChange,
+  onCommit,
   tooltip,
 }) => {
   const defaultValueProgress = useRef((defaultValue - min) / (max - min));
@@ -22,6 +23,18 @@ const Slider = ({
   const progress = useMemo(() => {
     return (value - min) / (max - min);
   }, [value, min, max]);
+
+  const handleMouseUp = (event) => {
+    if (onCommit) {
+      onCommit(event);
+    }
+  };
+
+  const handleTouchEnd = (event) => {
+    if (onCommit) {
+      onCommit(event);
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -59,6 +72,8 @@ const Slider = ({
             step={step}
             value={value}
             onChange={onChange}
+            onMouseUp={handleMouseUp}
+            onTouchEnd={handleTouchEnd}
             disabled={disabled}
           />
         </div>

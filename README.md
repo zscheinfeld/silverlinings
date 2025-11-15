@@ -2,6 +2,19 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+### Environment Variables
+
+Before running the frontend, you need to set up Contentful environment variables. Create a `.env.local` file in the `nextjs-frontend` directory with:
+
+```
+NEXT_PUBLIC_CONTENTFUL_SPACE=your_space_id_here
+NEXT_PUBLIC_CONTENTFUL_API_KEY=your_api_key_here
+```
+
+You can get these values from your Contentful space settings.
+
+### Backend Server
+
 First, run the backend server:
 
 ```bash
@@ -9,6 +22,7 @@ cd fastapi-backend
 uvicorn app:app --host 0.0.0.0 --port 8000 --reload
 ```
 
+### Frontend Server
 
 Second, run the frontend development server:
 
