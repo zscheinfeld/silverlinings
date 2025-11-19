@@ -2,7 +2,7 @@ import styles from "@/components/simulation/Simulation.module.scss";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Slider from "@/components/simulation/Slider";
 import SimulationOverlay from "./SimulationOverlay";
 
@@ -41,7 +41,6 @@ const Simulation = ({ data }) => {
   const [inputs, setInputs] = useState(defaultInputs);
   const [outputs, setOutputs] = useState(defaultOutputs);
   const [loading, setLoading] = useState(false);
-  const [inputsUpdated, setInputsUpdated] = useState(false);
   const [showSecondaryInputs, setShowSecondaryInputs] = useState(false);
 
   // API configuration
@@ -49,12 +48,20 @@ const Simulation = ({ data }) => {
   // const API_BASE = "http://localhost:8000/predict" ;
   const API_BASE = "https://fastapi-backend-proud-tree-3049.fly.dev/predict"; // Update this to match your FastAPI endpoint;
 
-  // Timer for debounced API calls
-  const [updateTimer, setUpdateTimer] = useState(null);
+  // Timer for debounced API calls (using ref to avoid stale closures)
+  const updateTimerRef = useRef(null);
   const [isUpdating, setIsUpdating] = useState(false);
 
   const handleReset = () => {
     setInputs({ ...defaultInputs });
+    // Clear any pending debounced calls and trigger immediately
+    if (updateTimerRef.current) {
+      clearTimeout(updateTimerRef.current);
+      updateTimerRef.current = null;
+    }
+    setTimeout(() => {
+      makePrediction();
+    }, 0);
   };
 
   const toggleSecondaryInputs = () => {
@@ -62,10 +69,23 @@ const Simulation = ({ data }) => {
   };
 
   useEffect(() => {
-    setInputsUpdated(false);
     setOutputs({ ...defaultOutputs });
     setInputs({ ...defaultInputs });
+    // Clear any pending timers when section changes
+    if (updateTimerRef.current) {
+      clearTimeout(updateTimerRef.current);
+      updateTimerRef.current = null;
+    }
   }, [sectionIndex]);
+
+  // Cleanup timer on unmount
+  useEffect(() => {
+    return () => {
+      if (updateTimerRef.current) {
+        clearTimeout(updateTimerRef.current);
+      }
+    };
+  }, []);
 
   // Make prediction via API call
   const makePrediction = async () => {
@@ -138,38 +158,28 @@ const Simulation = ({ data }) => {
     }
   };
 
-  // Schedule debounced update
-  const scheduleUpdate = () => {
-    if (updateTimer) {
-      clearTimeout(updateTimer);
-    }
-
-    const newTimer = setTimeout(() => {
-      makePrediction();
-    }, 250);
-
-    setUpdateTimer(newTimer);
-  };
-
-  // Effect to trigger predictions when inputs change
-  useEffect(() => {
-    if (!inputsUpdated) return;
-
-    scheduleUpdate();
-
-    // Cleanup timer on unmount
-    return () => {
-      if (updateTimer) {
-        clearTimeout(updateTimer);
-      }
-    };
-  }, [inputs, inputsUpdated]);
-
   const updateInputs = (event) => {
-    setInputsUpdated(true);
+    // Update state immediately for visual feedback
     setInputs((inputs) => {
       return { ...inputs, [event.target.id]: parseFloat(event.target.value) };
     });
+  };
+
+  // Schedule debounced update
+  const scheduleUpdate = () => {
+    if (updateTimerRef.current) {
+      clearTimeout(updateTimerRef.current);
+    }
+
+    updateTimerRef.current = setTimeout(() => {
+      makePrediction();
+      updateTimerRef.current = null;
+    }, 250);
+  };
+
+  const commitInputs = (event) => {
+    // Schedule debounced API call when user releases the slider
+    scheduleUpdate();
   };
   const formattedOutputPop =
     outputs.outputPop > 1000
@@ -218,6 +228,7 @@ const Simulation = ({ data }) => {
               {...section.inputs["adoption"]}
               value={inputs["inputAdoption"]}
               onChange={updateInputs}
+              onCommit={commitInputs}
               disabled={loading}
             />
             <Slider
@@ -226,6 +237,7 @@ const Simulation = ({ data }) => {
               modifier={(value) => `${value}+`}
               value={inputs["inputAge"]}
               onChange={updateInputs}
+              onCommit={commitInputs}
               disabled={loading}
             />
             <Slider
@@ -233,6 +245,7 @@ const Simulation = ({ data }) => {
               {...section.inputs["startYear"]}
               value={inputs["inputStartYear"]}
               onChange={updateInputs}
+              onCommit={commitInputs}
               disabled={loading}
             />
             <Slider
@@ -241,6 +254,7 @@ const Simulation = ({ data }) => {
               modifier={(value) => `${value * 100}%`}
               value={inputs["inputR"]}
               onChange={updateInputs}
+              onCommit={commitInputs}
               disabled={loading}
             />
 
@@ -261,6 +275,7 @@ const Simulation = ({ data }) => {
                 {...section.inputs["mortality"]}
                 value={inputs["inputMortality"]}
                 onChange={updateInputs}
+                onCommit={commitInputs}
                 disabled={loading}
               />
               <Slider
@@ -268,6 +283,7 @@ const Simulation = ({ data }) => {
                 {...section.inputs["productivity"]}
                 value={inputs["inputProductivity"]}
                 onChange={updateInputs}
+                onCommit={commitInputs}
                 disabled={loading}
               />
               <Slider
@@ -275,6 +291,7 @@ const Simulation = ({ data }) => {
                 {...section.inputs["fertility"]}
                 value={inputs["inputFertility"]}
                 onChange={updateInputs}
+                onCommit={commitInputs}
                 disabled={loading}
               />
               <Slider
@@ -282,6 +299,7 @@ const Simulation = ({ data }) => {
                 {...section.inputs["numYears"]}
                 value={inputs["inputNumYears"]}
                 onChange={updateInputs}
+                onCommit={commitInputs}
                 disabled={loading}
               />
             </div>
