@@ -101,7 +101,7 @@ def load_models():
         t0 = time.time()
         interp_NPV = joblib.load(model_path / "interpolant_NPV.joblib", mmap_mode='r')
         interp_avg = joblib.load(model_path / "interpolant_avg_diff.joblib", mmap_mode='r')
-        interp_pop = joblib.load(model_path / "interpolant_pop_diffs_2050.joblib", mmap_mode='r')
+        interp_pop = joblib.load(model_path / "interpolant_total_pop_diffs_2050.joblib", mmap_mode='r')
         logger.info(f"Loaded models in {time.time() - t0:.2f}s")
     except FileNotFoundError as e:
         logger.warning(f"Could not load models: {e}")
