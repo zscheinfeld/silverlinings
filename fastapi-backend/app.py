@@ -101,7 +101,7 @@ def load_models():
         t0 = time.time()
         interp_NPV = joblib.load(model_path / "interpolant_NPV.joblib", mmap_mode='r')
         interp_avg = joblib.load(model_path / "interpolant_avg_diff.joblib", mmap_mode='r')
-        interp_pop = joblib.load(model_path / "interpolant_total_pop_diff_2050.joblib", mmap_mode='r')
+        interp_pop = joblib.load(model_path / "interpolant_pop_diffs_2050.joblib", mmap_mode='r')
         logger.info(f"Loaded models in {time.time() - t0:.2f}s")
     except FileNotFoundError as e:
         logger.warning(f"Could not load models: {e}")
@@ -157,9 +157,10 @@ def predict(data: Inputs):
     pop_diffs_2050 = np.nan_to_num(pop_diffs_2050, nan=0.0)
     
     # Convert to lists for JSON serialization
-    npv = npv.tolist() if hasattr(npv, 'tolist') else [float(npv)]
-    avg = avg.tolist() if hasattr(avg, 'tolist') else [float(avg)]
-    pop = pop_diffs_2050.tolist() if hasattr(pop_diffs_2050, 'tolist') else [float(pop_diffs_2050)]
+    # Ensure all are 1D arrays first (flatten if needed), then convert to list
+    npv = np.asarray(npv).ravel().tolist()
+    avg = np.asarray(avg).ravel().tolist()
+    pop = np.asarray(pop_diffs_2050).ravel().tolist()
 
     return Outputs(NPV=npv, pop_diffs_2050=pop, avg_diff=avg)
 
