@@ -81,6 +81,12 @@ def select_data(X, output_variables):
     indices = COLUMN_INDICES.get(output_variables)
     if indices is None:
         raise ValueError(f"Invalid output_variables: {output_variables}")
+        
+    # Optimization: if selecting all columns, return the original array (view)
+    # This avoids a copy when indices is the full set [0, 1, ..., 6]
+    if len(indices) == X.shape[1] and indices == list(range(X.shape[1])):
+        return X
+
     return X[:, indices]
 
 # ---------- create the FastAPI instance ---------------------------
@@ -99,9 +105,11 @@ def load_models():
 
     try:
         t0 = time.time()
-        interp_NPV = joblib.load(model_path / "interpolant_NPV.joblib", mmap_mode='r')
-        interp_avg = joblib.load(model_path / "interpolant_avg_diff.joblib", mmap_mode='r')
-        interp_pop = joblib.load(model_path / "interpolant_total_pop_diff_2050.joblib", mmap_mode='r')
+        # Load models into memory. Removing mmap_mode='r' improves query speed
+        # by avoiding disk seeks during prediction, assuming sufficient RAM.
+        interp_NPV = joblib.load(model_path / "interpolant_NPV.joblib")
+        interp_avg = joblib.load(model_path / "interpolant_avg_diff.joblib")
+        interp_pop = joblib.load(model_path / "interpolant_total_pop_diff_2050.joblib")
         logger.info(f"Loaded models in {time.time() - t0:.2f}s")
     except FileNotFoundError as e:
         logger.warning(f"Could not load models: {e}")

@@ -60,7 +60,7 @@ const Simulation = ({ data }) => {
       updateTimerRef.current = null;
     }
     setTimeout(() => {
-      makePrediction();
+      makePrediction(defaultInputs);
     }, 0);
   };
 
@@ -88,7 +88,7 @@ const Simulation = ({ data }) => {
   }, []);
 
   // Make prediction via API call
-  const makePrediction = async () => {
+  const makePrediction = async (inputsOverride = null) => {
     if (isUpdating) return; // Prevent multiple simultaneous requests
 
     setIsUpdating(true);
@@ -104,7 +104,7 @@ const Simulation = ({ data }) => {
         inputMortality = 0,
         inputProductivity = 0,
         inputFertility = 0,
-      } = inputs;
+      } = inputsOverride || inputs;
 
       // Make adjustments to year shifts based on adoption rate
       const adjustedMortality = inputMortality * (inputAdoption / 100);
@@ -382,8 +382,6 @@ const Simulation = ({ data }) => {
                 className={styles.Item}
                 data-tooltip-id="tooltip-npv"
                 data-tooltip-content="Total Net Present Value (NPV) of long-term economic returns."
-                arrowColor="transparent"
-                place="top"
                 data-fade="true"
               >
                 <span className={styles.outputStat}>
@@ -396,8 +394,6 @@ const Simulation = ({ data }) => {
                 className={styles.Item}
                 data-tooltip-id="tooltip-pop"
                 data-tooltip-content="Estimated number of lives saved or gained by 2050."
-                arrowColor="transparent"
-                place="top"
                 data-fade="true"
               >
                 <span className={styles.outputStat}>{formattedOutputPop}</span>

@@ -13,7 +13,6 @@
     "@radix-ui/react-tooltip": "^1.2.7",
     "@react-jvectormap/core": "^1.0.4",
     "@react-jvectormap/world": "^1.1.2",
-    "@tensorflow/tfjs": "^4.22.0",
     "chart.js": "^4.4.7",
     "jsvectormap": "^1.6.0",
     "jvectormap-next": "^3.1.1",

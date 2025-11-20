@@ -15,7 +15,7 @@ const Subchapter = forwardRef(({ subchapter, bordered }, ref) => {
     });
     if (type !== "toggle") {
       result = result.concat(
-        <Spacer border={!bordered && type === "default"} />
+        <Spacer key="spacer" border={!bordered && type === "default"} />
       );
     }
     return result;
