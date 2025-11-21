@@ -53,7 +53,7 @@ const SubchapterNav = ({
       {subchapters.map((subchapter) => {
         if (subchapter.number === activeSubchapter) {
           return (
-            <div className={styles.subchapterInfoContainer}>
+            <div key={subchapter.slug} className={styles.subchapterInfoContainer}>
 
             <div className={styles.subchapterNumber}>
               <i>
