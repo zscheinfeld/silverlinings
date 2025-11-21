@@ -50,18 +50,19 @@ const Simulation = ({ data }) => {
 
   // Timer for debounced API calls (using ref to avoid stale closures)
   const updateTimerRef = useRef(null);
+  // AbortController ref to cancel stale requests
+  const abortControllerRef = useRef(null);
   const [isUpdating, setIsUpdating] = useState(false);
 
   const handleReset = () => {
     setInputs({ ...defaultInputs });
-    // Clear any pending debounced calls and trigger immediately
+    // Clear any pending debounced calls
     if (updateTimerRef.current) {
       clearTimeout(updateTimerRef.current);
       updateTimerRef.current = null;
     }
-    setTimeout(() => {
-      makePrediction();
-    }, 0);
+    // Trigger immediately with default inputs
+    makePrediction(defaultInputs);
   };
 
   const toggleSecondaryInputs = () => {
@@ -76,6 +77,10 @@ const Simulation = ({ data }) => {
       clearTimeout(updateTimerRef.current);
       updateTimerRef.current = null;
     }
+    // Abort any in-flight requests
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
   }, [sectionIndex]);
 
   // Cleanup timer on unmount
@@ -84,12 +89,22 @@ const Simulation = ({ data }) => {
       if (updateTimerRef.current) {
         clearTimeout(updateTimerRef.current);
       }
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
     };
   }, []);
 
   // Make prediction via API call
-  const makePrediction = async () => {
-    if (isUpdating) return; // Prevent multiple simultaneous requests
+  const makePrediction = async (inputsOverride = null) => {
+    // Cancel any previous in-flight request
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+
+    // Create new controller for this request
+    const controller = new AbortController();
+    abortControllerRef.current = controller;
 
     setIsUpdating(true);
     setLoading(true);
@@ -104,7 +119,7 @@ const Simulation = ({ data }) => {
         inputMortality = 0,
         inputProductivity = 0,
         inputFertility = 0,
-      } = inputs;
+      } = inputsOverride || inputs;
 
       // Make adjustments to year shifts based on adoption rate
       const adjustedMortality = inputMortality * (inputAdoption / 100);
@@ -127,6 +142,7 @@ const Simulation = ({ data }) => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
+        signal: controller.signal,
       });
 
       if (!response.ok) {
@@ -145,6 +161,10 @@ const Simulation = ({ data }) => {
         outputPop: Math.round(data.pop_diffs_2050 * 1000), // Round to nearest thousand
       });
     } catch (error) {
+      if (error.name === "AbortError") {
+        // Request was aborted, do not update state or log error
+        return;
+      }
       console.error("Prediction error:", error);
       // Clear outputs on error
       setOutputs({
@@ -153,33 +173,46 @@ const Simulation = ({ data }) => {
         outputPop: 0,
       });
     } finally {
-      setIsUpdating(false);
-      setLoading(false);
+      // Only clear loading state if this was the active request
+      if (abortControllerRef.current === controller) {
+        setIsUpdating(false);
+        setLoading(false);
+        abortControllerRef.current = null;
+      }
     }
   };
 
   const updateInputs = (event) => {
+    const { id, value } = event.target;
+    const newVal = parseFloat(value);
     // Update state immediately for visual feedback
-    setInputs((inputs) => {
-      return { ...inputs, [event.target.id]: parseFloat(event.target.value) };
-    });
+    const newInputs = { ...inputs, [id]: newVal };
+    setInputs(newInputs);
+    
+    // Schedule debounced update with the new values
+    scheduleUpdate(newInputs);
   };
 
   // Schedule debounced update
-  const scheduleUpdate = () => {
+  const scheduleUpdate = (inputsOverride) => {
     if (updateTimerRef.current) {
       clearTimeout(updateTimerRef.current);
     }
 
     updateTimerRef.current = setTimeout(() => {
-      makePrediction();
+      makePrediction(inputsOverride);
       updateTimerRef.current = null;
     }, 250);
   };
 
   const commitInputs = (event) => {
-    // Schedule debounced API call when user releases the slider
-    scheduleUpdate();
+    // Clear any pending debounced call since we are updating now
+    if (updateTimerRef.current) {
+      clearTimeout(updateTimerRef.current);
+      updateTimerRef.current = null;
+    }
+    // Immediate API call when user releases the slider
+    makePrediction();
   };
   const formattedOutputPop =
     outputs.outputPop > 1000
@@ -382,8 +415,6 @@ const Simulation = ({ data }) => {
                 className={styles.Item}
                 data-tooltip-id="tooltip-npv"
                 data-tooltip-content="Total Net Present Value (NPV) of long-term economic returns."
-                arrowColor="transparent"
-                place="top"
                 data-fade="true"
               >
                 <span className={styles.outputStat}>
@@ -396,8 +427,6 @@ const Simulation = ({ data }) => {
                 className={styles.Item}
                 data-tooltip-id="tooltip-pop"
                 data-tooltip-content="Estimated number of lives saved or gained by 2050."
-                arrowColor="transparent"
-                place="top"
                 data-fade="true"
               >
                 <span className={styles.outputStat}>{formattedOutputPop}</span>
