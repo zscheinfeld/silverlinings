@@ -186,20 +186,10 @@ def predict(data: Inputs):
     pop_diffs_2050 = np.nan_to_num(pop_diffs_2050, nan=0.0)
 
     # Convert to lists for JSON serialization
-<<<<<<< HEAD
-    npv = npv.tolist() if hasattr(npv, "tolist") else [float(npv)]
-    avg = avg.tolist() if hasattr(avg, "tolist") else [float(avg)]
-    pop = (
-        pop_diffs_2050.tolist()
-        if hasattr(pop_diffs_2050, "tolist")
-        else [float(pop_diffs_2050)]
-    )
-=======
     # Ensure all are 1D arrays first (flatten if needed), then convert to list
     npv = np.asarray(npv).ravel().tolist()
     avg = np.asarray(avg).ravel().tolist()
     pop = np.asarray(pop_diffs_2050).ravel().tolist()
->>>>>>> origin/main
 
     return Outputs(NPV=npv, pop_diffs_2050=pop, avg_diff=avg)
 

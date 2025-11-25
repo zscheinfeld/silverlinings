@@ -28,6 +28,6 @@ app = "uvicorn app:app --host 0.0.0.0 --port 8080 --workers 2"
     path = "/health"
 
 [[vm]]
-  memory = '4gb'
+  memory = '8gb'
   cpu_kind = 'performance'
   cpus = 1
