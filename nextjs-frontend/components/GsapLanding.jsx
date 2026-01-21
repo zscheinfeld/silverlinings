@@ -252,7 +252,7 @@ const GsapLanding = () => {
 
             <div className={styles.keyitem}>
               <div className={`${styles.symbol} ${styles.purple}`}></div>
-              ~10% {" > "} (SAUDI ARABIA, MOROCCO, INDA)
+              ~10% {" > "} (SAUDI ARABIA, MOROCCO, INDIA)
             </div>
           </div>
         </div>
